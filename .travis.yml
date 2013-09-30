@@ -22,5 +22,6 @@ env:
 
 before_install:
 - git submodule update --init --recursive
+- sudo apt-get install -qq pandoc
 
 # after_success: ./deploy.sh
