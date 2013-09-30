@@ -1,0 +1,18 @@
+branches:
+  only:
+  - master
+language: python
+python:
+- 3.3.2
+install:
+- pip install -r requirements.txt --use-mirrors
+script:
+- make html
+notifications:
+  email: false
+env:
+  global:
+    secure: DEbaoqcdvbAz9sAJHSVGsBAHtTWJHQKsR8qq/awzaPThDRWsZlsxFR5XU+U63z+9EhPqTME/ciCmc2FxwgZAiVwQuyyXliZ7Tuo79SxDztZTukFrWpu0rLZkYNITU9Z1Laz91OPnj8g8uaV73sjasrTWQvi2jLhrL6T4GeLgs6w=
+before_install:
+- git submodule update --init --recursive
+after_success: ./deploy.sh
