@@ -23,4 +23,4 @@ env:
 before_install:
 - git submodule update --init --recursive
 
-after_success: ./deploy.sh
+# after_success: ./deploy.sh
