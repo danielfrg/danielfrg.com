@@ -1,0 +1,3 @@
+[submodule "themes/middle"]
+	path = themes/middle
+	url = git@github.com:danielfrg/middle-theme.git
