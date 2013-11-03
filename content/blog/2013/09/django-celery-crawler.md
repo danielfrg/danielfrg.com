@@ -7,10 +7,10 @@ Author: Daniel Rodriguez
 Summary: Short version for index and feeds
 code: true
 
-I have written a [few](|filename|../08/blog-crawler.ipynb) [posts](|filename|../04/nba-data.md)
+I have written a [few]({filename}../08/blog-crawler.ipynb) [posts]({filename}../04/nba-data.md)
 about crawling content from the web. Mainly because I know the power of data
 and the biggest data source in the world is the web, Google knew it and we all now how they are
-doing. In my [last post](|filename|../08/blog-crawler.ipynb) I wrote about crawling relevant content
+doing. In my [last post]({filename}../08/blog-crawler.ipynb) I wrote about crawling relevant content
 from blogs; It worked but what if I want an admin UI to control the crawling. What if I just put
 the crawler in an EC2 instance and just call it when I need to crawl.
 

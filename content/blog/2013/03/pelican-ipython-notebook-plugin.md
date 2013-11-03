@@ -7,13 +7,13 @@ Author: Daniel Rodriguez
 Summary: Short version for index and feeds
 code: true
 
-This is just a little update on my previous post about [Blogging with iPython notebooks with pelican](|filename|../02/blogging-pelican-ipython-notebook.md).
+This is just a little update on my previous post about [Blogging with iPython notebooks with pelican]({filename}../02/blogging-pelican-ipython-notebook.md).
 
-One of the people behind pelican helped me to convert the [previous code](|filename|../02/blogging-pelican-ipython-notebook.md) to a pelican plugin and I just made it available via github: [pelican-ipythonnb](https://github.com/danielfrg/pelican-ipythonnb).
+One of the people behind pelican helped me to convert the [previous code]({filename}../02/blogging-pelican-ipython-notebook.md) to a pelican plugin and I just made it available via github: [pelican-ipythonnb](https://github.com/danielfrg/pelican-ipythonnb).
 
 The only thing that changed is the installation but the docs on how to use it is below (or in the readme of the repo).
 
-An example is my last post about a [cleaning data for a Kaggle competition](|filename|kaggle-bulldozers-clean.ipynb).
+An example is my last post about a [cleaning data for a Kaggle competition]({filename}kaggle-bulldozers-clean.ipynb).
 
 Happy blogging!
 

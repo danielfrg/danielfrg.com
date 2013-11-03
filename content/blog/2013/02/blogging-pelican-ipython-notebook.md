@@ -7,11 +7,11 @@ Author: Daniel Rodriguez
 Summary: Short version for index and feeds
 code: true
 
-<p class='update'><strong>Update: </strong> Check out the updated post on <a href="|filename|../03/pelican-ipython-notebook-plugin.md">blogging with iPython notebook and pelican with a plugin</a>.</p>
+<p class='update'><strong>Update: </strong> Check out the updated post on <a href="{filename}../03/pelican-ipython-notebook-plugin.md">blogging with iPython notebook and pelican with a plugin</a>.</p>
 
 It seems that I spend most time redesigning/developing this blog than actually
 blogging xD, just a few weeks ago I wrote about how I was [blogging using jekyll
-with iPython notebooks](|filename|../01/new-blog-using-jekyll-and-ipython.md)
+with iPython notebooks]({filename}../01/new-blog-using-jekyll-and-ipython.md)
 and now I am talking about doing the same different static blog engine.
 
 The fact is that a few days ago I found [pelican][pelican], the first serious
@@ -167,13 +167,13 @@ so you in your pelican `article.html` template should do:
 ```
 
 This particular post uses markdown but most of my previous posts are now converted
-from ipython notebooks for example: [copper-quick-data-transformation](|filename|../02/copper-quick-data-transformation.ipynb)
+from ipython notebooks for example: [copper-quick-data-transformation]({filename}../02/copper-quick-data-transformation.ipynb)
 
 If are curious about my pelican config or theme check it out on [github](https://github.com/danielfrg/danielfrg.github.com).
 
 Happy blogging!
 
-<p class='update'><strong>Update: </strong> Check out the updated post on <a href="|filename|../03/pelican-ipython-notebook-plugin.md">blogging with iPython notebook and pelican with a plugin</a>.</p>
+<p class='update'><strong>Update: </strong> Check out the updated post on <a href="{filename}../03/pelican-ipython-notebook-plugin.md">blogging with iPython notebook and pelican with a plugin</a>.</p>
 
 [pelican]:http://www.getpelican.com
 [pelican-docs]:http://docs.getpelican.com/
