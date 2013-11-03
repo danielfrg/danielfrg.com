@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*- #
 
-# SITEURL = ''
+SITEURL = ''
 SITEURL = 'http://danielfrg.github.io'
 AUTHOR = 'Daniel Rodriguez'
 SITENAME = 'Daniel Rodriguez'
