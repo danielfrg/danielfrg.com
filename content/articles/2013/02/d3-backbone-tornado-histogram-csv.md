@@ -9,7 +9,7 @@ code: True
 
 After being procrastinating for weeks the learning of [D3.js][d3] and [backbone.js][backbone] I have finally made my first example using both libraries to explore (via histograms) a pandas DataFrame. The reason of the procrastination is very simple: I love python to much, because is probably the only language who is great in all areas (that I am interested at least):
 
-* Great web frameworks as [Django](https://www.djangoproject.com) and [Tornado][tornado] - "fighting" with ruby ([rails](rubyonrails.org))
+* Great web frameworks as [Django](https://www.djangoproject.com) and [Tornado][tornado] - "fighting" with ruby ([rails](http://rubyonrails.org))
 * Great Data Analysis packages such as [pandas][pandas] - "fighting" with [R](http://www.r-project.org)
 * Great machine-learning libraries such as [scikit-learn](http://scikit-learn.org/)
 * Probably not the most successful but has a good gaming library [pyGame](http://www.pygame.org/)
