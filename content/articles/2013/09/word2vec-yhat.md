@@ -5,7 +5,7 @@ Category: word2vec
 Tags: python,word2vec,yhat,machine learning
 Author: Daniel Rodriguez
 Summary: Short version for index and feeds
-include: angular
+include: angular,jquery
 
 A [few weeks ago](http://google-opensource.blogspot.com/2013/08/learning-meaning-behind-words.html)
 Google released some code to convert words to vectors called
@@ -108,19 +108,6 @@ I built a simple app using [angularJS](http://angularjs.org/).
 Just type any word and the number of close word vectors you want and click the button.
 On the list that it generates you can click on any word and it will give you the neighbors for that word.
 
-<p class="red"><b>Note:</b> yhat currently doesn't allow cross-domain POST request, so in order to use the
-example below you have to restart Chrome using the <code>--disable-web-security</code> argument.
-
-On OS X ran: <code>open -a Google\ Chrome --args --disable-web-security`</code>.
-On Linux should be: <code>chromium-browser --disable-web-security</code>.
-On Windows should be: <code>chrome.exe --disable-web-security</code>.
-
-In case you don't want to do that here is a screenshot of how it looks:
-
-<img src="/static/images/blog/2013/09/word2vec-yhat.png">
-
-</p>
-
 <div ng-app="app">
     <div ng-controller="MainCtrl">
         <form class="form-horizontal" style="max-width: 520px;">
@@ -164,7 +151,7 @@ var MainCtrl = function($scope, $http) {
     }
 
     $scope.request = function(word, n) {
-        var BASE_URL = 'http://api.yhathq.com/predict?username=df.rodriguez143%40gmail.com&model=word2vec&apikey=5162184b820a6ac92274bec2e98b8c88&version=18';
+        var BASE_URL = 'http://cors.io/api.yhathq.com/predict?username=df.rodriguez143%40gmail.com&model=word2vec&apikey=5162184b820a6ac92274bec2e98b8c88&version=23';
         var data = {"data": {"word": word, "n": n} }
 
         $http.post(BASE_URL, data)
