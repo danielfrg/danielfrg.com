@@ -1,23 +1,19 @@
-Title: Replace SAS Enterprise Miner (basic)
+Title: Python to replace SAS Enterprise Miner (basic)
+Slug: python-replace-sas
 Date: 2013-01-02 17:00
-Author: dfrodriguez143
-Category: Data Analysis, Python
-Tags: Pandas, Python, SAS, Scikit-learn
-Slug: replace-sas-python
+Tags: pandas,python,SAS,scikit-learn
+Author: Daniel Rodriguez
 
-Intro
------
-
-### Why?
+## Why?
 
 The last fall (2012) I took a class called Business Intelligence (at
 UT Dallas) which is the same as Data Mining or Machine Learning
 to business people. On that class they taught us to use SAS Enterprise
 Miner. I used it but I **hate** to use it. First of all I had to **pay**
-for it: like \$100 dollars, not much because the University has an
+for it: like $100 dollars, not much because the University has an
 arrangement with SAS but I had to pay that again soon, and I have to pay
 a lot of money to use it without the University help. Second, is
-**slow** as hell, I was going mad using that piece of \$%\#\^ :-P. And
+**slow** as hell, I was going mad using that piece of $%#\^ :-P. And
 don't get me wrong, the software is "good", but is not for me.
 
 That is the reason why during this time I learn the basics of R (from
@@ -25,9 +21,9 @@ That is the reason why during this time I learn the basics of R (from
 objective on this case is to use Python to replace the functionality I
 learned this semester of [SAS Enterprise Miner][]. I already knew basic
 the basics of pandas, numpy and scipy but I still had on my ToDo list
-learn [Scikit-learn][]. <!--more-->
+learn [Scikit-learn][].
 
-### What I wanted to do
+## What I wanted to do
 
 I wanted to replace the functionality I learned this semester from SAS
 EM, that is, the very basics:
@@ -41,18 +37,17 @@ EM, that is, the very basics:
 So I needed to do the same with iPython, Pandas, Scikit-learn and
 Matplotlib. On SAS EM a basic project looks like this:
 
-[caption id="attachment\_218" align="aligncenter" width="800"][![SAS EM
-Basic Project][]][] SAS EM Basic Project[/caption]
+![SAS EM Basic Project](/images/blog/2013/01/replace-sas-python/screenshot-from-2012-12-31-200944.png "SAS EM Basic Project")
 
-### Installation
+
+## Installation
 
 I already had installed iPython, pandas and numpy but not Scikit-learn,
 and since I am using Python 3 (3.2.3) I had to compile scikit-learn from
 the last development source code: as easy as download the last version
 from [Github][] and ran `python setup.py install`
 
-Example
--------
+## Example
 
 The data I used is the same I used for a project on the Business
 Intelligence class, so I could compare the results I obtained from SAS.
@@ -76,13 +71,13 @@ testing. The available data is:
 
 6.  RFA2: Order amount category (as defined by the firm) of the last
     order
-    1.  1=\$0.01 - \$1.99
-    2.  2=\$2.00 - \$2.99
-    3.  3=\$3.00 e - \$4.99
-    4.  4=\$5.00 - \$9.99
-    5.  5=\$10.00 - \$14.99
-    6.  6=\$15.00 - \$24.99
-    7.  7=\$25.00 and above
+    1.  1=$0.01 - $1.99
+    2.  2=$2.00 - $2.99
+    3.  3=$3.00 e - $4.99
+    4.  4=$5.00 - $9.99
+    5.  5=$10.00 - $14.99
+    6.  6=$15.00 - $24.99
+    7.  7=$25.00 and above
 
 7.  Money: money amount eventually a customer will spend on next order
     (if she places orders), only available for “testing”.
@@ -106,12 +101,12 @@ example is perfect.
 
 As simple as:
 
-[sourcecode language="python"]
-train = pd.read\_csv('training.csv')
-test = pd.read\_csv('testing.csv')
-train = train.set\_index('CustomerID')
-test = test.set\_index('CustomerID')
-[/sourcecode]
+```python
+train = pd.read_csv('training.csv')
+test = pd.read_csv('testing.csv')
+train = train.set_index('CustomerID')
+test = test.set_index('CustomerID')
+```
 
 ### 2. Data transform
 
@@ -120,18 +115,18 @@ I decide to use MSLO (number of Months Since Last Order). Knowing that
 the data is from February, 2007 the equation to convert I use is:
 `MSLO = 12*(2007 - YEAR) - MONTH + 2`. On python it translates to:
 
-[sourcecode language="python"]
+```python
 MSLO = train['LASD']
-f = lambda x: 12\*(2007 - int(str(x)[0:4])) - int(str(x)[4:6]) + 2
+f = lambda x: 12 * (2007 - int(str(x)[0:4])) - int(str(x)[4:6]) + 2
 MSLO = MSLO.apply(f)
-[/sourcecode]
+```
 
 Then just need to remove the LASD column and add the MSLO data:
 
-[sourcecode language="python"]
+```python
 del train['LASD']
 train['MSLO'] = MSLO
-[/sourcecode]
+```
 
 ### 3. Model Training
 
@@ -139,36 +134,36 @@ This is covered by scikit-learn, they have tons of models, from Decision
 Tree to **a lot** of models, seriously. For this example I use the
 always good Decision Tree also Support Vector Machine and Naive Bayes.
 
-[sourcecode language="python"]
-X\_train = train[['NGIF', 'RAMN', 'LASG', 'MSLO', 'RFA1',
+```python
+X_train = train[['NGIF', 'RAMN', 'LASG', 'MSLO', 'RFA1',
 'RFA2']].values
-Y\_train = train['Order'].values
+Y_train = train['Order'].values
 
 svm = SVC()
 svm.probability = True
-svm.fit(X\_train, Y\_train)
+svm.fit(X_train, Y_train)
 
-tree = DecisionTreeClassifier(max\_depth=6)
-tree.fit(X\_train, Y\_train)
-out = export\_graphviz(tree, out\_file='tree.dot')
+tree = DecisionTreeClassifier(max_depth=6)
+tree.fit(X_train, Y_train)
+out = export_graphviz(tree, out_file='tree.dot')
 
 gnb = GaussianNB()
-gnb.fit(X\_train, Y\_train)
-[/sourcecode]
+gnb.fit(X_train, Y_train)
+```
 
 ### 4. Model Scoring/Comparison
 
 Scikit-learn comes with Confusion Matrix and ROC Chart included:
 
-[sourcecode language="python"]
-tree\_score = tree.predict(X\_test)
-svm\_score = svm.predict(X\_test)
-gnb\_score = gnb.predict(X\_test)
+```python
+tree_score = tree.predict(X_test)
+svm_score = svm.predict(X_test)
+gnb_score = gnb.predict(X_test)
 
-tree\_cm = confusion\_matrix(Y\_test, tree\_score)
-svm\_cm = confusion\_matrix(Y\_test, svm\_score)
-gnb\_cm = confusion\_matrix(Y\_test, gnb\_score)
-[/sourcecode]
+tree_cm = confusion_matrix(Y_test, tree_score)
+svm_cm = confusion_matrix(Y_test, svm_score)
+gnb_cm = confusion_matrix(Y_test, gnb_score)
+```
 
     # tree
     array([[1365, 67], [ 506, 62]])
@@ -177,29 +172,29 @@ gnb\_cm = confusion\_matrix(Y\_test, gnb\_score)
     #gnb
     array([[1196, 236], [ 406, 162]])
 
-[sourcecode language="python"]
-tree\_probas = tree.predict\_proba(X\_test)
-svm\_probas = svm.predict\_proba(X\_test)
-gnb\_probas = gnb.predict\_proba(X\_test)
+```python
+tree_probas = tree.predict_proba(X_test)
+svm_probas = svm.predict_proba(X_test)
+gnb_probas = gnb.predict_proba(X_test)
 
-tree\_fpr, tree\_tpr, tree\_thresholds = roc\_curve(Y\_test,
-tree\_probas[:, 1])
-svm\_fpr, svm\_tpr, svm\_thresholds = roc\_curve(Y\_test,
-svm\_probas[:, 1])
-gnb\_fpr, gnb\_tpr, gnb\_thresholds = roc\_curve(Y\_test,
-gnb\_probas[:, 1])
+tree_fpr, tree_tpr, tree_thresholds = roc_curve(Y_test,
+tree_probas[:, 1])
+svm_fpr, svm_tpr, svm_thresholds = roc_curve(Y_test,
+svm_probas[:, 1])
+gnb_fpr, gnb_tpr, gnb_thresholds = roc_curve(Y_test,
+gnb_probas[:, 1])
 
-pl.plot(tree\_fpr, tree\_tpr, label='Tree')
-pl.plot(svm\_fpr, svm\_tpr, label='SVM')
-pl.plot(gnb\_fpr, gnb\_tpr, label='GNB')
+pl.plot(tree_fpr, tree_tpr, label='Tree')
+pl.plot(svm_fpr, svm_tpr, label='SVM')
+pl.plot(gnb_fpr, gnb_tpr, label='GNB')
 pl.xlabel('False Positive Rate')
 pl.ylabel('True Positive Rate')
 pl.title('Receiver operating characteristic')
 pl.legend(loc="lower right")
-[/sourcecode]
+```
 
-[caption id="attachment\_233" align="aligncenter" width="388"][![ROC
-Comparison][]][] ROC Comparison[/caption]
+![ROC Comparison](/images/blog/2013/01/replace-sas-python/roc.png "ROC Comparison")
+
 
 Conclusion
 ----------
@@ -219,24 +214,18 @@ The complete iPython notebook (also visible [here][]) and data is
 available on Github: [Data Analysis Examples Python - Catalog
 Marketing][].
 
-Note 1: I know this is the most very basic example of Machine Learning on
+Note : I know this is the most very basic example of Machine Learning on
 Python, more complex examples will come later.
 
   [coursera]: http://coursera.org "Coursera"
   [SAS Enterprise Miner]: http://www.sas.com/technologies/analytics/datamining/miner/
     "SAS Enterprise Miner"
   [Scikit-learn]: http://scikit-learn.org/stable/ "Scikit-learn"
-  [SAS EM Basic Project]: http://ctrl68.files.wordpress.com/2012/12/screenshot-from-2012-12-31-200944.png
-  [![SAS EM Basic Project][]]: http://ctrl68.wordpress.com/?attachment_id=218#main
   [Github]: https://github.com/scikit-learn/scikit-learn
     "Scikit-learn github"
   [ROC Comparison]: http://ctrl68.files.wordpress.com/2013/01/download.png
-  [![ROC Comparison][]]: http://ctrl68.wordpress.com/?attachment_id=233#main
   [here]: http://nbviewer.ipython.org/urls/raw.github.com/dfrodriguez143/PythonDataAnalysisExamples/master/catalog-marketing/catalog-marketing.ipynb
   [Data Analysis Examples Python - Catalog Marketing]: https://github.com/dfrodriguez143/PythonDataAnalysisExamples/tree/master/catalog-marketing
     "Catalog Marketing"
-  [Slender Means]: http://slendrmeans.wordpress.com/ "Slender Means"
-  [will it Python?]: http://slendrmeans.wordpress.com/will-it-python/
-    "Will it Python?"
   [Machine Learning for Hackers]: http://www.amazon.com/Machine-Learning-Hackers-Drew-Conway/dp/1449303714
     "Machine Learning for Hackers"

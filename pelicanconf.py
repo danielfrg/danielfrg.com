@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*- #
 
 SITEURL = ''
-SITEURL = 'http://danielfrg.github.io'
+# SITEURL = 'http://danielfrg.github.io'
 AUTHOR = 'Daniel Rodriguez'
 SITENAME = 'Daniel Rodriguez'
 TIMEZONE = 'UTC'

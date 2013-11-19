@@ -1,9 +1,8 @@
 Title: Using cloud9 to save computing power and to code from everywhere too
-Date: 2012-11-03 14:46
-Author: dfrodriguez143
-Category: Cloud, Python
-Tags: Cloud9, Computational Investing, Coursera, Numpy, Python
 Slug: using-cloud9-to-save-computing-power-and-to-code-from-everywhere-too
+Date: 2012-11-03 14:46
+Tags: cloud9,computational investing,coursera,numpy,python
+Author: Daniel Rodriguez
 
 I am taking my second course on [Coursera][] Computational Investing -
 Part 1; pretty fun so far. The homework 1 was to find a portfolio of 4
@@ -48,7 +47,6 @@ and back to my PC. Git makes the flow is very smooth and the terminal
 from Cloud9 good enough for that and more.
 
 ![Django UI](/images/blog/2012/11/cloud9/comp-investing-cloud9-google-chrome_001.png "Running code in the Cloud9 Terminal")
-
 
 The service has some problems, sometimes the terminal goes crazy for no
 reason (that I could find) and I had to refresh the page, but in general

@@ -26,7 +26,7 @@ So I finally got out of my python comfort zone and re-learn Javascript, I had us
 
 For [copper][copper], my python data analysis library, I use matplotlib to plot histograms like this:
 
-![Matplotlib Histogram](/static/images/blog/2013/02/matplotlib_hist.png "Matplotlib histogram")
+![Matplotlib Histogram](/images/blog/2013/02/d3-hist/matplotlib_hist.png "Matplotlib histogram")
 
 The histograms work and are great so I wanted to do the same with D3.js to explore a `csv` file using pandas.
 
@@ -242,7 +242,7 @@ $(function(){
 ```
 ## Conclusion
 
-![D3.js Histogram](/static/images/blog/2013/02/d3-hist.png "D3.js Histogram")
+![D3.js Histogram](/images/blog/2013/02/d3-hist/d3-hist.png "D3.js Histogram")
 
 Changing the number of bins or the column automaticlly re-draws the histogram.
 

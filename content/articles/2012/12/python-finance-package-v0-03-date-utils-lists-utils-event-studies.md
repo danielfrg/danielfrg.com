@@ -1,13 +1,11 @@
 Title: Python Finance Package V0.03 – Date Utils, Lists Utils, Event Studies
-Date: 2012-12-26 21:48
-Author: dfrodriguez143
-Category: PythonFinance
-Tags: coursera,finance,pandas,python
 Slug: python-finance-package-v0-03-date-utils-lists-utils-event-studies
+Date: 2012-12-26 21:48
+Tags: coursera,finance,pandas,python,computational investing
+Author: Daniel Rodriguezs
 
 Continuing with the
-[<span style="text-decoration:underline;">basic</span> Python Finance
-Package][]. This update took longer because I change my setup to Linux
+[Python Finance Package][]. This update took longer because I change my setup to Linux
 ([elementaryos][]), also things are getting complicated/interesting as
 my finance knowledge is mostly null, so I am learning as I develop the
 package, that was part of the plan so no complains about that.
@@ -34,29 +32,29 @@ Date Utils
 2.  Looks for the closer date on a list of dates and returns the index
     of that date on the list
 
-[sourcecode language="python"]
-def nyse\_dates(start=datetime(2000,1,1), end=datetime.today(),
+```python
+def nyse_dates(start=datetime(2000,1,1), end=datetime.today(),
 insideSearch=True, list=False,
 lookbackDays=0, lookforwardDays=0)
 
-def search\_closer\_date(date, dates, exact=False, searchBack=True,
+def search_closer_date(date, dates, exact=False, searchBack=True,
 maxDistance=10)
-[/sourcecode]
+```
 
 Example:
 
-[sourcecode language="python"]
+```python
 from datetime import datetime
 from finance.utils import DateUtils
 
-all\_dates = DateUtils.nyse\_dates(list=True)
-print(all\_dates)
+all_dates = DateUtils.nyse_dates(list=True)
+print(all_dates)
 
-print(DateUtils.nyse\_dates(start=datetime(2008,1,1)))
+print(DateUtils.nyse_dates(start=datetime(2008,1,1)))
 
-index = DateUtils.search\_closer\_date(datetime(2009,1,1), all\_dates)
-print(index, all\_dates[index])
-[/sourcecode]
+index = DateUtils.search_closer_date(datetime(2009,1,1), all_dates)
+print(index, all_dates[index])
+```
 
 Output:
 
@@ -92,12 +90,12 @@ List Utils
 
 Example:
 
-[sourcecode language="python"]
+```python
 from finance.utils import ListUtils
 
-sp500\_2012 = ListUtils.SP500(year=2012)
-print(len(sp500\_2012), sp500\_2012)
-[/sourcecode]
+sp500_2012 = ListUtils.SP500(year=2012)
+print(len(sp500_2012), sp500_2012)
+```
 
 Output:
 
@@ -115,30 +113,30 @@ t-test.
 
 Example (same from: <http://www.youtube.com/watch?v=FRNabkJ48vs>):
 
-[sourcecode language="python"]
+```python
 from datetime import datetime
 from finance.evtstudy import PastEvent
 
 pevt = PastEvent('./data')
 pevt.symbol = 'AAPL'
 pevt.market = "\^gspc"
-pevt.lookback\_days = 10
-pevt.lookforward\_days = 10
-pevt.estimation\_period = 252
+pevt.lookback_days = 10
+pevt.lookforward_days = 10
+pevt.estimation_period = 252
 pevt.date = datetime(2009, 1, 5)
 pevt.run()
 
-\#print(pevt.expected\_return)
-\#print(pevt.abnormal\_return)
-print(pevt.cumulative\_abnormal\_return)
-\#print(pevt.t\_test)
+# print(pevt.expected_return)
+# print(pevt.abnormal_return)
+print(pevt.cumulative_abnormal_return)
+# print(pevt.t_test)
 
 import matplotlib
-matplotlib.use('Qt4Agg') \# Probably most people dont need this line
+matplotlib.use('Qt4Agg') #  Probably most people dont need this line
 import matplotlib.pyplot as plt
-pevt.expected\_return.plot()
+pevt.expected_return.plot()
 plt.show()
-[/sourcecode]
+```
 
 Output:
 
@@ -155,14 +153,13 @@ Output:
     Name: Cumulative Abnormal Return
     # NOTE: Length: 21
 
-[caption id="attachment\_143" align="aligncenter" width="640"][![Event
-Study Expected Return][]][] Event Study Expected Return[/caption]
+![Event Study Expected Return](/images/blog/2012/12/finance03/expected_return.png "Event Study Expected Return")
 
 Event Finder
 ------------
 
 Input: List of equities, date range to search for events,
-event\_function [defaults: went\_blow(amount), went\_above(amount),
+event_function [defaults: went_blow(amount), went_above(amount),
 increase(amount), decrease(amount)]
 
 Output: Looks each equity on each date and creates an event matrix
@@ -174,17 +171,17 @@ Optional/Defaults:
 
 Example:
 
-[sourcecode language="python"]
+```python
 evtf = EventFinder('./data')
 evtf.symbols = ['AMD', 'CBG']
-evtf.start\_date = datetime(2008, 1, 1)
-evtf.end\_date = datetime(2010, 12, 31)
-evtf.function = evtf.went\_below(3)
+evtf.start_date = datetime(2008, 1, 1)
+evtf.end_date = datetime(2010, 12, 31)
+evtf.function = evtf.went_below(3)
 evtf.search()
 
-print(evtf.num\_events)
+print(evtf.num_events)
 print(evtf.matrix)
-[/sourcecode]
+```
 
 Output:
 
@@ -215,33 +212,33 @@ Output:
 
 Example:
 
-[sourcecode language="python"]
+```python
 from datetime import datetime
 from finance.evtstudy import EventFinder, MultipleEvents
 
 evtf = EventFinder('./data')
 evtf.symbols = ['AMD', 'CBG']
-evtf.start\_date = datetime(2008, 1, 1)
-evtf.end\_date = datetime(2009, 12, 31)
-evtf.function = evtf.went\_below(3)
+evtf.start_date = datetime(2008, 1, 1)
+evtf.end_date = datetime(2009, 12, 31)
+evtf.function = evtf.went_below(3)
 evtf.search()
 
 mevt = MultipleEvents('./data')
 mevt.matrix = evtf.matrix
 mevt.market = 'SPY'
-mevt.lookback\_days = 20
-mevt.lookforward\_days = 20
-mevt.estimation\_period = 200
+mevt.lookback_days = 20
+mevt.lookforward_days = 20
+mevt.estimation_period = 200
 mevt.run()
 
-print(mevt.mean\_abnormal\_return)
+print(mevt.mean_abnormal_return)
 
 import matplotlib
-matplotlib.use('Qt4Agg') \# Probably most people dont need this line
+matplotlib.use('Qt4Agg') #  Probably most people dont need this line
 import matplotlib.pyplot as plt
-mevt.mean\_cumulative\_abnormal\_return.plot()
+mevt.mean_cumulative_abnormal_return.plot()
 plt.show()
-[/sourcecode]
+```
 
 Output:
 
@@ -255,9 +252,7 @@ Output:
      19   -0.076149
      20   -0.097525
 
-[caption id="attachment\_144" align="aligncenter" width="640"][![Event
-Study - Mean Cumulative Abnormal Returns][]][] Event Study - Mean
-Cumulative Abnormal Returns[/caption]
+![Event Study - Mean Cumulative Abnormal Returns](/images/blog/2012/12/finance03/expected_return.png "Event Study - Mean Cumulative Abnormal Returns")
 
 Conclusion
 ----------
@@ -266,13 +261,7 @@ As usual the code is on github: [PythonFinance][]
 
 *What is next?* A more real-life example using ipython
 
-  [<span style="text-decoration:underline;">basic</span> Python Finance
-  Package]: http://ctrl68.wordpress.com/category/python/pythonfinance/
-    "basic Python Finance Packagage"
   [elementaryos]: http://elementaryos.org/ "elemenaryos"
+  [PythonFinance]: https://github.com/danielfrg/PythonFinance
+  [Python Finance Package]: https://github.com/danielfrg/PythonFinance
   [Event Study Expected Return]: http://ctrl68.files.wordpress.com/2012/12/expected_return.png?w=640
-  [![Event Study Expected Return][]]: http://ctrl68.wordpress.com/2012/12/26/basic-python-finance-package-v0-03-date-utils-lists-utils-event-studies/expected_return/
-  [Event Study - Mean Cumulative Abnormal Returns]: http://ctrl68.files.wordpress.com/2012/12/cum_abnormal_returns.png?w=640
-  [![Event Study - Mean Cumulative Abnormal Returns][]]: http://ctrl68.wordpress.com/2012/12/26/basic-python-finance-package-v0-03-date-utils-lists-utils-event-studies/cum_abnormal_returns/
-  [PythonFinance]: https://github.com/dfrodriguez143/PythonFinance
-    "PythonFinance"

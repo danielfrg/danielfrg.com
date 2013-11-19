@@ -2,10 +2,7 @@ Title: Extracting NBA data from ESPN
 Slug: nba-scraping-data
 Date: 2013-4-1
 Tags: python,crawling,pandas,requests,beautifulsoup
-Category: Crawling
 Author: Daniel Rodriguez
-Summary: Short version for index and feeds
-code: true
 
 I've been wanting to play with some sports data for a while. Today I decide to
 stop procastinating and do it. The problems was that after searching a

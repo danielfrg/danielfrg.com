@@ -1,11 +1,8 @@
 Title: Django + Celery + Readability = Python relevant content crawler
 Slug: django-celery-readability-crawler
 Date: 2013-9-11
-Category: Crawling
 Tags: python,django,celery,readability,crawling
 Author: Daniel Rodriguez
-Summary: Short version for index and feeds
-code: true
 
 I have written a [few]({filename}../08/blog-crawler.ipynb) [posts]({filename}../04/nba-data.md)
 about crawling content from the web. Mainly because I know the power of data
@@ -192,17 +189,17 @@ admin.site.register(Post, PostAdmin)
 
 The admin UI, using the [beautiful django suit](http://djangosuit.com/), looks like this.
 
-![Home admin UI](/static/images/blog/2013/09/home_admin.png "Home admin UI")
+![Home admin UI](/images/blog/2013/09/django-crawler/home_admin.png "Home admin UI")
 
 Note: don't ask me why is I am using that blog to test
 
-![Blog admin UI](/static/images/blog/2013/09/blogs_admin.png "Blogs admin UI")
+![Blog admin UI](/images/blog/2013/09/django-crawler/blogs_admin.png "Blogs admin UI")
 
-![Posts admin UI](/static/images/blog/2013/09/posts_admin.png "Posts admin UI")
+![Posts admin UI](/images/blog/2013/09/django-crawler/posts_admin.png "Posts admin UI")
 
 You can see the running tasks, or previous tasks.
 
-![Tasks admin UI](/static/images/blog/2013/09/tasks.png "Tasks admin UI")
+![Tasks admin UI](/images/blog/2013/09/django-crawler/tasks.png "Tasks admin UI")
 
 ## Conclusion
 

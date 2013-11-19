@@ -1,10 +1,8 @@
 Title: Desktop app to easily create new tasks on all task management web apps
 Slug: desktop-app-to-easily-create-new-tasks
 Date: 2012-10-14 23:51
-Category: Python
 Tags: Python,Ecryption,AES,GTD,wxPython,pyexe
 Author: Daniel Rodriguez
-Summary: Short version for index and feeds
 
 Recently I have been looking for new ways of manage my tasks, looking
 for being more productive and organized with my

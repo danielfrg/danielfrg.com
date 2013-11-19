@@ -1,10 +1,10 @@
 Title: Creating a blog in 2012
-Date: 2012-10-05 03:22
-Author: dfrodriguez143
-Category: This blog
 Slug: creating-a-blog-in-2012
+Date: 2012-10-05 03:22
+Tags: This blog
+Author: Daniel Rodriguez
 
-Yes, I am creating a blog on October 4, 2012!
+Yes, I am creating a blog on October 5, 2012!
 
 **Why?** Having a flu is one of the reasons. Other reason is that I and
 want to improve my English and have a lot of time to waste (not having a

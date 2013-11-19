@@ -1,11 +1,9 @@
 Title: word2vec in yhat: Word vector similarity
 Slug: word2vec-yhat
 Date: 2013-9-21
-Category: word2vec
 Tags: python,word2vec,yhat,machine learning
 Author: Daniel Rodriguez
-Summary: Short version for index and feeds
-include: angular,jquery
+Include: angular,jquery
 
 A [few weeks ago](http://google-opensource.blogspot.com/2013/08/learning-meaning-behind-words.html)
 Google released some code to convert words to vectors called

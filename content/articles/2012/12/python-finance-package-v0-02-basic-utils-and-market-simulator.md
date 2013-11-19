@@ -1,16 +1,13 @@
 Title: Python Finance Package v0.02 – Basic Utils and Market Simulator
-Date: 2012-12-17 15:00
-Author: dfrodriguez143
-Category: PythonFinance
-Tags: cousera,finance,pandas,python
 Slug: python-finance-package-v0-02-basic-utils-and-market-simulator
+Date: 2012-12-17 15:00
+Tags: cousera,finance,pandas,python,computational investing
+Author: Daniel Rodriguez
 
 Continuing with the **(Basic)** Python Finance Package. Now has some
 basic utils: total-return, daily-returns, and sharpe-ratio calculations.
 Also a Market Simulator, the purpose was to solve the [Computational
 Investing][] Homework 3.
-
-<!--more-->
 
 Changes on DataAccess
 ---------------------
@@ -50,12 +47,12 @@ How to use it:
 2.  Run the simulation,  as an argument give the path to the csv file
 3.  See the the information
 
-[sourcecode language="python"]
+```python
 from finance.sim import MarketSimulator
 
 sim = MarketSimulator()
-sim.initial\_cash = 1000000
-sim.simulate(&quot;MarketSimulator\_orders.csv&quot;)
+sim.initial_cash = 1000000
+sim.simulate(&quot;MarketSimulator_orders.csv&quot;)
 print(sim.portfolio[0:10])
 
 import matplotlib
@@ -63,7 +60,7 @@ matplotlib.use('Qt4Agg') \# Probably most people dont need this line
 import matplotlib.pyplot as plt
 sim.portfolio.plot()
 plt.show()
-[/sourcecode]
+```
 
 Output:
 
@@ -80,9 +77,7 @@ Output:
     2011-01-21  1030775
     2011-01-24  1046815
 
-[caption id="attachment\_151" align="aligncenter"
-width="800"][![Simulated portfolio value][]][] Simulated portfolio
-value[/caption]
+![Simulated portfolio value](/images/blog/2012/12/finance02/portfolio_value.png "Simulated portfolio value")
 
 Basic Utils
 -----------
@@ -90,16 +85,18 @@ Basic Utils
 With the portfolio ready we can get some info about it, for example the
 total return and sharpe ratio.
 
-[sourcecode language="python"]
-print('Total Return:', total\_return(sim.portfolio, 'Portfolio'))
-print(sharpe\_ratio(sim.portfolio, extraAnswers=True))
-[/sourcecode]
+```python
+print('Total Return:', total_return(sim.portfolio, 'Portfolio'))
+print(sharpe_ratio(sim.portfolio, extraAnswers=True))
+```
 
 Which prints:
 
-    Total Return: 0.1338600000000001
+```python
+Total Return: 0.1338600000000001
 
-    {'std': 0.0071901402219816928, 'sharpe_ratio': 1.1836398092874625, 'mean': 0.0005493527495690362}
+{'std': 0.0071901402219816928, 'sharpe_ratio': 1.1836398092874625, 'mean': 0.0005493527495690362}
+```
 
 Conclusion
 ----------
@@ -110,6 +107,4 @@ Next step is to implement an Event Profiler to solve Homework 4.
 
   [Computational Investing]: https://class.coursera.org/compinvesting1-2012-001/class/index
     "Computational Investing"
-  [Simulated portfolio value]: http://ctrl68.files.wordpress.com/2012/12/portfolio_value.png
-  [![Simulated portfolio value][]]: http://ctrl68.wordpress.com/2012/12/17/python-finance-package-v0-02-basic-utils-and-market-simulator/portfolio_value/#main
-  [PythonFinance]: https://github.com/dfrodriguez143/PythonFinance
+  [PythonFinance]: https://github.com/danielfrg/PythonFinance
