@@ -3,11 +3,10 @@ Slug: nlp-scale-semafor-salt-celery-more
 Date: 2013-11-17
 Tags: python,NLP,semafor,salt,celery,luigi,vagrant
 Author: Daniel Rodriguez
-Status: draft
 
 This posts describes the implementation of a simple system to parse web pages using SEMAFOR (a SEMantic Analyzer Of Frame Representations) at scale. The system is mainly powered by salt and celery but also uses boto to create worker EC2 instances that parse the documents in parallel and luigi is used to describe the data pipeline in each worker.
 
-The whole source can be found on github: danielfrg/semafor-parsing
+The whole source can be found on github: [danielfrg/semafor-parsing](https://github.com/danielfrg/semafor-parsing)
 
 The main idea is the following:
 
@@ -15,21 +14,36 @@ The main idea is the following:
 2. When the master receives a query (list of urls to parse) is going to spin up N number of minions/workers using boto and is going to provision all of them using salt
 3. Each minion/worker is going to have SEMAFOR and a celery worker waiting for parsing tasks
 4. The master creates a set of parsing tasks based on the number of docs and number of instances
-5. Each minion/worker parses the document first using the readability API to get text content from HTML then tokenizes the text into sentences using NLTK and finally parses the sentences using SEMAFOR
+5. Each minion/worker parses the document first using the readability API to get text content from HTML then tokenizing the text into sentences using NLTK and finally parses the sentences using SEMAFOR
 6. Each minion/worker uploads the results to S3
 
 The diagram below tries to describe the system.
 
 ![System](/images/blog/2013/11/semafor-dist/diagram.png "System description")
 
+If you dont know what semafor is take a look at the example demo or this is just a basic idea:
+
+Input:
+```text
+There's a Santa Claus!
+```
+
+Output:
+```json
+{"frames":[{"target":{"name":"Existence","spans":[{"start":0,"end":2,"text":"There 's"}]},"annotationSets":[{"rank":0,"score":52.10168633235354,"frameElements":[{"name":"Entity","spans":[{"start":2,"end":5,"text":"a Santa Claus"}]}]}]}],"tokens":["There","'s","a","Santa","Claus","!"]}
+```
+
+The basic idea is: *"Existing"* is related to *"There 's"* and *"Entity"* is related to *"a Santa Claus"*.
+
 ## How to run this?
 
-Very simple, only need to get running the master box. Other options are described in the project README but the easiest way is to use vagrant with the AWS provider, just need to run `vagrant up —provider aws` in the master directory, this is going to provision the master box.
+Very simple, only need to get running the master box. Other options are described in the project README but the easiest way is to use vagrant with the AWS provider, just need to run `vagrant up --provider aws` in the master directory, this is going to provision the master box.
 
 When the box is ready just ssh (`vagrant ssh`) and:
 
 1. Edit `~/semafor/master/app/master/settings.py` OR create/edit `~/semafor/master/app/local_settings.py` to look like this.
-```
+
+```python
 S3_PATH = 'WHERE THE SEMAFOR FILES WILL BE UPLOADED'
 AWS_ACCESS_ID = 'AWS ACCOUNT KEY'
 AWS_SECRET_KEY = 'AAWS ACCOUNT SECRET'
@@ -43,7 +57,26 @@ Everything is ready now!
 
 Get some URLS you want to parse and call the celery task `semafor_parse(urls, n_instances=1)`. A helper script is provided in `semafor/master/test.py`
 
-Some pictures to generate some hype.
+## How it looks
+
+This are some screenshots I took while running it:
+
+EC2 dashboard when creating 10 instances
+
+![EC2 instances](/images/blog/2013/11/semafor-dist/instances_ec2.png "EC2 instances")
+
+Log on celery when creating 10 instances
+
+![Instances log](/images/blog/2013/11/semafor-dist/instances_log.png "Instances log")
+
+Celery log when the instances are provisioned via salt and the celery workers are connected
+![Celery workers log](/images/blog/2013/11/semafor-dist/celery_workers.png "Celery workers log")
+
+Luigi UI while running
+![Luigi UI](/images/blog/2013/11/semafor-dist/luigi_summary.png "Luigi UI")
+
+Luigi dependency graph, really simple for this case.
+![Luigi dependency graph](/images/blog/2013/11/semafor-dist/luigi_graph.png "Luigi dependency graph")
 
 ## Discussion
 
@@ -70,4 +103,4 @@ I am always looking for opportunities to improve and try new tools, this are som
 - Progress bars are always nice, a solution as described [here](http://docs.celeryproject.org/en/latest/userguide/tasks.html#custom-task-classes) and [integration with django](https://djangosnippets.org/snippets/2898/)
 
 If you have any other suggestion, improvement or question leave a comment.
-Or did you ran this on the whole [wikipedia](http://www.lsi.upc.edu/~nlp/wikicorpus/) and found something iteresting? Let me know that to.
+Or did you ran this on the whole [wikipedia](http://www.lsi.upc.edu/~nlp/wikicorpus/) and found something interesting? Let me know that to.
