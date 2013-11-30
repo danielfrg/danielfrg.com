@@ -1,4 +1,4 @@
-Title: One-liner to: Python scientific stack with IPython notebook on AWS
+Title: One-liner: Deploy python scipy stack with IPython notebook on AWS
 Slug: ipython-notebook-aws-salt
 Date: 2013-11-27
 Tags: python,aws,salt,ipython-notebook

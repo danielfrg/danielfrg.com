@@ -1,4 +1,4 @@
-Title: Harvard Data Science - Fall 2013
+Title: Review: Harvard Data Science - Fall 2013
 Slug: harvard-ds
 Date: 2013-11-23
 Tags: python,data science,NLP,statistics,Bayesian,graphs
