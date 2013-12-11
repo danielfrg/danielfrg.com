@@ -29,7 +29,7 @@ ARTICLE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
 STATIC_PATHS = ['images', 'favicon.ico', '404.html', 'robots.html']
 
 # Theme settings
-HOMEPAGE_INTRO = "Here is where Daniel Rodriguez writes about coding, python, data science and his projects"
+HOMEPAGE_INTRO = "Daniel Rodriguez"
 HOMEPAGE_DATE_FORMAT = '%d.%m.%Y'
 
 TWITTER_USERNAME = "danielfrg"
