@@ -23,10 +23,7 @@ The diagram below tries to describe the system.
 
 If you dont know what semafor is take a look at the [example demo](http://demo.ark.cs.cmu.edu/parse) or this is just a basic example:
 
-Input:
-```text
-There's a Santa Claus!
-```
+Input: <code>There's a Santa Claus!</code>
 
 Output:
 ```json

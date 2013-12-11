@@ -108,10 +108,10 @@ On the list that it generates you can click on any word and it will give you the
 
 <div ng-app="app">
     <div ng-controller="MainCtrl">
-        <form class="form-horizontal" style="max-width: 520px;">
+        <form class="pure-form" style="max-width: 520px;">
             <input type="text" ng-model="form_word">
             <input type="number" ng-model="form_n">
-            <button class="btn" ng-click="formRequest()">Request</button>
+            <button class="pure-button pure-button-primary" ng-click="formRequest()">Request</button>
         </form>
         <ul class="double-list" style="max-width: 200px;">
             <li ng-repeat="word in words">

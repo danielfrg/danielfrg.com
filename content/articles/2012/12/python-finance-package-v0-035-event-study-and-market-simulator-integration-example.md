@@ -1,5 +1,5 @@
-Title: Python Finance Package v0.035 - Event study and market simulator Integration + Example
-Slug: python-finance-package-v0-035-event-study-and-market-simulator-integration-example
+Title: Python Finance Package v0.035 - Event study and market simulator Integration
+Slug: python-finance-package-v0-035-event-study-and-market-simulator-integration
 Date: 2012-12-28 15:00
 Tags: coursera,finance,pandas,python,computational investing
 Author: Daniel Rodriguez
@@ -11,7 +11,6 @@ is very interesting.
 
 If anyone use this techniques and win/lose money I would love to hear :P
 Also if anyone find discrepancies on the results **please** tell me.
-
 
 Changes since last time
 -----------------------
