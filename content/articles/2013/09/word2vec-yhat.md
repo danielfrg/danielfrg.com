@@ -108,17 +108,23 @@ On the list that it generates you can click on any word and it will give you the
 
 <div ng-app="app">
     <div ng-controller="MainCtrl">
-        <form class="pure-form" style="max-width: 520px;">
+        <form class="pure-form" style="max-width: 350px;">
             <input type="text" ng-model="form_word">
             <input type="number" ng-model="form_n">
             <button class="pure-button pure-button-primary" ng-click="formRequest()">Request</button>
         </form>
-        <ul class="double-list" style="max-width: 200px;">
-            <li ng-repeat="word in words">
-                <a href="#example" ng-click="listRequest(word.word)" eat-click>{{word.word}}</a>
-                <span>[{{word.distance}}]</span>
-            </li>
-        </ul>
+        <table style="max-width: 350px;">
+            <thead>
+                <tr>
+                    <th>word</th>
+                    <th>distance</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="word in words">
+                <td><a href="#example" ng-click="listRequest(word.word)" eat-click>{{word.word}}</a></td>
+                <td>{{word.distance}}</td>
+            </tr>
+        </table>
     </div>
 </div>
 
@@ -170,7 +176,7 @@ var MainCtrl = function($scope, $http) {
 
 ## Conclusions
 
-Definitely some interesting new technologies and tools to keep and eye on. Thats to Google for
+Definitely some interesting new technologies and tools to keep and eye on. Thanks to Google for
 open sourcing the code and thanks to yhat for a good product. I had to do something similar a few
 weeks ago and my solution was to use ZMQ to connect the rest endpoint with the actual
 classifier yhat makes that possible in 5% of the time.

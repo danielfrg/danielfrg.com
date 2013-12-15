@@ -35,6 +35,7 @@ HOMEPAGE_DATE_FORMAT = '%d.%m.%Y'
 TWITTER_USERNAME = "danielfrg"
 GITHUB_USERNAME = "danielfrg"
 LINKEDIN_PROFILE = "http://www.linkedin.com/profile/view?id=40926067"
+SHOW_TAGS = True
 SHOW_FEED = True
 EMAIL_ADDRESS = "df.rodriguez143@gmail.com"
 
