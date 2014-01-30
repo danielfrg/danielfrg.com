@@ -108,12 +108,17 @@ On the list that it generates you can click on any word and it will give you the
 
 <div ng-app="app">
     <div ng-controller="MainCtrl">
-        <form class="pure-form" style="max-width: 350px;">
-            <input type="text" ng-model="form_word">
-            <input type="number" ng-model="form_n">
-            <button class="pure-button pure-button-primary" ng-click="formRequest()">Request</button>
+        <form class="form-inline" role="form" style="max-width: 550px; margin: 0 auto;">
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="form_word" placeholder="a word">
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" ng-model="form_n">
+            </div>
+            <button class="btn btn-default" ng-click="formRequest()">Request</button>
         </form>
-        <table style="max-width: 350px;">
+
+        <table class="table" style="max-width: 350px; margin: 0 auto;">
             <thead>
                 <tr>
                     <th>word</th>
@@ -142,7 +147,7 @@ app.directive('eatClick', function() {
 })
 
 var MainCtrl = function($scope, $http) {
-    $scope.form_word = 'shoes';
+    $scope.form_word = '';
     $scope.form_n = 10;
     $scope.words = [];
 
