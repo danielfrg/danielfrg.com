@@ -4,8 +4,6 @@ Date: 2013-3-8
 Tags: python,pelican
 Category: Blogging
 Author: Daniel Rodriguez
-Summary: Short version for index and feeds
-code: true
 
 This is just a little update on my previous post about [Blogging with iPython notebooks with pelican]({filename}../02/blogging-pelican-ipython-notebook.md).
 
