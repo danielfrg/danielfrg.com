@@ -12,6 +12,8 @@ DEFAULT_DATE_FORMAT = '%B %d, %Y'
 PAGE_DIR = 'pages'
 ARTICLE_DIR = 'articles'
 
+DEFAULT_PAGINATION = 10
+
 THEME = "themes/middle/"
 STATIC_PATHS = ["images"]
 
@@ -29,9 +31,6 @@ ARTICLE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
 STATIC_PATHS = ['images', 'favicon.ico', '404.html', 'robots.html']
 
 # Theme settings
-HOMEPAGE_INTRO = "Daniel Rodriguez"
-HOMEPAGE_DATE_FORMAT = '%d.%m.%Y'
-
 TWITTER_USERNAME = "danielfrg"
 GITHUB_USERNAME = "danielfrg"
 LINKEDIN_PROFILE = "http://www.linkedin.com/profile/view?id=40926067"
@@ -39,6 +38,5 @@ SHOW_TAGS = True
 SHOW_FEED = True
 EMAIL_ADDRESS = "df.rodriguez143@gmail.com"
 
-METADATA_DATE_FORMAT = '%B %d, %Y'
 GOOGLE_ANALYTICS = 'UA-35523657-2'
 DISQUS_USERNAME = 'danielfrg'
