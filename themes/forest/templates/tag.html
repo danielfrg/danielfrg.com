@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Tag: {{ tag }}{% endblock %}
+
+{% block content %}
+<div class="container list">
+    <h1>Tag: {{ tag }}</h1>
+
+    <ul class="double-list">
+    {% for article in articles %}
+        <li>
+            <a href='/{{ article.url }}'>
+                <h2>{{ article.title }}</h2>
+                <span>{{ article.date.strftime('%d.%m.%Y') }}</span>
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

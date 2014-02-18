@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*- #
 
-# SITEURL = ''
-SITEURL = 'http://danielfrg.github.io'
+SITEURL = ''
+# SITEURL = 'http://danielfrg.github.io'
 AUTHOR = 'Daniel Rodriguez'
 SITENAME = 'Daniel Rodriguez'
 TIMEZONE = 'UTC'
@@ -15,7 +15,7 @@ ARTICLE_DIR = 'articles'
 SUMMARY_MAX_LENGTH = 150
 DEFAULT_PAGINATION = 10
 
-THEME = "themes/middle/"
+THEME = "themes/forest/"
 STATIC_PATHS = ["images"]
 
 SITEMAP = {
