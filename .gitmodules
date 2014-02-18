@@ -1,6 +1,3 @@
-[submodule "themes/middle"]
-	path = themes/middle
-	url = git://github.com/danielfrg/middle-theme.git
 [submodule "plugins/ipythonnb"]
 	path = plugins/ipythonnb
 	url = git://github.com/danielfrg/pelican-ipythonnb.git
