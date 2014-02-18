@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*- #
 
-SITEURL = ''
+# SITEURL = ''
 SITEURL = 'http://danielfrg.github.io'
 AUTHOR = 'Daniel Rodriguez'
 SITENAME = 'Daniel Rodriguez'
@@ -12,6 +12,7 @@ DEFAULT_DATE_FORMAT = '%B %d, %Y'
 PAGE_DIR = 'pages'
 ARTICLE_DIR = 'articles'
 
+SUMMARY_MAX_LENGTH = 150
 DEFAULT_PAGINATION = 10
 
 THEME = "themes/middle/"
@@ -34,9 +35,6 @@ STATIC_PATHS = ['images', 'favicon.ico', '404.html', 'robots.html']
 TWITTER_USERNAME = "danielfrg"
 GITHUB_USERNAME = "danielfrg"
 LINKEDIN_PROFILE = "http://www.linkedin.com/profile/view?id=40926067"
-SHOW_TAGS = True
-SHOW_FEED = True
-EMAIL_ADDRESS = "df.rodriguez143@gmail.com"
 
 GOOGLE_ANALYTICS = 'UA-35523657-2'
 DISQUS_USERNAME = 'danielfrg'
