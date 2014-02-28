@@ -33,6 +33,7 @@ STATIC_PATHS = ['images', 'favicon.ico', '404.html', 'robots.txt', 'CNAME']
 
 # Theme settings
 DEFAUT_HEADER_BG = '/images/forest.jpg'
+ABOUT_PAGE = '/pages/about.html'
 TWITTER_USERNAME = 'danielfrg'
 GITHUB_USERNAME = 'danielfrg'
 SHOW_ARCHIVES = True
