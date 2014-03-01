@@ -6,8 +6,8 @@ Author: Daniel Rodriguez
 
 I have learned a lot from my most recent Coursera Course: [Computational
 Investing Part 1][]. The language used on the class is Python so I
-couldn't be happier; we are using a package called [QSTK][]developed by
-some people at Georgia Tech, how also is responsible for the class.
+couldn't be happier; we are using a package called [QSTK][] developed by
+some people at Georgia Tech, who are also responsible for the class.
 
 The quality of the package is amazing, has a tons of features, but one
 area I notice the package to has to be improved is the data downloading
@@ -73,17 +73,6 @@ On github: [PythonFinance][]. This is such a small package is necessary
 to manually download it and put it on a folder where you have other
 python packages.
 
-I use sublime text so I have this on my `Python.sublime-build` file:
-
-    {
-        "env":
-        {
-            "PYTHONPATH":"C:\\Users\\Daniel\\Documents\\projects\\packages"
-        },
-        "cmd": ["pythonw", "-u", "$file"],
-        "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
-        "selector": "source.python"
-    }
 
   [Computational Investing Part 1]: https://class.coursera.org/compinvesting1-2012-001/class/index
     "Computational Investing - Part 1"

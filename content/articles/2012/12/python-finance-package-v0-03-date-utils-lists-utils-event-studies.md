@@ -200,15 +200,14 @@ event
 
 Output:
 
-1.  For each event
-    1.  Expected return
-    2.  Abnormal return
-    3.  Cumulative abnormal return
-
-2.  Mean of:
-    1.  Expected returns
-    2.  Abnormal returns
-    3.  Cumulative abnormal returns
+1. For each event
+    1. Expected return
+    2. Abnormal return
+    3. Cumulative abnormal return
+2. Mean of:
+    1. Expected returns
+    2. Abnormal returns
+    3. Cumulative abnormal returns
 
 Example:
 

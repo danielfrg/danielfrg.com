@@ -64,7 +64,7 @@ task press *esc *and it hides waiting to be called.
 Other stuff I learned from making this app was to [encrypt with
 AES][] for the password and to create a .exe via [py2exe][]. Cannot
 compile to other operating systems because I just don't have them.
-Programmers and download the source can run the app ;)
+Programmers can download the source can run the app ;)
 
 This is a very simple app but it has been working for me and probably
 will work for other person. Suggestions are always welcome.

@@ -68,7 +68,6 @@ testing. The available data is:
     2.  2=Two orders in the last 24 months
     3.  3=Three orders in the last 24 months
     4.  4=Four or more orders in the last 24 months
-
 6.  RFA2: Order amount category (as defined by the firm) of the last
     order
     1.  1=$0.01 - $1.99
@@ -78,7 +77,6 @@ testing. The available data is:
     5.  5=$10.00 - $14.99
     6.  6=$15.00 - $24.99
     7.  7=$25.00 and above
-
 7.  Money: money amount eventually a customer will spend on next order
     (if she places orders), only available for “testing”.
 8.  Order: Actual response (1: response, 0: no response)

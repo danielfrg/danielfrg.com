@@ -16,7 +16,7 @@ comes in. My previous and old Belkin router had a bunch of options for
 <abbr style="text-align:justify;" title="Dynamic Domain Name System">DDNS</abbr>s
 fortunately one was free; unfortunately
 and unbelievable my new [Belkin N750 DB router][] has only one option:
-[Dyn][] which is not free :(.
+[Dyn][] which is not free :(
 
 So I decide to make my own
 <abbr title="Dynamic Domain Name System">DDNS</abbr> with [Django][] and
@@ -31,7 +31,7 @@ from Red Hat, [dotCloud][] which looks pretty good but not so simple to
 use and never understand if is really free or not, and other thousand
 options that are paid and free. I choose [AppFog][] because I recently
 read that they acquire Nodster (which I loved) and the service is **so
-simple** to use; just what I needed for this project.
+simple** to use, just what I needed for this project.
 
 The project consist on two parts; The first one is a Django server which
 stores previous IPs and acts as the DDNS domain and the second one is a
