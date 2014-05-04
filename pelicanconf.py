@@ -32,7 +32,7 @@ ARTICLE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
 STATIC_PATHS = ['images', 'favicon.ico', '404.html', 'robots.txt', 'CNAME']
 
 # Theme settings
-DEFAULT_HEADER_BG = '/images/forest.jpg'
+DEFAULT_HEADER_BG = '/images/station1.jpg'
 ABOUT_PAGE = '/pages/about.html'
 TWITTER_USERNAME = 'danielfrg'
 GITHUB_USERNAME = 'danielfrg'
