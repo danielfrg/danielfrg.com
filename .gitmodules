@@ -3,4 +3,4 @@
 	url = git://github.com/danielfrg/middle-theme.git
 [submodule "plugins/ipythonnb"]
 	path = plugins/ipythonnb
-	url = https://github.com/danielfrg/pelican-ipythonnb.git
+	url = git://github.com/danielfrg/pelican-ipythonnb.git

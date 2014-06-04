@@ -1,19 +1,23 @@
-# -*- coding: utf-8 -*- #
+from __future__ import unicode_literals
 
 SITEURL = ''
 # SITEURL = 'http://danielfrg.github.io'
-AUTHOR = 'Daniel Rodriguez'
-SITENAME = 'Daniel Rodriguez'
-TIMEZONE = 'UTC'
-DEFAULT_LANG = 'en'
-MARKUP = ('md', 'ipynb')
-DEFAULT_DATE_FORMAT = '%B %d, %Y'
+AUTHOR = u'Daniel Rodriguez'
+SITENAME = u'Daniel Rodriguez'
 
-PAGE_DIR = 'pages'
-ARTICLE_DIR = 'articles'
+TIMEZONE = 'UTC'
+
+DEFAULT_LANG = 'en'
+
+MARKUP = ('md', 'ipynb')
+
+DEFAULT_DATE_FORMAT = '%B %d, %Y'
 
 SUMMARY_MAX_LENGTH = 150
 DEFAULT_PAGINATION = 10
+
+PAGE_DIR = 'pages'
+ARTICLE_DIR = 'articles'
 
 THEME = 'themes/middle/'
 STATIC_PATHS = ['images']
