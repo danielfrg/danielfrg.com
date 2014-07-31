@@ -67,9 +67,9 @@ calling `/hist/2` returns this:
 ```
 ## Javascript: UI + Graphics
 
-For backbone I mainly [this article on cascading selects](http://blog.shinetech.com/2011/07/25/cascading-select-boxes-with-backbone-js/). But I use only one select (for now) and use the [underscore](http://underscorejs.org/) templates.
+For backbone I mainly read [this article on cascading selects](http://blog.shinetech.com/2011/07/25/cascading-select-boxes-with-backbone-js/). But I use only one select (for now) and use the [underscore](http://underscorejs.org/) templates.
 
-To make the `<select>'s`it good looking I am using a js library called [chosen](http://harvesthq.github.com/chosen/) which is really good and simple to use.
+To make the `<select>'s` good better I am using a js library called [chosen](http://harvesthq.github.com/chosen/) which is really good and simple to use.
 
 For D3 I follow the [main histogram example](http://bl.ocks.org/3048450) and added a red column to show missing values and hard-code it a little bit more to make changes easier.
 
