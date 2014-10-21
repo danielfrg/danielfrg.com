@@ -8,6 +8,10 @@ Source for danielfrg.github.io
 `git clone git@github.com:danielfrg/danielfrg.github.io-source.git blog --recusive`
 to clone this repo and its submodules.
 
+Requires:
+
+- `brew install nodejs`
+
 ## How to update the submodules
 
 Need to add a new remote
