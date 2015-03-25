@@ -1,7 +1,7 @@
 Title: All CSS templates
 Slug: templates
 Date: 2100-12-31
-Tags: This blog
+Tags: Test
 Author: Daniel Rodriguez
 Status: draft
 
