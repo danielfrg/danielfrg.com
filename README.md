@@ -5,7 +5,7 @@ Source for danielfrg.github.io
 
 ## How to use
 
-`git clone git@github.com:danielfrg/danielfrg.github.io-source.git blog --recusive`
+`git clone git@github.com:danielfrg/danielfrg.github.io-source.git blog --recursive`
 to clone this repo and its submodules.
 
 Requires:

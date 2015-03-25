@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-# CACHE_CONTENT = False
+LOAD_CONTENT_CACHE = False
 
 SITEURL = ''
 # SITEURL = 'http://danielfrg.github.io'
