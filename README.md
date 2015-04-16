@@ -1,5 +1,7 @@
-danielfrg.github.com-surce
-==========================
+danielfrg.github.com
+===============================
+
+![travis-ci](https://travis-ci.org/danielfrg/danielfrg.github.io-source.svg)
 
 Source for danielfrg.github.io
 
