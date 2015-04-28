@@ -5,13 +5,13 @@ branches:
 language: python
 
 python:
-- 2.7
+  - 3.4
 
 install:
-- pip install -r requirements.txt --use-mirrors
+  - pip install -r requirements.txt --use-mirrors
 
 script:
-- make html
+  - make html
 
 notifications:
   email: false
@@ -21,7 +21,7 @@ env:
     secure: DEbaoqcdvbAz9sAJHSVGsBAHtTWJHQKsR8qq/awzaPThDRWsZlsxFR5XU+U63z+9EhPqTME/ciCmc2FxwgZAiVwQuyyXliZ7Tuo79SxDztZTukFrWpu0rLZkYNITU9Z1Laz91OPnj8g8uaV73sjasrTWQvi2jLhrL6T4GeLgs6w=
 
 before_install:
-- git submodule update --init --recursive
-- sudo apt-get install -qq pandoc
+  - git submodule update --init --recursive
+  - sudo apt-get install -qq pandoc
 
 after_success: ./deploy.sh
