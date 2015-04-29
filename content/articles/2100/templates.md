@@ -1,5 +1,5 @@
-Title: All CSS templates
-Slug: templates
+Title: IPython notebook test
+Slug: markdown-templates
 Date: 2100-12-31
 Tags: Test
 Author: Daniel Rodriguez
@@ -13,13 +13,29 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur purus mi, sol
 
 #### Header 4
 
-##### Header 5
-
-#### Header 6
-
 Phasellus a massa vitae [dolor tempor]() blandit non in massa. Fusce quis lacus fringilla, pulvinar libero ut, dignissim nunc. Sed eleifend aliquam tellus ut imperdiet. __Cras justo__ eros, convallis at risus quis, ullamcorper eleifend mi. Etiam porta, mauris pretium euismod lacinia, metus ante tempus quam, id varius elit neque et odio. Praesent lobortis lectus id massa porttitor cursus.
 
 > Pellentesque pretium euismod laoreet. Nullam eget mauris ut tellus vehicula consequat. In sed molestie metus. Nulla at varius nunc, sit amet semper arcu. Integer tristique augue eget auctor aliquam. Donec ornare consectetur lectus et viverra. Duis vel elit ac lectus accumsan gravida non ac erat.
+
+Vivamus at ullamcorper lectus, eget bibendum lorem. Vivamus molestie molestie leo. Vestibulum et odio est. Nam nulla augue, cursus eu eros at, sagittis tempor metus.
+
+```python
+id_ = 0
+for directory in directories:
+    rootdir = os.path.join('/Users/drodriguez/Downloads/aclImdb', directory)
+    for subdir, dirs, files in os.walk(rootdir):
+        for file_ in files:
+            with open(os.path.join(subdir, file_), 'r') as f:
+                doc_id = '_*%i' % id_
+                id_ = id_ + 1
+
+                text = f.read()
+                text = text.decode('utf-8')
+                tokens = nltk.word_tokenize(text)
+                doc = ' '.join(tokens).lower()
+                doc = doc.encode('ascii', 'ignore')
+                input_file.write('%s %s\n' % (doc_id, doc))
+```
 
 Vivamus at ullamcorper lectus, eget bibendum lorem. Vivamus molestie molestie leo. Vestibulum et odio est. Nam nulla augue, cursus eu eros at, sagittis tempor metus.
 
@@ -35,6 +51,6 @@ Ut in ipsum id neque pellentesque iaculis. Pellentesque massa erat, rhoncus id a
 
 Sed vestibulum justo et turpis ullamcorper, a interdum sapien tristique. Donec ullamcorper ipsum ac scelerisque lacinia. Quisque et eleifend odio. Curabitur vel enim at mi dictum venenatis eget eu nulla. Suspendisse potenti. Etiam vitae nibh a odio dictum aliquam. Sed sit amet adipiscing leo, vitae euismod arcu.
 
-![Alt text](http://25.media.tumblr.com/16dd84ef01c9535245a47917a8016548/tumblr_n0kgtzSPVM1qz5pono1_1280.jpg "Her")
+![Alt text](http://img3.wikia.nocookie.net/__cb20130524024810/logopedia/images/f/fa/Apple_logo_black.svg "Image")
 
 Sed vestibulum justo et turpis ullamcorper, a interdum sapien tristique. Donec ullamcorper ipsum ac scelerisque lacinia. Quisque et eleifend odio. Curabitur vel enim at mi dictum venenatis eget eu nulla. Suspendisse potenti. Etiam vitae nibh a odio dictum aliquam. Sed sit amet adipiscing leo, vitae euismod arcu.
