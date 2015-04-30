@@ -1,4 +1,4 @@
-Title: Python Finance Package V0.03 – Date Utils, Lists Utils, Event Studies
+Title: Python Finance Package v0.03 – Date Utils, Lists Utils, Event Studies
 Slug: python-finance-package-v0-03-date-utils-lists-utils-event-studies
 Date: 2012-12-26 21:48
 Tags: coursera,finance,pandas,python,computational investing

@@ -1,4 +1,4 @@
-Title: Blogging with iPython notebooks in pelican
+Title: Blogging with IPython notebooks in pelican
 Slug: blogging-pelican-ipython-notebook
 Date: 2013-2-16
 Tags: python,pelican
@@ -174,5 +174,3 @@ Happy blogging!
 
 [pelican]:http://www.getpelican.com
 [pelican-docs]:http://docs.getpelican.com/
-
-

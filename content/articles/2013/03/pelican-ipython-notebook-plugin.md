@@ -1,4 +1,4 @@
-Title: Plugin for blogging with iPython notebooks in Pelican
+Title: Plugin for blogging with IPython notebooks in Pelican
 Slug: pelican-ipython-notebook-plugin
 Date: 2013-3-8
 Tags: python,pelican

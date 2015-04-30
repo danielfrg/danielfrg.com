@@ -163,12 +163,14 @@ svm_cm = confusion_matrix(Y_test, svm_score)
 gnb_cm = confusion_matrix(Y_test, gnb_score)
 ```
 
-    # tree
-    array([[1365, 67], [ 506, 62]])
-    # svm
-    array([[1362, 70], [ 531, 37]])
-    #gnb
-    array([[1196, 236], [ 406, 162]])
+```python
+# tree
+array([[1365, 67], [ 506, 62]])
+# svm
+array([[1362, 70], [ 531, 37]])
+#gnb
+array([[1196, 236], [ 406, 162]])
+```
 
 ```python
 tree_probas = tree.predict_proba(X_test)
@@ -204,7 +206,7 @@ but they are useless unless you understand them, is better to get few
 results and use understand them correctly. Other chart I learned was the
 Lift chart but scikit-learn does not have this option.
 
-I was able to get the results a **lot** quicker with iPython than with
+I was able to get the results a **lot** quicker with Python than with
 SAS EM, for this project it took me like 4 or 5 hours with SAS EM and
 less than 1 hour on Python.
 

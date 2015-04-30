@@ -85,5 +85,5 @@ compiled `.exe` is available.
   [kivy]: http://kivy.org/
   [encrypt with AES]: https://www.dlitz.net/software/pycrypto/
   [py2exe]: http://py2exe.org/
-  [github]: https://github.com/dfrodriguez143/newtask
-  [zip]: https://github.com/dfrodriguez143/newtask/blob/master/dist.zip?raw=true
+  [github]: https://github.com/danielfrg/newtask
+  [zip]: https://github.com/danielfrg/newtask/blob/master/dist.zip?raw=true

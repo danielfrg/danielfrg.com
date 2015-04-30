@@ -29,13 +29,12 @@ Cloud 9 says they are the Google Docs for code and they really are.
 Initially I had my doubts about the online editor mainly because I love
 [Sublime text][], and yes it is not so powerful as sublime but is
 **very** good. But the features such the Github integration and the
-online terminal sold me the service ;I test it and didn't disappoint me.
+online terminal sold me the service, I test it and didn't disappoint me.
 
 I was able with one-click to clone the repository on my Github and run
 the code on their infrastructure (powered by [OpenShift][]) with no
 problems at all. Just need to install the required libraries ([numpy][]
-- running*easy\_install numpy*) and then it was as simple as run *python
-portfolio.py* and see the code running much faster than on my PC.
+- running `easy_install numpy`) and then it was as simple as run `python portfolio.py` and see the code running much faster than on my PC.
 
 Also the ability to run the code and edit it from everywhere is amazing.
 I was able to connect from my University and keep testing better
@@ -46,7 +45,7 @@ modifying the code I was able to push from Cloud9 directly to my Github
 and back to my PC. Git makes the flow is very smooth and the terminal
 from Cloud9 good enough for that and more.
 
-![Django UI](/images/blog/2012/11/cloud9/comp-investing-cloud9-google-chrome_001.png "Running code in the Cloud9 Terminal")
+![Cloud9](/images/blog/2012/11/cloud9/comp-investing-cloud9-google-chrome_001.png "Running code in the Cloud9 Terminal")
 
 The service has some problems, sometimes the terminal goes crazy for no
 reason (that I could find) and I had to refresh the page, but in general
@@ -65,5 +64,5 @@ is interested, is going to be updated as the course goes through.
   [Sublime text]: http://www.sublimetext.com/ "Sublime Text"
   [OpenShift]: https://openshift.redhat.com/app/ "OpenShift"
   [numpy]: http://numpy.scipy.org/ "numpy"
-  [my Github]: https://github.com/dfrodriguez143/comp-investing
+  [my Github]: https://github.com/danielfrg/comp-investing
     "Computational Investing on Github "
