@@ -79,4 +79,3 @@ I did a couple of examples and put them on gists:
 
 - [Clean HTML and Index it into Solr](https://gist.github.com/danielfrg/7091876)
 - [Merge files in HDFS and count a json field](https://gist.github.com/danielfrg/7091940)
-
