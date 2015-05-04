@@ -39,3 +39,4 @@ nosetests.xml
 *.pid
 output/
 cache/
+.ipynb_checkpoints
