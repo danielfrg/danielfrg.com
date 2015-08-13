@@ -1,0 +1,9 @@
+name: blog
+dependencies:
+  - python
+  - ipython-notebook
+  - pip:
+    - pelican
+    - Markdown
+    - jsonschema
+    - mistune
