@@ -1,7 +1,6 @@
 name: blog
 dependencies:
-  - python
-  - ipython-notebook
+  - jupyter
   - pip:
     - pelican
     - Markdown
