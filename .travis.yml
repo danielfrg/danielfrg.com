@@ -20,3 +20,5 @@ before_install:
   - git submodule update --init --recursive
 
 after_success: ./deploy.sh
+
+sudo: false
