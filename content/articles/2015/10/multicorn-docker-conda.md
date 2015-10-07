@@ -3,7 +3,6 @@ Slug: multicorn-docker-conda
 Date: 2015-10-06
 Tags: Postgres,Multicorn,Python,conda,Docker
 Author: Daniel Rodriguez
-Status: draft
 
 [Multicorn](http://multicorn.org/) is (in my opinion) one of those hidden gems in the python community.
 It is basically a wrapper for [Postgres Foreign data wrappers](https://wiki.postgresql.org/wiki/Foreign_data_wrappers)
