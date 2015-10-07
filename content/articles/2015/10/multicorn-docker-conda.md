@@ -1,4 +1,4 @@
-Title: Multicorn + conda for Postgres Foreign Data Wrappers in Python
+Title: Multicorn in Docker + conda for Postgres Foreign Data Wrappers in Python
 Slug: multicorn-docker-conda
 Date: 2015-10-06
 Tags: Postgres,Multicorn,Python,conda,Docker
@@ -209,3 +209,6 @@ For example you cannot do some operations in the Custom FDW:
 a `group by` gets executed by Postgres using the data passed back from the FDW.
 Also each SQL engine has its own characteristics, features and DLL and being constrain to Postgres
 is probably not an option on those cases.
+
+Another simple idea would be to have multiple services (maybe with a ZMQ API) and having postgres making
+the requests to those services, that way the clients can just query Postgres as an universal SQL entrypoint.
