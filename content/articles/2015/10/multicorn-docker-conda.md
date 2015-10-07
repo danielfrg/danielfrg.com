@@ -7,13 +7,24 @@ Status: draft
 
 [Multicorn](http://multicorn.org/) is (in my opinion) one of those hidden gems in the python community.
 It is basically a wrapper for [Postgres Foreign data wrappers](https://wiki.postgresql.org/wiki/Foreign_data_wrappers)
-and it makes it really easy to develop one FDW in python. What that means is that it allows to use what is probably the most common and used database right now, Postgres, as a frontend for sql queries while allowing to use different (custom) backends for data storage and even computation.
+and it makes it really easy to develop one in python.
+What that means is that it allows to use what is probably the most common and used database right now,
+Postgres, as a frontend for sql queries while allowing to use different data storage and even computation.
 
-Unfortunately its not really known and therefore used, the only real example I have been impress with is a talk by Ville Tuulos: [How to Build a SQL-based Data Warehouse for 100+ Billion Rows in Python](https://www.youtube.com/watch?v=xnfnv6WT1Ng) where he talks about how AdRoll *"built a custom, high-performance data warehouse in Python which can handle hundreds of billions of data points with sub-minute latency on a small cluster of servers"*.
+Unfortunately its not really known and therefore used, the only real example I have been impress
+with is a talk by Ville Tuulos: [How to Build a SQL-based Data Warehouse for 100+ Billion Rows in Python](https://www.youtube.com/watch?v=xnfnv6WT1Ng)
+where he talks about how AdRoll *"built a custom, high-performance data warehouse in Python which
+can handle hundreds of billions of data points with sub-minute latency on a small cluster of servers"*.
 
-That talk is a only a year old but to be honest the first time I saw it and tried to use Multicorn it was a complete failure. Fortunately things have improved and now also we have Docker and conda. I was really curious to see how to difficult would it be to combine these two to make a simple Pandas FDW. Basically use pandas to read a CSV and filter using Pandas instead of Postgres.
+That talk is a only a year old but to be honest the first time I saw it and tried to use Multicorn it was a complete failure.
+Fortunately things have improved and now also we have Docker and conda.
+I was really curious if it was still difficult to combine these two to make a simple Pandas FDW.
+Basically use pandas to read a CSV and filter using Pandas instead of Postgres.
 
-There are a couple of Multicorn docker container in Docker Hub but I decided to do my own specially because the ones I found were not based on the Postgres docker container. Source can be found in [Github: docker-multicorn](https://github.com/danielfrg/docker-multicorn) or it can be pulled just by doing `docker pull danielfrg/multicorn`.
+There are a couple of Multicorn docker container in Docker Hub but I decided to do my own specially
+because the ones I found were not based on the Postgres docker container.
+Dockerfile can be found in [Github: docker-multicorn](https://github.com/danielfrg/docker-multicorn)
+or the image can be just pulled by doing `docker pull danielfrg/multicorn`.
 
 When started the container will install any python library on `/src` since this is required for Multicorn to use the custom FDW.
 
@@ -21,7 +32,7 @@ It also includes a couple of examples on how to use the image.
 
 ## Simple CSV
 
-This example is bascially a copy of one of Multicorn examples
+This example is basically a copy of one of Multicorn examples
 where they just load a `csv` file using just the python std-library I just use the iris dataset here.
 
 ```
@@ -31,6 +42,8 @@ $ docker run -p 5432:5432 -v $(pwd):/src multicorn
 Connect to the Database (using pgadmin for example) create the FDW and Foreign table.
 
 ```
+CREATE EXTENSION multicorn;
+
 CREATE SERVER csv_srv foreign data wrapper multicorn options (
     wrapper 'multicorn.csvfdw.CsvFdw'
 );
@@ -57,9 +70,12 @@ select sepal_width from csvtest;
 
 ## Pandas
 
-That simple example shows what is possible but is very useless. In Ville Tuulos talk he uses Numba to make some computation, the easiest way to use Numba is to using conda so the docker container also includes conda so you can create a custom container with the extra packages needed. In this case I am just using pandas.
+That simple example shows what is possible but is very useless. In Ville Tuulos talk he uses Numba
+to make some computation, the easiest way to use Numba is to using conda so the docker container
+also includes conda so you can create a custom container with the extra packages needed.
+In this case I am just using pandas.
 
-The code for a custom FDW could not be simpler honestly:
+The code for the pandas FDW could not be simpler:
 
 ```python
 from multicorn import ForeignDataWrapper
@@ -132,16 +148,25 @@ CREATE FOREIGN TABLE pandastable (
 );
 ```
 
-Now you can query the table:
-
-```
-SELECT * from pandastable;
-```
-
-Since we implemented the less than operation we can do:
+Now you can query the table and since we implemented the less than operation we can do:
 
 ```
 SELECT * from pandastable where sepal_width < 2.5;
+```
+
+```
+sepal_length,sepal_width,petal_length,petal_width,species
+4.5;2.3;1.3;0.3;"setosa"
+5.5;2.3;4.0;1.3;"versicolor"
+4.9;2.4;3.3;1.0;"versicolor"
+5.0;2.0;3.5;1.0;"versicolor"
+6.0;2.2;4.0;1.0;"versicolor"
+6.2;2.2;4.5;1.5;"versicolor"
+5.5;2.4;3.8;1.1;"versicolor"
+5.5;2.4;3.7;1.0;"versicolor"
+6.3;2.3;4.4;1.3;"versicolor"
+5.0;2.3;3.3;1.0;"versicolor"
+6.0;2.2;5.0;1.5;"virginica"
 ```
 
 What if we do a greater than now?, we don't have that implemented.
@@ -150,17 +175,37 @@ What if we do a greater than now?, we don't have that implemented.
 SELECT * from pandastable where sepal_width > 2.5;
 ```
 
-Answer is still correct! That is because Postgres will check the conditions anyways but we can do that in the custom FDW when necessary and pass only the values we want to postgres.
+```
+sepal_length,sepal_width,petal_length,petal_width,species
+5.1;3.5;1.4;0.2;"setosa"
+4.9;3.0;1.4;0.2;"setosa"
+4.7;3.2;1.3;0.2;"setosa"
+4.6;3.1;1.5;0.2;"setosa"
+5.0;3.6;1.4;0.2;"setosa"
+5.4;3.9;1.7;0.4;"setosa"
+4.6;3.4;1.4;0.3;"setosa"
+5.0;3.4;1.5;0.2;"setosa"
+```
+
+Answer is still correct! That is because Postgres will check the conditions anyways but
+if we want we can do that in the custom FDW and pass only the values we want to postgres.
 
 ## Thoughts
 
-This time it was really straight forward to create the multicorn container and make simple example using pandas.
+This time it was really straight forward to create the Multicorn container and make simple example using pandas.
 
-That code if far (way far) from being useful. For example is reading the CSV file every query (`execute`). It should be possible to load in the `__init__` and use that `df` in the query as shown in one of Multicorn's examples: [statefdw.py](https://github.com/Kozea/Multicorn/blob/master/python/multicorn/statefdw.py).
+That code is far (way far) from being useful. For example is reading the CSV file every query (`execute`).
+It should be possible to load in the `__init__` and use that `df` in the query as shown in one of Multicorn's examples: [statefdw.py](https://github.com/Kozea/Multicorn/blob/master/python/multicorn/statefdw.py).
 
-I am not sure why this method is not more wildly used. One simple idea in my mind is for example: for one of the million SQL-on-Hadoop engines there are now why not make a simple FDW that sends the information to a that engine. It would make it much easier for multiple application in multiple languages to just query postgres (`Psycopg2` in python) rather than have custom libraries in multiple languages with different features on each one. It would also probably make custom DSLs like blaze and ibis target more backends easier.
+I am not sure why Multicorn and this method is not more wildly used.
+One simple idea in my mind is for example: for one of the million SQL-on-Hadoop engines that are
+now why not make a simple FDW that sends the information to a that engine.
+It would make it much easier for multiple application in multiple languages to just query Postgres
+(`Psycopg2` in python) rather than have custom libraries in multiple languages with different features on each one.
+It would also probably make custom DSLs like blaze and ibis target more backends easier.
 
-One of the reasons in my mind is that FDW do not pass some operations to the Custom FDW.
-The easy example is `group by` that gets executed by postgres using the data passed back from the FDW.
+For that particular example I can thing a couple of reason why not to use Multicorn.
+For example you cannot do some operations in the Custom FDW:
+a `group by` gets executed by Postgres using the data passed back from the FDW.
 Also each SQL engine has its own characteristics, features and DLL and being constrain to Postgres
 is probably not an option on those cases.
