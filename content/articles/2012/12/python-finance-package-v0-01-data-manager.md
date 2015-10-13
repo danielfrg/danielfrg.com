@@ -1,7 +1,7 @@
 Title: Python Finance Package v0.01 - Data Manager
 Slug: python-finance-package-v0-01-data-manager
 Date: 2012-12-13 12:59
-Tags: coursera,finance,pandas,python,computational investing
+Tags: Coursera,Finance,Pandas,Python,Computational investing
 Author: Daniel Rodriguez
 
 I have learned a lot from my most recent Coursera Course: [Computational

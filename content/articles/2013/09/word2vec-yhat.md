@@ -1,7 +1,7 @@
 Title: word2vec in yhat: Word vector similarity
 Slug: word2vec-yhat
 Date: 2013-9-21
-Tags: python,word2vec,yhat,machine learning
+Tags: Python,word2vec,YHat,Machine learning
 Author: Daniel Rodriguez
 Include: angular,jquery
 

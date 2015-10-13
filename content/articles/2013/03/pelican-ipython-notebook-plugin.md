@@ -1,8 +1,7 @@
 Title: Plugin for blogging with IPython notebooks in Pelican
 Slug: pelican-ipython-notebook-plugin
 Date: 2013-3-8
-Tags: python,pelican
-Category: Blogging
+Tags: Python,Pelican
 Author: Daniel Rodriguez
 
 This is just a little update on my previous post about [Blogging with iPython notebooks with pelican]({filename}../02/blogging-pelican-ipython-notebook.md).

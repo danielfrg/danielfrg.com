@@ -1,7 +1,7 @@
 Title: From zero to storm cluster for scikit-learn classification
 Slug: storm-sklearn
 Date: 2014-08-01
-Tags: python,storm,salt,sklearn
+Tags: Python,Storm,Salt,scikit-learn
 Author: Daniel Rodriguez
 
 [Apache storm](http://https://storm.incubator.apache.org/) is a new technology

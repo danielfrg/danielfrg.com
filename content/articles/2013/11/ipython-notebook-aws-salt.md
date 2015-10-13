@@ -1,7 +1,7 @@
 Title: One-liner: Deploy python scipy stack with IPython notebook on AWS
 Slug: ipython-notebook-aws-salt
 Date: 2013-11-27
-Tags: python,aws,salt,ipython-notebook
+Tags: Python,AWS,Salt,IPython Notebook
 Author: Daniel Rodriguez
 
 **Problem:** How many times have you needed to create a powerful EC2 instance with the the python scientific stack
@@ -122,4 +122,3 @@ such as [Continnums Wakari](https://www.wakari.io/) that I personally think is a
 This solution gives you the notebook up and running in two minutes, and if you need more control on the instance you can just SSH to it and do whatever you want. Also you only pay the Amazon fees, so for my personal needs is the perfect solution.
 
 The whole code is on github: [salt conda module](https://github.com/danielfrg/salt-conda), look in `example/ipythonnb`
-

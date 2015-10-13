@@ -1,7 +1,7 @@
 Title: Python Finance Package v0.02 – Basic Utils and Market Simulator
 Slug: python-finance-package-v0-02-basic-utils-and-market-simulator
 Date: 2012-12-17 15:00
-Tags: cousera,finance,pandas,python,computational investing
+Tags: Coursera,Finance,Pandas,Python,Computational investing
 Author: Daniel Rodriguez
 
 Continuing with the **(Basic)** Python Finance Package. Now has some

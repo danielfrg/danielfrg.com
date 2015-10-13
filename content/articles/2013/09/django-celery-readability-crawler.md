@@ -1,7 +1,7 @@
 Title: Django + Celery + Readability = Python relevant content crawler
 Slug: django-celery-readability-crawler
 Date: 2013-9-11
-Tags: python,django,celery,readability,crawling
+Tags: πython,Django,Celery,Readability,Crawling
 Author: Daniel Rodriguez
 
 I have written a [few]({filename}../08/blog-crawler.ipynb) [posts]({filename}../04/nba-data.md)

@@ -1,7 +1,7 @@
 Title: Month-Log.oct.2013
 Slug: month-log
 Date: 2013-10-31
-Tags: month-log,python,pig,nutch,crawling,vagrant,salt,luigi
+Tags: Month-Log,Python,Pig,Nutch,Crawling,Vagrant,Salt,Luigi
 Author: Daniel Rodriguez
 
 I've been busy with real work to write any specific posts for the blog but I realize it was

@@ -1,7 +1,7 @@
 Title: Review: Harvard Data Science - Fall 2013
 Slug: harvard-ds
 Date: 2013-11-23
-Tags: python,data science,NLP,statistics,Bayesian,graphs
+Tags: Python,Data,NLP,Statistics,Bayesian,Graphs
 Author: Daniel Rodriguez
 
 A few weeks/months ago I found on HackerNews that Harvard was publishing all their [Data Science course content](http://cs109.org/) (lectures, videos, labs, homeworks) online. I couldn't miss the opportunity to find what are they teaching, it was a nice experience to see how much I have learned and what else I am missing. Also, when I saw that everything was on python I knew they are doing it right!
@@ -89,8 +89,3 @@ I had a lot of fun doing the homeworks, I learned a lot of stuff I didn't knew b
 The main conclusion I got is that there is still a lot to learn and the Data Science space keeps changing every day, that is the reason I like it: When I think I am good at something, I realize I am just getting started.
 
 Thanks to Harvard for publishing all the content online.
-
-
-
-
-

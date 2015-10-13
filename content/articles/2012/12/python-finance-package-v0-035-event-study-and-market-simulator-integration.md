@@ -1,7 +1,7 @@
 Title: Python Finance Package v0.035 - Event study and market simulator Integration
 Slug: python-finance-package-v0-035-event-study-and-market-simulator-integration
 Date: 2012-12-28 15:00
-Tags: coursera,finance,pandas,python,computational investing
+Tags: Coursera,Finance,Pandas,Python,Computational investing
 Author: Daniel Rodriguez
 
 Ok, here come the first "Real Life" example. As I mention on previous

@@ -1,7 +1,7 @@
 Title: Python to replace SAS Enterprise Miner (basic)
 Slug: python-replace-sas
 Date: 2013-01-02 17:00
-Tags: pandas,python,SAS,scikit-learn
+Tags: Pandas,Python,SAS,scikit-learn
 Author: Daniel Rodriguez
 
 ## Why?

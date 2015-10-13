@@ -1,7 +1,7 @@
 Title: Using D3, backbone and tornado to visualize histograms of a csv file
 Slug: d3-backbone-tornado-histogram-csv
 Date: 2013-2-5
-Tags: python,javascript,D3.js,backbone,tornado,pandas
+Tags: Python,Javascript,D3.js,Backbone,Tornado,Pandas
 Author: Daniel Rodriguez
 
 After being procrastinating for weeks the learning of [D3.js][d3] and [backbone.js][backbone] I have finally made my first example using both libraries to explore (via histograms) a pandas DataFrame. The reason of the procrastination is very simple: I love python to much, because is probably the only language who is great in all areas (that I am interested at least):
