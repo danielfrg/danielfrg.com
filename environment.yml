@@ -6,3 +6,4 @@ dependencies:
     - Markdown
     - jsonschema
     - mistune
+    - pylint

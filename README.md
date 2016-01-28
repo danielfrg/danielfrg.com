@@ -18,14 +18,18 @@ Requires:
 
 Need to add a new remote
 
-- `cd plugins/ipynb`
-- `git remote rm origin`
-- `git remote add origin git@github.com:danielfrg/pelican-ipynb.git`
-- `git checkout master`
+```
+cd plugins/ipynb
+git remote rm origin
+git remote add origin git@github.com:danielfrg/pelican-ipynb.git
+git checkout master
 
-- `cd themes/middle`
-- `git remote rm origin`
-- `git remote add origin git@github.com:danielfrg/middle-theme.git`
-- `git checkout master`
+cd ../../
+
+cd themes/middle
+git remote rm origin
+git remote add origin git@github.com:danielfrg/middle-theme.git
+git checkout master
+```
 
 After that is possible to push from the submodules
