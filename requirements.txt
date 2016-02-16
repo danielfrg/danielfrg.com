@@ -5,3 +5,5 @@ ipython>=4.0.0
 Markdown==2.6.2
 jsonschema==2.4.0
 mistune==0.5.1
+pylint
+
