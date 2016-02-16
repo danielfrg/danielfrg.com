@@ -164,7 +164,7 @@ so you in your pelican `article.html` template should do:
 ```
 
 This particular post uses markdown but most of my previous posts are now converted
-from ipython notebooks for example: [copper-quick-data-transformation]({filename}../02/copper-quick-data-transformation.ipynb)
+from ipython notebooks for example: [copper-quick-data-transformation]({filename}../02/copper-quick-data-transformation-python.ipynb)
 
 If are curious about my pelican config or theme check it out on [github](https://github.com/danielfrg/danielfrg.github.com).
 
