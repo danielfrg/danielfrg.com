@@ -24,5 +24,5 @@ and has been learning about it.
 
 In an attempt to record his learning (and fulfill his frustrated dream of becoming a blogger) he started this blog.
 
-Hi is a dog lover, book reader, TV Series fanatic and amateur gamer.
+He is a dog lover, book reader, TV Series fanatic and amateur gamer.
 Very passionate about new technologies and always wanting to learn something new.
