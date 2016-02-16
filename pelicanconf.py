@@ -27,6 +27,9 @@ STATIC_PATHS = ['images']
 ARTICLE_URL = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
 ARTICLE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
 
+PAGE_SAVE_AS = '{category}/{slug}.html'
+PAGE_URL = PAGE_SAVE_AS
+
 # Paths are relative to `content`
 STATIC_PATHS = ['images', 'favicon.ico', '404.html', 'robots.txt', 'CNAME']
 
