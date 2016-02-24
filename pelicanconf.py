@@ -47,7 +47,7 @@ DISQUS_USERNAME = 'danielfrg'
 
 # PLUGINS SETTINGS
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['sitemap', 'ipynb']
+PLUGINS = ['sitemap', 'ipynb.markup']
 
 SITEMAP = {
     'format': 'xml'
