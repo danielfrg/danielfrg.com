@@ -35,10 +35,7 @@ nosetests.xml
 .project
 .pydevproject
 
-*.sublime-workspace
 *.pid
 output/
 cache/
 .ipynb_checkpoints
-node_modules
-npm-debug.log
