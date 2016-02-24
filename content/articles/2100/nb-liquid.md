@@ -1,5 +1,5 @@
 Title: IPython notebook test
-Slug: markdown-templates
+Slug: notebook-liquid
 Date: 2100-12-31
 Tags: Test
 Author: Daniel Rodriguez
