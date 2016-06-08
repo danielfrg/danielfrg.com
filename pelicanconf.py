@@ -47,7 +47,7 @@ DISQUS_USERNAME = 'danielfrg'
 
 # PLUGINS SETTINGS
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['sitemap', 'ipynb.markup']
+PLUGINS = ['sitemap', 'ipynb.markup', 'liquid_tags.youtube']
 
 SITEMAP = {
     'format': 'xml'
