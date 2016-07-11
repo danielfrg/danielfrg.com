@@ -22,7 +22,6 @@ Need to add a new remote
 cd plugins/ipynb
 git remote rm origin
 git remote add origin git@github.com:danielfrg/pelican-ipynb.git
-git branch --set-upstream-to=origin/master master
 git checkout master
 ```
 
