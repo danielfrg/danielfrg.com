@@ -11,7 +11,8 @@ I wasn't that much work considering that Jupyter Hub already had support for LDA
 the modularity they have is amazing. It was quite straight forward to write a new spawner
 based on the existing one on the [Jupyter Hub github org](https://github.com/jupyterhub/jupyterhub).
 
-All the code in this post is at [danielfrg/kubernetes_spawner](https://github.com/danielfrg/kubernetes_spawner).
+All the code in this post is at
+[danielfrg/jupyterhub-kubernetes_spawner](https://github.com/danielfrg/jupyterhub-kubernetes_spawner).
 Specifically in the `examples` directory.
 
 I consider this a nice example of a more production ready Jupyter Hub deployment being based on LDAP
