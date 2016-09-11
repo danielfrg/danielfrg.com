@@ -34,13 +34,15 @@ It also includes a couple of examples on how to use the image.
 This example is basically a copy of one of Multicorn examples
 where they just load a `csv` file using just the python std-library I just use the iris dataset here.
 
-```
+<div class="codehilite">
+<pre class="bash">
 $ docker run -p 5432:5432 -v $(pwd):/src multicorn
-```
+</div>
+</pre>
 
 Connect to the Database (using pgadmin for example) create the FDW and Foreign table.
 
-```
+```sql
 CREATE EXTENSION multicorn;
 
 CREATE SERVER csv_srv foreign data wrapper multicorn options (
@@ -62,7 +64,7 @@ create foreign table csvtest (
 
 Now is possible to make SQL queries to the table.
 
-```
+```sql
 select * from csvtest;
 select sepal_width from csvtest;
 ```
@@ -122,14 +124,16 @@ RUN conda install -y pandas
 
 Now build that image run the container in the same way as the previous one.
 
-```
+<div class="codehilite">
+<pre class="bash">
 $ docker build -t pandasfdw .
 $ docker run -p 5432:5432 -v $(pwd):/src pandasfdw
-```
+</div>
+</pre>
 
 Create the FDW and table in a similar way as before:
 
-```
+```sql
 CREATE EXTENSION multicorn;
 
 CREATE SERVER pandas_srv foreign data wrapper multicorn options (
@@ -149,7 +153,7 @@ CREATE FOREIGN TABLE pandastable (
 
 Now you can query the table and since we implemented the less than operation we can do:
 
-```
+```sql
 SELECT * from pandastable where sepal_width < 2.5;
 ```
 
@@ -170,7 +174,7 @@ sepal_length,sepal_width,petal_length,petal_width,species
 
 What if we do a greater than now?, we don't have that implemented.
 
-```
+```sql
 SELECT * from pandastable where sepal_width > 2.5;
 ```
 

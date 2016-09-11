@@ -113,17 +113,25 @@ article {
 
     code {
         color: #333;
-        background-color: #f5f5f5;
-        border: 1px solid #ccc;
+        background-color: #EEE;
         border-radius: 0;
         font-size: 13px;
     }
 
-    pre {
-        border-radius: 0;  // Bootstrap reset
+    .codehilite {
+        pre {
+            border-radius: 0;  // Bootstrap reset
+            background-color: #202020;
+            color: #d0d0d0;
 
-        code {
-            border: none;
+            code {
+                border: none;
+            }
+        }
+
+        pre.bash {
+            background-color: #000;
+            color: #FFF;
         }
     }
 
@@ -243,10 +251,6 @@ article {
         content: "### ";
         font-weight: bold;
         color: #DDD;
-    }
-
-    #disqus_thread {
-        max-width: 100%;
     }
 
     article {

@@ -1,3 +1,7 @@
+{
+    max-width: 700px;
+}
+
 .text_cell .prompt {
     display: none;
 }
@@ -24,6 +28,7 @@ div.output_prompt {
 
 div.input_area {
     margin: .2em 0.4em;
+    max-width: 580px;
 }
 
 table.dataframe {
@@ -35,4 +40,8 @@ table.dataframe {
 table.dataframe th, td {
     padding: 4px;
     text-align: left;
+}
+
+pre code {
+    background-color: inherit;
 }
