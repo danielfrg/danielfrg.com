@@ -22,6 +22,7 @@ install:
   - conda info -a
   - conda env create
   - export PATH="$HOME/conda/envs/blog/bin:$PATH"
+  - conda list
 
 script:
   - make html
