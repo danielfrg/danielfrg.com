@@ -1,11 +1,9 @@
 name: blog
-channels:
-  - anaconda-cluster
-  - anaconda-adam
 dependencies:
   - python=3
   - jupyter
   - nbconvert
+  - urllib3
   - pip:
     - pelican>=3.6.0
     - Markdown==2.6.2
