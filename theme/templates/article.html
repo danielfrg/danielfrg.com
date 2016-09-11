@@ -40,46 +40,4 @@
 {% include 'ipynb.css' %}
 </style>
 
-<script type="text/javascript">
-(function () {
-    'use strict';
-
-    // Global object
-    var App = {};
-
-    // Create button
-    App.commentsButton = document.getElementById('comments-button');
-
-    App.commentsButton.onclick = function () {
-        // Remove button action on click
-        App.commentsButton.onclick = function () {
-        }
-
-        // Create comments container
-        App.disqusContainer = document.createElement('div');
-        App.disqusContainer.setAttribute('id', 'disqus_thread');
-        // App.disqusContainer.setAttribute('class', 'container');
-
-        // Append container to body or div
-        // document.body.appendChild( App.disqusContainer );
-        var container = document.getElementsByClassName('container post')[0];
-        container.appendChild(App.disqusContainer);
-
-        // Your Disqus shortname
-        App.disqus_shortname = '{{ DISQUS_USERNAME }}';
-
-        // Embed Disqus
-        var dsq = document.createElement('script');
-
-        dsq.type = 'text/javascript';
-        dsq.async = true;
-        dsq.src = '//' + App.disqus_shortname + '.disqus.com/embed.js';
-
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-
-        window.scrollTo(0, dsq.offsetTop - 200);
-    };
-})();
-</script>
-
 {% endblock %}
