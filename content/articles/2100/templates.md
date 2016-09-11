@@ -53,4 +53,6 @@ Sed vestibulum justo et turpis ullamcorper, a interdum sapien tristique. Donec u
 
 ![Alt text](http://img3.wikia.nocookie.net/__cb20130524024810/logopedia/images/f/fa/Apple_logo_black.svg "Image")
 
+{% b64img http://img3.wikia.nocookie.net/__cb20130524024810/logopedia/images/f/fa/Apple_logo_black.svg "Title and alt text" %}
+
 Sed vestibulum justo et turpis ullamcorper, a interdum sapien tristique. Donec ullamcorper ipsum ac scelerisque lacinia. Quisque et eleifend odio. Curabitur vel enim at mi dictum venenatis eget eu nulla. Suspendisse potenti. Etiam vitae nibh a odio dictum aliquam. Sed sit amet adipiscing leo, vitae euismod arcu.

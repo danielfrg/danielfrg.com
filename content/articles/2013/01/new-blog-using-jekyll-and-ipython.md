@@ -1,4 +1,4 @@
-Title: New blog using Jekyll & iPython
+Title: New blog using Jekyll & IPython
 Slug: new-blog-using-jekyll-and-ipython
 Date: 2013-1-31
 Tags: Jekyll,IPython,Python
@@ -23,7 +23,7 @@ So i decide to design my own blog using jekyll. I discard octopress because I wa
 
 I am not a designer so I use [Bootstrap](http://twitter.github.com/bootstrap/) and take inspiration from some site (that is copy a lot of CSS). I tried to learn haml but did not work for me, instead I prefer the zen-coding plugin. Finally I use [Less](http://lesscss.org/) with a Jekyll plugin to do the CSS.
 
-## iPython notebook
+## IPython notebook
 
 I use a little modified version of this [code](http://jakevdp.github.com/blog/2012/10/04/blogging-with-ipython/) to convert an iPython notebook to HTML and added it to Jekyll without messing the CSS of the blog: [Blogging With IPython in Octopress](http://jakevdp.github.com/blog/2012/10/04/blogging-with-ipython/)
 

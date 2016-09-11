@@ -46,7 +46,7 @@ GOOGLE_ANALYTICS_DOMAIN = 'danielfrg.com'
 
 # PLUGINS SETTINGS
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['sitemap', 'ipynb.markup', 'liquid_tags.youtube']
+PLUGINS = ['sitemap', 'ipynb.markup', 'liquid_tags.youtube', 'liquid_tags.b64img']
 
 SITEMAP = {
     'format': 'xml'
