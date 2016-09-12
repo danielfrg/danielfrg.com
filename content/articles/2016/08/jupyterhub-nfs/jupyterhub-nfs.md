@@ -302,3 +302,11 @@ This removes the need to have a secondary User Account for the JupyterHub. Thank
 This is probably the last (big) post about the this experiment but I plan to keep working on
 the [kubernetes_spawner](https://github.com/danielfrg/jupyterhub-kubernetes_spawner) to make it better.
 At minimum I am for sure going to test and user the Service Account to make the deployment more secure.
+
+<p class="update">
+<strong>Update:</strong> I have added support for Kubernetes Service Accounts to the kubernetes_spawner.
+So user account credentials are no longer needed.
+
+For updated docs and information take a look at the example folder here:
+<a href="https://github.com/danielfrg/jupyterhub-kubernetes_spawner/tree/master/examples/ldap_nfs">examples/ldap_nfs</a>.
+</p>
