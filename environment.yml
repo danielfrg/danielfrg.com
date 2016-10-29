@@ -6,6 +6,7 @@ dependencies:
   - jupyter
   - nbconvert
   - urllib3
+  - pyyaml
   - pip:
     - pelican>=3.6.0
     - Markdown==2.6.2
