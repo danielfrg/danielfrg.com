@@ -1,4 +1,4 @@
-Title: IPython notebook test
+Title: Plain markdown test
 Slug: markdown-templates
 Date: 2100-12-31
 Tags: Test
