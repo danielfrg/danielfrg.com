@@ -1,6 +1,3 @@
-danielfrg.github.com
-===============================
-
 [![travis-ci](https://travis-ci.org/danielfrg/danielfrg.github.io-source.svg)](https://travis-ci.org/danielfrg/danielfrg.github.io-source)
 
 Source for danielfrg.github.io
