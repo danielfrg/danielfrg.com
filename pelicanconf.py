@@ -30,7 +30,14 @@ ARTICLE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
 PAGE_SAVE_AS = '{category}/{slug}.html'
 PAGE_URL = PAGE_SAVE_AS
 
-MD_EXTENSIONS = ['codehilite(css_class=codehilite)', 'extra']
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.codehilite': {'css_class': 'codehilite'},
+        'markdown.extensions.extra': {},
+        'markdown.extensions.meta': {},
+    },
+    'output_format': 'html5',
+}
 
 # Paths are relative to `content`
 STATIC_PATHS = ['images', 'favicon.ico', '404.html', 'robots.txt', 'CNAME']
@@ -48,7 +55,7 @@ GOOGLE_ANALYTICS_DOMAIN = 'danielfrg.com'
 
 # PLUGINS SETTINGS
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['sitemap', 'ipynb.markup', 'liquid_tags.youtube', 'liquid_tags.b64img']
+PLUGINS = ['sitemap', 'ipynb.markup', 'ipynb.liquid', 'liquid_tags.youtube', 'liquid_tags.b64img']
 
 SITEMAP = {
     'format': 'xml'
