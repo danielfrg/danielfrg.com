@@ -1,9 +1,5 @@
-MKFILE_PATH := $(lastword $(MAKEFILE_LIST))
-CURRENT_DIR := $(patsubst %/,%,$(dir $(realpath $(MKFILE_PATH))))
-ENV=$(CURRENT_DIR)/env
-PREFIX=$(ENV)/bin
-PY=$(PREFIX)/python
-PELICAN=$(PREFIX)/pelican
+PY=python
+PELICAN=pelican
 PELICANOPTS=
 
 BASEDIR=$(CURDIR)
@@ -78,15 +74,7 @@ stopserver:
 publish:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
 
-bootstrap: bootstrap-env bootstrap-deps
 .PHONY: bootstrap
-
-.PHONY: bootstrap-env
-bootstrap-env:
+bootstrap:
 	@echo "==> Bootstrapping environment"
-	@conda create -y -p $(ENV) python=3
-
-.PHONY: bootstrap-deps
-bootstrap-deps:
-	@echo "==> Bootstrapping dependencies"
-	$(PREFIX)/pip install -r requirements.txt
+	@conda env create
