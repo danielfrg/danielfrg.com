@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 LOAD_CONTENT_CACHE = False
 
 SITEURL = ''
-# SITEURL = 'http://danielfrg.github.io'
 AUTHOR = u'Daniel Rodriguez'
 SITENAME = u'Daniel Rodriguez'
 
