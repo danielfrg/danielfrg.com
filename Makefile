@@ -1,5 +1,7 @@
-ENV=./env
-PREFIX=./env/bin
+MKFILE_PATH := $(lastword $(MAKEFILE_LIST))
+CURRENT_DIR := $(patsubst %/,%,$(dir $(realpath $(MKFILE_PATH))))
+ENV=$(CURRENT_DIR)/env
+PREFIX=$(ENV)/bin
 PY=$(PREFIX)/python
 PELICAN=$(PREFIX)/pelican
 PELICANOPTS=
@@ -32,10 +34,10 @@ ifeq ($(DEBUG), 1)
 	PELICANOPTS += -D
 endif                                                                      
 
-all: publish
+all: build
 
-.PHONY: html
-html:
+.PHONY: build
+build:
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 
 .PHONY: clean
