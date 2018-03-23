@@ -1,19 +1,32 @@
-[![travis-ci](https://travis-ci.org/danielfrg/danielfrg.github.io-source.svg)](https://travis-ci.org/danielfrg/danielfrg.github.io-source)
+# My site
 
-Source for danielfrg.github.io
+Source for [danielfrg.com](http://danielfrg.com)
 
 ## How to use
 
-`git clone git@github.com:danielfrg/danielfrg.github.io-source.git blog --recursive`
-to clone this repo and its submodules.
+Clone this repo and its submodules:
+
+```
+git clone git@github.com:danielfrg/danielfrg.com --recursive
+```
 
 Requires:
 
-- `brew install nodejs`
+```
+brew install nodejs
+conda env create
+conda activate danielfrg.com
+```
 
-## How to update the submodules
+Running
 
-Need to add a new remote
+```
+make build serve
+```
+
+## How to update the submodule
+
+Need to add a new remote to the submodule
 
 ```
 cd plugins/ipynb
@@ -22,4 +35,4 @@ git remote add origin git@github.com:danielfrg/pelican-ipynb.git
 git checkout master
 ```
 
-After that is possible to push from the submodules
+After that is possible to push from the submodule
