@@ -10,6 +10,7 @@ TIMEZONE = 'UTC'
 
 DEFAULT_LANG = 'en'
 
+IGNORE_FILES = ['.ipynb_checkpoints']
 MARKUP = ('md', 'ipynb')
 
 DEFAULT_DATE_FORMAT = '%B %d, %Y'
@@ -61,3 +62,4 @@ SITEMAP = {
 }
 
 IPYNB_EXTEND_STOP_SUMMARY_TAGS = [('h2', None), ('ol', None), ('ul', None)]
+# IPYNB_EXPORT_TEMPLATE = 'notebook.tpl'
