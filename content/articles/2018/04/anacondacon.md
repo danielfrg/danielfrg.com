@@ -1,4 +1,4 @@
-Title: Talk @ AnacondaCON 2018: Deploying Python R Spark
+Title: Talk @ AnacondaCON 2018: Deploying Python and R to Spark
 Slug: anacondacon-deploying-python-r-to-spark
 Date: 2017-04-17
 Tags: Talk
