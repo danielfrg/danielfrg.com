@@ -90,25 +90,26 @@ article {
 
 article header {
   margin: 0 auto;
-  padding: 6vw 3vw 3vw;
+  padding: 3vw 3vw 3vw;
 }
 
 article header .post-meta {
   display: flex;
-  font-size: 0.7em;
-  color: rgba(0, 0, 0, 0.65);
-  text-transform: uppercase;
   justify-content: center;
 }
 
 article header .date-divider {
   display: inline-block;
   margin: 0 6px 1px;
+  font-size: 0.7em;
+  color: rgba(0, 0, 0, 0.65);
 }
 
 article header a {
   color: #007aff;
   border: none;
+  font-size: 0.7em;
+  text-transform: uppercase;
 }
 
 article header a:hover {
@@ -126,6 +127,9 @@ article header h1 {
 
 article header time {
   font-size: inherit;
+  color: rgba(0, 0, 0, 0.65);
+  text-transform: uppercase;
+  font-size: 0.7em;
   color: rgba(0, 0, 0, 0.65);
   text-transform: uppercase;
 }
