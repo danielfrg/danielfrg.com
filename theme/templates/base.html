@@ -10,9 +10,10 @@
 
         <link rel="alternate" type="application/atom+xml" title="{{ SITENAME }} blog atom feed" href="/feeds/all.atom.xml" />
         <!-- <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'> -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet"> -->
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
         <style>{% include 'pygments.css' %}</style>
         <style>{% include 'main.css' %}</style>
 
@@ -20,37 +21,37 @@
     </head>
 
     <body>
-        <header class="navbar navbar-static-top bs-docs-nav main-header">
+        <header class="navbar navbar-static-top bs-docs-nav site-header">
             <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="/" title="Home" class="title">Daniel Rodriguez</a></li>
                 </div>
                 <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav">
                         {% if ABOUT_PAGE %}
                             <li><a href="{{ ABOUT_PAGE }}" title="About">About</a></li>
-                        {% endif %}
-                        {% if PHOTOS_PAGE %}
-                            <li><a href="{{ PHOTOS_PAGE }}" title="Photos">Photos</a></li>
-                        {% endif %}
-                        {% if GITHUB_USERNAME %}
-                            <li><a href="http://github.com/{{ GITHUB_USERNAME }}" title="{{ GITHUB_USERNAME }}'s Github" rel="me">Github</a></li>
-                        {% endif %}
-                        {% if TWITTER_USERNAME %}
-                            <li><a href="http://twitter.com/{{ TWITTER_USERNAME }}" title="{{ TWITTER_USERNAME }} Twitter" rel="me">Twitter</a></li>
                         {% endif %}
                         {% if SHOW_ARCHIVES %}
                             <li><a href="/archives.html" title="Archive">Archive</a></li>
                         {% endif %}
+                    </ul>
+                
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if GITHUB_USERNAME %}
+                            <li><a href="http://github.com/{{ GITHUB_USERNAME }}" title="{{ GITHUB_USERNAME }}'s Github" rel="me"><i class="fab fa-github"></i></a></li>
+                        {% endif %}
+                        {% if TWITTER_USERNAME %}
+                            <li><a href="http://twitter.com/{{ TWITTER_USERNAME }}" title="{{ TWITTER_USERNAME }} Twitter" rel="me"><i class="fab fa-twitter"></i></a></li>
+                        {% endif %}
                         {% if SHOW_FEED %}
-                            <li><a href="/feeds/all.atom.xml" title="danielfrg.github.io RSS feed" rel="me">RSS</a></li>
+                            <li><a href="/feeds/all.atom.xml" title="danielfrg.github.io RSS feed" rel="me"><i class="fas fa-rss"></i></a></li>
                         {% endif %}
                     </ul>
                 </nav>
             </div>
         </header>
 
-        <div id="wrap">
+        <div class="site-wrapper">
         {% block content %}{% endblock %}
         </div>
         {% include 'analytics.html' %}

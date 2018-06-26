@@ -4,7 +4,7 @@ Date: 2018-06-24
 Tags: Life
 Author: Daniel Rodriguez
 
-## English / Ingles (Español abajo)
+**English (Español abajo)**
 
 Last Friday, June 22, I officially  received my green card on the mail, which allows me to stay for a relatively indefinite period as a resident of the United States. This puts an end to the another stage of a journey that began six and a half years ago when I came to study a máster's degree and that continues today. 
 
@@ -14,7 +14,7 @@ I want to take this opportunity to thank all of those who has been part of this 
 
 Thanks to all those who have supported me, helped me, forgiven me, and more ... I will continue working everyday so that you are proud of me. The adventure continues!
 
-## Español / Spanish
+**Español**
 
 El pasado viernes 22 de Junio recibí oficialmente mi green card la cual me permite estar por tiempo relativamente indefinido como residente en los Estados Unidos. Esto pone fin a la otra etapa más de una trayectoria que se inicio hace seis años y medio cuando vine a estudiar una maestría y que hoy continúa.
 

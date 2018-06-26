@@ -72,7 +72,7 @@ So I used salt to solve the virutalenv problems using one of my
 and then I had to recreate some of the streamparse submit so it does not create
 any virutalenvs, just submit the topology to the storm-nimbus.
 
-![Storm topology logs](/images/blog/2014/08/storm-log.png "Storm topology logs")
+{% b64img content/articles/2014/08/storm-sklearn/storm-log.png "Storm topology logs" %}
 
 ## Conclusion
 
