@@ -50,7 +50,7 @@ The app is pretty simple: just a mailer application. Enter the username
 (gmail), password and email to send and start sending tasks to your
 favorite web task management app.
 
-{% b64img articles/2012/10/tasks-app/settings-window.png "Settings window" %}
+{% b64img content/articles/2012/10/tasks-app/settings-window.png "Settings window" %}
 
 As I said the speed was the most important requirement on this app, so
 it  uses a global hot-key (WIN+DEL, just because it works nice on my
@@ -59,7 +59,7 @@ task, press enter and the app hides on the notification area with a
 pretty nice icon I get from somewhere. If no longer wants to create the
 task press *esc *and it hides waiting to be called.
 
-{% b64img articles/2012/10/tasks-app/new-task-ui.png "Main window: Create new Task" %}
+{% b64img content/articles/2012/10/tasks-app/new-task-ui.png "Main window: Create new Task" %}
 
 Other stuff I learned from making this app was to [encrypt with
 AES][] for the password and to create a .exe via [py2exe][]. Cannot

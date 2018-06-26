@@ -19,7 +19,7 @@ The main idea is the following:
 
 The diagram below tries to describe the system.
 
-{% b64img articles/2013/11/semafor-dist/diagram.png "Architecture diagram" %}
+{% b64img content/articles/2013/11/semafor-dist/diagram.png "Architecture diagram" %}
 
 If you dont know what semafor is take a look at the [example demo](http://demo.ark.cs.cmu.edu/parse) or this is just a basic example:
 
@@ -59,19 +59,19 @@ Get some URLS you want to parse and call the celery task `semafor_parse(urls, n_
 This are some screenshots I took while running it:
 
 EC2 dashboard when creating 10 instances
-{% b64img articles/2013/11/semafor-dist/instances_ec2.png "EC2 instances dashboard" %}
+{% b64img content/articles/2013/11/semafor-dist/instances_ec2.png "EC2 instances dashboard" %}
 
 Log on celery when creating 10 instances
-{% b64img articles/2013/11/semafor-dist/instances_log.png "Instances log" %}
+{% b64img content/articles/2013/11/semafor-dist/instances_log.png "Instances log" %}
 
 Celery log when the instances are provisioned via salt and the celery workers are connected
-{% b64img articles/2013/11/semafor-dist/celery_workers.png "Celery workers" %}
+{% b64img content/articles/2013/11/semafor-dist/celery_workers.png "Celery workers" %}
 
 Luigi UI while running
-{% b64img articles/2013/11/semafor-dist/luigi_summary.png "Luigi summary" %}
+{% b64img content/articles/2013/11/semafor-dist/luigi_summary.png "Luigi summary" %}
 
 Luigi dependency graph, really simple for this case.
-{% b64img articles/2013/11/semafor-dist/luigi_graph.png "Luigi task graph" %}
+{% b64img content/articles/2013/11/semafor-dist/luigi_graph.png "Luigi task graph" %}
 
 ## Discussion
 

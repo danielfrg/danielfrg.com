@@ -153,7 +153,7 @@ Output:
     Name: Cumulative Abnormal Return
     # NOTE: Length: 21
 
-{% b64img articles/2012/12/finance03/expected_return.png "Expected return" %}
+{% b64img content/articles/2012/12/finance03/expected_return.png "Expected return" %}
 
 Event Finder
 ------------
@@ -251,7 +251,7 @@ Output:
      19   -0.076149
      20   -0.097525
 
-{% b64img articles/2012/12/finance03/cum_abnormal_returns.png "Abnormal returns" %}
+{% b64img content/articles/2012/12/finance03/cum_abnormal_returns.png "Abnormal returns" %}
 
 Conclusion
 ----------

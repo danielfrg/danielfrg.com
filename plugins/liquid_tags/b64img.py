@@ -10,7 +10,7 @@ Syntax
 
 Examples
 --------
-{% b64img images/ninja.png Ninja Attack! %}
+{% b64img /images/ninja.png Ninja Attack! %}
 {% b64img left half http://site.com/images/ninja.png Ninja Attack! %}
 {% b64img left half http://site.com/images/ninja.png 150 150 "Ninja Attack!" "Ninja in attack posture" %}
 
@@ -22,14 +22,14 @@ Output
 
 [1] https://github.com/imathis/octopress/blob/master/plugins/image_tag.rb
 """
-import os
 import re
-import six
 import base64
-import urllib3
-
+try:
+    import urllib.request as urllib2
+except ImportError:
+    import urllib2
 from .mdx_liquid_tags import LiquidTags
-
+import six
 
 SYNTAX = '{% b64img [class name(s)] [http[s]:/]/path/to/image [width [height]] [title text | "title text" ["alt text"]] %}'
 
@@ -44,12 +44,10 @@ def _get_file(src):
     """ Return content from local or remote file. """
     try:
         if '://' in src or src[0:2] == '//':  # Most likely this is remote file
-            http = urllib3.PoolManager()
-            response = http.request('GET', src)
+            response = urllib2.urlopen(src)
             return response.read()
         else:
-            path = os.path.join('content', src)
-            with open(path, 'rb') as fh:
+            with open(src, 'rb') as fh:
                 return fh.read()
     except Exception as e:
         raise RuntimeError('Error generating base64image: {}'.format(e))
@@ -72,20 +70,20 @@ def b64img(preprocessor, tag, markup):
     else:
         raise ValueError('Error processing input. '
                          'Expected syntax: {0}'.format(SYNTAX))
+
     # Check if alt text is present -- if so, split it from title
     if 'title' in attrs:
         match = ReTitleAlt.search(attrs['title'])
         if match:
             attrs.update(match.groupdict())
+        attrs['title'] = attrs['title']
         if not attrs.get('alt'):
-            attrs['alt'] = attrs['title']
-
-    b64_img = base64image(attrs['src'])
-    b64_img = b64_img.decode('utf-8')
-    attrs['src'] = 'data:image/png;base64,{}'.format(b64_img)
+            attrs['alt'] = attrs['title'].strip('"')
+    
+    attrs['src'] = 'data:;base64,{}'.format(base64image(attrs['src']).decode('utf-8'))
 
     # Return the formatted text
-    return '<img {0}>'.format(' '.join('{0}={1}'.format(key, val)
+    return "<img {0}>".format(' '.join('{0}="{1}"'.format(key, val)
                                        for (key, val) in six.iteritems(attrs)))
 
 

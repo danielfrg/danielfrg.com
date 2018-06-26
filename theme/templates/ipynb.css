@@ -1,5 +1,13 @@
-{
-    max-width: 700px;
+.rendered_html a {
+    text-decoration: none;
+}
+
+.rendered_html :link {
+    text-decoration: none;
+}
+
+.rendered_html :visited {
+    text-decoration: none;
 }
 
 .text_cell .prompt {
@@ -28,7 +36,7 @@ div.output_prompt {
 
 div.input_area {
     margin: .2em 0.4em;
-    max-width: 580px;
+    max-width: 750px;
 }
 
 table.dataframe {

@@ -21,8 +21,10 @@
 <div class="container post">
     <article>
         <header>
+            <section class="post-meta">
+                <time datetime="article.date.isoformat()" pubdate>{{ article.locale_date }}</time>
+            </section>
             <h1>{{ article.title }}</h1>
-            <time datetime="article.date.isoformat()" pubdate>{{ article.locale_date }}</time>
         </header>
 
         <div class="article_content">

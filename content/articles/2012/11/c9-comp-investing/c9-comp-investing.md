@@ -45,7 +45,7 @@ modifying the code I was able to push from Cloud9 directly to my Github
 and back to my PC. Git makes the flow is very smooth and the terminal
 from Cloud9 good enough for that and more.
 
-{% b64img articles/2012/11/c9-comp-investing/cloud9-terminal.png "Cloud9 terminal" %}
+{% b64img content/articles/2012/11/c9-comp-investing/cloud9-terminal.png "Cloud9 terminal" %}
 
 The service has some problems, sometimes the terminal goes crazy for no
 reason (that I could find) and I had to refresh the page, but in general

@@ -33,15 +33,15 @@ endif
 all: build
 
 .PHONY: build
-build:
+build:  ## Generate the output
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 
 .PHONY: clean
-clean:
+clean:  ## Remove the generated output
 	@rm -rf $(OUTPUTDIR) *.pid
 
 .PHONY: cleanall
-cleanall:
+cleanall:  ## Remove dev environment
 	@rm -rf $(ENV)
 
 .PHONY: regenerate
@@ -49,7 +49,7 @@ regenerate:
 	$(PELICAN) -r $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 
 .PHONY: serve
-serve:
+serve:  ## Serve the output
 ifdef PORT
 	cd $(OUTPUTDIR) && $(PY) -m pelican.server $(PORT)
 else
@@ -57,7 +57,7 @@ else
 endif
 
 .PHONY: devserver
-devserver:
+devserver:  ## Start the live-reload webserver
 ifdef PORT
 	$(BASEDIR)/develop_server.sh restart $(PORT)
 else
@@ -65,16 +65,20 @@ else
 endif
 
 .PHONY: stopserver
-stopserver:
+stopserver:  ## Stop the live-reload webserver
 	kill -9 `cat pelican.pid`
 	kill -9 `cat srv.pid`
 	@echo 'Stopped Pelican and SimpleHTTPServer processes running in background.'
 
 .PHONY: publish
-publish:
+publish:  ## Generate output ready for publish
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
 
 .PHONY: bootstrap
-bootstrap:
+bootstrap:  ## Create the dev environment
 	@echo "==> Bootstrapping environment"
 	@conda env create
+
+.PHONY: help
+help:
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'

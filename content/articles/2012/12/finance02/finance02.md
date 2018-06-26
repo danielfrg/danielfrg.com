@@ -77,7 +77,7 @@ Output:
     2011-01-21  1030775
     2011-01-24  1046815
 
-{% b64img articles/2012/12/finance02/portfolio_value.png "Portfolio value" %}
+{% content/b64img articles/2012/12/finance02/portfolio_value.png "Portfolio value" %}
 
 Basic Utils
 -----------
