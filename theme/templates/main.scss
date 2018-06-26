@@ -100,6 +100,13 @@ article {
         .post-meta {
             display: flex;
             justify-content: center;
+
+            a {
+                color: #007aff;
+                border: none;
+                font-size: 0.7em;
+                text-transform: uppercase;
+            }
         }
 
         .date-divider {
@@ -107,13 +114,6 @@ article {
             margin: 0 6px 1px;
             font-size: 0.7em;
             color: rgba(0, 0, 0, 0.65);
-        }
-
-        a {
-            color: #007aff;
-            border: none;
-            font-size: 0.7em;
-            text-transform: uppercase;
         }
 
         a:hover {

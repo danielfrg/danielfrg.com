@@ -98,18 +98,18 @@ article header .post-meta {
   justify-content: center;
 }
 
+article header .post-meta a {
+  color: #007aff;
+  border: none;
+  font-size: 0.7em;
+  text-transform: uppercase;
+}
+
 article header .date-divider {
   display: inline-block;
   margin: 0 6px 1px;
   font-size: 0.7em;
   color: rgba(0, 0, 0, 0.65);
-}
-
-article header a {
-  color: #007aff;
-  border: none;
-  font-size: 0.7em;
-  text-transform: uppercase;
 }
 
 article header a:hover {
