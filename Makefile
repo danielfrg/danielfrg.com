@@ -77,7 +77,7 @@ publish:  ## Generate output ready for publish
 .PHONY: bootstrap
 bootstrap:  ## Create the dev environment
 	@echo "==> Bootstrapping environment"
-	@conda env create
+	@pipenv install --skip-lock
 
 .PHONY: help
 help:

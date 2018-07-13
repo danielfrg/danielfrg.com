@@ -21,4 +21,5 @@ DELETE_OUTPUT_DIRECTORY = True
 # Following items are often useful when publishing
 
 #DISQUS_SITENAME = ""
-#GOOGLE_ANALYTICS = ""
+GOOGLE_ANALYTICS_CODE = 'UA-35523657-2'
+GOOGLE_ANALYTICS_DOMAIN = 'danielfrg.com'

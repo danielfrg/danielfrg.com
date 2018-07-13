@@ -32,6 +32,7 @@ Need to add a new remote to the submodule
 cd plugins/ipynb
 git remote rm origin
 git remote add origin git@github.com:danielfrg/pelican-ipynb.git
+git branch --set-upstream-to=origin/<branch> masters
 git checkout master
 ```
 

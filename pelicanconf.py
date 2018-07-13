@@ -43,15 +43,11 @@ MARKDOWN = {
 STATIC_PATHS = ['images', 'favicon.ico', '404.html', 'robots.txt', 'CNAME']
 
 # THEME SETTINGS
-DEFAULT_HEADER_BG = '/images/station1.jpg'
 ABOUT_PAGE = '/pages/about.html'
 TWITTER_USERNAME = 'danielfrg'
 GITHUB_USERNAME = 'danielfrg'
 SHOW_ARCHIVES = True
 SHOW_FEED = True
-
-GOOGLE_ANALYTICS_CODE = 'UA-35523657-2'
-GOOGLE_ANALYTICS_DOMAIN = 'danielfrg.com'
 
 # PLUGINS SETTINGS
 PLUGIN_PATHS = ['plugins']
@@ -62,4 +58,5 @@ SITEMAP = {
 }
 
 IPYNB_EXTEND_STOP_SUMMARY_TAGS = [('h2', None), ('ol', None), ('ul', None)]
+IPYNB_NB_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/notebook.ipynb'
 # IPYNB_EXPORT_TEMPLATE = 'notebook.tpl'

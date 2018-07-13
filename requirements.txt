@@ -1,7 +1,0 @@
-urllib3
-pelican>=3.6.0
-Markdown==2.6.2
-jsonschema==2.4.0
-mistune==0.5.1
-IPython
-nbconvert

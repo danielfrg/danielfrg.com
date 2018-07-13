@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pelican = ">=3.6.0"
+jsonschema = ">=2.4.0"
+mistune = ">=0.5.1"
+jupyter = "*"
+jupyterlab = "*"
+nbconvert = "*"
+"urllib3" = "*"
+matplotlib = "*"
+pylint = "*"
+plotly = "*"
+bokeh = "*"
+Markdown = "==2.6.2"
+
+[dev-packages]
+pylint = "*"
+rope = "*"
+
+[requires]
+python_version = "3.7"
