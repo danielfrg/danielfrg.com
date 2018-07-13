@@ -19,7 +19,7 @@ SUMMARY_MAX_LENGTH = 150
 DEFAULT_PAGINATION = 10
 
 PAGE_DIRS = ['pages']
-ARTICLE_DIRS = ['articles']
+ARTICLE_DIRS = ['blog']
 
 THEME = 'theme'
 STATIC_PATHS = ['images']
