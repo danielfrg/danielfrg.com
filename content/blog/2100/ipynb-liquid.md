@@ -6,4 +6,4 @@ Author: Daniel Rodriguez
 Include: requirejs,jquery,bokeh
 Status: draft
 
-{% notebook articles/2100/ipynb.ipynb %}
+{% notebook blog/2100/ipynb.ipynb %}

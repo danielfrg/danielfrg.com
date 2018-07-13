@@ -189,17 +189,17 @@ admin.site.register(Post, PostAdmin)
 
 The admin UI, using the [beautiful django suit](http://djangosuit.com/), looks like this.
 
-{% b64img content/articles/2013/09/django-crawler/home_admin.png "Home admin" %}
+{% b64img content/blog/2013/09/django-crawler/home_admin.png "Home admin" %}
 
 Note: don't ask me why is I am using that blog to test
 
-{% b64img content/articles/2013/09/django-crawler/blogs_admin.png "Blogs admin" %}
+{% b64img content/blog/2013/09/django-crawler/blogs_admin.png "Blogs admin" %}
 
-{% b64img content/articles/2013/09/django-crawler/posts_admin.png "Posts admin" %}
+{% b64img content/blog/2013/09/django-crawler/posts_admin.png "Posts admin" %}
 
 You can see the running tasks, or previous tasks.
 
-{% b64img content/articles/2013/09/django-crawler/tasks.png "Tasks" %}
+{% b64img content/blog/2013/09/django-crawler/tasks.png "Tasks" %}
 
 ## Conclusion
 

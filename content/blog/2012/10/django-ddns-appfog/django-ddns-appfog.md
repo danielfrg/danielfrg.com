@@ -136,7 +136,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns += staticfiles_urlpatterns()
 ```
 
-{% b64img content/articles/2012/10/django-ddns-appfog/django-ui.png "django admin UI" %}
+{% b64img content/blog/2012/10/django-ddns-appfog/django-ui.png "django admin UI" %}
 
 2. Python Script
 ----------------
@@ -149,7 +149,7 @@ It makes a GET request to the Django app and also saves a file on
 [Dropbox][] (before this I was using Dropbox as a temporally solution).
 All inside a while True with a sleep of 10 minutes.
 
-{% b64img content/articles/2012/10/django-ddns-appfog/output-script.png "Script output" %}
+{% b64img content/blog/2012/10/django-ddns-appfog/output-script.png "Script output" %}
 
 ## Conclusion
 
