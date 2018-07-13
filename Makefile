@@ -34,7 +34,7 @@ all: build
 
 .PHONY: build
 build:  ## Generate the output
-	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
+	$(PELICAN) -s $(CONFFILE) $(PELICANOPTS)
 
 .PHONY: clean
 clean:  ## Remove the generated output
@@ -72,7 +72,7 @@ stopserver:  ## Stop the live-reload webserver
 
 .PHONY: publish
 publish:  ## Generate output ready for publish
-	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
+	$(PELICAN) -s $(PUBLISHCONF) $(PELICANOPTS)
 
 .PHONY: bootstrap
 bootstrap:  ## Create the dev environment

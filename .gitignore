@@ -40,4 +40,4 @@ env
 output/
 cache/
 .ipynb_checkpoints
-backup
+backup/

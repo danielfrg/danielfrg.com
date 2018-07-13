@@ -28,12 +28,8 @@
                 </div>
                 <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
                     <ul class="nav navbar-nav">
-                        {% if ABOUT_PAGE %}
-                            <li><a href="{{ ABOUT_PAGE }}" title="About">About</a></li>
-                        {% endif %}
-                        {% if SHOW_ARCHIVES %}
-                            <li><a href="/archives.html" title="Archive">Archive</a></li>
-                        {% endif %}
+                        <li><a href="{{ ABOUT_PAGE }}" title="About">About</a></li>
+                        <li><a href="/archives.html" title="Archive">Archive</a></li>
                     </ul>
                 
                     <ul class="nav navbar-nav navbar-right">

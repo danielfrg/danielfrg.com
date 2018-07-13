@@ -1,34 +1,42 @@
 from __future__ import unicode_literals
 
-LOAD_CONTENT_CACHE = False
+### DEV stuff
+# WRITE_SELECTED = ['content/blog/2100/ipynb-liquid.md']
+###
 
 SITEURL = ''
 AUTHOR = u'Daniel Rodriguez'
 SITENAME = u'Daniel Rodriguez'
-
 TIMEZONE = 'UTC'
-
-DEFAULT_LANG = 'en'
-
-IGNORE_FILES = ['.ipynb_checkpoints']
-MARKUP = ('md', 'ipynb')
-
 DEFAULT_DATE_FORMAT = '%B %d, %Y'
 
+DEFAULT_LANG = 'en'
+IGNORE_FILES = ['.ipynb_checkpoints']
+MARKUP = ('md', 'ipynb')
 SUMMARY_MAX_LENGTH = 150
 DEFAULT_PAGINATION = 10
-
-PAGE_DIRS = ['pages']
-ARTICLE_DIRS = ['blog']
-
 THEME = 'theme'
-STATIC_PATHS = ['images']
+
+OUTPUT_PATH = 'output/'
+ARTICLE_PATHS = ['content']
+USE_FOLDER_AS_CATEGORY = False
+DEFAULT_CATEGORY = 'misc'
+PAGE_PATHS = ['content/pages']
+CACHE_PATH = 'cache/'
+CACHE_CONTENT = True
+LOAD_CONTENT_CACHE = True
+
+# PAGE_DIRS = ['pages']
+# ARTICLE_DIRS = ['blog']
+
+# STATIC_PATHS = ['images']
 
 ARTICLE_URL = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
 ARTICLE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
-
-PAGE_SAVE_AS = '{category}/{slug}.html'
-PAGE_URL = PAGE_SAVE_AS
+PAGE_URL = 'pages/{slug}/'
+PAGE_SAVE_AS = 'pages/{slug}/index.html'
+FEED_ALL_ATOM = 'feeds/all.atom.xml'
+CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
 
 MARKDOWN = {
     'extension_configs': {
@@ -43,11 +51,9 @@ MARKDOWN = {
 STATIC_PATHS = ['images', 'favicon.ico', '404.html', 'robots.txt', 'CNAME']
 
 # THEME SETTINGS
-ABOUT_PAGE = '/pages/about.html'
+ABOUT_PAGE = '/pages/about/'
 TWITTER_USERNAME = 'danielfrg'
 GITHUB_USERNAME = 'danielfrg'
-SHOW_ARCHIVES = True
-SHOW_FEED = True
 
 # PLUGINS SETTINGS
 PLUGIN_PATHS = ['plugins']
