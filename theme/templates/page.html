@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block title %}{{ page.title }}{% endblock %}
-{% block headerimg %}{% if page.headerimg %}{{ page.headerimg }}{% else %}{{ DEFAULT_HEADER_BG }}{% endif %}{% endblock %}
 
 {% block content %}
+{% if page.category == "video-notes" %}
+{% include "video-notes.html" %}<
+{% else %}
 <div class="container post">
 
     <article>
@@ -19,4 +21,5 @@
 
     </article>
 </div>
+{% endif %}
 {% endblock %}

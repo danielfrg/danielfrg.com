@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% block title %}{{ article.title }}{% endblock %}
-{% block headerimg %}{% if article.headerimg %}{{ article.headerimg }}{% else %}{{ DEFAULT_HEADER_BG }}{% endif %}{% endblock %}
 
 {% block extra_head %}
 {% if 'angular' in article.include %}
@@ -18,7 +17,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container post">
+<main role="main" class="container post">
     <article>
         <header>
             <section class="post-meta">
@@ -43,7 +42,7 @@
             </div>
         </div>
     </article>
-</div>
+</main>
 
 <style type="text/css">
 {% include 'ipynb.css' %}

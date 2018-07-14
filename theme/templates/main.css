@@ -11,64 +11,41 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-.site-wrapper {
-  display: flex;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-a {
-  color: #007EFF;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #007EFF;
-  text-decoration: none;
-}
-
-header.site-header {
+header.navbar-dark {
   background: #0e1c31;
-  margin-bottom: 0px;
-  height: 40px;
+  padding: .6rem 1rem;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
 }
 
-header.site-header a {
+header.navbar-dark a {
   color: #fff;
-  font-size: 1.7rem;
-  letter-spacing: -.5px;
 }
 
-header.site-header a.navbar-brand {
+header.navbar-dark a.navbar-brand {
   font-weight: 700;
+  font-size: 1.063rem;
+  letter-spacing: -.6px;
+  padding: 0;
 }
 
-header.site-header li {
+header.navbar-dark ul.navbar-nav {
+  padding-top: 4px;
+}
+
+header.navbar-dark ul.navbar-nav .nav-link {
+  color: #fff;
   text-transform: uppercase;
-}
-
-header.site-header li a {
-  padding-top: 17px;
-  padding-bottom: 13px;
   font-size: 12px;
-  opacity: .8;
-}
-
-header.site-header li a:hover {
+  letter-spacing: -.5px;
   opacity: 1;
+  padding: 0 15px 0;
 }
 
-header.site-header .navbar-right a {
+header.navbar-dark ul.ml-md-auto .nav-link {
   font-size: 15px;
-}
-
-header.site-header .container {
-  max-width: 1000px;
-}
-
-header.site-header .container nav a:hover {
-  background-color: #0e1c31;
 }
 
 .container {
@@ -84,6 +61,47 @@ header.site-header .container nav a:hover {
   padding: 0;
 }
 
+.video-notes {
+  width: 1000px;
+}
+
+.video-notes .sidebar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 4rem;
+  z-index: 1000;
+  height: calc(100vh - 6rem);
+  border-right: 1px solid #eee;
+  padding: 1.2rem;
+}
+
+.video-notes .sidebar form span {
+  width: 100%;
+}
+
+.video-notes .sidebar .sidenav li a {
+  display: block;
+  padding: .25rem 0;
+  font-size: 90%;
+  color: rgba(0, 0, 0, 0.65);
+  text-decoration: none;
+}
+
+.video-notes .sidebar .sidenav li a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.video-notes .content {
+  padding: 1.2rem;
+}
+
+.video-notes .content iframe.video {
+  width: 100%;
+  height: 400px;
+  background: #000;
+}
+
 article {
   margin: 0;
 }
@@ -94,8 +112,12 @@ article header {
 }
 
 article header .post-meta {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 article header .post-meta a {
@@ -117,14 +139,6 @@ article header a:hover {
   border: none;
 }
 
-article header h1 {
-  font-weight: 600;
-  font-size: 5rem;
-  color: #000;
-  text-align: center;
-  margin: 0 0 0 0;
-}
-
 article header time {
   font-size: inherit;
   color: rgba(0, 0, 0, 0.65);
@@ -132,6 +146,18 @@ article header time {
   font-size: 0.7em;
   color: rgba(0, 0, 0, 0.65);
   text-transform: uppercase;
+}
+
+article header h1 {
+  text-align: center;
+}
+
+article h1 {
+  font-weight: 600;
+  font-size: 3.125rem;
+  line-height: 1.0;
+  color: #000;
+  margin: .5em 0;
 }
 
 article h2, article h3, article h4 {
@@ -143,24 +169,24 @@ article h2 {
   font-size: 30px;
 }
 
-article h3 {
-  font-size: 28px;
-}
-
-article h4 {
-  font-size: 24px;
-}
-
 article h2:before {
   content: "# ";
   font-weight: bold;
   color: #DDD;
 }
 
+article h3 {
+  font-size: 28px;
+}
+
 article h3:before {
   content: "## ";
   font-weight: bold;
   color: #DDD;
+}
+
+article h4 {
+  font-size: 24px;
 }
 
 article h4:before {
@@ -212,6 +238,7 @@ article li {
 article a {
   color: #007EFF;
   text-decoration: none;
+  -webkit-transition: border 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
   transition: border 0.15s cubic-bezier(0.645, 0.045, 0.355, 1);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -252,6 +279,7 @@ article code {
   background-color: #EEE;
   border-radius: 0;
   font-size: 13px;
+  padding: 5px 3px 3px 3px;
 }
 
 article hr {
@@ -265,9 +293,10 @@ article hr {
 
 article .codehilite pre {
   border-radius: 0;
-  background-color: #202020;
-  color: #d0d0d0;
+  background-color: #eeefef;
+  color: #000000;
   border: none;
+  padding: 10px;
 }
 
 article .codehilite pre code {

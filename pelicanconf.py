@@ -24,17 +24,14 @@ DEFAULT_CATEGORY = 'misc'
 PAGE_PATHS = ['content/pages']
 CACHE_PATH = 'cache/'
 CACHE_CONTENT = True
-LOAD_CONTENT_CACHE = True
-
-# PAGE_DIRS = ['pages']
-# ARTICLE_DIRS = ['blog']
-
-# STATIC_PATHS = ['images']
+LOAD_CONTENT_CACHE = False
+# WRITE_SELECTED = ["output/blog/2018/06/24/green/index.html"]
+DELETE_OUTPUT_DIRECTORY = True
 
 ARTICLE_URL = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
 ARTICLE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
-PAGE_URL = 'pages/{slug}/'
-PAGE_SAVE_AS = 'pages/{slug}/index.html'
+PAGE_URL = '{category}/{slug}/'
+PAGE_SAVE_AS = '{category}/{slug}/index.html'
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 CATEGORY_FEED_ATOM = 'feeds/%s.atom.xml'
 
@@ -51,7 +48,7 @@ MARKDOWN = {
 STATIC_PATHS = ['images', 'favicon.ico', '404.html', 'robots.txt', 'CNAME']
 
 # THEME SETTINGS
-ABOUT_PAGE = '/pages/about/'
+ABOUT_PAGE = '/about'
 TWITTER_USERNAME = 'danielfrg'
 GITHUB_USERNAME = 'danielfrg'
 

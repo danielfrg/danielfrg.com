@@ -7,12 +7,9 @@
         <meta name="description" content="{% block description %}{%endblock%}">
         <meta name="viewport" content="width=device-width">
         <title>{% block title %}{% endblock %} | {{ SITENAME }}</title>
-
         <link rel="alternate" type="application/atom+xml" title="{{ SITENAME }} blog atom feed" href="/feeds/all.atom.xml" />
-        <!-- <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'> -->
-        <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet"> -->
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
         <style>{% include 'pygments.css' %}</style>
         <style>{% include 'main.css' %}</style>
@@ -21,35 +18,34 @@
     </head>
 
     <body>
-        <header class="navbar navbar-static-top bs-docs-nav site-header">
+        <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
             <div class="container">
-                <div class="navbar-header">
+                <!-- <div class="navbar-header"> -->
                     <a class="navbar-brand" href="/" title="Home" class="title">Daniel Rodriguez</a></li>
-                </div>
-                <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-                    <ul class="nav navbar-nav">
-                        <li><a href="{{ ABOUT_PAGE }}" title="About">About</a></li>
-                        <li><a href="/archives.html" title="Archive">Archive</a></li>
+                <!-- </div> -->
+                <!-- <div class="navbar-nav-scroll" role="navigation"> -->
+                    <ul class="navbar-nav bd-navbar-nav flex-row">
+                        <li class="nav-item"><a class="nav-link" href="/video-notes/" title="About">Video Notes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/archives.html" title="Archive">Archive</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link" href="{{ ABOUT_PAGE }}" title="About">About</a></li> -->
                     </ul>
+                <!-- </div> -->
                 
-                    <ul class="nav navbar-nav navbar-right">
-                        {% if GITHUB_USERNAME %}
-                            <li><a href="http://github.com/{{ GITHUB_USERNAME }}" title="{{ GITHUB_USERNAME }}'s Github" rel="me"><i class="fab fa-github"></i></a></li>
-                        {% endif %}
-                        {% if TWITTER_USERNAME %}
-                            <li><a href="http://twitter.com/{{ TWITTER_USERNAME }}" title="{{ TWITTER_USERNAME }} Twitter" rel="me"><i class="fab fa-twitter"></i></a></li>
-                        {% endif %}
-                        {% if SHOW_FEED %}
-                            <li><a href="/feeds/all.atom.xml" title="danielfrg.github.io RSS feed" rel="me"><i class="fas fa-rss"></i></a></li>
-                        {% endif %}
-                    </ul>
-                </nav>
+                <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+                    {% if GITHUB_USERNAME %}
+                        <li class="nav-item"><a class="nav-link" href="http://github.com/{{ GITHUB_USERNAME }}" title="{{ GITHUB_USERNAME }}'s Github" rel="me"><i class="fab fa-github"></i></a></li>
+                    {% endif %}
+                    {% if TWITTER_USERNAME %}
+                        <li class="nav-item"><a class="nav-link" href="http://twitter.com/{{ TWITTER_USERNAME }}" title="{{ TWITTER_USERNAME }} Twitter" rel="me"><i class="fab fa-twitter"></i></a></li>
+                    {% endif %}
+                    {% if SHOW_FEED %}
+                        <li class="nav-item"><a class="nav-link" href="/feeds/all.atom.xml" title="danielfrg.github.io RSS feed" rel="me"><i class="fas fa-rss"></i></a></li>
+                    {% endif %}
+                </ul>
             </div>
         </header>
 
-        <div class="site-wrapper">
         {% block content %}{% endblock %}
-        </div>
         {% include 'analytics.html' %}
     </body>
 </html>

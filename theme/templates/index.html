@@ -3,11 +3,12 @@
 {% block headerimg %}{{ DEFAULT_HEADER_BG }}{% endblock %}
 
 {% block content %}
-<div class="container index">
+<main role="main" class="container index">
 
   <div class="header-space"></div>
 
   {% for article in articles_page.object_list %}
+  {% if article.category == "Misc" %}
   <article>
     <header>
       <time datetime="" title="{{ article.date.isoformat() }}" pubdate>{{ article.locale_date }}</time>
@@ -33,6 +34,7 @@
 
   </article>
   <hr>
+  {% endif %}
   {% endfor %}
 
   <nav class="pagination row">
@@ -50,6 +52,6 @@
 
   </div>
 
-</div>
+</main>
 
 {% endblock %}
