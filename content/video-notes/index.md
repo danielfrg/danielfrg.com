@@ -1,7 +1,9 @@
 Title: Video Notes
 Slug: video-notes
+Date: 2018-07-14 00:00
 Category: video-notes
 Author: Daniel Rodriguez
+url: video-notes/index.html
 save_as: video-notes/index.html
 
 These are notes that I have taken while watching videos about tech, conferences or whatever really.

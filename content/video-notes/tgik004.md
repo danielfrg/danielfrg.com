@@ -1,8 +1,12 @@
 Title: TGIK 004: RBAC
 Slug: tgik-004-rbac
+Date: 2018-07-14 15:00
 Category: video-notes
+Tags: Kubernetes,RBAC
 Author: Daniel Rodriguez
-Video: slUMVwRXlRo
+url: video-notes/tgik-004-rbac
+save_as: video-notes/tgik-004-rbac/index.html
+video_id: slUMVwRXlRo
 Rating: 4/5
 
 How to do Authentication and Authorization for k8s.

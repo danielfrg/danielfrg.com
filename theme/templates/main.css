@@ -96,7 +96,7 @@ header.navbar-dark ul.ml-md-auto .nav-link {
   padding: 1.2rem;
 }
 
-.video-notes .content iframe.video {
+.video-notes .content iframe.video-note {
   width: 100%;
   height: 400px;
   background: #000;

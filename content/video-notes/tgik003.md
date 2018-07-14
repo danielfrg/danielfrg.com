@@ -1,8 +1,12 @@
 Title: TGIK 003: Istio
 Slug: tgik-003-istio
+Date: 2018-07-14 12:03
 Category: video-notes
+Tags: Kubernetes,Istio
 Author: Daniel Rodriguez
-Video: WnDG-5cvEew
+url: video-notes/tgik-003-istio
+save_as: video-notes/tgik-003-istio/index.html
+video_id: WnDG-5cvEew
 Rating: 2/5
 
 Idea: You have services running in a microservice architecture and you want them to talk to each other.

@@ -24,8 +24,7 @@ DEFAULT_CATEGORY = 'misc'
 PAGE_PATHS = ['content/pages']
 CACHE_PATH = 'cache/'
 CACHE_CONTENT = True
-LOAD_CONTENT_CACHE = False
-# WRITE_SELECTED = ["output/blog/2018/06/24/green/index.html"]
+LOAD_CONTENT_CACHE = True
 DELETE_OUTPUT_DIRECTORY = True
 
 ARTICLE_URL = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/'

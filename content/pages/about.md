@@ -1,7 +1,7 @@
 Title: About
 Slug: about
 Author: Daniel Rodriguez
-save_as: about/index.html
+save_as: me/index.html
 
 [Bogota, 1991] Electrical Engineer from Universidad de los Andes (Bogota, Colombia)
 after that he moved to Dallas, TX to purse a Master in Information Technology Management

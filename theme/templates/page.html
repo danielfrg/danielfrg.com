@@ -2,11 +2,7 @@
 {% block title %}{{ page.title }}{% endblock %}
 
 {% block content %}
-{% if page.category == "video-notes" %}
-{% include "video-notes.html" %}<
-{% else %}
 <div class="container post">
-
     <article>
         <header>
             <h1>{{ page.title }}</h1>
@@ -18,8 +14,6 @@
         <div class="article_content">
             {{ page.content }}
         </div>
-
     </article>
 </div>
-{% endif %}
 {% endblock %}

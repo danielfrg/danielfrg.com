@@ -10,9 +10,9 @@
           
             <nav class="bd-links" id="bd-docs-nav">
                 <ul class="nav sidenav">
-                    {% for page in pages %}
-                    {% if page.category == "video-notes" and page.title != "Video Notes" %}
-                        <li><a href='/{{ page.url }}'>{{ page.title }}</a></li>
+                    {% for article in articles %}
+                    {% if article.category == "video-notes" and article.title != "Video Notes" %}
+                        <li><a href='/{{ article.url }}'>{{ article.title }}</a></li>
                     {% endif %}
                     {% endfor %}
                 </ul>
@@ -21,11 +21,11 @@
 
         <main class="col-9 content">
             <article>
-                {% if page.video | length > 1 %}
-                <iframe class="video" src="https://www.youtube.com/embed/{{ page.video }}" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
+                {% if article.video_id | length > 1 %}
+                <iframe class="video-note" src="https://www.youtube.com/embed/{{ article.video_id }}" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
                 {% endif %}
-                <h1>{{ page.title }}</h1>
-                {{ page.content }}
+                <h1>{{ article.title }}</h1>
+                {{ article.content }}
             </article>
         </main>
     </div>

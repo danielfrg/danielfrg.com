@@ -1,8 +1,12 @@
 Title: Istio and Kubernetes
 Slug: istio-and-k8s
+Date: 2018-07-14 13:00
 Category: video-notes
+Tags: Kubernetes,Istio
 Author: Daniel Rodriguez
-Video: s4qasWn_mFc
+url: video-notes/istio-and-k8s
+save_as: video-notes/istio-and-k8s/index.html
+video_id: s4qasWn_mFc
 Rating: 5/5
 
 Istio goal is to make easy to: have policy between your applications, have observability, security per application instance and reliability.
