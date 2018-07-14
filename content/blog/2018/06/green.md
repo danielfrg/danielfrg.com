@@ -6,7 +6,7 @@ Author: Daniel Rodriguez
 
 **English (Español abajo)**
 
-Last Friday, June 22, I officially  received my green card on the mail, which allows me to stay for a relatively in the United States as a resident. This puts an end to the another stage of a journey that began six and a half years ago when I came to study a masters degree and that continues today. 
+Last Friday, June 22, I officially  received my green card on the mail, which allows me to stay for in the United States as a resident. This puts an end to the another stage of a journey that began six and a half years ago when I came to study a masters degree and that continues today. 
 
 Trying to remember what I was thinking when I was 21 years old and got on a plane to Texas, my brain was going a million miles per hour trying to imagine millions of possible scenarios but one thing for sure is that I could have not predicted even one of the more than 2200 days that I have been here. Every day has been unexpected and although sometimes it has been tough I wouldn't change very few of the situations I have lived. I will for sure remove some of my mistakes!
 
