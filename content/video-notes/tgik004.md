@@ -7,7 +7,7 @@ Author: Daniel Rodriguez
 url: video-notes/tgik-004-rbac
 save_as: video-notes/tgik-004-rbac/index.html
 video_id: slUMVwRXlRo
-Rating: 4/5
+Rating: 5/5
 
 How to do Authentication and Authorization for k8s.
 
