@@ -46,11 +46,6 @@ MARKDOWN = {
 # Paths are relative to `content`
 STATIC_PATHS = ['images', 'favicon.ico', '404.html', 'robots.txt', 'CNAME']
 
-# THEME SETTINGS
-ABOUT_PAGE = '/about'
-TWITTER_USERNAME = 'danielfrg'
-GITHUB_USERNAME = 'danielfrg'
-
 # PLUGINS SETTINGS
 PLUGIN_PATHS = ['plugins']
 PLUGINS = ['sitemap', 'ipynb.markup', 'ipynb.liquid', 'liquid_tags.youtube', 'liquid_tags.b64img']
@@ -61,4 +56,5 @@ SITEMAP = {
 
 IPYNB_EXTEND_STOP_SUMMARY_TAGS = [('h2', None), ('ol', None), ('ul', None)]
 IPYNB_NB_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/notebook.ipynb'
+IPYNB_USE_META_SUMMARY = True
 # IPYNB_EXPORT_TEMPLATE = 'notebook.tpl'
