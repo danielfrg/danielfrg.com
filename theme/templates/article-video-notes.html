@@ -1,23 +1,21 @@
 <div class="container video-notes">
     <div class="row flex-xl-nowrap">
-        
-        <div class="col-12 col-md-3 col-xl-3 sidebar">
+
+        <div id="video-notes-sidebar" class="col-12 col-md-3 col-xl-3 sidebar">
             <form class="search d-flex align-items-center">
                 <span style="position: relative; display: inline-block; direction: ltr;">
-                    <input type="search" class="form-control" id="search-input" placeholder="Filter... (coming soon)" autocomplete="off" spellcheck="false" role="combobox" dir="auto" style="position: relative; vertical-align: top;" />
+                    <input type="search" class="form-control" id="search-input" placeholder="Filter..." autocomplete="off" spellcheck="false" v-model="search"/>
                 </span>
-                <button id="btn-collapse" class="btn d-md-none" type="button" data-toggle="collapse" data-target="#video-notes-nav">
+                <button v-on:click="toogle_nav" type="button" class="btn d-md-none">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg>
                 </button>
             </form>
           
-            <nav id="video-notes-nav" class="collapse">
-                <ul class="nav sidenav">
-                    {% for article in articles %}
-                    {% if article.category == "video-notes" and article.title != "Video Notes" %}
-                        <li><a href='/{{ article.url }}'>{{ article.title }}</a></li>
-                    {% endif %}
-                    {% endfor %}
+            <nav class="collapse" v-bind:class="{ show: show }">
+                <ul class="nav sidenav" v-for="item in filteredItems">
+                    {% raw %}
+                    <li><a :href="item.url">{{ item.title }}</a></li>
+                    {% endraw %}
                 </ul>
             </nav>
         </div>
@@ -37,9 +35,41 @@
 </div>
 
 <script>
-$(document).ready(function () {
-    $('#btn-collapse').on('click', function () {
-        $('#video-notes-nav').toggleClass('show');
-    });
-});
+items = [
+    {% for article in articles %}
+    {% if article.category == "video-notes" and article.title != "Video Notes" %}
+    { title: "{{ article.title }}", url: "/{{ article.url }}", tags: [{% for tag in article.tags %}"{{ tag }}",{% endfor %}] },
+    {% endif %}
+    {% endfor %}
+]
+
+function contains(text, search) {
+    return text.toLowerCase().indexOf(search.toLowerCase()) > -1
+}
+
+var video_notes = new Vue({
+    el: '#video-notes-sidebar',
+    data: {
+        show: false,
+        search: '',
+        items: items
+    },
+
+    methods: {
+        toogle_nav: function(event) {
+            this.show = !this.show;
+        }
+    },
+
+    computed: {
+        filteredItems() {
+            return this.items.filter(item => {
+                searches = [item.title].concat(item.tags);
+                query = searches.map(x => contains(x, this.search));
+                return query.some(x => x == true);
+            })
+        }
+    }
+})
+
 </script>

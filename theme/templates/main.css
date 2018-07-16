@@ -157,9 +157,14 @@ header.navbar-dark ul.navbar-nav a.social {
   background: #fff;
 }
 
+.video-notes .sidebar {
+  border-bottom: 1px solid #eee;
+}
+
 @media (min-width: 768px) {
   .video-notes .sidebar {
     border-right: 1px solid #eee;
+    border-bottom: none;
     position: -webkit-sticky;
     position: sticky;
     top: 3rem;
@@ -168,21 +173,21 @@ header.navbar-dark ul.navbar-nav a.social {
   }
 }
 
-.video-notes .sidebar #video-notes-nav {
+.video-notes .sidebar nav {
   padding: 0.5rem 0;
 }
 
 @media (min-width: 768px) {
-  .video-notes .sidebar #video-notes-nav {
+  .video-notes .sidebar nav {
     display: block !important;
   }
 }
 
-.video-notes .sidebar #video-notes-nav li {
+.video-notes .sidebar nav li {
   width: 100%;
 }
 
-.video-notes .sidebar #video-notes-nav li a {
+.video-notes .sidebar nav li a {
   display: block;
   padding: .25rem 0;
   font-size: 90%;
@@ -190,7 +195,7 @@ header.navbar-dark ul.navbar-nav a.social {
   text-decoration: none;
 }
 
-.video-notes .sidebar #video-notes-nav li a:hover {
+.video-notes .sidebar nav li a:hover {
   color: black;
   text-decoration: none;
 }

@@ -133,6 +133,10 @@ header.navbar-dark  {
 
     .collapse {
         display: none;
+
+        // @media(min-width: 768px) {
+        //     display: block;
+        // }
     }
 
     .collapse.show {
@@ -158,8 +162,11 @@ header.navbar-dark  {
     }
 
     .sidebar {
+        border-bottom: 1px solid #eee;  // For mobile
+
         @media(min-width: 768px) {
             border-right: 1px solid #eee;
+            border-bottom: none;
             // This was to make it static but its not perfect...
             position: sticky;
             top: 3rem;
@@ -167,7 +174,7 @@ header.navbar-dark  {
             height: calc(100vh - 3rem);
         }
 
-        #video-notes-nav {
+        nav {
             padding: 0.5rem 0;
 
             @media(min-width: 768px) {
