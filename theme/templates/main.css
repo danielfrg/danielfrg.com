@@ -11,6 +11,10 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+.container {
+  max-width: 740px;
+}
+
 header.navbar-dark {
   background: #0e1c31;
   padding: .6rem 1rem;
@@ -116,6 +120,10 @@ header.navbar-dark ul.navbar-nav a.social {
 .index .pagination a:hover {
   color: #FFF;
   background: #007EE5;
+}
+
+.video-notes {
+  max-width: 1000px;
 }
 
 .video-notes .collapse {
