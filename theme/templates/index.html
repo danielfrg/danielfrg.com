@@ -4,53 +4,41 @@
 
 {% block content %}
 <main role="main" class="container index">
+    <div class="header-space"></div>
+    {% for article in articles_page.object_list %}
+        {% if article.category == "Misc" %}
+            <article>
+                <header>
+                    <time datetime="" title="{{ article.date.isoformat() }}" pubdate>{{ article.locale_date }}</time>
+                    <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
+                </header>
 
-  <div class="header-space"></div>
+                <div class="article_content">
+                    {{ article.summary }}
+                </div>
 
-  {% for article in articles_page.object_list %}
-  {% if article.category == "Misc" %}
-  <article>
-    <header>
-      <time datetime="" title="{{ article.date.isoformat() }}" pubdate>{{ article.locale_date }}</time>
-      <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h2>
-    </header>
+                <div class="meta">
+                    <div>
+                        <a href="{{ SITEURL }}/{{ article.url }}" class="read_more">Read more &#8594;</a>
+                    </div>
+                </div>
+            </article>
+            <hr>
+        {% endif %}
+    {% endfor %}
 
-    <div class="article_content">
-      {{ article.summary }}
-    </div>
-
-    <div class="meta">
-      <div>
-        <a href="{{ SITEURL }}/{{ article.url }}" class="read_more">Read more &#8594;</a>
-      </div>
-
-      <!-- <div>
-          {% for tag in article.tags %}
-            <a href="{{ SITEURL }}/{{ tag.url }}" class="tag">{{ tag }}</a>
-          {% endfor %}
-      </div> -->
-
-    </div>
-
-  </article>
-  <hr>
-  {% endif %}
-  {% endfor %}
-
-  <nav class="pagination row">
-    <div class="col-xs-6 left">
-      {% if articles_page.has_next() %}
-        <a class="prev" href="{{ SITEURL }}/{{ articles_next_page.url }}">&#8592; Past</a>
-      {% endif %}
-    </div>
-    <div class="col-xs-6 right">
-      {% if articles_page.has_previous() %}
-        <a class="next" href="{{ SITEURL }}/{{ articles_previous_page.url }}">Future &#8594;</a>
-      {% endif %}
-    </div>
-  </nav>
-
-  </div>
+    <nav class="pagination row">
+        <div class="col-xs-6 left">
+            {% if articles_page.has_next() %}
+                <a class="prev" href="{{ SITEURL }}/{{ articles_next_page.url }}">&#8592; Past</a>
+            {% endif %}
+        </div>
+          <div class="col-xs-6 right">
+              {% if articles_page.has_previous() %}
+                  <a class="next" href="{{ SITEURL }}/{{ articles_previous_page.url }}">Future &#8594;</a>
+              {% endif %}
+          </div>
+    </nav>
 
 </main>
 
