@@ -3,7 +3,7 @@ Slug: word2vec-yhat
 Date: 2013-9-21
 Tags: Python,word2vec,YHat,Machine learning
 Author: Daniel Rodriguez
-Include: angular,jquery
+Include: angular1,jquery
 
 A [few weeks ago](http://google-opensource.blogspot.com/2013/08/learning-meaning-behind-words.html)
 Google released some code to convert words to vectors called

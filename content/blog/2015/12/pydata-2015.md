@@ -13,6 +13,6 @@ Some of the content can be found in the [continuum developer blog](https://www.c
 
 Below you can find the [video of the presentation](https://www.youtube.com/watch?v=8Tzh42mQjrw) and [slides](http://www.slideshare.net/DanielRodriguez459/querying-18-billion-reddit-comments-with-python).
 
-{% youtube 8Tzh42mQjrw [700 394] %}
+{% youtube 8Tzh42mQjrw %}
 
-PD: There is a couple of good jokes at 35:05 - If you like bad jokes﻿
+PD: There is a couple of good jokes at 35:05 - If you like bad jokes!

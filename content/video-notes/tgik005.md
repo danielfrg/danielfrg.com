@@ -76,4 +76,4 @@ When a Liveness Probe fails that particular Pod gets removed from the Endpoints 
 
 ## Links
 
-- [k8s probes docs](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/
+- [k8s probes docs](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)
