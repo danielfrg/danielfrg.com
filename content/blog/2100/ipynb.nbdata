@@ -5,5 +5,4 @@ Tags: Test
 Author: Daniel Rodriguez
 Include: requirejs,jquery,bokeh
 Subcells: [0, None]
-
 Status: Draft
