@@ -57,7 +57,7 @@ header.navbar-dark  {
 
 .index {
     .header-space {
-        padding: 1vw;
+        padding: 0.5rem;
         width: 100%;
     }
 
@@ -145,12 +145,6 @@ header.navbar-dark  {
         }
     }
 
-    .video-notes-links {
-        @media(min-width: 768px) {
-            display: block!important;
-        }
-    }
-
     .sidebar {
         @media(min-width: 768px) {
             border-right: 1px solid #eee;
@@ -163,6 +157,10 @@ header.navbar-dark  {
 
         #video-notes-nav {
             padding: 0.5rem 0;
+
+            @media(min-width: 768px) {
+                display: block!important;
+            }
             
             li {
                 width: 100%;
@@ -389,13 +387,16 @@ article {
 
     .videobox {
         display: block;
-        width: 100%;
+        
+        iframe {
+            display: block;
+            margin: 0 auto;
+            border: 0;
+            max-width: 700px;
+            height: 400px;
+        }
     }
-    .videobox iframe {
-        display: block;
-        margin: 0 auto;
-        border: 0;
-    }
+    
 
     code {
         color: #333;
