@@ -18,24 +18,26 @@
     </head>
 
     <body>
-        <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
-            <a class="navbar-brand" href="/" title="Home" class="title">Daniel Rodriguez</a></li>
-            
-            <div class="navbar-nav-scroll">
-                <ul class="navbar-nav flex-row">
-                    <li class="nav-item"><a class="nav-link" href="/video-notes/" title="About">Video Notes</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/archives.html" title="Archive">Archive</a></li>
-                    <!-- <li class="nav-item"><a class="nav-link" href="{{ ABOUT_PAGE }}" title="About">About</a></li> -->
+        <header class="navbar navbar-expand navbar-dark">
+            <div class="container flex-column flex-md-row bd-navbar">
+                <a class="navbar-brand" href="/" title="Home" class="title">Daniel Rodriguez</a></li>
+                
+                <div class="navbar-nav-scroll">
+                    <ul class="navbar-nav flex-row">
+                        <li class="nav-item"><a class="nav-link" href="/video-notes/" title="About">Video Notes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/archives.html" title="Archive">Archive</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link" href="{{ ABOUT_PAGE }}" title="About">About</a></li> -->
+                    </ul>
+                </div>
+
+                <ul class="navbar-nav flex-row ml-md-auto d-md-flex">
+                    <li class="nav-item"><a class="nav-link" href="https://github.com/danielfrg" title="danielfrg's Github" rel="me"><i class="fab fa-github"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://twitter.com/danielfrg" title="@danielfrg Twitter" rel="me"><i class="fab fa-twitter"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://instagram.com/danielfrg2" title="danielfrg Instagram" rel="me"><i class="fab fa-instagram"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/in/danielfrg" title="Daniel Rodriguez LinkedIn" rel="me"><i class="fab fa-linkedin-in"></i></a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="/feeds/all.atom.xml" title="danielfrg.com RSS feed" rel="me"><i class="fas fa-rss"></i></a></li> -->
                 </ul>
             </div>
-
-            <ul class="navbar-nav flex-row ml-md-auto d-md-flex">
-                <li class="nav-item"><a class="nav-link" href="https://github.com/danielfrg" title="danielfrg's Github" rel="me"><i class="fab fa-github"></i></a></li>
-                <li class="nav-item"><a class="nav-link" href="https://twitter.com/danielfrg" title="@danielfrg Twitter" rel="me"><i class="fab fa-twitter"></i></a></li>
-                <li class="nav-item"><a class="nav-link" href="https://instagram.com/danielfrg2" title="danielfrg Instagram" rel="me"><i class="fab fa-instagram"></i></a></li>
-                <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/in/danielfrg" title="Daniel Rodriguez LinkedIn" rel="me"><i class="fab fa-linkedin-in"></i></a></li>
-                <!-- <li class="nav-item"><a class="nav-link" href="/feeds/all.atom.xml" title="danielfrg.com RSS feed" rel="me"><i class="fas fa-rss"></i></a></li> -->
-            </ul>
         </header>
 
         {% block content %}{% endblock %}
