@@ -2,17 +2,14 @@
 {% block title %}{{ article.title }}{% endblock %}
 
 {% block extra_head %}
-{% if 'angular' in article.include %}
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-{% endif %}
 {% if 'jquery' in article.include %}
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>s
 {% endif %}
-{% if 'requirejs' in article.include %}
-<script src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
+{% if 'vue' in article.include %}
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 {% endif %}
-{% if 'bokeh' in article.include %}
-<script src="//cdnjs.cloudflare.com/ajax/libs/bokeh/0.12.7/bokeh.min.css"></script>
+{% if 'angular1' in article.include %}
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
 {% endif %}
 {% endblock %}
 

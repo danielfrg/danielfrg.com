@@ -18,36 +18,48 @@ body {
 header.navbar-dark  {
     background: $header-bg;
     padding: .6rem 1rem;
-    position: sticky;
+    position: relative;
     top: 0;
     z-index: 1071;
+
+    @media(min-width: 768px) {
+        position: sticky;
+    }
 
     a {
         color: #fff;
     }
 
     a.navbar-brand {
-        font-weight: 700;
-        font-size: 1.063rem;
+        font-weight: 600;
+        font-size: 1rem;
         letter-spacing: -.6px;
-        padding: 0;
+        padding: 0 0 0 0;
         margin: 0;
-    }
 
-    ul.navbar-nav {
-        .nav-link {
-            color: #fff;
-            text-transform: uppercase;
-            font-size: 12px;
-            letter-spacing: -.5px;
-            opacity: 1;
-            padding: 0 15px 0;
+        @media(min-width: 768px) {
+            padding: 0 20px 0 0;
         }
     }
 
-    // For icons on the right
-    ul.ml-md-auto .nav-link {
-        font-size: 15px;
+    ul.navbar-nav {
+        a.nav-link {
+            color: rgba(255, 255, 255, 0.80);
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: -.5px;
+            padding: 0 15px 0;
+        }
+
+        a.nav-link:hover {
+            color: rgba(255, 255, 255, 1);
+        }
+
+
+        a.social {
+            font-size: 15px;
+            padding: 0 10px 0;
+        }
     }
 }
 
@@ -113,8 +125,6 @@ header.navbar-dark  {
 }
 
 .video-notes {
-    max-width: 1000px;
-
     .collapse {
         display: none;
     }

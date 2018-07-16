@@ -14,10 +14,16 @@ body {
 header.navbar-dark {
   background: #0e1c31;
   padding: .6rem 1rem;
-  position: -webkit-sticky;
-  position: sticky;
+  position: relative;
   top: 0;
   z-index: 1071;
+}
+
+@media (min-width: 768px) {
+  header.navbar-dark {
+    position: -webkit-sticky;
+    position: sticky;
+  }
 }
 
 header.navbar-dark a {
@@ -25,24 +31,34 @@ header.navbar-dark a {
 }
 
 header.navbar-dark a.navbar-brand {
-  font-weight: 700;
-  font-size: 1.063rem;
+  font-weight: 600;
+  font-size: 1rem;
   letter-spacing: -.6px;
-  padding: 0;
+  padding: 0 0 0 0;
   margin: 0;
 }
 
-header.navbar-dark ul.navbar-nav .nav-link {
-  color: #fff;
+@media (min-width: 768px) {
+  header.navbar-dark a.navbar-brand {
+    padding: 0 20px 0 0;
+  }
+}
+
+header.navbar-dark ul.navbar-nav a.nav-link {
+  color: rgba(255, 255, 255, 0.8);
   text-transform: uppercase;
   font-size: 12px;
   letter-spacing: -.5px;
-  opacity: 1;
   padding: 0 15px 0;
 }
 
-header.navbar-dark ul.ml-md-auto .nav-link {
+header.navbar-dark ul.navbar-nav a.nav-link:hover {
+  color: white;
+}
+
+header.navbar-dark ul.navbar-nav a.social {
   font-size: 15px;
+  padding: 0 10px 0;
 }
 
 .index .header-space {
@@ -100,10 +116,6 @@ header.navbar-dark ul.ml-md-auto .nav-link {
 .index .pagination a:hover {
   color: #FFF;
   background: #007EE5;
-}
-
-.video-notes {
-  max-width: 1000px;
 }
 
 .video-notes .collapse {
