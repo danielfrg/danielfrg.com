@@ -20,7 +20,7 @@ header.navbar-dark  {
     padding: .6rem 1rem;
     position: sticky;
     top: 0;
-    z-index: 9999;
+    z-index: 1071;
 
     a {
         color: #fff;
@@ -35,10 +35,6 @@ header.navbar-dark  {
     }
 
     ul.navbar-nav {
-        padding-top: 4px;
-
-
-
         .nav-link {
             color: #fff;
             text-transform: uppercase;
@@ -183,9 +179,7 @@ header.navbar-dark  {
     .content {
         padding: 1.2rem;
 
-        iframe.video-note {
-            width: 100%;
-            height: 400px;
+        iframe {
             background: #000;
         }
     }
@@ -386,15 +380,16 @@ article {
     }
 
     .videobox {
+        // This is a copy of `.embed-responsive embed-responsive-16by9 text-center` from boostrap
+        // Since the liquid tags uses `.videobox`
+        position: relative;
         display: block;
-        
-        iframe {
-            display: block;
-            margin: 0 auto;
-            border: 0;
-            max-width: 700px;
-            height: 400px;
-        }
+        width: 100%;
+        padding: 0;
+        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        text-align: center!important;
     }
     
 

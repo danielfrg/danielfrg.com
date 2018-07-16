@@ -17,7 +17,7 @@ header.navbar-dark {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  z-index: 9999;
+  z-index: 1071;
 }
 
 header.navbar-dark a {
@@ -30,10 +30,6 @@ header.navbar-dark a.navbar-brand {
   letter-spacing: -.6px;
   padding: 0;
   margin: 0;
-}
-
-header.navbar-dark ul.navbar-nav {
-  padding-top: 4px;
 }
 
 header.navbar-dark ul.navbar-nav .nav-link {
@@ -183,9 +179,7 @@ header.navbar-dark ul.ml-md-auto .nav-link {
   padding: 1.2rem;
 }
 
-.video-notes .content iframe.video-note {
-  width: 100%;
-  height: 400px;
+.video-notes .content iframe {
   background: #000;
 }
 
@@ -390,15 +384,14 @@ article img {
 }
 
 article .videobox {
+  position: relative;
   display: block;
-}
-
-article .videobox iframe {
-  display: block;
-  margin: 0 auto;
-  border: 0;
-  max-width: 700px;
-  height: 400px;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  text-align: center !important;
 }
 
 article code {
