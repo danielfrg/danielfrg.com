@@ -53,4 +53,6 @@ SITEMAP = {
 IPYNB_EXTEND_STOP_SUMMARY_TAGS = [('h2', None), ('ol', None), ('ul', None)]
 IPYNB_NB_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/notebook.ipynb'
 IPYNB_USE_META_SUMMARY = True
-# IPYNB_EXPORT_TEMPLATE = 'notebook.tpl'
+IPYNB_EXPORT_TEMPLATE = 'notebook.tpl'
+
+LIQUID_CONFIGS = (('IPYNB_EXPORT_TEMPLATE', 'notebook.tpl', ""), )
