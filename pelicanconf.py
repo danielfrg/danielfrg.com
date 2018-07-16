@@ -1,9 +1,5 @@
 from __future__ import unicode_literals
 
-### DEV stuff
-# WRITE_SELECTED = ['content/blog/2100/ipynb-liquid.md']
-###
-
 SITEURL = ''
 AUTHOR = u'Daniel Rodriguez'
 SITENAME = u'Daniel Rodriguez'
@@ -24,7 +20,7 @@ DEFAULT_CATEGORY = 'misc'
 PAGE_PATHS = ['content/pages']
 CACHE_PATH = 'cache/'
 CACHE_CONTENT = True
-LOAD_CONTENT_CACHE = True
+LOAD_CONTENT_CACHE = False
 DELETE_OUTPUT_DIRECTORY = True
 
 ARTICLE_URL = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/'

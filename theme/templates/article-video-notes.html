@@ -1,14 +1,17 @@
 <div class="container video-notes">
     <div class="row flex-xl-nowrap">
         
-        <div class="col-3 sidebar">
-            <form class="bd-search d-flex align-items-center">
+        <div class="col-12 col-md-3 col-xl-3 sidebar">
+            <form class="search d-flex align-items-center">
                 <span style="position: relative; display: inline-block; direction: ltr;">
-                    <input type="search" class="form-control ds-input" id="search-input" placeholder="Filter... (coming soon)" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="algolia-autocomplete-listbox-0" dir="auto" style="position: relative; vertical-align: top;" data-com.agilebits.onepassword.user-edited="yes"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: -apple-system, system-ui, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none;">assss</pre><span class="ds-dropdown-menu ds-without-1" role="listbox" id="algolia-autocomplete-listbox-0" style="position: absolute; top: 100%; z-index: 100; left: 0px; right: auto; display: none;">
+                    <input type="search" class="form-control" id="search-input" placeholder="Filter... (coming soon)" autocomplete="off" spellcheck="false" role="combobox" dir="auto" style="position: relative; vertical-align: top;" />
                 </span>
+                <button id="btn-collapse" class="btn d-md-none" type="button" data-toggle="collapse" data-target="#video-notes-nav">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg>
+                </button>
             </form>
           
-            <nav class="bd-links" id="bd-docs-nav">
+            <nav id="video-notes-nav" class="video-notes-links collapse">
                 <ul class="nav sidenav">
                     {% for article in articles %}
                     {% if article.category == "video-notes" and article.title != "Video Notes" %}
@@ -19,7 +22,7 @@
             </nav>
         </div>
 
-        <main class="col-9 content">
+        <main class="col-12 col-md-9 col-xl-9 content">
             <article>
                 {% if article.video_id | length > 1 %}
                 <iframe class="video-note" src="https://www.youtube.com/embed/{{ article.video_id }}" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
@@ -30,3 +33,13 @@
         </main>
     </div>
 </div>
+
+<script>
+$(document).ready(function () {
+
+    $('#btn-collapse').on('click', function () {
+        $('#video-notes-nav').toggleClass('show');
+    });
+
+});
+</script>
