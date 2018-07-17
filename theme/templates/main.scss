@@ -67,6 +67,27 @@ header.navbar-dark  {
     }
 }
 
+hr.post-divider {
+    overflow: visible;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    border: none;
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    height: 1px;
+}
+
+hr.post-divider:after {
+    content: "//";
+    display: inline-block;
+    position: relative;
+    top: -1.34em;
+    font-size: 0.7em;
+    padding: 0 0.25em;
+    background: #fff;
+}
+
 .index {
     .header-space {
         padding: 0.5rem;
@@ -167,9 +188,9 @@ header.navbar-dark  {
             border-bottom: none;
             // This was to make it static but its not perfect...
             position: sticky;
-            top: 3rem;
+            top: 2.8rem;
             z-index: 1000;
-            height: calc(100vh - 3rem);
+            height: calc(100vh - 8.4rem);
         }
 
         nav {
@@ -178,7 +199,7 @@ header.navbar-dark  {
             @media(min-width: 768px) {
                 display: block!important;
             }
-            
+        
             li {
                 width: 100%;
 
@@ -422,15 +443,6 @@ article {
         padding: 5px 3px 3px 3px;
     }
 
-    hr {
-        display: block;
-        height: 1px;
-        border: 0;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
-        margin: 50px 0;
-        padding: 0;
-    }
-
     .codehilite {
         pre {
             border-radius: 0;
@@ -451,7 +463,6 @@ article {
     }
 
     .meta {
-        font-size: 11px;
 
         a:hover {
             text-decoration: none;
@@ -476,8 +487,13 @@ article {
             background: rgba(0, 0, 0, 0.15);
             border: 0;
         }
+    }
 
-        a.read_more, a.comments_btn {
+    .read_more {
+        padding-top: 1.5rem;
+        margin-top: 2rem;
+
+        a.link {
             font-size: 14px;
             font-weight: 800;
             padding: 10px 20px;
@@ -486,9 +502,19 @@ article {
             border: 1px solid #007EE5;
         }
 
-        a.read_more:hover, a.comments_btn:hover {
+        a.link:hover {
             color: #FFF;
             background: #007EE5;
         }
+    }
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 1rem 0 3rem;
+
+    .text-muted {
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 0.8rem;
     }
 }
