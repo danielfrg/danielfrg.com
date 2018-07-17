@@ -1,7 +1,7 @@
-<div class="container video-notes">
+<div class="container tech-notes">
     <div class="row flex-xl-nowrap">
 
-        <div id="video-notes-sidebar" class="col-12 col-md-3 col-xl-3 sidebar">
+        <div id="tech-notes-sidebar" class="col-12 col-md-3 col-xl-3 sidebar">
             <form class="search d-flex align-items-center">
                 <span style="position: relative; display: inline-block; direction: ltr;">
                     <input type="search" class="form-control" id="search-input" placeholder="Filter..." autocomplete="off" spellcheck="false" v-model="search"/>
@@ -37,7 +37,7 @@
 <script>
 items = [
     {% for article in articles %}
-    {% if article.category == "video-notes" and article.title != "Video Notes" %}
+    {% if article.category == "tech-notes" and article.title != "Tech Notes" %}
     { title: "{{ article.title }}", url: "/{{ article.url }}", tags: [{% for tag in article.tags %}"{{ tag }}",{% endfor %}] },
     {% endif %}
     {% endfor %}
@@ -47,8 +47,8 @@ function contains(text, search) {
     return text.toLowerCase().indexOf(search.toLowerCase()) > -1
 }
 
-var video_notes = new Vue({
-    el: '#video-notes-sidebar',
+var tech_notes = new Vue({
+    el: '#tech-notes-sidebar',
     data: {
         show: false,
         search: '',

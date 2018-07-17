@@ -119,16 +119,18 @@ header.navbar-dark  {
             padding: 8px 20px;
             font-weight: bold;
             color: #007EE5;
+            text-decoration: none;
         }
 
         a:hover {
             color: #FFF;
             background: #007EE5;
+            text-decoration: none;
         }
     }
 }
 
-.video-notes {
+.tech-notes {
     max-width: 1000px;
 
     .collapse {

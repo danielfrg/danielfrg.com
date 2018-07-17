@@ -114,54 +114,56 @@ header.navbar-dark ul.navbar-nav a.social {
   padding: 8px 20px;
   font-weight: bold;
   color: #007EE5;
+  text-decoration: none;
 }
 
 .index .pagination a:hover {
   color: #FFF;
   background: #007EE5;
+  text-decoration: none;
 }
 
-.video-notes {
+.tech-notes {
   max-width: 1000px;
 }
 
-.video-notes .collapse {
+.tech-notes .collapse {
   display: none;
 }
 
-.video-notes .collapse.show {
+.tech-notes .collapse.show {
   display: block;
 }
 
-.video-notes form {
+.tech-notes form {
   padding: 1rem 15px;
   margin: 0 -15px;
   border-bottom: 1px solid #eee;
 }
 
 @media (min-width: 768px) {
-  .video-notes form {
+  .tech-notes form {
     padding: 1rem 15px 1rem;
   }
 }
 
-.video-notes form span {
+.tech-notes form span {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
 
-.video-notes form .btn {
+.tech-notes form .btn {
   cursor: pointer;
   background: #fff;
 }
 
-.video-notes .sidebar {
+.tech-notes .sidebar {
   border-bottom: 1px solid #eee;
 }
 
 @media (min-width: 768px) {
-  .video-notes .sidebar {
+  .tech-notes .sidebar {
     border-right: 1px solid #eee;
     border-bottom: none;
     position: -webkit-sticky;
@@ -172,21 +174,21 @@ header.navbar-dark ul.navbar-nav a.social {
   }
 }
 
-.video-notes .sidebar nav {
+.tech-notes .sidebar nav {
   padding: 0.5rem 0;
 }
 
 @media (min-width: 768px) {
-  .video-notes .sidebar nav {
+  .tech-notes .sidebar nav {
     display: block !important;
   }
 }
 
-.video-notes .sidebar nav li {
+.tech-notes .sidebar nav li {
   width: 100%;
 }
 
-.video-notes .sidebar nav li a {
+.tech-notes .sidebar nav li a {
   display: block;
   padding: .25rem 0;
   font-size: 90%;
@@ -194,16 +196,16 @@ header.navbar-dark ul.navbar-nav a.social {
   text-decoration: none;
 }
 
-.video-notes .sidebar nav li a:hover {
+.tech-notes .sidebar nav li a:hover {
   color: black;
   text-decoration: none;
 }
 
-.video-notes .content {
+.tech-notes .content {
   padding: 1.2rem;
 }
 
-.video-notes .content iframe {
+.tech-notes .content iframe {
   background: #000;
 }
 

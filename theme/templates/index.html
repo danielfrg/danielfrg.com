@@ -10,7 +10,7 @@
                 <header>
                     <time datetime="" title="{{ article.date.isoformat() }}" pubdate>{{ article.locale_date }}</time>
                     <h2><a href="{{ SITEURL }}/{{ article.url }}">
-                        {% if article.category == "video-notes" %}
+                        {% if article.category == "tech-notes" %}
                         Notes for: {{ article.title }}
                         {% else %}
                         {{ article.title }}

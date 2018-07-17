@@ -1,11 +1,11 @@
 Title: TGIK 003: Istio
 Slug: tgik-003-istio
 Date: 2018-07-14 12:03
-Category: video-notes
+Category: tech-notes
 Tags: Kubernetes,Istio
 Author: Daniel Rodriguez
-url: video-notes/tgik-003-istio
-save_as: video-notes/tgik-003-istio/index.html
+url: tech-notes/tgik-003-istio
+save_as: tech-notes/tgik-003-istio/index.html
 video_id: WnDG-5cvEew
 Rating: 2/5
 

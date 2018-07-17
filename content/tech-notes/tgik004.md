@@ -1,11 +1,11 @@
 Title: TGIK 004: RBAC
 Slug: tgik-004-rbac
 Date: 2018-07-14 15:00
-Category: video-notes
+Category: tech-notes
 Tags: Kubernetes,RBAC
 Author: Daniel Rodriguez
-url: video-notes/tgik-004-rbac
-save_as: video-notes/tgik-004-rbac/index.html
+url: tech-notes/tgik-004-rbac
+save_as: tech-notes/tgik-004-rbac/index.html
 video_id: slUMVwRXlRo
 Rating: 5/5
 

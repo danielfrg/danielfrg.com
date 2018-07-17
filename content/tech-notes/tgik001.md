@@ -1,11 +1,11 @@
 Title: TGIK 001: A quick tour
 Slug: tgik-001-quick-tour
 Date: 2018-07-14 12:01
-Category: video-notes
+Category: tech-notes
 Tags: Kubernetes
 Author: Daniel Rodriguez
-url: video-notes/tgik-001-quick-tour
-save_as: video-notes/tgik-001-quick-tour/index.html
+url: tech-notes/tgik-001-quick-tour
+save_as: tech-notes/tgik-001-quick-tour/index.html
 video_id: 9YYeE-bMWv8
 Rating: 5/5
 
