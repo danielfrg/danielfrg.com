@@ -1,7 +1,7 @@
 Title: Notes for: TGIK 003: Istio
 Slug: tgik-003-istio
 Date: 2018-07-14 12:03
-Tags: Tech Notes,Kubernetes,Istio
+Tags: Tech notes,Kubernetes,Istio
 Author: Daniel Rodriguez
 
 {% youtube WnDG-5cvEew %}

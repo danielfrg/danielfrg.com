@@ -6,7 +6,7 @@ Author: Daniel Rodriguez
 
 A few weeks/months ago I found on HackerNews that Harvard was publishing all their [Data Science course content](http://cs109.org/) (lectures, videos, labs, homeworks) online. I couldn't miss the opportunity to find what are they teaching, it was a nice experience to see how much I have learned and what else I am missing. Also, when I saw that everything was on python I knew they are doing it right!
 
-The homeworks are IPython notebooks, the books are what I consider every Data Scientist should read: [Python for Data Analysis](http://shop.oreilly.com/product/0636920023784.do), [Machine Learning for Hackers](http://shop.oreilly.com/product/0636920018483.do), [Probabilistic Programming and Bayesian methods for Hackers](http://nbviewer.ipython.org/urls/raw.github.com/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/master/Prologue/Prologue.ipynb).
+The homeworks are IPython notebooks, the books are what I consider every Data Scientist should read: [Python for Data analysis](http://shop.oreilly.com/product/0636920023784.do), [Machine Learning for Hackers](http://shop.oreilly.com/product/0636920018483.do), [Probabilistic Programming and Bayesian methods for Hackers](http://nbviewer.ipython.org/urls/raw.github.com/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers/master/Prologue/Prologue.ipynb).
 
 The homeworks were amazing and useful, I haven't seen all the videos (yet) but the ones I did were amazing. Below I do a little review of each homework, the stuff I learned and stuff that I think should be different.
 

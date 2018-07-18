@@ -1,7 +1,7 @@
 Title: Notes for: TGIK 001: A quick tour
 Slug: tgik-001-quick-tour
 Date: 2018-07-14 12:01
-Tags: Tech Notes,Kubernetes
+Tags: Tech notes,Kubernetes
 Author: Daniel Rodriguez
 
 {% youtube 9YYeE-bMWv8 %}

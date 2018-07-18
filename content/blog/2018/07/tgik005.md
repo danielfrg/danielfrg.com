@@ -1,7 +1,7 @@
 Title: Notes for: TGIK 005: Pod Params and Probes
 Slug: tgik-005-pods-params-probes
 Date: 2018-07-15 14:00
-Tags: Tech Notes,Kubernetes,Pods,Deployments,Probes
+Tags: Tech notes,Kubernetes,Pods,Deployments,Probes
 Author: Daniel Rodriguez
 
 {% youtube xEdBSVaUtp4 %}

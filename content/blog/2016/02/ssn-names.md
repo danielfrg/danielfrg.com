@@ -1,7 +1,7 @@
 Title: ReproduceIt: Name Trends
 Slug: reproduceit-name-trends
 Date: 2016-02-23
-Tags: ReproduceIt,Data Analysis,Python,Pandas,Bokeh
+Tags: ReproduceIt,Data analysis,Python,Pandas,Bokeh
 Author: Daniel Rodriguez
 Include: jquery
 

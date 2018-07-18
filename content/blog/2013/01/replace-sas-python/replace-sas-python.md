@@ -209,7 +209,7 @@ SAS EM, for this project it took me like 4 or 5 hours with SAS EM and
 less than 1 hour on Python.
 
 The complete iPython notebook (also visible [here][]) and data is
-available on Github: [Data Analysis Examples Python - Catalog
+available on Github: [Data analysis Examples Python - Catalog
 Marketing][].
 
 Note : I know this is the most very basic example of Machine Learning on
@@ -223,7 +223,7 @@ Python, more complex examples will come later.
     "Scikit-learn github"
   [ROC Comparison]: http://ctrl68.files.wordpress.com/2013/01/download.png
   [here]: http://nbviewer.ipython.org/urls/raw.github.com/dfrodriguez143/PythonDataAnalysisExamples/master/catalog-marketing/catalog-marketing.ipynb
-  [Data Analysis Examples Python - Catalog Marketing]: https://github.com/dfrodriguez143/PythonDataAnalysisExamples/tree/master/catalog-marketing
+  [Data analysis Examples Python - Catalog Marketing]: https://github.com/dfrodriguez143/PythonDataAnalysisExamples/tree/master/catalog-marketing
     "Catalog Marketing"
   [Machine Learning for Hackers]: http://www.amazon.com/Machine-Learning-Hackers-Drew-Conway/dp/1449303714
     "Machine Learning for Hackers"

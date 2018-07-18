@@ -1,7 +1,7 @@
 Title: Notes for: Istio and Kubernetes
 Slug: istio-and-k8s
 Date: 2018-07-14 13:00
-Tags: Tech Notes,Kubernetes,Istio
+Tags: Tech notes,Kubernetes,Istio
 Author: Daniel Rodriguez
 
 {% youtube s4qasWn_mFc %}
