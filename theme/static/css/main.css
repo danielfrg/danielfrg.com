@@ -358,7 +358,8 @@ article .highlight pre code {
   border: none;
 }
 
-article .highlight pre.bash {
+article pre.bash {
+  padding: 10px;
   background-color: #000;
   color: #FFF;
 }

@@ -359,11 +359,12 @@ article {
                 border: none;
             }
         }
+    }
 
-        pre.bash {
-            background-color: #000;
-            color: #FFF;
-        }
+    pre.bash {
+        padding: 10px;
+        background-color: #000;
+        color: #FFF;
     }
 
     .metabox {
