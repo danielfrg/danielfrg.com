@@ -1,0 +1,8 @@
+Title: Jupyter notebook test for markup
+Slug: jupyter-notebook-test
+Date: 2100-12-31
+Tags: Test
+Author: Daniel Rodriguez
+Include: requirejs,jquery,bokeh
+Subcells: [0, None]
+Status: Draft
