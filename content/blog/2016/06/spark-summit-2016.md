@@ -1,7 +1,7 @@
 Title: Talk @ Spark Summit 2015: Connecting python to the Spark Ecosystem
 Slug: spark-summit-2016-connecting-python-to-the-spark-ecosystem
 Date: 2016-06-08
-Tags: Talk,Spark Summit,Spark,Python
+Tags: Talk,Spark,Spark Summit,Spark,Python,Hadoop
 Author: Daniel Rodriguez
 
 I was lucky enough to go San Francisco in June to  give a talk at Spark Summit 2016.

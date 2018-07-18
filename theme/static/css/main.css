@@ -345,7 +345,7 @@ article code {
   padding: 5px 3px 3px 3px;
 }
 
-article .codehilite pre {
+article .highlight pre {
   border-radius: 0;
   background-color: #eeefef;
   color: #000000;
@@ -353,11 +353,11 @@ article .codehilite pre {
   padding: 10px;
 }
 
-article .codehilite pre code {
+article .highlight pre code {
   border: none;
 }
 
-article .codehilite pre.bash {
+article .highlight pre.bash {
   background-color: #000;
   color: #FFF;
 }

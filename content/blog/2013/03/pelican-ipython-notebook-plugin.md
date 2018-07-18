@@ -10,7 +10,7 @@ One of the people behind pelican helped me to convert the [previous code]({filen
 
 The only thing that changed is the installation but the docs on how to use it is below (or in the readme of the repo).
 
-An example is my last post about a [cleaning data for a Kaggle competition]({filename}kaggle-bulldozers-basic-cleaning.ipynb).
+An example is my last post about a [cleaning data for a Kaggle competition]({filename}kaggle-bulldozers-basic-cleaning.md).
 
 Happy blogging!
 

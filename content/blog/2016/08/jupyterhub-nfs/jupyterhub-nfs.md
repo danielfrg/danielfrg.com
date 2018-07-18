@@ -1,7 +1,7 @@
 Title: Jupyter Hub on Kubernetes Part II: NFS
 Slug: jupyterhub-kubernetes-nfs
 Date: 2016-09-10
-Tags: Jupyter Hub,Kubernetes,LDAP,Docker,NFS
+Tags: Kubernetes,Jupyter Hub,Docker,LDAP,NFS
 Author: Daniel Rodriguez
 
 Second part of my JupyterHub deployment in Kubernetes experiment be sure to read [Part I]({filename}../jupyterhub-ldap/jupyterhub-ldap.md).

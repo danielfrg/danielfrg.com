@@ -2,7 +2,7 @@ Title: Notes for: TGIK 004: RBAC
 Slug: tgik-004-rbac
 Date: 2018-07-14 15:00
 Category: tech-notes
-Tags: Tech notes,Kubernetes,RBAC
+Tags: Tech Notes,Kubernetes,RBAC
 Author: Daniel Rodriguez
 
 {% youtube slUMVwRXlRo %}

@@ -1,7 +1,7 @@
 Title: NLP at scale: Semafor + salt + celery and more
 Slug: nlp-scale-semafor-salt-celery-more
 Date: 2013-11-17
-Tags: Python,NLP,Semafor,Salt,Celery,Luigi,Vagrant
+Tags: NLP,Python,Semafor,Salt,Celery,Luigi,Vagrant
 Author: Daniel Rodriguez
 
 This posts describes the implementation of a simple system to parse web pages using [SEMAFOR](http://www.ark.cs.cmu.edu/SEMAFOR/) (a SEMantic Analyzer Of Frame Representations) at scale. The system is mainly powered by salt and celery but also uses boto to create worker EC2 instances that parse the documents in parallel and luigi is used to describe the data pipeline in each worker.

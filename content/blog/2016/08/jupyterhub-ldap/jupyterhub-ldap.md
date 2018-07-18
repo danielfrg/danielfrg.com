@@ -1,7 +1,7 @@
 Title: Jupyter Hub on Kubernetes with LDAP
 Slug: jupyterhub-kubernetes-ldap
 Date: 2016-09-03
-Tags: Jupyter Hub,Kubernetes,LDAP,Docker
+Tags: Kubernetes,Jupyter Hub,Docker,LDAP
 Author: Daniel Rodriguez
 
 In this post I am going to show some initial work I did in the last day to deploy

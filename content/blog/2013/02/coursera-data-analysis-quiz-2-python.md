@@ -3,3 +3,5 @@ Slug: coursera-data-analysis-quiz-2-python
 Date: 2013-2-4
 Tags: Python,Coursera,Data
 Author: Daniel Rodriguez
+
+{% notebook blog/2013/02/coursera-data-analysis-quiz-2-python.ipynb %}

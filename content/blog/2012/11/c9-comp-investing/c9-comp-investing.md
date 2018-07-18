@@ -1,7 +1,7 @@
 Title: Using cloud9 to save computing power and to code from everywhere too
 Slug: using-cloud9-to-save-computing-power-and-to-code-from-everywhere-too
 Date: 2012-11-03 14:46
-Tags: Cloud9,Computational investing,Coursera,Numpy,Python
+Tags: Python,Computational investing,Coursera,Numpy,Cloud9
 Author: Daniel Rodriguez
 
 I am taking my second course on [Coursera][] Computational Investing -

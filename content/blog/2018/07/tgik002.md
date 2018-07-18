@@ -1,7 +1,7 @@
 Title: Notes for: TGIK 002: Networking and Services
 Slug: tgik-002-networking-services
 Date: 2018-07-14 12:02
-Tags: Tech notes,Kubernetes,Networking
+Tags: Tech Notes,Kubernetes,Networking
 Author: Daniel Rodriguez
 
 {% youtube PlnvxqKR28A %}

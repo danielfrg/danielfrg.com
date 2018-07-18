@@ -1,7 +1,7 @@
 Title: Making your own DDNS with Django and AppFog
 Slug: making-your-own-ddns-with-django-and-appfog
 Date: 2012-10-20 21:45
-Tags: AppFog,DDNS,django,python
+Tags: django,Python,PaaS,DDNS
 Author: Daniel Rodriguez
 
 I love web-apps as the data is always in sync magically via the cloud, but

@@ -1,7 +1,7 @@
 Title: ReproduceIt
 Slug: reproduce-it
 Date: 2015-04-30
-Tags: ReproduceIt
+Tags: ReproduceIt,Data Analysis
 Author: Daniel Rodriguez
 
 I have been wanting to restart my blog for a while now. In 2013 I wrote around 20 posts but in 2014 I only wrote 3 times and this is my first post in 2015 and its not even a real one. Last one was more than 6 months ago. 

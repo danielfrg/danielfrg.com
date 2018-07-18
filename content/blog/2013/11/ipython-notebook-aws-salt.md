@@ -1,7 +1,7 @@
 Title: One-liner: Deploy python scipy stack with IPython notebook on AWS
 Slug: ipython-notebook-aws-salt
 Date: 2013-11-27
-Tags: Python,AWS,Salt,IPython Notebook
+Tags: AWS,Python,Salt,Jupyter Notebook,IPython Notebook
 Author: Daniel Rodriguez
 
 **Problem:** How many times have you needed to create a powerful EC2 instance with the the python scientific stack
