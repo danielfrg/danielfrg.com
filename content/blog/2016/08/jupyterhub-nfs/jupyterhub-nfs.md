@@ -111,7 +111,6 @@ spec:
 
 All this can be found in the `example/nfs.yml` file when executed there should be a `jupyterhub-nfs` service.
 
-<div class="codehilite">
 <pre class="bash">
 $ kubectl create -f example/nfs.yml
 ...
@@ -119,7 +118,6 @@ $ kubectl create -f example/nfs.yml
 $ kubectl get services
 NAME                     CLUSTER-IP       EXTERNAL-IP       PORT(S)                      AGE
 jupyterhub-nfs           10.103.253.185   <none>            2049/TCP,20048/TCP,111/TCP   15h
-</div>
 </pre>
 
 Now with the NFS service ready we need to create a Persistent Volume and another Persistent Volume Claim
@@ -182,7 +180,6 @@ spec:
 
 Start the deployment and service and you should see a new `jupyterhub-nfs-web` service
 
-<div class="codehilite">
 <pre class="bash">
 $ kubectl create -f example/nfs2.yml
 ...
@@ -190,7 +187,6 @@ $ kubectl create -f example/nfs2.yml
 $ kubectl get services
 NAME                     CLUSTER-IP       EXTERNAL-IP       PORT(S)                      AGE
 jupyterhub-nfs-web       10.103.241.248   104.197.178.53    80/TCP                       15h
-</div>
 </pre>
 
 Going to that External IP you should see an empty NGINX file listing.
@@ -254,10 +250,8 @@ for example '/mnt/notebooks/danielfrg'.
 
 Start the JupyterHub service same as before.
 
-<div class="codehilite">
 <pre class="bash">
 $ kubectl create -f hub.yml
-</div>
 </pre>
 
 Wait for the service to give you an External IP and login as any LDAP user (see [Part I]({filename}../jupyterhub-ldap/jupyterhub-ldap.md)).

@@ -36,7 +36,7 @@ where they just load a `csv` file using just the python std-library I just use t
 
 <pre class="bash">
 $ docker run -p 5432:5432 -v $(pwd):/src multicorn
-</div>
+</pre>
 
 Connect to the Database (using pgadmin for example) create the FDW and Foreign table.
 
@@ -122,11 +122,9 @@ RUN conda install -y pandas
 
 Now build that image run the container in the same way as the previous one.
 
-<div class="codehilite">
 <pre class="bash">
 $ docker build -t pandasfdw .
 $ docker run -p 5432:5432 -v $(pwd):/src pandasfdw
-</div>
 </pre>
 
 Create the FDW and table in a similar way as before:
