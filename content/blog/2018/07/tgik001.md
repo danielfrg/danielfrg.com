@@ -1,13 +1,10 @@
-Title: TGIK 001: A quick tour
+Title: Notes for: TGIK 001: A quick tour
 Slug: tgik-001-quick-tour
 Date: 2018-07-14 12:01
-Category: tech-notes
-Tags: Kubernetes
+Tags: Tech notes,Kubernetes
 Author: Daniel Rodriguez
-url: tech-notes/tgik-001-quick-tour
-save_as: tech-notes/tgik-001-quick-tour/index.html
-video_id: 9YYeE-bMWv8
-Rating: 5/5
+
+{% youtube 9YYeE-bMWv8 %}
 
 This spends a lot of time going trough a k8s install in AWS using Heptio's tool. Its kinda not as useful anymore since all clouds have a k8s as a service option.
 
@@ -89,6 +86,10 @@ Stateful sets are a way to do deployments but back those containers with some da
 Daemon sets: I want to run all these containers but maybe i want one per node and in all my machines. Regular users don't use this that much since you don't want to think about nodes but its very useful for admins.
 
 The default way of dealing with data you care about in k8s is to attach external storage solution to you pods such as [S3, NFS or others](https://kubernetes.io/docs/concepts/storage/volumes/#types-of-volumes). [Local Persistent Volumes](https://kubernetes.io/blog/2018/04/13/local-persistent-volumes-beta/) are a way to allocate some space in one of the nodes so that if a pod (that is using that volume) gets restarted it can reclaim that space. Useful for DBs since if you need to reboot everything it can find the data it had before. Using this you don't have to pin the pod to a particular node but k8s will do this automatically since it know that volume is running in that node.
+
+Nice diagram by Julia Evans.
+
+![Kubernetes Componens](https://pbs.twimg.com/media/DBzjTTKUIAA1OvE.jpg)
 
 ## Links
 

@@ -2,7 +2,7 @@
 {% block title %}{{ page.title }}{% endblock %}
 
 {% block content %}
-<div class="container post">
+<main class="post container">
     <article>
         <header>
             <h1>{{ page.title }}</h1>
@@ -11,9 +11,9 @@
             {% endif %}
         </header>
 
-        <div class="article_content">
+        <div class="content">
             {{ page.content }}
         </div>
     </article>
-</div>
+</main>
 {% endblock %}

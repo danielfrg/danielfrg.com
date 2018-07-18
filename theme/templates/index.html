@@ -3,49 +3,67 @@
 {% block headerimg %}{{ DEFAULT_HEADER_BG }}{% endblock %}
 
 {% block content %}
-<main role="main" class="container index">
-    <div class="header-space"></div>
-    {% for article in articles_page.object_list %}
-            <article>
-                <header>
-                    <time datetime="" title="{{ article.date.isoformat() }}" pubdate>{{ article.locale_date }}</time>
-                    <h2><a href="{{ SITEURL }}/{{ article.url }}">
-                        {% if article.category == "tech-notes" %}
-                        Notes for: {{ article.title }}
-                        {% else %}
-                        {{ article.title }}
-                        {% endif %}
-                    </a></h2>
-                </header>
-
-                <div class="article_content">
-                    {{ article.summary }}
-                </div>
-
-                <div class="read_more">
-                    <a href="{{ SITEURL }}/{{ article.url }}" class="link">Read more &#8594;</a>
-                </div>
-            </article>
-            <hr class="post-divider">
-    {% endfor %}
-
-    <nav class="pagination row">
-        <div class="col-6 left">
-            {% if articles_page.has_next() %}
-            <a class="prev" href="{{ SITEURL }}/{{ articles_next_page.url }}">&#8592; Past</a>
-            {% else %}
-            &nbsp;
-            {% endif %}
-        </div>
-        <div class="col-6 right">
-            {% if articles_page.has_previous() %}
-            <a class="next" href="{{ SITEURL }}/{{ articles_previous_page.url }}">Future &#8594;</a>
-            {% else %}
-            &nbsp;
-            {% endif %}
-          </div>
+<main id="index" class="index container">
+    <form class="filter d-flex align-items-center">
+        <span style="position: relative; display: inline-block; direction: ltr;">
+            <input type="search" v-model="filter" class="form-control" placeholder="Filter by title or tag" autocomplete="off" spellcheck="false" />
+        </span>
+    </form>
+    
+    <nav>
+        <ul class="double-list">
+            <li v-for="item in filteredItems">
+                <a :href="item.url">{{ "{{ item.title }}" }}</a>
+                <span class="date">{{ "{{ item.date }}" }}</span>
+            </li>
+        </ul>
     </nav>
 
+    <div class="tags">
+        {% for tag, articles in tags %}
+            <a href="{{ SITEURL }}/{{ tag.url }}" class="tag">{{ tag }} ({{ articles | length }})</a>
+        {% endfor %}
+    </div>
 </main>
+{% endblock %}
+
+{% block end_doc %}
+<script>
+
+items = [
+    {% for article in articles %}
+    { title: "{{ article.title }}", url: "/{{ article.url }}", date: "{{ article.date.strftime('%d.%m.%Y') }}", tags: [{% for tag in article.tags %}"{{ tag }}",{% endfor %}] },
+    {% endfor %}
+]
+
+function contains(text, filter) {
+    return text.toLowerCase().indexOf(filter.toLowerCase()) > -1
+}
+
+var index = new Vue({
+    el: '#index',
+    data: {
+        filter: '',
+        items: items
+    },
+
+    methods: {
+        toogle_nav: function(event) {
+            this.show = !this.show;
+        }
+    },
+
+    computed: {
+        filteredItems() {
+            return this.items.filter(item => {
+                searches = [item.title].concat(item.tags);
+                query = searches.map(x => contains(x, this.filter));
+                return query.some(x => x == true);
+            })
+        }
+    }
+})
+
+</script>
 
 {% endblock %}

@@ -19,6 +19,10 @@ div.input_area {
     text-decoration: none;
 }
 
+.rendered_html h2, h3, h4, h2:first-child {
+    margin-top: inherit;
+}
+
 .text_cell .prompt {
     display: none;
 }

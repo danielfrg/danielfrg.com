@@ -13,10 +13,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
         <style>{% include 'pygments.css' %}</style>
         <style>{% include 'main.css' %}</style>
-        
-        <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-        <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script> -->
-        <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script> -->
+
         <script src="https://cdn.jsdelivr.net/npm/vue"></script>
         {% block extra_head %}{%endblock%}
     </head>
@@ -26,13 +23,12 @@
             <div class="container flex-column flex-md-row bd-navbar">
                 <a class="navbar-brand" href="/" title="Home" class="title">Daniel Rodriguez</a></li>
                 
-                <div class="navbar-nav-scroll">
+                <!-- <div class="navbar-nav-scroll">
                     <ul class="navbar-nav flex-row">
-                        <li class="nav-item"><a class="nav-link" href="/tech-notes/" title="About">Tech Notes</a></li>
                         <li class="nav-item"><a class="nav-link" href="/archives.html" title="Archive">Archive</a></li>
-                        <!-- <li class="nav-item"><a class="nav-link" href="{{ ABOUT_PAGE }}" title="About">About</a></li> -->
+                        <li class="nav-item"><a class="nav-link" href="{{ ABOUT_PAGE }}" title="About">About</a></li>
                     </ul>
-                </div>
+                </div> -->
 
                 <ul class="social navbar-nav flex-row ml-md-auto d-md-flex">
                     <li class="nav-item"><a class="nav-link social" href="https://github.com/danielfrg" title="danielfrg's Github" rel="me"><i class="fab fa-github"></i></a></li>
@@ -46,12 +42,14 @@
 
         {% block content %}{% endblock %}
 
-
         <footer class="footer">
             <div class="container">
                 <span class="text-muted">Daniel Rodriguez &copy; 2018</span>
             </div>
         </footer>
+
+        <!-- Placed at the end of the document so the pages load faster -->
+        {% block end_doc %}{%endblock%}
         {% include 'analytics.html' %}
     </body>
 </html>
