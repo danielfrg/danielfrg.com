@@ -335,6 +335,7 @@ article .videobox {
   overflow-x: hidden;
   overflow-y: hidden;
   text-align: center !important;
+  background: #000;
 }
 
 article code {
