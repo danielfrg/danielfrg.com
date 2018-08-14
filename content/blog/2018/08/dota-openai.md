@@ -4,7 +4,7 @@ Date: 2018-08-14 17:12
 Tags: Dota,Open AI
 Author: Daniel Rodriguez
 
-Very few times I have been more excited about a AI/ML thing/event/paper/whatever as I was about the recent [OpenAI Five benchmark] vs a team of Dota Casters/Pro Players/Ex Pro players. 
+Very few times I have been more excited about a AI/ML thing/event/paper/whatever as I was about the recent [OpenAI Five benchmark](https://blog.openai.com/openai-five-benchmark/) vs a team of Dota Casters/Pro Players/Ex Pro players. 
 
 I have played Dota 2 for about 3000 hours and even if I have never made it above 3k MMR I find the game fascinating, the complexity, the skill, the balance and patches, among so many factors make it an amazing game (I also stopped playing it since finding good games/teammates became almost impossible but thats another story). I am also involved into all this Data Science/Machine Learning/AI community so this event was quite special for me.
 
@@ -28,7 +28,7 @@ I would love to see OpenAI Five in a super late game fight and what they think t
 
 My reaction after the games is that after a couple of more attempts the Humans will for sure find a strat to beat OpenAI Five. They didn't see any of their games before and 3 games is not enough but I bet that changing a little bit the draft and playing a little bit more safe in the first 5 minutes will go a long way. Also having more heroes give you more counters to the strat that OpenAI Five uses the most, so a little bit of an advantage for them, **but** it's also a matter of time for OpenAI Five to remove all the remaining restrictions and be unbeatable for real.
 
-One of the things that [OpenAI has said before] is that OpenAI Five and other ML algorithms is not how humans learn. Players have not played 180 years of Dota every year but they have understood the game to a very similar level. AI will get there for sure but in my mind this is an accomplishment of scaling more than ML. [OpenAI proved (and said)] that the same algorithms we have right now can go farther than we thought but we are not in what we would call real/human learning. More than impressive anyways.
+One of the things that [OpenAI has said before](https://blog.openai.com/learning-montezumas-revenge-from-a-single-demonstration/) is that OpenAI Five and other ML algorithms is not how humans learn. Players have not played 180 years of Dota every year but they have understood the game to a very similar level. AI will get there for sure but in my mind this is an accomplishment of scaling more than ML. [OpenAI proved (and said)](https://blog.openai.com/openai-five-benchmark/) that the same algorithms we have right now can go farther than we thought but we are not in what we would call real/human learning. More than impressive anyways.
 
 Can't wait for TI8 this and next week to see how the Pros do and next years version :)
 
