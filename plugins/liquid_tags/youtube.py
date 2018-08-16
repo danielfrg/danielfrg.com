@@ -31,8 +31,8 @@ YOUTUBE = re.compile(r'([\S]+)(\s+([\d%]+)\s([\d%]+))?')
 
 @LiquidTags.register('youtube')
 def youtube(preprocessor, tag, markup):
-    width = 640
-    height = 390
+    width = ""
+    height = ""
     youtube_id = None
 
     match = YOUTUBE.search(markup)

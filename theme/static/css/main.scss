@@ -1,6 +1,6 @@
-$header-bg: #0e1c31;
-$text-color: #000;
-$link-color: #0056b3;
+$header-bg: #1c427c;
+$text-color: #444;
+$link-color: #007aff;
 
 html {
     position: relative;
@@ -13,16 +13,12 @@ body {
     font-size: 1rem;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     line-height: 1.6em;
-    font-weight: 400;
+    font-weight: 300;
     font-style: normal;
     color: $text-color;
     text-rendering: optimizeLegibility;
     background: #FFF;
-    margin-bottom: 60px;
-}
-
-.container {
-    max-width: 740px;
+    margin-bottom: 60px;  // Fix footer craziness
 }
 
 a.tag {
@@ -70,6 +66,10 @@ header.navbar-dark  {
     top: 0;
     z-index: 1071;
 
+    .container {
+        max-width: 860px;
+    }
+
     a {
         color: #fff;
     }
@@ -104,6 +104,9 @@ header.navbar-dark  {
 }
 
 .index {
+    max-width: 700px;
+    margin: 0 auto;
+
     h1 {
         padding-top: 20px;
     }
@@ -133,14 +136,14 @@ header.navbar-dark  {
             a {
                 color: #000;
                 text-decoration: none;
-                transition: border .15s cubic-bezier(.645,.045,.355,1);
-                border-bottom: 1px solid rgba(0,0,0,.1);
+                // transition: border .15s cubic-bezier(.645,.045,.355,1);
+                // border-bottom: 1px solid rgba(0,0,0,.1);
             }
 
             a:hover {
-                color: #000;
-                text-decoration: none;
-                border-bottom: 1px solid $link-color;
+                color: $link-color;
+                // text-decoration: none;
+                // border-bottom: 1px solid $link-color;
             }
 
             span.date {
@@ -166,7 +169,8 @@ header.navbar-dark  {
 }
 
 article {
-    margin: 0;
+    max-width: 860px;
+    margin: 0 auto;
     
     header {
         margin: 0 auto;
@@ -222,10 +226,11 @@ article {
     h2 {
         margin: 1em 0 .4em;
         font-size: 28px;
+        color: #000;
     }
 
     h2:before {
-        content: "# ";
+        content: "## ";
         font-weight: bold;
         color: #DDD;
     }
@@ -241,7 +246,7 @@ article {
     }
 
     h3:before {
-        content: "## ";
+        content: "### ";
         font-weight: bold;
         color: #DDD;
     }
@@ -249,17 +254,21 @@ article {
     h4 {
         font-size: 20px;
         font-weight: 400;
+        color: #000;
     }
 
     h4:before {
-        content: "### ";
+        content: "#### ";
         font-weight: bold;
         color: #DDD;
     }
 
+    strong {
+        font-weight: 700;
+    }
+
     p {
-        line-height: 1.6em;
-        margin-bottom: 20px;
+        line-height: 1.8em;
     }
 
     p.note {
@@ -300,7 +309,7 @@ article {
     a {
         color: $link-color;
         text-decoration: none;
-        border-bottom: 1px solid rgba(0,0,0,.2);
+        // border-bottom: 1px solid rgba(0,0,0,.2);
     }
     
     a:hover {
@@ -330,12 +339,21 @@ article {
         position: relative;
         display: block;
         width: 100%;
-        padding: 0;
+        height: 0;
+        padding-bottom: 56.25%;
         overflow: hidden;
         overflow-x: hidden;
         overflow-y: hidden;
         text-align: center !important;
         background: #000;
+
+        iframe {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: calc(100% - 10px);
+            height: calc(100% - 10px);
+        }
     }
     
 
@@ -361,7 +379,7 @@ article {
         }
     }
 
-    pre.bash {
+    pre.console {
         padding: 10px;
         background-color: #000;
         color: #FFF;
@@ -402,6 +420,10 @@ article {
     height: 60px;
     line-height: 40px;
     background-color: rgba(0, 0, 0, 0.05);
+
+    .container { 
+        max-width: 860px;
+    }
     
     .text-muted {
         color: rgba(0, 0, 0, 0.5);
