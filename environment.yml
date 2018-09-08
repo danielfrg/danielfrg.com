@@ -6,8 +6,8 @@ dependencies:
     - pyyaml
     - ipython
     - nbconvert
-    - notebook
-    - jupyterlab
     # Dev
     - pylint
     - rope
+    - notebook
+    - jupyterlab
