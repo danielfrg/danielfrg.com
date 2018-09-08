@@ -32,7 +32,7 @@ def convert(nb_path):
 
     html = nb2html(nb_path)
 
-    print("Converted: {nb_path}".format(nb_path))
+    print("Converted: {nb_path}".format(nb_path=nb_path))
     return GENERATED_MD.format(metadata=metadata_s, html=html)
 
 
