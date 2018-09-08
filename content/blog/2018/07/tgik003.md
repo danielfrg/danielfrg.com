@@ -1,10 +1,12 @@
-Title: Notes for: TGIK 003: Istio
-Slug: tgik-003-istio
-Date: 2018-07-14 12:03
-Tags: Tech notes,Kubernetes,Istio
-Author: Daniel Rodriguez
+---
+title: "Notes for: TGIK 003: Istio"
+slug: tgik-003-istio
+date: 2018-07-14T12:03:00Z
+tags: ["Tech notes", "Kubernetes", "Istio"]
+author: Daniel Rodriguez
+---
 
-{% youtube WnDG-5cvEew %}
+{{< youtube WnDG-5cvEew >}}
 
 Idea: You have services running in a microservice architecture and you want them to talk to each other.
 

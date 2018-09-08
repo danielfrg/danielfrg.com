@@ -1,7 +1,0 @@
-Title: ReproduceIt: FiveThirtyEight - The Three Types Of Adam Sandler Movies
-Slug: reproduceit-538-adam-sandler-movies
-Date: 2015-05-01
-Tags: ReproduceIt,Python,Data analysis,Bokeh,Movies
-Author: Daniel Rodriguez
-
-{% notebook blog/2015/05/reproduceit-538-adam-sandler-movies.ipynb %}

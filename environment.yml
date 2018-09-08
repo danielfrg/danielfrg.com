@@ -1,0 +1,13 @@
+name: danielfrg.com
+
+dependencies:
+  - python=3.6
+  - pip:
+    - pyyaml
+    - ipython
+    - nbconvert
+    # Dev
+    - pylint
+    - rope
+    - notebook
+    - jupyterlab

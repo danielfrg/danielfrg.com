@@ -1,8 +1,10 @@
-Title: Month-Log.oct.2013
-Slug: month-log
-Date: 2013-10-31
-Tags: Month-Log,Python,Pig,Nutch,Crawling,Vagrant,Salt,Luigi
-Author: Daniel Rodriguez
+---
+title: Month-Log.oct.2013
+slug: month-log
+date: 2013-10-31
+tags: ["Month-Log", "Python", "Pig", "Nutch", "Crawling", "Vagrant", "Salt", "Luigi"]
+author: Daniel Rodriguez
+---
 
 I've been busy with real work to write any specific posts for the blog but I realize it was
 a productive month. I worked a lot and learned quite a few things and  new technologies and

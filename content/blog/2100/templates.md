@@ -1,9 +1,10 @@
-Title: Plain markdown test
-Slug: markdown-templates
-Date: 2100-12-31
-Tags: Test
-Author: Daniel Rodriguez
-Status: draft
+---
+title: Plain markdown test
+slug: markdown-templates
+date: 2100-12-31
+tags: ["Test"]
+author: Daniel Rodriguez
+---
 
 Lorem ipsum dolor sit amet, [consectetur]() adipiscing elit. Curabitur purus mi, sollicitudin ac justo a, dapibus ultrices dolor. Curabitur id eros mattis, tincidunt ligula at, condimentum urna. Morbi accumsan, risus eget porta consequat, tortor nibh blandit dui, in sodales quam elit non erat. [Aenean lorem dui](), lacinia a metus eu, accumsan dictum urna. Sed a egestas mauris, non porta nisi. Suspendisse eu lacinia neque. Morbi gravida eros non augue pharetra, condimentum auctor purus porttitor.
 
@@ -59,11 +60,15 @@ Ut in ipsum id neque pellentesque iaculis. Pellentesque massa erat, rhoncus id a
 
 Sed vestibulum justo et turpis ullamcorper, a interdum sapien tristique. Donec ullamcorper ipsum ac scelerisque lacinia. Quisque et eleifend odio. Curabitur vel enim at mi dictum venenatis eget eu nulla. Suspendisse potenti. Etiam vitae nibh a odio dictum aliquam. Sed sit amet adipiscing leo, vitae euismod arcu.
 
+This is just an image
+
 ![Alt text](http://img3.wikia.nocookie.net/__cb20130524024810/logopedia/images/f/fa/Apple_logo_black.svg "Image")
 
 Sed vestibulum justo et turpis ullamcorper, a interdum sapien tristique. Donec ullamcorper ipsum ac scelerisque lacinia. Quisque et eleifend odio. Curabitur vel enim at mi dictum venenatis eget eu nulla. Suspendisse potenti. Etiam vitae nibh a odio dictum aliquam. Sed sit amet adipiscing leo, vitae euismod arcu.
 
-{% b64img https://vignette.wikia.nocookie.net/filmguide/images/1/1f/Netflix.png Netflix! %}
+This is a `figure`!!
+
+{{< figure src="https://vignette.wikia.nocookie.net/filmguide/images/1/1f/Netflix.png" title="Netflix" >}}
 
 Sed vestibulum justo et turpis ullamcorper, a interdum sapien tristique. Donec ullamcorper ipsum ac scelerisque lacinia. Quisque et eleifend odio. Curabitur vel enim at mi dictum venenatis eget eu nulla. Suspendisse potenti. Etiam vitae nibh a odio dictum aliquam. Sed sit amet adipiscing leo, vitae euismod arcu.
 

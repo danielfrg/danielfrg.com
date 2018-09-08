@@ -1,9 +1,11 @@
-Title: word2vec in yhat: Word vector similarity
-Slug: word2vec-yhat
-Date: 2013-9-21
-Tags: Python,word2vec,Machine Learning,YHat,
-Author: Daniel Rodriguez
-Include: angular1,jquery
+---
+title: "word2vec in yhat: Word vector similarity"
+slug: word2vec-yhat
+date: 2013-09-21
+tags: ["Python", "word2vec", "Machine Learning", "YHat"]
+author: Daniel Rodriguez
+include: ["angular1", "jquery"]
+---
 
 A [few weeks ago](http://google-opensource.blogspot.com/2013/08/learning-meaning-behind-words.html)
 Google released some code to convert words to vectors called
@@ -102,6 +104,10 @@ If everything goes fine you have a REST endpoint you can call.
 <a id="example"></a>
 ## Example
 
+<p class="update">
+<strong>Update:</strong> This app no longer works as YHat was adquired and service was shutdown.
+</p>
+
 I built a simple app using [angularJS](http://angularjs.org/).
 Just type any word and the number of close word vectors you want and click the button.
 On the list that it generates you can click on any word and it will give you the neighbors for that word.
@@ -176,7 +182,6 @@ var MainCtrl = function($scope, $http) {
             });
     }
 }
-
 </script>
 
 ## Conclusions

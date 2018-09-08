@@ -1,8 +1,10 @@
-Title: New blog using Jekyll & IPython
-Slug: new-blog-using-jekyll-and-ipython
-Date: 2013-1-31
-Tags: Jekyll,IPython,Python
-Author: Daniel Rodriguez
+---
+title: New blog using Jekyll & IPython
+slug: new-blog-using-jekyll-and-ipython
+date: 2013-01-31
+tags: ["Jekyll", "IPython", "Python"]
+author: Daniel Rodriguez
+---
 
 Recently I restart my blog by moving from wordpress.com to github pages the reason is than about two weeks ago I found a blog on a github page using [octopress](http://octopress.org/) ([jekyll](https://github.com/mojombo/jekyll)) and after reading 20 minutes I immediately wanted to use it and decide to switch. Wordpress is a good piece of software but wordpress.com is not, my complaints are.
 

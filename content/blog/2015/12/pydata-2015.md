@@ -1,8 +1,10 @@
-Title: Talk @ PyData NYC 2015: Querying 1.6 billion reddit comments with python
-Slug: pydata-2015-quering-1-6-billion-reddit-comments-with-python
-Date: 2015-12-04
-Tags: Talk,PyData,Pytho,Blaze,Ibis,Reddit,Impala
-Author: Daniel Rodriguez
+---
+title: "Talk @ PyData NYC 2015: Querying 1.6 billion reddit comments with python"
+slug: pydata-2015-quering-1-6-billion-reddit-comments-with-python
+date: 2015-12-04
+tags: ["Talk", "PyData", "Python", "Blaze", "Ibis", "Reddit", "Impala"]
+author: Daniel Rodriguez
+---
 
 I had the luck to go to beautiful NYC in the fall to give a talk at PyData NYC 2015.
 
@@ -13,6 +15,6 @@ Some of the content can be found in the [continuum developer blog](https://www.c
 
 Below you can find the [video of the presentation](https://www.youtube.com/watch?v=8Tzh42mQjrw) and [slides](http://www.slideshare.net/DanielRodriguez459/querying-18-billion-reddit-comments-with-python).
 
-{% youtube 8Tzh42mQjrw %}
+{{< youtube 8Tzh42mQjrw >}}
 
 PD: There is a couple of good jokes at 35:05 - If you like bad jokes!

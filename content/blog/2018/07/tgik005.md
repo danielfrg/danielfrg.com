@@ -1,10 +1,12 @@
-Title: Notes for: TGIK 005: Pod Params and Probes
-Slug: tgik-005-pods-params-probes
-Date: 2018-07-15 14:00
-Tags: Tech notes,Kubernetes,Pods,Deployments,Probes
-Author: Daniel Rodriguez
+---
+title: "Notes for: TGIK 005: Pod Params and Probes"
+slug: tgik-005-pods-params-probes
+date: 2018-07-15T14:00:00Z
+tags: ["Tech notes", "Kubernetes", "Pods", "Deployments", "Probes"]
+author: Daniel Rodriguez
+---
 
-{% youtube xEdBSVaUtp4 %}
+{{< youtube xEdBSVaUtp4 >}}
 
 ## Pods, ReplicaSets and Deployments
 

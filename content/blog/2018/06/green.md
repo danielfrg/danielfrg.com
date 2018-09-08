@@ -1,8 +1,10 @@
-Title: Green
-Slug: green
-Date: 2018-06-24
-Tags: Life
-Author: Daniel Rodriguez
+---
+title: Green
+slug: green
+date: 2018-06-24
+tags: ["Life"]
+author: Daniel Rodriguez
+---
 
 **English (Español abajo)**
 

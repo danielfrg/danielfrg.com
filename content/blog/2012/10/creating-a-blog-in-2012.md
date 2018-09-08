@@ -1,8 +1,10 @@
-Title: Creating a blog in 2012
-Slug: creating-a-blog-in-2012
-Date: 2012-10-05 03:22
-Tags: This blog
-Author: Daniel Rodriguez
+---
+title: Creating a blog in 2012
+slug: creating-a-blog-in-2012
+date: 2012-10-05T03:22:00Z
+tags: ["This blog"]
+author: Daniel Rodriguez
+---
 
 Yes, I am creating a blog on October 5, 2012!
 
