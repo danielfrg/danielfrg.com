@@ -11,4 +11,4 @@ pygmentsUseClasses = true
 pygmentsCodefencesGuessSyntax = true
 
 [permalinks]
-  blog = "blog/:year/:month/:day/:slug/"
+  blog = "blog/:year/:month/:slug/"
