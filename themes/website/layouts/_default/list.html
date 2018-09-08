@@ -1,0 +1,9 @@
+{{ define "main" }}
+<main id="index" class="index container">
+
+    {{- with .Title }}
+        <h1>{{ with $.Data.Singular }}{{ . | humanize }}: {{ end }}{{ . }}</h1>
+    {{- end }}
+    {{ partial "list_filter.html" . }}
+</main>
+{{ end }}

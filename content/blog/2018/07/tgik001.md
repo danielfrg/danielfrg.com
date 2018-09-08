@@ -1,10 +1,12 @@
-Title: Notes for: TGIK 001: A quick tour
-Slug: tgik-001-quick-tour
-Date: 2018-07-14 12:01
-Tags: Tech notes,Kubernetes
-Author: Daniel Rodriguez
+---
+title: "Notes for: TGIK 001: A quick tour"
+slug: tgik-001-quick-tour
+date: 2018-07-14T12:01:00Z
+tags: ["Tech notes", "Kubernetes"]
+author: Daniel Rodriguez
+---
 
-{% youtube 9YYeE-bMWv8 %}
+{{< youtube 9YYeE-bMWv8 >}}
 
 This spends a lot of time going trough a k8s install in AWS using Heptio's tool. Its kinda not as useful anymore since all clouds have a k8s as a service option.
 

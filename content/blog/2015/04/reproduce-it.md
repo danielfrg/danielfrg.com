@@ -1,8 +1,10 @@
-Title: ReproduceIt
-Slug: reproduce-it
-Date: 2015-04-30
-Tags: ReproduceIt,Data analysis
-Author: Daniel Rodriguez
+---
+title: ReproduceIt
+slug: reproduce-it
+date: 2015-04-30
+tags: ["ReproduceIt", "Data analysis"]
+author: Daniel Rodriguez
+---
 
 I have been wanting to restart my blog for a while now. In 2013 I wrote around 20 posts but in 2014 I only wrote 3 times and this is my first post in 2015 and its not even a real one. Last one was more than 6 months ago. 
 Time is one of the reasons but sometimes I have a couple of hours to kill that I would like to use to blog but ideas don't come to me easily sometimes.

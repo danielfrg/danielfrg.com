@@ -1,8 +1,10 @@
-Title: Python Finance Package v0.01 - Data Manager
-Slug: python-finance-package-v0-01-data-manager
-Date: 2012-12-13 12:59
-Tags: Coursera,Finance,Pandas,Python,Computational investing
-Author: Daniel Rodriguez
+---
+title: Python Finance Package v0.01 - Data Manager
+slug: python-finance-package-v0-01-data-manager
+date: 2012-12-13T12:59:00Z
+tags: ["Coursera", "Finance", "Pandas", "Python", "Computational investing"]
+author: Daniel Rodriguez
+---
 
 I have learned a lot from my most recent Coursera Course: [Computational
 Investing Part 1][]. The language used on the class is Python so I
@@ -26,8 +28,7 @@ of times but is a minor issue.
 For now the package only has the Data Management part but yesterday I
 finished my final exams so I have a little bit of time to work on this.
 
-How it works
-------------
+## How it works
 
 You tell the symbol/symbols, dates  and the fields (columns) you want
 from the stocks. The package automatically downloads the information
@@ -37,8 +38,7 @@ downloaded looking into already downloaded information, and
 optional (default True) saves a pickled version of the DataFrame to load
 faster the next time.
 
-Example
--------
+## Example
 
 ```python
 from datetime import datetime
@@ -66,8 +66,7 @@ Just using `clock()` and `time()` to see if it was worth it. It is.
     Load 5 stocks from serialized
         0.0007370202310554852 0.0009999275207519531
 
-Where to find the code
-----------------------
+## Where to find the code
 
 On github: [PythonFinance][]. This is such a small package is necessary
 to manually download it and put it on a folder where you have other

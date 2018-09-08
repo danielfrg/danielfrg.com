@@ -1,0 +1,14 @@
+baseURL = "https://danielfrg.com/"
+title = "Daniel Rodriguez"
+languageCode = "en-us"
+
+preserveTaxonomyNames = true
+
+theme = "website"
+pygmentsStyle = "github"
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+pygmentsCodefencesGuessSyntax = true
+
+[permalinks]
+  blog = "blog/:year/:month/:day/:slug/"

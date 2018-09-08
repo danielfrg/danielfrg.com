@@ -1,0 +1,5 @@
+pyyaml
+ipython
+nbconvert
+notebook
+jupyterlab

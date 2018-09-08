@@ -1,8 +1,10 @@
-Title: One-liner: Deploy python scipy stack with IPython notebook on AWS
-Slug: ipython-notebook-aws-salt
-Date: 2013-11-27
-Tags: AWS,Python,Salt,Jupyter Notebook,IPython Notebook
-Author: Daniel Rodriguez
+---
+title: "One-liner: Deploy python scipy stack with IPython notebook on AWS"
+slug: ipython-notebook-aws-salt
+date: 2013-11-27
+tags: ["AWS", "Python", "Salt", "Jupyter Notebook", "IPython Notebook"]
+author: Daniel Rodriguez
+---
 
 **Problem:** How many times have you needed to create a powerful EC2 instance with the the python scientific stack
 installed and the ipython notebook running? I have to do this at least 2 or 3 times every week.

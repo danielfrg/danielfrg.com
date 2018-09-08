@@ -1,0 +1,26 @@
+{{ block "html" . }}{{ end }}
+
+{{ define "title" }}
+{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}
+{{ end }}
+
+{{ define "html" }}
+<!DOCTYPE html>
+<html lang="en">
+    {{ partial "head.html" . }}
+    
+    <body>
+        {{ partial "header.html" . }}
+
+        {{ block "main" . }}{{ end }}
+
+        <footer class="footer">
+            <div class="container">
+                <span class="text-muted">Daniel Rodriguez &copy; 2018</span>
+            </div>
+        </footer>
+
+        {{ block "before_body" . }}{{ end }}
+    </body>
+</html>
+{{ end }}

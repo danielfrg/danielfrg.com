@@ -35,9 +35,7 @@ nosetests.xml
 .project
 .pydevproject
 
-*.pid
-env
-output/
-cache/
+# Project
+public
 .ipynb_checkpoints
 backup/
