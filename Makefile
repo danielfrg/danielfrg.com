@@ -3,7 +3,7 @@ PREFIX?=$(shell pwd)
 all: build
 
 .PHONY: build
-build: clean ##
+build: clean notebooks ##
 	hugo
 
 .PHONY: notebooks
