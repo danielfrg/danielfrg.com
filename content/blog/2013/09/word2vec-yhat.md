@@ -7,6 +7,11 @@ author: Daniel Rodriguez
 include: ["angular1", "jquery"]
 ---
 
+<p class="update">
+<strong>Update:</strong> This app no longer works as YHat was adquired and service was shutdown.
+Check out a new updated version based on Algorithmia <a href="https://word2vec.danielfrg.com">here</a>. Blogpost <a href="blog/2018/09/word2vec-app-algorithmia/">here</a>.
+</p>
+
 A [few weeks ago](http://google-opensource.blogspot.com/2013/08/learning-meaning-behind-words.html)
 Google released some code to convert words to vectors called
 [word2vec](https://code.google.com/p/word2vec/).
@@ -106,6 +111,7 @@ If everything goes fine you have a REST endpoint you can call.
 
 <p class="update">
 <strong>Update:</strong> This app no longer works as YHat was adquired and service was shutdown.
+Check out a new updated version based on Algorithmia <a href="https://word2vec.danielfrg.com">here</a>. Blogpost <a href="blog/2018/09/word2vec-app-algorithmia/">here</a>.
 </p>
 
 I built a simple app using [angularJS](http://angularjs.org/).
