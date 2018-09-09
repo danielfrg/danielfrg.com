@@ -191,15 +191,15 @@ admin.site.register(Post, PostAdmin)
 
 The admin UI, using the [beautiful django suit](http://djangosuit.com/), looks like this:
 
-{{< figure src="/blog/2013/09/11/django-celery-readability-crawler/home_admin.png" title="Home admin" >}}
+{{< figure src="/blog/2013/09/django-celery-readability-crawler/home_admin.png" title="Home admin" >}}
 
-{{< figure src="/blog/2013/09/11/django-celery-readability-crawler/blogs_admin.png" title="Blogs admin" >}}
+{{< figure src="/blog/2013/09/django-celery-readability-crawler/blogs_admin.png" title="Blogs admin" >}}
 
-{{< figure src="/blog/2013/09/11/django-celery-readability-crawler/posts_admin.png" title="Posts admin" >}}
+{{< figure src="/blog/2013/09/django-celery-readability-crawler/posts_admin.png" title="Posts admin" >}}
 
 You can see the running tasks, or previous tasks.
 
-{{< figure src="/blog/2013/09/11/django-celery-readability-crawler/tasks.png" title="Tasks" >}}
+{{< figure src="/blog/2013/09/django-celery-readability-crawler/tasks.png" title="Tasks" >}}
 
 ## Conclusion
 

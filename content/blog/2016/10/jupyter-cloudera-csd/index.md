@@ -149,23 +149,23 @@ and upload it to the Cloudera manager instance.
 
 In a brand new Cloudera manager cluster you can add *"Jupyter Notebook"* as a new service:
 
-{{< figure src="/blog/2016/10/29/jupyter-notebook-cloudera-csd/add-service.png" title="Add Jupyter Notebook service" >}}
+{{< figure src="/blog/2016/10/jupyter-notebook-cloudera-csd/add-service.png" title="Add Jupyter Notebook service" >}}
 
 As a regular service in Cloudera manager you can select on which node to install it:
 
-{{< figure src="/blog/2016/10/29/jupyter-notebook-cloudera-csd/add-service-role.png" title="Jupyter Notebook service roles" >}}
+{{< figure src="/blog/2016/10/jupyter-notebook-cloudera-csd/add-service-role.png" title="Jupyter Notebook service roles" >}}
 
 Start the service and wait for it to be successful:
 
-{{< figure src="/blog/2016/10/29/jupyter-notebook-cloudera-csd/start-service.png" title="Jupyter Notebook start service" >}}
+{{< figure src="/blog/2016/10/jupyter-notebook-cloudera-csd/start-service.png" title="Jupyter Notebook start service" >}}
 
 Then its possible to see the service in the service list:
 
-{{< figure src="/blog/2016/10/29/jupyter-notebook-cloudera-csd/service-list.png" title="Service list" >}}
+{{< figure src="/blog/2016/10/jupyter-notebook-cloudera-csd/service-list.png" title="Service list" >}}
 
 Finally you can see the link to the notebook server on the service page:
 
-{{< figure src="/blog/2016/10/29/jupyter-notebook-cloudera-csd/service-page.png" title="Service page" >}}
+{{< figure src="/blog/2016/10/jupyter-notebook-cloudera-csd/service-page.png" title="Service page" >}}
 
 That link will take you to a regular Jupyter Notebook server managed by Cloudera manager.
 

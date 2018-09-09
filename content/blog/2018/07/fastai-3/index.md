@@ -22,14 +22,14 @@ Looking again [at this demo](http://setosa.io/ev/image-kernels/) we can get an i
 Kernel: [ [ -1 -1 -1 ], [0 0 0] [ 1 1 1] ]
 ```
 
-{{< figure src="/blog/2018/07/31/fastai-lesson-3/step1.png" title="Step 1" >}}
+{{< figure src="/blog/2018/07/fastai-lesson-3/step1.png" title="Step 1" >}}
 -  We can then clean the image by adding a non-linearity, a ReLu,  that basically means, remove the negatives
-{{< figure src="/blog/2018/07/31/fastai-lesson-3/step2.png" title="Step 2" >}}
+{{< figure src="/blog/2018/07/fastai-lesson-3/step2.png" title="Step 2" >}}
 - Then we add a Max Polling. We take every group of pixels (2x2 or 3x3) and we replace it with the maximum effectively making it half its size
-{{< figure src="/blog/2018/07/31/fastai-lesson-3/step3.png" title="Step 3" >}}
+{{< figure src="/blog/2018/07/fastai-lesson-3/step3.png" title="Step 3" >}}
 - This is one group of layers for a CNN, we then repeat the same process from the output of this layer as input
 - We have not one kernel but multiple ones so when we finish with all the layers we take all the output of the final layer and we train it (based on the labeled data) and this will kinda generate a fingerprint for each item we want to classify
-{{< figure src="/blog/2018/07/31/fastai-lesson-3/step4.png" title="Step 4" >}}
+{{< figure src="/blog/2018/07/fastai-lesson-3/step4.png" title="Step 4" >}}
 
 The [Excel conv-example file ](https://github.com/fastai/fastai/blob/master/courses/dl1/excel/conv-example.xlsx)is also very helpful to understand the concepts.
 

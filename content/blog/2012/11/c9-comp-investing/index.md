@@ -47,7 +47,7 @@ modifying the code I was able to push from Cloud9 directly to my Github
 and back to my PC. Git makes the flow is very smooth and the terminal
 from Cloud9 good enough for that and more.
 
-{{< figure src="/blog/2012/11/03/cloud9-computing-code-everywhere/cloud9-terminal.png" title="Cloud9 terminal" >}}
+{{< figure src="/blog/2012/11/cloud9-computing-code-everywhere/cloud9-terminal.png" title="Cloud9 terminal" >}}
 
 The service has some problems, sometimes the terminal goes crazy for no
 reason (that I could find) and I had to refresh the page, but in general

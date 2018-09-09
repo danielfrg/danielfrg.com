@@ -58,7 +58,7 @@ spec:
 When you execute this using `kubectl -f file.yaml` GCE will create a new disk that you can see at the GCE
 cloud console, something like this:
 
-{{< figure src="/blog/2016/09/10/jupyterhub-kubernetes-nfs/gce-disk.png" title="GCE created disk" >}}
+{{< figure src="/blog/2016/09/jupyterhub-kubernetes-nfs/gce-disk.png" title="GCE created disk" >}}
 
 Now that we have a Disk that the NFS server can use to store its data we create a Deployment of the NFS server
 and a service to expose it.
@@ -261,7 +261,7 @@ Wait for the service to give you an External IP and login as any LDAP user (see 
 After logging in a new pod will be created and mount the Persistent Volume Claim that uses the NFS Server.
 Create a couple of notebooks and in the `jupyterhub-nfs-web` service you should see something like this.
 
-{{< figure src="/blog/2016/09/10/jupyterhub-kubernetes-nfs/nfs-web.png" title="NFS web files" >}}
+{{< figure src="/blog/2016/09/jupyterhub-kubernetes-nfs/nfs-web.png" title="NFS web files" >}}
 
 Now from the JupyterHub admin interface you should be able to terminate the server and start a new one  
 and the notebooks should be persisted even when they will be a different Pod.

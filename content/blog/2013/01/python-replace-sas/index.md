@@ -39,7 +39,7 @@ EM, that is, the very basics:
 So I needed to do the same with iPython, Pandas, Scikit-learn and
 Matplotlib. On SAS EM a basic project looks like this:
 
-{{< figure src="/blog/2013/01/02/python-replace-sas/sas-em.png" title="SAS Enterprise Miner example" >}}
+{{< figure src="/blog/2013/01/python-replace-sas/sas-em.png" title="SAS Enterprise Miner example" >}}
 
 ## Installation
 
@@ -194,7 +194,7 @@ pl.title('Receiver operating characteristic')
 pl.legend(loc="lower right")
 ```
 
-{{< figure src="/blog/2013/01/02/python-replace-sas/roc.png" title="ROC chart" >}}
+{{< figure src="/blog/2013/01/python-replace-sas/roc.png" title="ROC chart" >}}
 
 ## Conclusion
 

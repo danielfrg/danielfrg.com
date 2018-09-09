@@ -151,7 +151,7 @@ Output:
     Name: Cumulative Abnormal Return
     # NOTE: Length: 21
 
-{{< figure src="/blog/2012/12/26/python-finance-package-v0-03/expected_return.png" title="Expected return" >}}
+{{< figure src="/blog/2012/12/python-finance-package-v0-03/expected_return.png" title="Expected return" >}}
 
 ## Event Finder
 
@@ -247,7 +247,7 @@ Output:
      19   -0.076149
      20   -0.097525
 
-{{< figure src="/blog/2012/12/26/python-finance-package-v0-03/cum_abnormal_returns.png" title="Abnormal returns" >}}
+{{< figure src="/blog/2012/12/python-finance-package-v0-03/cum_abnormal_returns.png" title="Abnormal returns" >}}
 
 ## Conclusion
 

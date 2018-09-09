@@ -21,7 +21,7 @@ The main idea is the following:
 
 The diagram below tries to describe the system.
 
-{{< figure src="/blog/2013/11/17/nlp-scale-semafor-salt-celery-more/diagram.png" title="Architecture diagram" >}}
+{{< figure src="/blog/2013/11/nlp-scale-semafor-salt-celery-more/diagram.png" title="Architecture diagram" >}}
 
 If you dont know what semafor is take a look at the [example demo](http://demo.ark.cs.cmu.edu/parse) or this is just a basic example:
 
@@ -61,19 +61,19 @@ Get some URLS you want to parse and call the celery task `semafor_parse(urls, n_
 This are some screenshots I took while running it:
 
 EC2 dashboard when creating 10 instances:
-{{< figure src="/blog/2013/11/17/nlp-scale-semafor-salt-celery-more/instances_ec2.png" title="EC2 instances dashboard" >}}
+{{< figure src="/blog/2013/11/nlp-scale-semafor-salt-celery-more/instances_ec2.png" title="EC2 instances dashboard" >}}
 
 Log on celery when creating 10 instances:
-{{< figure src="/blog/2013/11/17/nlp-scale-semafor-salt-celery-more/instances_log.png" title="Instances log" >}}
+{{< figure src="/blog/2013/11/nlp-scale-semafor-salt-celery-more/instances_log.png" title="Instances log" >}}
 
 Celery log when the instances are provisioned via salt and the celery workers are connected:
-{{< figure src="/blog/2013/11/17/nlp-scale-semafor-salt-celery-more/celery_workers.png" title="Celery workers" >}}
+{{< figure src="/blog/2013/11/nlp-scale-semafor-salt-celery-more/celery_workers.png" title="Celery workers" >}}
 
 Luigi UI while running:
-{{< figure src="/blog/2013/11/17/nlp-scale-semafor-salt-celery-more/luigi_summary.png" title="Luigi summary" >}}
+{{< figure src="/blog/2013/11/nlp-scale-semafor-salt-celery-more/luigi_summary.png" title="Luigi summary" >}}
 
 Luigi dependency graph, really simple for this case:
-{{< figure src="/blog/2013/11/17/nlp-scale-semafor-salt-celery-more/luigi_graph.png" title="Luigi task graph" >}}
+{{< figure src="/blog/2013/11/nlp-scale-semafor-salt-celery-more/luigi_graph.png" title="Luigi task graph" >}}
 
 ## Discussion
 

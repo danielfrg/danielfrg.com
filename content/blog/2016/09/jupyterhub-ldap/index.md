@@ -112,7 +112,7 @@ Just as an example and to see how the auth works later lest create a couple of u
 First we need a `Posix Group` to place the users I chose: `jupyterhub`.
 Under that group create a couple of `Generic: User Account` the result should look something like this:
 
-{{< figure src="/blog/2016/09/03/jupyterhub-kubernetes-ldap/phpldapadmin.png" title="PHP LDAL my admin" >}}
+{{< figure src="/blog/2016/09/jupyterhub-kubernetes-ldap/phpldapadmin.png" title="PHP LDAL my admin" >}}
 
 Thats all the work we need to do in the LDAP front.
 
@@ -278,7 +278,7 @@ In your browser go to the external IP of the jupyterhub service in my case: `130
 you should see the Jupyter Hub UI. Now you should be able to log in using any of the user entries
 in LDAP.
 
-{{< figure src="/blog/2016/09/03/jupyterhub-kubernetes-ldap/hub-login.png" title="PHP LDAL my admin" >}}
+{{< figure src="/blog/2016/09/jupyterhub-kubernetes-ldap/hub-login.png" title="PHP LDAL my admin" >}}
 
 Note that it could take a minute to start the actual notebook server since the image
 that is pulled for the notebook is quite big but once the image is downloaded

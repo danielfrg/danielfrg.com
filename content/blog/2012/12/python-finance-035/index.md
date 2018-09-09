@@ -101,7 +101,7 @@ In [8]: Graph the mean cumulative abnornal return
 mevt.mean_cumulative_abnormal_return.plot()
 ```
 
-{{< figure src="/blog/2012/12/28/python-finance-package-v0-035/mean_car.png" title="Mean CAR" >}}
+{{< figure src="/blog/2012/12/python-finance-package-v0-035/mean_car.png" title="Mean CAR" >}}
 
 The graph tell us that in average after the event (day 0) the return
 goes up, but what about the risk?
@@ -112,7 +112,7 @@ In [9]: Print the Cumulative Abnormal Return with Error Bars
 mevt.plot('car')
 ```
 
-{{< figure src="/blog/2012/12/28/python-finance-package-v0-035/mean_car_error_bars.png" title="Mean CAR with error bars" >}}
+{{< figure src="/blog/2012/12/python-finance-package-v0-035/mean_car_error_bars.png" title="Mean CAR with error bars" >}}
 
 Ok, the graph tell us that the risk is going up as the time passes, this
 was expected.
@@ -166,7 +166,7 @@ Out [11]:
 
 I obtain 5 events and a total return of 0.501 with just 10 trades.
 
-{{< figure src="/blog/2012/12/28/python-finance-package-v0-035/mean_car.png" title="Mean CAR" >}}
+{{< figure src="/blog/2012/12/python-finance-package-v0-035/mean_car.png" title="Mean CAR" >}}
 
 ### 3. Event: Went below 5 - more than one event per equity
 
@@ -183,7 +183,7 @@ evtf.search(oneEventPerEquity=False)
 
 On this case I found 21 events with a total return of: 0.684; chart:
 
-{{< figure src="/blog/2012/12/28/python-finance-package-v0-035/portfolio2.png" title="Portfolio 2" >}}
+{{< figure src="/blog/2012/12/python-finance-package-v0-035/portfolio2.png" title="Portfolio 2" >}}
 
 ## Conlusion
 

@@ -21,7 +21,7 @@ Stochastic Gradient Decent with restarts: As we get closer to the minimum we wan
 5. Another possible improvement could be to save the weights in at multiple points while decreasing the LR, taking snapshots and do something with them, for example an ensemble
 6. Another thing to do is to increase the speed of decrease for a cycle, you usually want to fail fast but go slower as you get closer to the minimum
 
-{{< figure src="/blog/2018/07/27/fastai-lesson-2/learning-rate.png" title="Learning rate" >}}
+{{< figure src="/blog/2018/07/fastai-lesson-2/learning-rate.png" title="Learning rate" >}}
 
 Fine tuning: Take a model with some weights and freeze some layers (usually the first ones) and train only on the final layers that produce an output. 
 
