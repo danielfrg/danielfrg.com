@@ -6,12 +6,18 @@
     </form>
     
     <nav>
-        <ul class="double-list">
-            <li v-for="item in filteredItems">
-                <a :href="item.url">{{ "{{ item.title }}" }}</a>
-                <span class="date">{{ "{{ item.date }}" }}</span>
-            </li>
-        </ul>
+        <table class="double-list">
+            <tbody>
+                <tr v-for="item in filteredItems">
+                    <td>
+                        <a :href="item.url">{{ "{{ item.title }}" }}</a>
+                    </td> 
+                    <td>
+                        <span class="date">{{ "{{ item.date }}" }}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </nav>
 </section>
 

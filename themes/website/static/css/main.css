@@ -6,18 +6,23 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-size: 1rem;
+  font-size: 1.06rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  line-height: 1.6em;
+  line-height: 1.52947;
   font-weight: 300;
   font-style: normal;
-  color: #444;
+  color: #333;
   text-rendering: optimizeLegibility;
   background: #FFF;
   margin-bottom: 60px;
 }
 
+.page404 {
+  max-width: 650px;
+}
+
 .page404 .error-message {
+  color: #000;
   text-align: center;
 }
 
@@ -31,10 +36,9 @@ body {
 
 .page404 .error-description {
   margin: 0;
-  color: #738a94;
   font-size: 3rem;
   line-height: 1.3em;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .page404 .error-link {
@@ -44,7 +48,7 @@ body {
 
 a.tag {
   margin: 0 10px 10px 0;
-  padding: 1px 12px;
+  padding: 3px 12px;
   display: inline-block;
   font-size: 12px;
   color: rgba(0, 0, 0, 0.6);
@@ -64,25 +68,12 @@ hr.post-divider {
   overflow: visible;
   margin: 20px 0;
   border: none;
-  color: rgba(0, 0, 0, 0.5);
-  text-align: center;
-  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0)), color-stop(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0)));
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  background: #d6d6d6;
   height: 1px;
 }
 
-hr.post-divider:after {
-  content: "//";
-  display: inline-block;
-  position: relative;
-  top: -1.34em;
-  font-size: 0.7em;
-  padding: 0 0.25em;
-  background: #fff;
-}
-
 header.navbar-dark {
-  background: #1c427c;
+  background: rgba(0, 0, 0, 0.8);
   padding: .6rem 1rem;
   position: relative;
   top: 0;
@@ -98,15 +89,16 @@ header.navbar-dark a {
 }
 
 header.navbar-dark a.navbar-brand {
-  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 400;
   font-size: 1rem;
-  letter-spacing: -.6px;
+  letter-spacing: .2px;
   padding: 0 0 0 0;
   margin: 0;
 }
 
 header.navbar-dark ul.navbar-nav a.nav-link {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.65);
   text-transform: uppercase;
   font-size: 12px;
   letter-spacing: -.5px;
@@ -147,26 +139,30 @@ header.navbar-dark ul.navbar-nav a.social {
   background: #fff;
 }
 
-.index ul.double-list {
+.index table.double-list {
+  width: 100%;
   margin: 0;
   padding: 0 0 30px 0;
   list-style-type: none;
+  border-collapse: separate;
+  border-spacing: 0px 5px;
 }
 
-.index ul.double-list li {
-  padding: 4px 0;
+.index table.double-list tr {
+  margin: 8px 0;
 }
 
-.index ul.double-list li a {
+.index table.double-list a {
   color: #000;
   text-decoration: none;
+  font-size: 16px;
 }
 
-.index ul.double-list li a:hover {
-  color: #007aff;
+.index table.double-list a:hover {
+  color: #0070c9;
 }
 
-.index ul.double-list li span.date {
+.index table.double-list span.date {
   font-family: sans-serif;
   text-transform: uppercase;
   text-align: right;
@@ -178,7 +174,7 @@ header.navbar-dark ul.navbar-nav a.social {
 }
 
 @media (min-width: 768px) {
-  .index ul.double-list li span.date {
+  .index table.double-list span.date {
     display: block;
   }
 }
@@ -188,7 +184,7 @@ header.navbar-dark ul.navbar-nav a.social {
 }
 
 article {
-  max-width: 860px;
+  max-width: 650px;
   margin: 0 auto;
 }
 
@@ -207,7 +203,7 @@ article header .post-meta {
 }
 
 article header .post-meta a {
-  color: #007aff;
+  color: #0070c9;
   border: none;
   font-size: 0.7em;
   text-transform: uppercase;
@@ -241,50 +237,24 @@ article header h1 {
 
 article h1 {
   font-weight: 600;
-  font-size: 3.125rem;
+  font-size: 40px;
   line-height: 1.0;
   color: #000;
   margin: .5em 0;
 }
 
 article h2 {
-  margin: 1em 0 .4em;
-  font-size: 28px;
-  color: #000;
-}
-
-article h2:before {
-  content: "## ";
-  font-weight: bold;
-  color: #DDD;
-}
-
-article h3, article h4 {
-  margin: .5em 0 .2em;
-  color: #000;
+  font-size: 32px;
+  line-height: 1.09375;
+  font-weight: 500;
+  letter-spacing: .011em;
 }
 
 article h3 {
   font-size: 24px;
-  font-weight: 400;
-}
-
-article h3:before {
-  content: "### ";
-  font-weight: bold;
-  color: #DDD;
-}
-
-article h4 {
-  font-size: 20px;
-  font-weight: 400;
-  color: #000;
-}
-
-article h4:before {
-  content: "#### ";
-  font-weight: bold;
-  color: #DDD;
+  line-height: 1.20849;
+  font-weight: 500;
+  letter-spacing: .015em;
 }
 
 article strong {
@@ -293,6 +263,13 @@ article strong {
 
 article p {
   line-height: 1.8em;
+}
+
+article p.tldr {
+  font-size: 22px;
+  letter-spacing: .016em;
+  line-height: 1.45455;
+  margin-bottom: 60px;
 }
 
 article p.note {
@@ -331,14 +308,18 @@ article li {
 }
 
 article a {
-  color: #007aff;
+  color: #0070c9;
   text-decoration: none;
 }
 
+article hr {
+  border-top: 1px solid #d6d6d6;
+}
+
 article a:hover {
-  color: #007aff;
+  color: #0070c9;
   text-decoration: none;
-  border-bottom: 1px solid #007aff;
+  border-bottom: 1px solid #0070c9;
 }
 
 article blockquote {
@@ -353,12 +334,11 @@ article img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  max-width: 90%;
+  max-width: 95%;
 }
 
 article figure {
   padding: 5px;
-  background: #f1f1f1ab;
 }
 
 article figure figcaption {
@@ -366,14 +346,10 @@ article figure figcaption {
 }
 
 article figure figcaption h4 {
-  text-align: center;
-  font-size: 0.8em;
-}
-
-article figure figcaption h4:before {
-  content: "";
-  font-weight: bold;
-  color: #DDD;
+  font-size: 17px;
+  line-height: 1.52947;
+  font-weight: 600;
+  letter-spacing: -.021em;
 }
 
 article .videobox {
@@ -456,14 +432,17 @@ article .read_more a.link:hover {
   width: 100%;
   height: 60px;
   line-height: 40px;
-  background-color: rgba(0, 0, 0, 0.05);
+  color: #555;
+  font-size: 0.8rem;
+  text-decoration: none;
+  background-color: #f2f2f2;
 }
 
 .footer .container {
   max-width: 860px;
 }
 
-.footer .text-muted {
-  color: rgba(0, 0, 0, 0.5);
-  font-size: 0.8rem;
+.footer a:hover {
+  color: #333;
+  text-decoration: underline;
 }

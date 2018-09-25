@@ -1,6 +1,6 @@
-$header-bg: #1c427c;
-$text-color: #444;
-$link-color: #007aff;
+$header-bg: rgba(0, 0, 0, 0.8);
+$text-color: #333;
+$link-color: #0070c9;
 
 html {
     position: relative;
@@ -10,9 +10,9 @@ html {
 body {
     margin: 0;
     padding: 0;
-    font-size: 1rem;
+    font-size: 1.06rem;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    line-height: 1.6em;
+    line-height: 1.52947;
     font-weight: 300;
     font-style: normal;
     color: $text-color;
@@ -22,10 +22,13 @@ body {
 }
 
 .page404 {
+    max-width: 650px;
+    
     .error-message {
+        color: #000;
         text-align: center;
     }
-
+    
     .error-code {
         margin: 0;
         font-size: 12vw;
@@ -33,13 +36,12 @@ body {
         letter-spacing: -5px;
         opacity: .3;
     }
-
+    
     .error-description {
         margin: 0;
-        color: #738a94;
         font-size: 3rem;
         line-height: 1.3em;
-        font-weight: 400;
+        font-weight: 600;
     }
 
     .error-link {
@@ -50,7 +52,7 @@ body {
 
 a.tag {
     margin: 0 10px 10px 0;
-    padding: 1px 12px;
+    padding: 3px 12px;
     display: inline-block;
     font-size: 12px;
     color: rgba(0, 0, 0, 0.6);;
@@ -70,20 +72,8 @@ hr.post-divider {
     overflow: visible;
     margin: 20px 0;
     border: none;
-    color: rgba(0, 0, 0, 0.5);
-    text-align: center;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background: #d6d6d6;
     height: 1px;
-}
-
-hr.post-divider:after {
-    content: "//";
-    display: inline-block;
-    position: relative;
-    top: -1.34em;
-    font-size: 0.7em;
-    padding: 0 0.25em;
-    background: #fff;
 }
 
 header.navbar-dark  {
@@ -102,16 +92,17 @@ header.navbar-dark  {
     }
 
     a.navbar-brand {
-        font-weight: 600;
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 400;
         font-size: 1rem;
-        letter-spacing: -.6px;
+        letter-spacing: .2px;
         padding: 0 0 0 0;
         margin: 0;
     }
 
     ul.navbar-nav {
         a.nav-link {
-            color: rgba(255, 255, 255, 0.80);
+            color: rgba(255, 255, 255, 0.65);
             text-transform: uppercase;
             font-size: 12px;
             letter-spacing: -.5px;
@@ -152,40 +143,41 @@ header.navbar-dark  {
         }
     }
 
-    ul.double-list {
+    table.double-list {
+        width: 100%;
         margin: 0;
         padding: 0 0 30px 0;
         list-style-type: none;
+        border-collapse: separate;
+        border-spacing: 0px 5px;
 
-        li {
-            padding: 4px 0;
+        tr {
+            margin: 8px 0;
+        }
 
-            a {
-                color: #000;
-                text-decoration: none;
-                // transition: border .15s cubic-bezier(.645,.045,.355,1);
-                // border-bottom: 1px solid rgba(0,0,0,.1);
-            }
+        a {
+            color: #000;
+            text-decoration: none;
+            font-size: 16px;
+        }
 
-            a:hover {
-                color: $link-color;
-                // text-decoration: none;
-                // border-bottom: 1px solid $link-color;
-            }
+        a:hover {
+            color: $link-color;
+        }
 
-            span.date {
-                font-family: sans-serif;
-                text-transform: uppercase;
-                text-align: right;
-                float: right;
-                padding-top: 3px;
-                font-size: 12px;
-                color: #999;
-                display: none;
 
-                @media(min-width: 768px) {
-                   display: block;
-                }
+        span.date {
+            font-family: sans-serif;
+            text-transform: uppercase;
+            text-align: right;
+            float: right;
+            padding-top: 3px;
+            font-size: 12px;
+            color: #999;
+            display: none;
+
+            @media(min-width: 768px) {
+                display: block;
             }
         }
     }
@@ -196,7 +188,7 @@ header.navbar-dark  {
 }
 
 article {
-    max-width: 860px;
+    max-width: 650px;
     margin: 0 auto;
     
     header {
@@ -244,50 +236,24 @@ article {
 
     h1 {
         font-weight: 600;
-        font-size: 3.125rem;
+        font-size: 40px;
         line-height: 1.0;
         color: #000;
         margin: .5em 0;
     }
 
     h2 {
-        margin: 1em 0 .4em;
-        font-size: 28px;
-        color: #000;
-    }
-
-    h2:before {
-        content: "## ";
-        font-weight: bold;
-        color: #DDD;
-    }
-
-    h3, h4 {
-        margin: .5em 0 .2em;
-        color: #000;
+        font-size: 32px;
+        line-height: 1.09375;
+        font-weight: 500;
+        letter-spacing: .011em;
     }
 
     h3 {
         font-size: 24px;
-        font-weight: 400;
-    }
-
-    h3:before {
-        content: "### ";
-        font-weight: bold;
-        color: #DDD;
-    }
-
-    h4 {
-        font-size: 20px;
-        font-weight: 400;
-        color: #000;
-    }
-
-    h4:before {
-        content: "#### ";
-        font-weight: bold;
-        color: #DDD;
+        line-height: 1.20849;
+        font-weight: 500;
+        letter-spacing: .015em;
     }
 
     strong {
@@ -296,6 +262,13 @@ article {
 
     p {
         line-height: 1.8em;
+    }
+
+    p.tldr {
+        font-size: 22px;
+        letter-spacing: .016em;
+        line-height: 1.45455;
+        margin-bottom: 60px;
     }
 
     p.note {
@@ -336,7 +309,10 @@ article {
     a {
         color: $link-color;
         text-decoration: none;
-        // border-bottom: 1px solid rgba(0,0,0,.2);
+    }
+
+    hr {
+        border-top: 1px solid #d6d6d6;
     }
     
     a:hover {
@@ -357,24 +333,20 @@ article {
         display: block;
         margin-left: auto;
         margin-right: auto;
-        max-width: 90%;
+        max-width: 95%;
     }
 
     figure {
         padding: 5px;
-        background: #f1f1f1ab;
 
         figcaption {
             padding-top: 5px;
-            h4 {
-                text-align: center;
-                font-size: 0.8em;
-            }
 
-            h4:before {
-                content: "";
-                font-weight: bold;
-                color: #DDD;
+            h4 {
+                font-size: 17px;
+                line-height: 1.52947;
+                font-weight: 600;
+                letter-spacing: -.021em;
             }
         }
     }   
@@ -465,14 +437,18 @@ article {
     width: 100%;
     height: 60px;
     line-height: 40px;
-    background-color: rgba(0, 0, 0, 0.05);
+    color: #555;
+    font-size: 0.8rem;
+    text-decoration: none;
+    background-color: #f2f2f2;
 
+    
     .container { 
         max-width: 860px;
     }
-    
-    .text-muted {
-        color: rgba(0, 0, 0, 0.5);
-        font-size: 0.8rem;
+
+    a:hover {
+        color: #333;
+        text-decoration: underline;
     }
 }
