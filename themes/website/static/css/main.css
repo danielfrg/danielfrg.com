@@ -339,6 +339,7 @@ article img {
 
 article figure {
   padding: 5px;
+  background: whitesmoke;
 }
 
 article figure figcaption {
@@ -346,10 +347,12 @@ article figure figcaption {
 }
 
 article figure figcaption h4 {
-  font-size: 17px;
+  font-size: 15px;
   line-height: 1.52947;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: -.021em;
+  margin: 0 auto;
+  max-width: 95%;
 }
 
 article code {

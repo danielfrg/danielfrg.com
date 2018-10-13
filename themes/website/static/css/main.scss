@@ -338,15 +338,18 @@ article {
 
     figure {
         padding: 5px;
+        background: rgb(245, 245, 245);
 
         figcaption {
             padding-top: 5px;
 
             h4 {
-                font-size: 17px;
+                font-size: 15px;
                 line-height: 1.52947;
-                font-weight: 600;
+                font-weight: 400;
                 letter-spacing: -.021em;
+                margin: 0 auto;
+                max-width: 95%;
             }
         }
     }
