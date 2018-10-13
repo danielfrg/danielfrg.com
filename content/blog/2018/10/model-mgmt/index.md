@@ -3,7 +3,6 @@ title = "Polyaxon, Argo and Seldon for model training, package and deployment"
 slug = "model-management-polyaxon-argo-seldon"
 date = "2018-10-13"
 tags = ["Model management", "Kubernetes", "Polyaxon", "Argo", "Seldon"]
-draft = true
 +++
 
 The ultimate combination for model management in Kubernetes?
