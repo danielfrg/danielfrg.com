@@ -261,14 +261,14 @@ article {
     }
 
     p {
-        line-height: 1.8em;
+        line-height: 1.5em;
     }
 
-    p.tldr {
+    p.subtitle, p.tldr {
         font-size: 22px;
         letter-spacing: .016em;
         line-height: 1.45455;
-        margin-bottom: 60px;
+        margin-bottom: 30px;
     }
 
     p.note {
@@ -303,7 +303,8 @@ article {
 
     li {
         font-size: inherit;
-        line-height: 1.8em;
+        line-height: 1.5em;
+        margin-bottom: 3px;
     }
 
     a {
@@ -376,7 +377,7 @@ article {
         }
     }
 
-    pre.console {
+    pre.terminal {
         padding: 10px;
         background-color: #000;
         color: #FFF;

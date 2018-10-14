@@ -113,7 +113,7 @@ spec:
 
 All this can be found in the `example/nfs.yml` file when executed there should be a `jupyterhub-nfs` service.
 
-<pre class="console">
+<pre class="terminal">
 $ kubectl create -f example/nfs.yml
 ...
 
@@ -182,7 +182,7 @@ spec:
 
 Start the deployment and service and you should see a new `jupyterhub-nfs-web` service
 
-<pre class="console">
+<pre class="terminal">
 $ kubectl create -f example/nfs2.yml
 ...
 
@@ -252,7 +252,7 @@ for example '/mnt/notebooks/danielfrg'.
 
 Start the JupyterHub service same as before.
 
-<pre class="console">
+<pre class="terminal">
 $ kubectl create -f hub.yml
 </pre>
 

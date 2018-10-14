@@ -1,11 +1,13 @@
 +++
-title = "Polyaxon, Argo and Seldon for model training, package and deployment"
+title = "Polyaxon, Argo and Seldon for model training, package and deployment in Kubernetes"
 slug = "model-management-polyaxon-argo-seldon"
 date = "2018-10-13"
 tags = ["Model management", "Kubernetes", "Polyaxon", "Argo", "Seldon"]
 +++
 
-The ultimate combination for model management in Kubernetes?
+<p class="subtitle">
+  The ultimate combination of opensource frameworks for model management in Kubernetes?
+</p>
 
 This articles explores the combination of a couple of new technologies for model management in Kubernetes. This article doesn't pretend to explain each of these tools deeply, they are complex and you should look at the respective websites and docs. We are going to be using:
 
@@ -16,12 +18,16 @@ This articles explores the combination of a couple of new technologies for model
 
 The final output is a pipeline that trains multiple models, explore the metrics to (manually) pick the best, package the model and deploys it.
 
-All the code needed for the project can be found here: [danielfrg/polyaxon-argo-seldon-example](https://github.com/danielfrg/polyaxon-argo-seldon-example). You should be able to follow along and get this running yourself. Locally you won't need much more than a couple of client CLIs
+All the code needed to follow along can be found here: [danielfrg/polyaxon-argo-seldon-example](https://github.com/danielfrg/polyaxon-argo-seldon-example).Locally you won't need much more than a couple of client CLIs and clone a couple of repos.
 
-```bash
+```terminal
+$ brew install kubectx
+$ brew install kubernetes-helm
 $ pip install polyaxon-cli
 $ brew install argoproj/tap/argo
-$ brew install kubernetes-heml
+
+$ git clone https://github.com/danielfrg/polyaxon-argo-seldon-example.git
+$ git clone https://github.com/SeldonIO/seldon-core.git
 ```
 
 ## Infrastructure
@@ -30,10 +36,16 @@ Installing software on hardware.
 
 ### Kubernetes cluster
 
-I used GKE but it could really be any Kubernetes cluster, either use the GCP console or with a command like this one:
+I used GKE but it could be any Kubernetes cluster, either use the GCP console or with a command like this one:
 
-```bash
-$ gcloud beta container --project "<project-name>" clusters create "model-mgmt2" --zone "us-central1-a" --cluster-version "1.10.7-gke.2" --machine-type "n1-standard-2" --image-type "COS" --disk-size "10" --num-nodes "3" --network "default"
+```terminal
+$ gcloud beta container --project "<project-name>" clusters create "model-mgmt" --zone "us-central1-a" --cluster-version "1.10.7-gke.2" --machine-type "n1-standard-2" --image-type "COS" --disk-size "10" --num-nodes "3" --network "default"
+```
+
+Configure your local kubectl:
+
+``` terminal
+$ gcloud container clusters get-credentials model-mgmt --zone us-central1-a
 ```
 
 ### NFS: Single Node Filer
@@ -46,8 +58,9 @@ We need to create a couple of directories in the NFS server, so SSH into the nod
 
 {{< figure src="/blog/2018/10/model-management-polyaxon-argo-seldon/nfs-ssh.png" title="SSH into the NFS Server" >}}
 
-```bash
-# Polyaxon dirs
+Once in the instance create some directory structure for Polyaxon and Jupyter Lab and Argo later.
+
+```terminal
 $ cd /data
 $ mkdir -m 777 data
 $ mkdir -m 777 outputs
@@ -55,7 +68,6 @@ $ mkdir -m 777 logs
 $ mkdir -m 777 repos
 $ mkdir -m 777 upload
 
-# This is for Jupyter Lab and Argo later
 $ cd repos
 $ mkdir deployments/
 $ chmod 777 deployments/
@@ -63,16 +75,17 @@ $ chmod 777 deployments/
 
 Get the (private) IP of the NFS server either with the command below or just search for it on the Google Cloud console in the VMs. In my case `10.240.0.8`.
 
-```bash
+```terminal
 $ gcloud compute instances describe polyaxon-nfs-vm --zone=us-central1-f --format='value(networkInterfaces[0].networkIP)'
 10.240.0.8
 ```
 {{< figure src="/blog/2018/10/model-management-polyaxon-argo-seldon/nfs-ip.png" title="Find NFS Server IP" >}}
 
-Finally create some PVCs for Polyaxon and the other tools to use:
+Finally create some PVCs for Polyaxon and the other tools to use. **Note that** you need to edit the `*-pvc.yml` files and add the correct IP Address:
 
-```bash
-$ cd polyaxon-examples/gke/
+```terminal
+$ cd <polyaxon-argo-seldon-example repo>
+$ cd gke/
 
 # And replace with the right ip address in all the files
 $ vi data-pvc.yml
@@ -82,6 +95,8 @@ $ vi repos-pvc.yml
 $ vi upload-pvc.yml
 
 # Create the k8s resources
+$ kubectl create namespace polyaxon
+$ kubens polyaxon
 $ kubectl apply -f data-pvc.yml
 $ kubectl apply -f outputs-pvc.yml
 $ kubectl apply -f logs-pvc.yml
@@ -91,15 +106,20 @@ $ kubectl apply -f upload-pvc.yml
 
 ### Installing Polyaxon
 
-With the PVCs already created it's relatively easy to install it [based on the docs](https://docs.polyaxon.com/). First some permissions for the tiller (heml server) service account.
+With the PVCs already created it's relatively easy to install it [based on the docs](https://docs.polyaxon.com/). First some permissions for the tiller (helm server) service account.
 
-```bash
+```terminal
+# Configure tiller to have the access it needs
 $ kubectl --namespace kube-system create sa tiller
 $ kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
 $ helm init --service-account tiller
+
+# Add polyaxon charts
+$ helm repo add polyaxon https://charts.polyaxon.com
+$ helm repo update
 ```
 
-Now we can start Polyaxon using Helm, the only extra thing we need is a `polyaxon-config.yml` config file and run helm:
+Now we can start Polyaxon using Helm, the only extra thing we need is a `polyaxon-config.yml` config file and run Helm:
 
 ```yaml
 rbac:
@@ -127,13 +147,16 @@ persistence:
       mountPath: /outputs
 ```
 
-```bash
+```terminal
+$ cd <polyaxon-argo-seldon-example repo>
+$ cd polyaxon
+
 $ helm install polyaxon/polyaxon --name=polyaxon --namespace=polyaxon -f polyaxon/polyaxon-config.yml
 ```
 
 When the command finishes you will get something like this:
 
-```bash
+```
 Polyaxon is currently running:
 
 1. Get the application URL by running these commands:
@@ -156,7 +179,7 @@ Polyaxon is currently running:
 
 So execute those instructions and login using the `polyaxon-cli`. The default `username:password` pair is: `root:rootpassword`:
 
-```bash
+```terminal
 $ polyaxon login --username=root --password=rootpassword
 ```
 
@@ -168,7 +191,7 @@ You can also visit the URL that is printed to visit the Polyaxon UI.
 
 [Full docs here](https://github.com/argoproj/argo/blob/master/demo.md) (the permissions section is important), basically:
 
-```bash
+```terminal
 $ kubectl create ns argo
 $ kubectl apply -n argo -f https://raw.githubusercontent.com/argoproj/argo/v2.2.1/manifests/install.yaml
 $ kubectl create rolebinding default-admin --clusterrole=admin --serviceaccount=default:default
@@ -183,15 +206,20 @@ Now we could visit the argo UI that looks like this with a couple of workflows:
 
 There is multiple ways to [install Seldon ](https://github.com/SeldonIO/seldon-core/blob/master/notebooks/helm_examples.ipynb), I picked to use helm because I honestly don't fully understand ksonnet. .
 
-```bash
+```terminal
+$ cd <seldon-core repo>
+
 $ kubectl create namespace seldon
 $ kubens seldon
 $ kubectl create clusterrolebinding kube-system-cluster-admin --clusterrole=cluster-admin --serviceaccount=kube-system:default
 
 $ helm install ./helm-charts/seldon-core-crd --name seldon-core-crd --set usage_metrics.enabled=true
 $ helm install ./helm-charts/seldon-core --name seldon-core --namespace seldon  --set ambassador.enabled=true
+```
 
-## Run this one line in another terminal since its blocking
+Run this in another terminal to proxy
+
+```terminal
 $ kubectl port-forward $(kubectl get pods -n seldon -l service=ambassador -o jsonpath='{.items[0].metadata.name}') -n seldon 8003:8080
 ```
 
@@ -201,13 +229,12 @@ We have finally installed all we need, let's train some models!
 
 Following the Polyaxon docs we can create a new project based on the examples.
 
-```bash
+```terminal
 $ polyaxon project create --name=mnist --description='Train and evaluate a model for the MNIST dataset'
-
-$ polyaxon init
+$ polyaxon init mnist
 ```
 
-I wanted to test the hyper-parameter search so I ran the `pytorch-mnist/polyaxonfile_hyperparams.yml`:
+I wanted to test the hyper-parameter search so the polyaxon file looks like this:
 
 ```yaml
 ---
@@ -249,8 +276,9 @@ run:
 
 Now we can run the experiment:
 
-```bash
-polyaxon run -u -f polyaxonfile_hyperparams.yml
+```terminal
+$ cd <polyaxon-argo-seldon-example repo>
+$ polyaxon run -u -f polyaxonfile_hyperparams.yml
 ```
 
 Based on the parameter space this command will create one experiment group with 10 experiments in that group. You can see the progress, logs, parameters, environment and more in the Polyaxon UI.
@@ -314,7 +342,7 @@ spec:
 
 This Jupyter Lab installation will have the right mounts for you move the serialized model: 
 
-```bash
+```terminal
 $ cp /output/root/mnist/groups/12/120/model.dat /home/jovyan/deployments/mnist/
 ```
 
@@ -330,7 +358,7 @@ With this manual part done we can package the model as an docker image using s2i
 
 Since we are going to push an image to docker hub we need to first create a secret with the credentials to login to the registry.
 
-```bash
+```terminal
 $ kubectl create secret docker-registry regcred --docker-server=<your-registry-server> --docker-username=<your-name> --docker-password=<your-pword> --docker-email=<your-email>
 ```
 
@@ -385,7 +413,7 @@ spec:
 
 Then just execute the argo pipeline
 
-```bash
+```terminal
 $ argo submit argo/pipeline.yaml
 ```
 
@@ -489,7 +517,7 @@ Seldon has a lot of other features that are not explored here, check [their webs
 
 **What to do with this?** Probably nothing, take it as an experiment and to show of what is possible today with Kubernetes around model management without having to go super deep in something like [IBM/FfDL](https://github.com/IBM/FfDL) that looks great btw.
 
-This process integrates relatively well with some previous work I have posted here on Jupyter Hub in Kubernetes for a multi-user dev environment.
+This process integrates relatively well with some previous work I have posted here on [Jupyter Hub in Kubernetes](/blog/2016/09/jupyterhub-kubernetes-nfs/) for a multi-user dev environment.
 
 **Why not just use Argo to do the model training?** You could, I think Polyaxon right now is better for model training since it just does that, Argo its more general and thats great! but specialized tools sometimes are better. [Argo's architecture](https://applatix.com/open-source/argo/get-started/architecture) is more complex and other tooling could be build on top of it, I imagine that will happen eventually.
 
