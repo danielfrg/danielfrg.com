@@ -6,19 +6,35 @@ tags = ["Model management", "Kubernetes", "Polyaxon", "Argo", "Seldon"]
 +++
 
 <p class="subtitle">
-  The ultimate combination of opensource frameworks for model management in Kubernetes?
+  The ultimate combination of open-source frameworks for model management in Kubernetes?
 </p>
 
-This articles explores the combination of a couple of new technologies for model management in Kubernetes. This article doesn't pretend to explain each of these tools deeply, they are complex and you should look at the respective websites and docs. We are going to be using:
+This year we have seen the rise of machine learning platforms, just at Strata we have seen the tide change from data storage solutions to data science platforms to the now popular machine learning platforms. The difference are between those is quite subjective and a combination of these tools tailored for your use-case is needed to achieve good results, for example check out Juliet Hougland great talk 
+on how [Stitch Fix does Production Model Deployment](https://www.youtube.com/watch?v=Z7_AatHRXjI).
 
-1. [Polyaxon](https://polyaxon.com/): To create and manage multiple experiments that train models based on a range of hyper-parameters. The dataset is the classic MNIST using Pytorch
-2. [Jupyter Lab](http://jupyter.org/): To code a little bit of Python for Seldon
-3. [Argo](https://applatix.com/open-source/argo/): Pipeline tool that we use to build docker images and push for Seldon using s2i
-4. [Seldon](https://www.seldon.io/): To do model deployment, scaling, routing and more
+In the same way that Google released the MapReduce and other papers for the rest of the world to follow the years after with the Hadoop ecosystem, tooling from Google and other big tech companies has come up to solve the Machine Learning problem. I even connect this in a way with [Kubernetes](https://kubernetes.io/), that was so young 2 years ago to become a **key** part of every cloud provider offering right now, it would be dumb to compete with the [CNCF stack](https://www.cncf.io/). Projects also includes [TensorFlow](https://www.tensorflow.org/) and more recently [KubeFlow](https://www.kubeflow.org/) that provides more guidance on a combination of tools.
 
-The final output is a pipeline that trains multiple models, explore the metrics to (manually) pick the best, package the model and deploys it.
+Model management can be defined in so many different ways but at the end is software. The objective is to write and deploy some software to solve a problem. The difference is that the software is written in a different way, no longer programmers write the full logic of the application to package it in a JAR/WAR file to deploy it in JBoss.
 
-All the code needed to follow along can be found here: [danielfrg/polyaxon-argo-seldon-example](https://github.com/danielfrg/polyaxon-argo-seldon-example).Locally you won't need much more than a couple of client CLIs and clone a couple of repos.
+A ML model has a lot of different requirements, for development/training you need GPUs, packaging is more complicated that just a JAR file since there is no one language you can use for everything, you need Python, R with other parts written in C and C++. The application went from 10s of Mb to +100s of Mb since models have a lot of data inside of them. They went from endpoints being basically database operations that took a couple of milliseconds to smarter operation that make predictions but take longer to execute, require more CPU and more RAM.
+
+At the same time the traditional requirements for logs, monitoring, security, scalability and more of traditional applications requirements are needed for this new types of applications. If you did A/B testing for testing of sections on a website you will now do A/B testing for all your ML models to see which one is performing better. If you scaled a Node web server you now need to scale a TensorFlow model, and so on. At the same time development of the ML models is also much more complex and takes more time since it requires testing combinations of algorithms, features and more variables.
+
+You can get so much value from ML compared to traditional application but the investment you need to do is huge in many areas.
+
+## This experiment
+
+This articles explores the combination of a couple of new technologies for model management to provide a pipeline that solves three primary groups of problems:
+
+1. Distributed hyper-parameter training, that could also be used to actual distributed training: [Polyaxon](https://polyaxon.com/)
+1. A container image building pipeline based on s2i: [Argo](https://applatix.com/open-source/argo/)
+1. Deployment of a model that can handle single or more complex deployment: [Seldon](https://www.seldon.io/)
+
+The final output is a ML pipeline that trains multiple models, explore the metrics to (manually) pick the best, package the model as a docker image and deploys it as a REST API.
+
+XXXXXXX
+
+All the code needed to follow along can be found here: [danielfrg/polyaxon-argo-seldon-example](https://github.com/danielfrg/polyaxon-argo-seldon-example). Locally you won't need much more than a couple of client CLIs and clone a couple of repos.
 
 ```terminal
 $ brew install kubectx
@@ -30,9 +46,10 @@ $ git clone https://github.com/danielfrg/polyaxon-argo-seldon-example.git
 $ git clone https://github.com/SeldonIO/seldon-core.git
 ```
 
-## Infrastructure
+## Infrastructure and installation
 
-Installing software on hardware.
+This section is a small reference from each project documentation so be sure to read that if something here doesn't work or gets outdated.
+For a short explanation on what each tool does go to the next section.
 
 ### Kubernetes cluster
 
@@ -42,15 +59,15 @@ I used GKE but it could be any Kubernetes cluster, either use the GCP console or
 $ gcloud beta container --project "<project-name>" clusters create "model-mgmt" --zone "us-central1-a" --cluster-version "1.10.7-gke.2" --machine-type "n1-standard-2" --image-type "COS" --disk-size "10" --num-nodes "3" --network "default"
 ```
 
-Configure your local kubectl:
+Configure your local `kubectl`:
 
-``` terminal
+```terminal
 $ gcloud container clusters get-credentials model-mgmt --zone us-central1-a
 ```
 
 ### NFS: Single Node Filer
 
-This is where all the code, models and data is saved. It's super easy to create one using the this GCP [template](https://console.cloud.google.com/marketplace/details/click-to-deploy-images/singlefs).
+This is where all the code, models and data is saved. It's super easy to create one using the this GCP [Single node file server template](https://console.cloud.google.com/marketplace/details/click-to-deploy-images/singlefs).
 
 {{< figure src="/blog/2018/10/model-management-polyaxon-argo-seldon/nfs-server.png" title="NFS Server template" >}}
 
@@ -204,7 +221,7 @@ Now we could visit the argo UI that looks like this with a couple of workflows:
 
 ### Installing Seldon
 
-There is multiple ways to [install Seldon ](https://github.com/SeldonIO/seldon-core/blob/master/notebooks/helm_examples.ipynb), I picked to use helm because I honestly don't fully understand ksonnet. .
+There is multiple ways to [install Seldon](https://github.com/SeldonIO/seldon-core/blob/master/notebooks/helm_examples.ipynb), I picked to use helm because I honestly don't fully understand ksonnet.
 
 ```terminal
 $ cd <seldon-core repo>
@@ -217,15 +234,21 @@ $ helm install ./helm-charts/seldon-core-crd --name seldon-core-crd --set usage_
 $ helm install ./helm-charts/seldon-core --name seldon-core --namespace seldon  --set ambassador.enabled=true
 ```
 
-Run this in another terminal to proxy
+Run this in another terminal to proxy the Ambassador service:
 
 ```terminal
 $ kubectl port-forward $(kubectl get pods -n seldon -l service=ambassador -o jsonpath='{.items[0].metadata.name}') -n seldon 8003:8080
 ```
 
+We have finally installed all we need, let's train and deploy some models!
+
 ## Polyaxon: Training models
 
-We have finally installed all we need, let's train some models!
+[Polyaxon](https://polyaxon.com/) is a tool for reproducible machine learning.
+It allows you to push parameterized code in for example TensorFlow or PyTorch for Polyaxon to run in what they call an experiment.
+[Experiments](https://docs.polyaxon.com/experimentation/concepts/#experiment) can be part of an [experiment group](https://docs.polyaxon.com/experimentation/concepts/#experiment-group) for doing hyper-parameter search.
+
+Polyaxon takes care of executing the jobs based on an imperative definitions in the a similar way as Kubernetes does, it also takes care of saving the metrics and outputs of the jobs for analysis and selection. It has some features we are not gonna use here to do [distributed training](https://docs.polyaxon.com/experimentation/distributed_experiments/) or using [Tensorboard](https://docs.polyaxon.com/experimentation/tensorboards/).
 
 Following the Polyaxon docs we can create a new project based on the examples.
 
@@ -338,6 +361,19 @@ spec:
       - name: outputs-volume
         persistentVolumeClaim:
           claimName: polyaxon-pvc-outputs
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: jupyter
+spec:
+  selector:
+    app: jupyter
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8888
 ```
 
 This Jupyter Lab installation will have the right mounts for you move the serialized model: 
@@ -353,6 +389,8 @@ After that create the files required for Seldon: the Python class for Seldon, th
 We now have all we need to package the model as a docker image that Seldon can use.
 
 ## Argo: Creating a docker image for the model
+
+[Argo](https://argoproj.github.io/argo) is a workflow manager for Kubernetes. It allows you to define 
 
 With this manual part done we can package the model as an docker image using s2i. For that I created a simple docker image that executes s2i and pushes an image, [Dockerfile is here](https://github.com/danielfrg/polyaxon-argo-seldon-example/tree/master/docker-s2i) and the docker image is available as [danielfrg/s2i](https://hub.docker.com/r/danielfrg/s2i/).
 
