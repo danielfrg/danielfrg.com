@@ -9,11 +9,22 @@ tags = ["Model management", "Kubernetes", "Polyaxon", "Argo", "Seldon"]
   The ultimate combination of open-source frameworks for model management in Kubernetes?
 </p>
 
-This year we have seen the rise of machine learning platforms, just at [Strata](https://conferences.oreilly.com/strata) we have seen the tide change from data storage solutions, to SQL engines for those storage, to Spark, to data science platforms to the now popular machine learning platforms. The difference are between some of those is quite subjective and a combination of these tools tailored for your use-case is needed to achieve good results.
+In it's simplest form, model management can be seen as training one machine learning model, then repeating this tens, hundreds, or thousands of times with different data, parameters, features and algorithms to finally deploy the *"best"* one.
+A more complete definition would be that model management involves developing tooling and pipelines for data scientists to develop, deploy, measure, improve and iterate so they can continue making better models not only for one particular problem but wider range of datasets and algorithms.
 
-In the same way that Google released the MapReduce and other papers for the rest of the world to follow the years after with the Hadoop ecosystem, tooling from Google and other big tech companies has come up to solve the Machine Learning problem. I even connect this in a way with [Kubernetes](https://kubernetes.io/), that was so young 2 years ago and has become a **key** part of every cloud provider offering right now, it would be dumb to compete with the [CNCF stack](https://www.cncf.io/). Projects also includes [TensorFlow](https://www.tensorflow.org/) and more recently [KubeFlow](https://www.kubeflow.org/) that provides more guidance on a combination of tools.
+At the same time model management includes all the requirements of more traditional applications such as API development and versioning, package management, containerization, reproducibility, scale, monitoring, logging and more.
 
-Model management can be defined in so many different ways but at the end is software, the objective is to write and deploy some software to solve a problem. The difference is that this software is written in a different way and has different requirements, no longer programmers write the full logic of the application to package it in a JAR/WAR file to deploy it in JBoss.
+The objective of this article is to propose an repeatable pipeline to make your life easier and make iterations faster. I think this quote captures the spirit pretty well.
+
+> *We don't deploy one model, we deploy the process for repeatedly making more. When you deploy a ML model into production you are not saying "this is the best model and we should use it forever". What it actually means is deploying the pipeline for model building and making it more repeatable.*
+>
+> [Juliet Hougland](https://www.youtube.com/watch?v=Z7_AatHRXjI)
+
+## How Did We Get Here
+
+This year we have seen the rise of machine learning platforms, just at [Strata](https://conferences.oreilly.com/strata) we have seen the tide change from data storage solutions, to SQL engines for data in those storage solutions, to Spark, to data science platforms to the now popular machine learning platforms. The difference are between some of those is quite subjective and a combination of these tools tailored for your use-case is needed to achieve good results.
+
+In the same way that Google released the MapReduce and other papers for the rest of the world to follow the years after with the Hadoop ecosystem, tooling from Google and other big tech companies has come up to solve the Machine Learning problem. I even connect this in a way with [Kubernetes](https://kubernetes.io/), that was so young 2 years ago and has become a **key** part of every cloud provider offering right now, at this point it would be dumb to not bet on the [CNCF stack](https://www.cncf.io/). Projects also includes [TensorFlow](https://www.tensorflow.org/) and more recently [KubeFlow](https://www.kubeflow.org/) that provides more guidance on a combination of tools.
 
 A ML model has a lot of different requirements, for development/training you need GPUs, packaging is more complicated that just a JAR file since there is no one language you can use for everything, you need Python, R with other parts written in C and C++. The application went from 10s of Mb to +100s of Mb since models have a lot of data inside of them. They went from endpoints being basically database operations that took a couple of milliseconds to smarter operation that make predictions but take longer to execute, require more CPU and more RAM.
 
@@ -21,13 +32,7 @@ At the same time the traditional requirements of logs, monitoring, security, sca
 
 You can get so much value from ML compared to traditional applications but the investment you need to do is huge in many areas.
 
-The objective of this article is to propose an repeatable pipeline to make your life easier and make iterations faster. I think this quote captures the spirit.
-
-> *We don't deploy one model, we deploy the process for repeatedly making more. When you deploy a ML model into production you are not saying "this is the best model and we should use it forever". What it actually means is deploying the pipeline for model building and making it more repeatable.*
->
-> [Juliet Hougland](https://www.youtube.com/watch?v=Z7_AatHRXjI)
-
-## This experiment
+## This Experiment
 
 This articles explores the combination of a couple of new technologies for model management to provide a pipeline that solves three primary groups of problems:
 
@@ -54,7 +59,11 @@ $ git clone https://github.com/SeldonIO/seldon-core.git
 ## Infrastructure and installation
 
 This section is a small reference from each project documentation so be sure to read that if something here doesn't work or gets outdated.
-For a short explanation on what each tool does go to the next section.
+
+The next few sections will walk through the installation and configuration of five components that we'll use to build a model deployment pipeline: 1) Kubernetes cluster, 2) NFS for persistent storage, 3) Polyaxon for distributed model training, 4) Argo to build a model containerization workflow, and 5) Seldon for model deployment.
+
+Once we installed and configured each of these components, we'll train, build, and deploy a model starting in Section "Polyaxon: Training models".
+So just go there if you want to skip all the installation bits.
 
 ### Kubernetes cluster
 
@@ -321,11 +330,13 @@ You can take a look and download the trained models by just looking at the NFS s
 
 {{< figure src="/blog/2018/10/model-management-polyaxon-argo-seldon/polyaxon-output.png" title="Polyaxon output" >}}
 
-## From Polyaxon to Seldon
+## From Polyaxon to Argo
 
 Now that we have trained and serialized models we need to package it and deploy it using Seldon. This requires some manual work as you need to create a Python class for Seldon to use, create `requirements.txt` and move the serialized model to the right location. Finally we need to use [s2i](https://github.com/openshift/source-to-image) to create the image using the base Seldon image.
 
-To do this I used a Jupyter Lab server in the Kubernetes cluster that you can get up and running with this Kubernetes yaml spec:
+All this process can be done manually locally by downloading the serialized model and using [s2i](https://github.com/openshift/source-to-image) but in the spirit of automating things I decided to do use Argo for this task.
+
+I also wanted to keep most things in the Kubernetes cluster where models/data and others things are closer, so I used a Jupyter Lab server you can get up and running with this Kubernetes yaml spec:
 
 ```yaml
 apiVersion: apps/v1
@@ -391,15 +402,37 @@ After that create the files required for Seldon: the Python class for Seldon, th
 
 {{< figure src="/blog/2018/10/model-management-polyaxon-argo-seldon/jupyterlab.png" title="Jupyter Lab with Seldon code" >}}
 
-We now have all we need to package the model as a docker image that Seldon can use.
+The actual Python class that Seldon uses is this:
+
+```python
+import torch
+from network import Network
+from torchvision import datasets, transforms
+
+class MnistModel(object):
+    
+    def __init__(self):
+        self.model = Network()
+        self.model.load_state_dict(torch.load("./model.dat"))
+
+    def predict(self, X, feature_names):
+        tensor = torch.from_numpy(X).view(-1, 28, 28)
+        t = transforms.Normalize((0.1307,), (0.3081,))
+        tensor_norm = t(tensor)
+        tensor_norm = tensor_norm.unsqueeze(0)
+        out = self.model(tensor_norm.float())
+        predictions = torch.nn.functional.softmax(out)
+        print(predictions)
+        return predictions.detach().numpy()
+```
+
+This basically loads the seralized model in the `__init__` function to later user that in the `predict` function, there we have some simple PyTorch code to preprocess the inputs to what the model expects.
+
+We now have all we need to package the model as a docker image using Argo that Seldon can use.
 
 ## Argo: Creating a docker image for the model
 
 [Argo](https://argoproj.github.io/argo) is a workflow manager for Kubernetes. We will use Argo to build a reusable container-native workflow for taking the serialized model into a container that can be later deployed using Seldon.
-
-All this process can be done manually locally by downloading the serialized file and using [s2i](https://github.com/openshift/source-to-image).
-So while here we are going to create only one image the argo workflow can be used to package not only one hand-picked model but package more models
-and deploy them all for smarter routing using Seldon.
 
 To support this I created a simple docker image that executes s2i and pushes an image, [Dockerfile is here](https://github.com/danielfrg/polyaxon-argo-seldon-example/tree/master/docker-s2i) and the docker image is available as [danielfrg/s2i](https://hub.docker.com/r/danielfrg/s2i/).
 
@@ -504,7 +537,11 @@ spec:
     replicas: 1
 ```
 
-Then we can query this deployed model using a little bit of Python to read and image and make a HTTP request:
+This will create a couple of Kubernetes Pods that include the model running and handle other routing stuff.
+
+**After all this work we can finally query the model!**
+
+Since we deployed a REST API we can query this deployed model using a little bit of Python to read and image and make a HTTP request:
 
 ```python
 import requests
@@ -562,10 +599,6 @@ Seldon has a lot of other features that are not explored here, check [their webs
 
 ## Thoughts
 
-**What to do with this?** Take it as a simple experiment to show of what is possible today with open-source frameworks around model management on Kubernetes. Take this and adapt it to your needs. The objective it to make your life easier, make iterations faster and models better.
-
-This pipeline is useful as described here but it's far from being complete. This will save you some time right now but some manual parts needs to be automated. You will need to work on integrating this (or anything) into your existing workflow around Git and CI/CD (Jenkins).
-
 **This looks really hard, there must be a better way!** There is probably is much better ways. Most companies with big data science teams have been building similar infrastructure and some are available to use, for example:
 
 1. [TFX](https://www.tensorflow.org/tfx/) from Google/TensorFlow, [paper here](https://dl.acm.org/citation.cfm?id=3098021)
@@ -591,6 +624,10 @@ Each of this features will increase the cost significantly.
 **Jupyter Hub and Binder**. This process integrates relatively well with some previous work I have posted here on [Jupyter Hub in Kubernetes](/blog/2016/09/jupyterhub-kubernetes-nfs/) for a multi-user dev environment. Great multi-user collaboration is a key part of the process. Also don't forget that the end result is usually not an API but some sort of application, dashboard or report and deployment for those applications is also important.
 
 **Why not just use Argo to do the model training?** You could, I think Polyaxon right now is better for model training since it just does that, Argo its more general and thats great but specialized tools sometimes are better. [Argo's architecture](https://applatix.com/open-source/argo/get-started/architecture) is more complex and extensible so other tooling could be build on top of it, I imagine that will happen eventually.
+
+**What to do with this?** Take it as a simple experiment to show of what is possible today with open-source frameworks around model management on Kubernetes. Take this and adapt it to your needs. The objective it to make your life easier, make iterations faster and models better.
+
+This pipeline is useful as described here but it's far from being complete. This will save you some time right now but some manual parts needs to be automated. You will need to work on integrating this (or anything) into your existing workflow around Git and CI/CD (Jenkins).
 
 ### Other links and things I used
 
