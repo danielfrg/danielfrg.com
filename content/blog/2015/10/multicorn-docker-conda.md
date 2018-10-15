@@ -36,7 +36,7 @@ It also includes a couple of examples on how to use the image.
 This example is basically a copy of one of Multicorn examples
 where they just load a `csv` file using just the python std-library I just use the iris dataset here.
 
-<pre class="console">
+<pre class="terminal">
 $ docker run -p 5432:5432 -v $(pwd):/src multicorn
 </pre>
 
@@ -124,7 +124,7 @@ RUN conda install -y pandas
 
 Now build that image run the container in the same way as the previous one.
 
-<pre class="console">
+<pre class="terminal">
 $ docker build -t pandasfdw .
 $ docker run -p 5432:5432 -v $(pwd):/src pandasfdw
 </pre>

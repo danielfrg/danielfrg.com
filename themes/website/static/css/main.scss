@@ -261,14 +261,14 @@ article {
     }
 
     p {
-        line-height: 1.8em;
+        line-height: 1.5em;
     }
 
-    p.tldr {
+    p.subtitle, p.tldr {
         font-size: 22px;
         letter-spacing: .016em;
         line-height: 1.45455;
-        margin-bottom: 60px;
+        margin-bottom: 30px;
     }
 
     p.note {
@@ -303,7 +303,8 @@ article {
 
     li {
         font-size: inherit;
-        line-height: 1.8em;
+        line-height: 1.5em;
+        margin-bottom: 3px;
     }
 
     a {
@@ -338,15 +339,18 @@ article {
 
     figure {
         padding: 5px;
+        background: rgb(245, 245, 245);
 
         figcaption {
             padding-top: 5px;
 
             h4 {
-                font-size: 17px;
+                font-size: 15px;
                 line-height: 1.52947;
-                font-weight: 600;
+                font-weight: 400;
                 letter-spacing: -.021em;
+                margin: 0 auto;
+                max-width: 95%;
             }
         }
     }
@@ -373,7 +377,7 @@ article {
         }
     }
 
-    pre.console {
+    pre.terminal {
         padding: 10px;
         background-color: #000;
         color: #FFF;

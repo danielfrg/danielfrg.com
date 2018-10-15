@@ -84,7 +84,7 @@ spec:
 
 To deploy everything just need to run:
 
-<pre class="console">
+<pre class="terminal">
 $ kubectl create -f ldap.yml
 deployment "jupyterhub-ldap" created
 service "jupyterhub-ldap-admin" created
@@ -92,7 +92,7 @@ service "jupyterhub-ldap-admin" created
 
 After that just wait for the Pod to be ready and the service to give you a public IP:
 
-<pre class="console">
+<pre class="terminal">
 $ kubectl get deployments
 NAME               DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 jupyterhub-ldap    1         1         1            1           25s
@@ -164,7 +164,7 @@ The missing values are:
 
 - `LDAP_POD_ID`: Get this one from the Pod we created in the LDAP section:
 
-<pre class="console">
+<pre class="terminal">
 $ kubectl get Pods
 NAME                               READY     STATUS    RESTARTS   AGE
 jupyterhub-ldap-2860785391-pjiq7   2/2       Running   0          31m
@@ -180,7 +180,7 @@ My value is `10.100.5.3`.
 
 Now we need to create the image:
 
-<pre class="console">
+<pre class="terminal">
 $ docker build -t gcr.io/continuum-compute/jupyterhub-kube:0.2 .
 ...
 
@@ -259,7 +259,7 @@ spec:
 
 Use the file to create the deployment and wait for the Public IPs to be assigned:
 
-<pre class="console">
+<pre class="terminal">
 $ kubectl create -f hub.yml
 deployment "jupyterhub" created
 service "jupyterhub" created
@@ -290,7 +290,7 @@ Now you have two independent containers managed by Kubernetes and Jupyter Hub.
 
 You can take a look at the running Pods now:
 
-<pre class="console">
+<pre class="terminal">
 $ kubectl get Pods
 jupyterhub-bzaitlen                1/1       Running   0          1m
 jupyterhub-danielfrg               1/1       Running   0          7m
