@@ -37,7 +37,7 @@ This articles explores the combination of a couple of new technologies for model
 
 The final output is a ML pipeline that trains multiple models, explore the metrics to (manually) pick the best, package the model as a docker image and deploys it as a REST API.
 
-XXXXXXX
+{{< figure src="/blog/2018/10/model-management-polyaxon-argo-seldon/diagram.png" title="Workflow diagram" >}}
 
 All the code needed to follow along can be found here: [danielfrg/polyaxon-argo-seldon-example](https://github.com/danielfrg/polyaxon-argo-seldon-example). Locally you won't need much more than a couple of client CLIs and clone a couple of repos.
 
