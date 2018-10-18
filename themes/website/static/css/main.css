@@ -1,17 +1,16 @@
 html {
   position: relative;
   min-height: 100%;
+  font-size: 100%;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-size: 1.06rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  line-height: 1.52947;
-  font-weight: 300;
-  font-style: normal;
-  color: #333;
+  color: #222;
+  font-size: 1.125rem;
+  font-weight: 400;
   text-rendering: optimizeLegibility;
   background: #FFF;
   margin-bottom: 60px;
@@ -184,13 +183,14 @@ header.navbar-dark ul.navbar-nav a.social {
 }
 
 article {
-  max-width: 650px;
+  max-width: 740px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 article header {
   margin: 0 auto;
-  padding: 1.5vw;
+  padding: 1.5vw 0;
 }
 
 article header .post-meta {
@@ -231,13 +231,13 @@ article header time {
 }
 
 article header h1 {
-  text-align: center;
-  margin: 0 0.5em;
+  margin: 0;
 }
 
 article h1 {
   font-weight: 600;
   font-size: 40px;
+  font-weight: bold;
   line-height: 1.0;
   color: #000;
   margin: .5em 0;
@@ -246,8 +246,9 @@ article h1 {
 article h2 {
   font-size: 32px;
   line-height: 1.09375;
-  font-weight: 500;
+  font-weight: bold;
   letter-spacing: .011em;
+  margin-top: 56px;
 }
 
 article h3 {
@@ -255,6 +256,7 @@ article h3 {
   line-height: 1.20849;
   font-weight: 500;
   letter-spacing: .015em;
+  margin-top: 30px;
 }
 
 article strong {
@@ -262,13 +264,21 @@ article strong {
 }
 
 article p {
-  line-height: 1.5em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.58;
+  margin-bottom: 1.444444444444445rem;
+  letter-spacing: -.003em;
 }
 
 article p.subtitle, article p.tldr {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: rgba(0, 0, 0, 0.54);
   font-size: 22px;
   letter-spacing: .016em;
   line-height: 1.45455;
+  margin-top: -15px;
   margin-bottom: 30px;
 }
 
@@ -299,11 +309,15 @@ article i, article cite, article em, article var, article address, article dfn {
 
 article ul, article ol {
   margin-top: 0px;
-  margin-bottom: 25px;
+  margin-bottom: 1.444444444444445rem;
+  padding-left: 25px;
+  line-height: 1.444444444444445rem;
+  list-style-position: outside;
 }
 
 article li {
-  font-size: inherit;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1.25rem;
   line-height: 1.5em;
   margin-bottom: 3px;
 }
@@ -340,7 +354,7 @@ article img {
 
 article figure {
   padding: 5px;
-  background: whitesmoke;
+  background: #FFF;
 }
 
 article figure figcaption {
@@ -349,6 +363,7 @@ article figure figcaption {
 
 article figure figcaption h4 {
   font-size: 15px;
+  text-align: center;
   line-height: 1.52947;
   font-weight: 400;
   letter-spacing: -.021em;
@@ -374,6 +389,7 @@ article .highlight pre {
 
 article .highlight pre code {
   border: none;
+  font-size: 1rem;
 }
 
 article pre.terminal {

@@ -1,24 +1,26 @@
 $header-bg: rgba(0, 0, 0, 0.8);
-$text-color: #333;
+$text-color: #222;
 $link-color: #0070c9;
+$font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$font-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+// $font-serif: "PT Serif", Georgia, Cambria, "Times New Roman", Times, serif;
 
 html {
     position: relative;
     min-height: 100%;
+    font-size: 100%;
 }
 
 body {
     margin: 0;
     padding: 0;
-    font-size: 1.06rem;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    line-height: 1.52947;
-    font-weight: 300;
-    font-style: normal;
+    font-family: $font-sans;
     color: $text-color;
+    font-size: 1.125rem;
+    font-weight: 400;
     text-rendering: optimizeLegibility;
     background: #FFF;
-    margin-bottom: 60px;  // Fix footer craziness
+    margin-bottom: 60px; // Fix footer craziness
 }
 
 .page404 {
@@ -188,12 +190,13 @@ header.navbar-dark  {
 }
 
 article {
-    max-width: 650px;
+    max-width: 740px;
     margin: 0 auto;
+    padding: 0 20px;
     
     header {
         margin: 0 auto;
-        padding: 1.5vw;
+        padding: 1.5vw 0;
 
         .post-meta {
             display: flex;
@@ -229,14 +232,14 @@ article {
         }
 
         h1 {
-            text-align: center;
-            margin: 0 0.5em;
+            margin: 0;
         }
     }
 
     h1 {
         font-weight: 600;
         font-size: 40px;
+        font-weight: bold;
         line-height: 1.0;
         color: #000;
         margin: .5em 0;
@@ -245,8 +248,9 @@ article {
     h2 {
         font-size: 32px;
         line-height: 1.09375;
-        font-weight: 500;
+        font-weight: bold;
         letter-spacing: .011em;
+        margin-top: 56px;
     }
 
     h3 {
@@ -254,6 +258,7 @@ article {
         line-height: 1.20849;
         font-weight: 500;
         letter-spacing: .015em;
+        margin-top: 30px;
     }
 
     strong {
@@ -261,13 +266,21 @@ article {
     }
 
     p {
-        line-height: 1.5em;
+        font-family: $font-serif;;
+        font-size: 1.25rem;
+        font-weight: 400;
+        line-height: 1.58;
+        margin-bottom: 1.444444444444445rem;
+        letter-spacing: -.003em;
     }
 
     p.subtitle, p.tldr {
+        font-family: $font-sans;
+        color: rgba(0, 0, 0, 0.54);
         font-size: 22px;
         letter-spacing: .016em;
         line-height: 1.45455;
+        margin-top: -15px;
         margin-bottom: 30px;
     }
 
@@ -298,11 +311,15 @@ article {
 
     ul, ol {
         margin-top: 0px;
-        margin-bottom: 25px;
+        margin-bottom: 1.444444444444445rem;
+        padding-left: 25px;
+        line-height: 1.444444444444445rem;
+        list-style-position: outside;
     }
 
     li {
-        font-size: inherit;
+        font-family: $font-serif;
+        font-size: 1.25rem;
         line-height: 1.5em;
         margin-bottom: 3px;
     }
@@ -339,13 +356,15 @@ article {
 
     figure {
         padding: 5px;
-        background: rgb(245, 245, 245);
+        // background: rgb(245, 245, 245);
+        background: #FFF;
 
         figcaption {
             padding-top: 5px;
 
             h4 {
                 font-size: 15px;
+                text-align: center;
                 line-height: 1.52947;
                 font-weight: 400;
                 letter-spacing: -.021em;
@@ -370,9 +389,10 @@ article {
             color: #000000;
             border: none;
             padding: 10px;
-
+            
             code {
                 border: none;
+                font-size: 1rem;
             }
         }
     }
