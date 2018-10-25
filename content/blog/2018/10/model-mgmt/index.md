@@ -603,7 +603,7 @@ Seldon has a lot of other features that are not explored here, check [their webs
 
 1. [TFX](https://www.tensorflow.org/tfx/) from Google/TensorFlow, [paper here](https://dl.acm.org/citation.cfm?id=3098021)
 1. [KubeFlow](https://github.com/kubeflow/kubeflow), a collection of tools also from Google, it uses Seldon
-1. [Folilla](https://github.com/stitchfix/flotilla-os) from StictFix. Also check out Juliet Hougland great talk on how [Stitch Fix does Production Model Deployment](https://www.youtube.com/watch?v=Z7_AatHRXjI)
+1. [Folilla](https://github.com/stitchfix/flotilla-os) from StitchFix. Also check out Juliet Hougland great talk on how [Stitch Fix does Production Model Deployment](https://www.youtube.com/watch?v=Z7_AatHRXjI)
 1. [IBM/FfDL](https://github.com/IBM/FfDL)
 1. [Uber Michelangelo](https://eng.uber.com/michelangelo/)
 1. [Clipper](http://clipper.ai/), a more low level tool for serving models
