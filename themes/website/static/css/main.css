@@ -1,18 +1,19 @@
 html {
+  background-color: #24292e;
   position: relative;
   min-height: 100%;
   font-size: 100%;
 }
 
 body {
+  background-color: #FFF;
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   color: #222;
   font-size: 1.125rem;
   font-weight: 400;
   text-rendering: optimizeLegibility;
-  background: #FFF;
   margin-bottom: 60px;
 }
 
@@ -67,12 +68,12 @@ hr.post-divider {
   overflow: visible;
   margin: 20px 0;
   border: none;
-  background: #d6d6d6;
+  background: rgba(0, 0, 0, 0.1);
   height: 1px;
 }
 
 header.navbar-dark {
-  background: rgba(0, 0, 0, 0.8);
+  background: #24292e;
   padding: .6rem 1rem;
   position: relative;
   top: 0;
@@ -264,18 +265,19 @@ article strong {
 }
 
 article p {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 1.25rem;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.52947;
   font-weight: 400;
-  line-height: 1.58;
   margin-bottom: 1.444444444444445rem;
   letter-spacing: -.003em;
 }
 
 article p.subtitle, article p.tldr {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   color: rgba(0, 0, 0, 0.54);
-  font-size: 22px;
+  font-size: 1.375rem;
+  font-weight: 300;
   letter-spacing: .016em;
   line-height: 1.45455;
   margin-top: -15px;
@@ -316,8 +318,8 @@ article ul, article ol {
 }
 
 article li {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 1.25rem;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-size: 1.0625rem;
   line-height: 1.5em;
   margin-bottom: 3px;
 }
@@ -339,8 +341,8 @@ article a:hover {
 
 article blockquote {
   font-size: inherit;
-  border-left: 2px solid #c7c7cc;
-  color: #666;
+  border-left: 2px solid #444;
+  color: #222;
   margin: 30px 0;
   padding: 0 0 0 25px;
 }
@@ -379,6 +381,23 @@ article code {
   padding: 5px 3px 3px 3px;
 }
 
+article .video {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  margin-bottom: 1.444444444444445rem;
+}
+
+article .video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 article .highlight pre {
   border-radius: 0;
   background-color: #eeefef;
@@ -389,7 +408,7 @@ article .highlight pre {
 
 article .highlight pre code {
   border: none;
-  font-size: 1rem;
+  font-size: 0.875rem;
 }
 
 article pre.terminal {
@@ -426,15 +445,16 @@ article .read_more a.link:hover {
 }
 
 .footer {
+  background-color: #24292e;
+  color: #fff;
   position: absolute;
   bottom: 0;
   width: 100%;
   height: 60px;
   line-height: 40px;
-  color: #555;
   font-size: 0.8rem;
   text-decoration: none;
-  background-color: #f2f2f2;
+  text-align: center;
 }
 
 .footer .container {

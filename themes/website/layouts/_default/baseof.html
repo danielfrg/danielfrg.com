@@ -20,6 +20,10 @@
             </div>
         </footer>
 
+        <script>
+            const zoomDefault = mediumZoom("article img", { background: "#24292e", scrollOffset: 0, margin: 30 });
+        </script>
+
         {{ block "before_body" . }}{{ end }}
         {{ partial "analytics.html" . }}
     </body>
