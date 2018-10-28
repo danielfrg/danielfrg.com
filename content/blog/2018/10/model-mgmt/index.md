@@ -28,7 +28,7 @@ In the same way that Google released the MapReduce and other papers for the rest
 
 A ML model has a lot of different requirements, for development/training you need GPUs, packaging is more complicated that just a JAR file since there is no one language you can use for everything, you need Python, R with other parts written in C and C++. The application went from 10s of Mb to +100s of Mb since models have a lot of data inside of them. They went from endpoints being basically database operations that took a couple of milliseconds to smarter operation that make predictions but take longer to execute, require more CPU and more RAM.
 
-At the same time the traditional requirements of logs, monitoring, security, scalability and others that more traditional applications have are also needed for this new types of applications. If you did A/B testing for testing of sections on a website you will now do A/B testing for all your ML models to see which one is performing better. If you scaled a Node web server you now need to scale a TensorFlow Serving server, and so on. At the same time development of the ML models is also much more complex and takes more time since it requires testing combinations of algorithms, features and more variables.
+At the same time the traditional requirements of logging, monitoring, security, scalability and others that more traditional applications have are also needed for this new types of applications. If you did A/B testing for experimenting with sections on a website you will now do A/B testing for all your ML models to see which one is performing better with real data. If you scaled a Node web server you now need to scale a TensorFlow Serving server, and so on. At the same time development of the ML models is also much more complex and takes more time since it requires testing combinations of algorithms, features and more variables.
 
 You can get so much value from ML compared to traditional applications but the investment you need to do is huge in many areas.
 
@@ -62,12 +62,12 @@ This section is a small reference from each project documentation so be sure to 
 
 The next few sections will walk through the installation and configuration of five components that we'll use to build a model deployment pipeline: 1) Kubernetes cluster, 2) NFS for persistent storage, 3) Polyaxon for distributed model training, 4) Argo to build a model containerization workflow, and 5) Seldon for model deployment.
 
-Once we installed and configured each of these components, we'll train, build, and deploy a model starting in Section "Polyaxon: Training models".
+Once we installed and configured each of these components, we'll train, build, package, and deploy a model starting in Section "Polyaxon: Training models".
 So just go there if you want to skip all the installation bits.
 
 ### Kubernetes cluster
 
-I used GKE but it could be any Kubernetes cluster, either uses the GCP console or with a command like this one:
+I used GKE but it could be any Kubernetes cluster, either use the GCP console or with a command like this one:
 
 ```terminal
 $ gcloud beta container --project "<project-name>" clusters create "model-mgmt" --zone "us-central1-a" --cluster-version "1.10.7-gke.2" --machine-type "n1-standard-2" --image-type "COS" --disk-size "10" --num-nodes "3" --network "default"
