@@ -6,7 +6,7 @@ tags: ["Tech notes", "Kubernetes", "Istio"]
 author: Daniel Rodriguez
 ---
 
-{{< youtube s4qasWn_mFc >}}
+{{< youtube id="s4qasWn_mFc" class="video" >}}
 
 Istio goal is to make easy to: have policy between your applications, have observability, security per application instance and reliability.
 

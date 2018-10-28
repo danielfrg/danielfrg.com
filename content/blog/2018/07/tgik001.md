@@ -6,7 +6,7 @@ tags: ["Tech notes", "Kubernetes"]
 author: Daniel Rodriguez
 ---
 
-{{< youtube 9YYeE-bMWv8 >}}
+{{< youtube id="9YYeE-bMWv8" class="video" >}}
 
 This spends a lot of time going trough a k8s install in AWS using Heptio's tool. Its kinda not as useful anymore since all clouds have a k8s as a service option.
 

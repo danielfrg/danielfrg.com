@@ -9,7 +9,7 @@ author: Daniel Rodriguez
 Watch me give a talk at our annual Anaconda conference about the work we are doing
 to make data scientist deploy Python and R easier inside Anaconda Enterprise 5.
 
-{{< youtube vmd7L-FAhus >}}
+{{< youtube id="vmd7L-FAhus" class="video" >}}
 
 Official abstract:
 

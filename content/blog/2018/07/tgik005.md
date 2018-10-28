@@ -6,7 +6,7 @@ tags: ["Tech notes", "Kubernetes", "Pods", "Deployments", "Probes"]
 author: Daniel Rodriguez
 ---
 
-{{< youtube xEdBSVaUtp4 >}}
+{{< youtube id="xEdBSVaUtp4" class="video" >}}
 
 ## Pods, ReplicaSets and Deployments
 

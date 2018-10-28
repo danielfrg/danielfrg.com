@@ -6,7 +6,7 @@ tags: ["Tech notes", "Fast.ai", "Machine Learning", "Deep Learning", "CNN"]
 author: Daniel Rodriguez
 ---
 
-{{< youtube 9C06ZPF8Uuc >}}
+{{< youtube id="9C06ZPF8Uuc" class="video" >}}
 
 Sometimes freezing just Batch Normalization Layers might be useful, we will learn why in later classes. Basically if the model is similar to image net when the objects take most of the image we might want to freeze these layers.
 

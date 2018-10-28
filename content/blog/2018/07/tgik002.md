@@ -6,7 +6,7 @@ tags: ["Tech notes", "Kubernetes", "Networking"]
 author: Daniel Rodriguez
 ---
 
-{{< youtube PlnvxqKR28A >}}
+{{< youtube id="PlnvxqKR28A" class="video" >}}
 
 Create a deployment:
 

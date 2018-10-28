@@ -6,7 +6,7 @@ tags: ["Tech notes", "Kubernetes", "RBAC"]
 author: Daniel Rodriguez
 ---
 
-{{< youtube slUMVwRXlRo >}}
+{{< youtube id="slUMVwRXlRo" class="video" >}}
 
 How to do Authentication and Authorization for k8s.
 

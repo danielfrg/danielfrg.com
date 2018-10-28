@@ -6,7 +6,7 @@ tags: ["Tech notes", "Fast.ai", "Machine Learning", "Deep Learning", "Image clas
 author: Daniel Rodriguez
 ---
 
-{{< youtube IPBSB1HLNLo >}}
+{{< youtube id="IPBSB1HLNLo" class="video" >}}
 
 The approach of the class is Top-Down. Get a Neural Network running as fast as possible and understand the concepts later gradually. Thats how you learn sports and music. 
 

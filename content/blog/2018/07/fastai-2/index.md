@@ -6,7 +6,7 @@ tags: ["Tech notes", "Fast.ai", "Machine Learning", "Deep Learning", "Image clas
 author: Daniel Rodriguez
 ---
 
-{{< youtube JNxcznsrRb8 >}}
+{{< youtube id="JNxcznsrRb8" class="video" >}}
 
 Overfitting is when the model generalizes only to the training data but not to more data. For image classification it would be learning only features of the training images but more images.
 

@@ -6,7 +6,7 @@ tags = ["Tech notes", "Fast.ai", "Machine Learning", "Deep Learning", "NLP"]
 author = "Daniel Rodriguez"
 +++
 
-{{< youtube gbceqO8PpBg >}}
+{{< youtube id="gbceqO8PpBg" class="video" >}}
 
 ## Intro
 
