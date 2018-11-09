@@ -6,13 +6,13 @@ tags: ["Test"]
 author: Daniel Rodriguez
 ---
 
-<p class="tldr">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur purus mi, sollicitudin ac justo a, dapibus ultrices dolor. Curabitur id eros mattis, tincidunt ligula at, condimentum urna.</p>
+<p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur purus mi, sollicitudin ac justo a, dapibus ultrices dolor. Curabitur id eros mattis, tincidunt ligula at, condimentum urna.</p>
 
-Lorem ipsum dolor sit amet, [consectetur](https://google.com) adipiscing elit. Curabitur purus mi, sollicitudin ac justo a, dapibus ultrices dolor. Curabitur id eros mattis, tincidunt ligula at, condimentum urna. Morbi accumsan, risus eget porta consequat, tortor nibh blandit dui, in sodales quam elit non erat. [Aenean lorem dui](), lacinia a metus eu, accumsan dictum urna. Sed a egestas mauris, non porta nisi. Suspendisse eu lacinia neque. Morbi gravida eros non augue pharetra, condimentum auctor purus porttitor.
+Lorem ipsum dolor sit amet, [consectetur](https://google.com) adipiscing elit. Curabitur purus mi, sollicitudin ac justo a, dapibus ultrices dolor. Curabitur id eros mattis, tincidunt ligula at, condimentum urna. Morbi accumsan, risus eget porta consequat, tortor nibh blandit dui, in sodales quam elit non erat. [Aenean lorem dui](https://google.com), lacinia a metus eu, accumsan dictum urna. Sed a egestas mauris, non `porta` nisi. Suspendisse eu lacinia neque. Morbi `gravida eros non augue` pharetra, condimentum auctor purus porttitor.
 
 ## Header 2
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur purus mi, sollicitudin ac justo a, dapibus ultrices dolor. Curabitur id eros mattis, tincidunt ligula at, condimentum urna. Morbi accumsan, risus eget porta consequat, tortor nibh blandit dui, in sodales quam elit non erat. Aenean lorem dui, lacinia a metus eu, accumsan dictum urna. Sed a egestas mauris, non porta nisi. Suspendisse eu lacinia neque. Morbi gravida eros non augue pharetra, condimentum auctor purus porttitor.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur purus mi, sollicitudin ac justo a, dapibus ultrices dolor. Curabitur id eros mattis, tincidunt ligula at, `condimentum urna`. Morbi accumsan, risus eget porta consequat, tortor nibh blandit dui, `in sodales quam elit non erat`. Aenean lorem dui, lacinia a metus eu, accumsan dictum urna. Sed a egestas mauris, non porta nisi. Suspendisse eu lacinia neque. Morbi gravida eros non augue pharetra, condimentum auctor purus porttitor.
 
 Vivamus at ullamcorper lectus, eget bibendum lorem. Vivamus molestie molestie leo. Vestibulum et odio est. Nam nulla augue, cursus eu eros at, sagittis tempor metus.
 

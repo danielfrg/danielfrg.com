@@ -3,13 +3,6 @@
 <main role="main" class="article container">
     <article>
         <header>
-            <section class="post-meta">
-                <time datetime="{{ .Date.Format "2006-01-02" }}" pubdate>{{ .Date.Format "January 02, 2006" }}</time>
-                <span class="date-divider">|</span>
-                {{ range $k, $v := first 1 .Params.Tags }}
-                <a href="{{ "/tags/" | relURL }}{{ . | urlize }}">{{ . }}</a>
-                {{ end }}
-            </section>
             <h1>{{ .Title }}</h1>
         </header>
 
@@ -18,12 +11,15 @@
         </div>
 
         <div class="metabox">
-            <hr class="post-divider">
+            <!-- <hr class="post-divider"> -->
             <div class="tags">
                 {{ range $k, $v := .Params.Tags }}
                 <a class="tag" href="{{ "/tags/" | relURL }}{{ . | urlize }}">{{ . }}</a>
                 {{ end }}
             </div>
+            <p class="date">
+                <time datetime="{{ .Date.Format "2006-01-02" }}" pubdate>{{ .Date.Format "Jan 02, 2006" }}</time>
+            </p>
         </div>
     </article>
 </main>

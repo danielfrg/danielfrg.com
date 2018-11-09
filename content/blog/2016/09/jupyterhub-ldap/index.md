@@ -84,15 +84,15 @@ spec:
 
 To deploy everything just need to run:
 
-<pre class="terminal">
+```terminal
 $ kubectl create -f ldap.yml
 deployment "jupyterhub-ldap" created
 service "jupyterhub-ldap-admin" created
-</pre>
+```
 
 After that just wait for the Pod to be ready and the service to give you a public IP:
 
-<pre class="terminal">
+```terminal
 $ kubectl get deployments
 NAME               DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 jupyterhub-ldap    1         1         1            1           25s
@@ -100,7 +100,7 @@ jupyterhub-ldap    1         1         1            1           25s
 $ kubectl get service
 NAME                     CLUSTER-IP       EXTERNAL-IP       PORT(S)     AGE
 jupyterhub-ldap-admin    10.103.241.31    104.154.70.197    80/TCP      56s
-</pre>
+```
 
 Now you can go to the External IP (`104.154.70.197` in my case) and see the `phpldapadmin` UI.
 
@@ -164,14 +164,14 @@ The missing values are:
 
 - `LDAP_POD_ID`: Get this one from the Pod we created in the LDAP section:
 
-<pre class="terminal">
+```terminal
 $ kubectl get Pods
 NAME                               READY     STATUS    RESTARTS   AGE
 jupyterhub-ldap-2860785391-pjiq7   2/2       Running   0          31m
 
 $ kubectl describe Pod jupyterhub-ldap-2860785391-pjiq7 | grep ip
 IP:    		10.100.5.3
-</pre>
+```
 
 My value is `10.100.5.3`.
 
@@ -180,13 +180,13 @@ My value is `10.100.5.3`.
 
 Now we need to create the image:
 
-<pre class="terminal">
+```terminal
 $ docker build -t gcr.io/continuum-compute/jupyterhub-kube:0.2 .
 ...
 
 $ gcloud docker push gcr.io/continuum-compute/jupyterhub-kube:0.2
 ...
-</pre>
+```
 
 Notice the tag of the container is `gcr.io/continuum-compute/jupyterhub-kube:0.2` because
 I upload the image to the Google Container Registry but it could be a container on Docker Hub.
@@ -259,7 +259,7 @@ spec:
 
 Use the file to create the deployment and wait for the Public IPs to be assigned:
 
-<pre class="terminal">
+```terminal
 $ kubectl create -f hub.yml
 deployment "jupyterhub" created
 service "jupyterhub" created
@@ -272,7 +272,7 @@ NAME                     CLUSTER-IP       EXTERNAL-IP       PORT(S)     AGE
 jupyterhub               10.103.254.164   130.211.158.251   80/TCP      2m
 jupyterhub-api           10.103.248.253   130.211.117.81    80/TCP      2m
 jupyterhub-ldap-admin    10.103.241.31    104.154.70.197    80/TCP      43m
-</pre>
+```
 
 In your browser go to the external IP of the jupyterhub service in my case: `130.211.158.251` and
 you should see the Jupyter Hub UI. Now you should be able to log in using any of the user entries
@@ -290,12 +290,12 @@ Now you have two independent containers managed by Kubernetes and Jupyter Hub.
 
 You can take a look at the running Pods now:
 
-<pre class="terminal">
+```terminal
 $ kubectl get Pods
 jupyterhub-bzaitlen                1/1       Running   0          1m
 jupyterhub-danielfrg               1/1       Running   0          7m
 ...
-</pre>
+```
 
 As expected stoping the server in the Jupyter Hub UI will stop the Pod.
 

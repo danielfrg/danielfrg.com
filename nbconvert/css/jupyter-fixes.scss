@@ -1,4 +1,4 @@
-// Theme reset: Links use whatever the theme does.
+// Theme reset: Links use whatever the theme does
 .rendered_html a {
     text-decoration: inherit !important;
 }
@@ -9,9 +9,24 @@
     text-decoration: inherit !important;
 }
 
-// Theme reset: Code blocks use the theme.
+// Theme reset: Code blocks use the theme
 pre code {
     background-color: inherit !important;
+}
+
+// Pygments reset: Back to default since its not set on what Jupyter adds
+.highlight {
+    color: #000000;
+    
+    code {
+        color: #000000;
+    }
+}
+.highlight .n {
+    color: #333333;
+}
+.highlight .p {
+    color: #000000;
 }
 
 // Removes left space on MD (text) cells so everything its aligned
@@ -68,7 +83,6 @@ div.input_area > div.highlight {
 }
 
 // Bokeh plots table no hover
-
 .bk-plot-wrapper {
     tbody {
         tr {

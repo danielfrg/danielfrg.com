@@ -1,11 +1,7 @@
-// $header-bg: rgba(0, 0, 0, 0.8);
 $header-bg: #24292e;
-$text-color: #222;
+$text-color: #373942;
 $link-color: #0070c9;
-$font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 $font-sans: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-// $font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-// $font-sans: "PT Serif", Georgia, Cambria, "Times New Roman", Times, serif;
 
 html {
     background-color: $header-bg;
@@ -22,12 +18,13 @@ body {
     color: $text-color;
     font-size: 1.125rem;
     font-weight: 400;
-    text-rendering: optimizeLegibility;
+    text-rendering: optimizelegibility;
     margin-bottom: 60px; // Fix footer craziness
 }
 
 .page404 {
     max-width: 650px;
+    height: calc(100vh - 45px - 100px - 60px);
     
     .error-message {
         color: #000;
@@ -35,7 +32,7 @@ body {
     }
     
     .error-code {
-        margin: 0;
+        margin: 100px 0 10px;
         font-size: 12vw;
         line-height: 1em;
         letter-spacing: -5px;
@@ -60,7 +57,7 @@ a.tag {
     padding: 3px 12px;
     display: inline-block;
     font-size: 12px;
-    color: rgba(0, 0, 0, 0.6);;
+    color: rgba(0, 0, 0, 0.6);
     background: rgba(0, 0, 0, 0.05);
     border: 0;
     text-decoration: none;
@@ -89,7 +86,8 @@ header.navbar-dark  {
     z-index: 1071;
 
     .container {
-        max-width: 860px;
+        max-width: 720px;
+        padding: 0 35px;
     }
 
     a {
@@ -127,12 +125,8 @@ header.navbar-dark  {
 }
 
 .index {
-    max-width: 700px;
+    max-width: 600px;
     margin: 0 auto;
-
-    h1 {
-        padding-top: 20px;
-    }
 
     form.filter {
         padding: 1rem 15px;
@@ -201,67 +195,46 @@ article {
         margin: 0 auto;
         padding: 1.5vw 0;
 
-        .post-meta {
-            display: flex;
-            justify-content: center;
-
-            a {
-                color: $link-color;
-                border: none;
-                font-size: 0.7em;
-                text-transform: uppercase;
-            }
-        }
-
-        .date-divider {
-            display: inline-block;
-            margin: 0 6px 1px;
-            font-size: 0.7em;
-            color: rgba(0, 0, 0, 0.65);
-        }
-
-        a:hover {
-            text-decoration: underline;
-            border: none;
-        }
-
-        time {
-            font-size: inherit;
-            color: rgba(0, 0, 0, 0.65);
-            text-transform: uppercase;
-            font-size: 0.7em;
-            color: rgba(0, 0, 0, 0.65);
-            text-transform: uppercase;
-        }
-
         h1 {
-            margin: 0;
+            margin: 0.1em 0 0.25em;
         }
     }
 
     h1 {
-        font-weight: 600;
-        font-size: 40px;
-        font-weight: bold;
+        font-size: 48px;
+        font-weight: 300;
         line-height: 1.0;
         color: #000;
         margin: .5em 0;
     }
 
     h2 {
-        font-size: 32px;
+        font-size: 34px;
+        font-weight: 300;
         line-height: 1.09375;
-        font-weight: bold;
         letter-spacing: .011em;
-        margin-top: 56px;
+        margin: 56px 0 25px;
     }
 
     h3 {
-        font-size: 24px;
+        font-size: 26px;
+        font-weight: 300;
         line-height: 1.20849;
-        font-weight: 500;
         letter-spacing: .015em;
-        margin-top: 30px;
+        margin: 35px 0 15px;
+    }
+
+    h4 {
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 1.20849;
+        letter-spacing: .015em;
+        margin: 35px 0 15px;
+    }
+
+    .anchorjs-link {
+        margin-left: 10px;
+        padding: 0 !important;
     }
 
     strong {
@@ -271,10 +244,9 @@ article {
     p {
         font-family: $font-sans;;
         font-size: 1.0625rem;
-        line-height: 1.52947;;
+        line-height: 1.75rem;
         font-weight: 400;
-        margin-bottom: 1.444444444444445rem;
-        letter-spacing: -.003em;
+        margin-bottom: 1.45rem;
     }
 
     p.subtitle, p.tldr {
@@ -289,24 +261,27 @@ article {
     }
 
     p.note {
-      background: #f5f5f5;
-      border: 1px solid #ddd;
-      padding: 0.533em 0.733em;
-      border-radius: 0;
+        color: $text-color;
+        background: #f5f5f5;
+        border: 1px solid rgb(216, 216, 216);
+        padding: 0.8em 0.733em;
+        border-radius: 3px;
     }
 
-    p.update {
-        background-color: #FEEFB3;
-        border: 1px solid #e6e68a;
-        padding: 0.533em 0.733em;
-        border-radius: 0;
+    p.warning, p.update {
+        color: #886221;
+        background-color: #fbf8e5;
+        border: 1px solid #fdde9b;
+        padding: 0.8em 0.733em;
+        border-radius: 3px;
     }
-
+    
     p.alert {
+        color: #fd0000;
         background-color: #ffe2e2;
-        border: 1px solid #ffb2b2;
-        padding: 0.533em 0.733em;
-        border-radius: 0;
+        border: 1px solid #fa9b9b;
+        padding: 0.8em 0.733em;
+        border-radius: 3px;
     }
 
     i, cite, em, var, address, dfn {
@@ -314,17 +289,16 @@ article {
     }
 
     ul, ol {
-        margin-top: 0px;
-        margin-bottom: 1.444444444444445rem;
-        padding-left: 25px;
-        line-height: 1.444444444444445rem;
+        margin-top: 0px 0 1.45rem;
+        padding-left: 2rem;
+        line-height: 1.45rem;
         list-style-position: outside;
     }
 
     li {
         font-family: $font-sans;
         font-size: 1.0625rem;
-        line-height: 1.5em;
+        line-height: 1.75rem;
         margin-bottom: 3px;
     }
 
@@ -345,9 +319,10 @@ article {
 
     blockquote {
         font-size: inherit;
-        border-left: 2px solid #444;
-        color: $text-color;
-        margin: 30px 0;
+        border-left: 4px solid #e5e6eb;
+        color: rgb(55, 57, 66);
+        font-style: italic;
+        margin: 2em 0;
         padding: 0 0 0 25px;
     }
 
@@ -360,7 +335,6 @@ article {
 
     figure {
         padding: 5px;
-        // background: rgb(245, 245, 245);
         background: #FFF;
 
         figcaption {
@@ -379,11 +353,12 @@ article {
     }
 
     code {
-        color: #333;
-        background-color: #EEE;
-        border-radius: 0;
-        font-size: 13px;
-        padding: 5px 3px 3px 3px;
+        color: $text-color;
+        background-color: rgba(0, 0, 0, .05);;
+        font-size: 0.875rem;
+        padding: 0.3em 0.625em;
+        border-radius: 3px;
+        
     }
 
     .video {
@@ -398,29 +373,35 @@ article {
         }
     }
 
-    .highlight { 
-        pre {
-            border-radius: 0;
-            background-color: #eeefef;
-            color: #000000;
+    pre {
+        border-radius: 3px;
+        background-color: rgb(27, 33, 45);
+        color: rgb(248, 248, 242);
+        border: none;
+        padding: 10px;
+        padding: 20px 12px;
+        
+        code {
+            background: none;
+            color: rgb(248, 248, 242);
             border: none;
-            padding: 10px;
-            
-            code {
-                border: none;
-                font-size: 0.875rem;
-            }
+            font-size: 0.875rem;
+            padding: 0;
         }
     }
 
     pre.terminal {
-        padding: 10px;
-        background-color: #000;
-        color: #FFF;
+        background: #000;
     }
 
     .metabox {
         padding: 10px 0 25px;
+
+        p.date {
+            margin: 0;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
 
         .tags {
             padding-top: 10px;

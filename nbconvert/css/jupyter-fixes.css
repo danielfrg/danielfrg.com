@@ -14,6 +14,22 @@ pre code {
   background-color: inherit !important;
 }
 
+.highlight {
+  color: #000000;
+}
+
+.highlight code {
+  color: #000000;
+}
+
+.highlight .n {
+  color: #333333;
+}
+
+.highlight .p {
+  color: #000000;
+}
+
 .text_cell .prompt {
   display: none !important;
 }
