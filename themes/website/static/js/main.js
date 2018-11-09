@@ -7,7 +7,7 @@ anchors.options = {
     // visible: "always",
     icon: "»"
 };
-anchors.add("article h2, article h3, article h4");
+anchors.add("article h2, article h3");
 
 // Add a CSS class to the parents of the terminal ones
 var terminals = document.getElementsByClassName("language-terminal")
