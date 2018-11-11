@@ -5,7 +5,6 @@ languageCode = "en-us"
 preserveTaxonomyNames = true
 
 theme = "website"
-pygmentsStyle = "github"
 pygmentsCodeFences = true
 pygmentsUseClasses = true
 pygmentsCodefencesGuessSyntax = true

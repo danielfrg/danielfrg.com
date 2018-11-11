@@ -56,6 +56,14 @@ Ut in ipsum id neque pellentesque iaculis. Pellentesque massa erat, rhoncus id a
 
 Sed vestibulum justo et turpis ullamcorper, a interdum sapien tristique. Donec ullamcorper ipsum ac scelerisque lacinia. Quisque et eleifend odio. Curabitur vel enim at mi dictum venenatis eget eu nulla. Suspendisse potenti. Etiam vitae nibh a odio dictum aliquam. Sed sit amet adipiscing leo, vitae euismod arcu.
 
+```terminal
+$ echo "hello world!"
+hello work
+
+$cat file.pem
+{}
+```
+
 This is just an image
 
 ![Alt text](http://img3.wikia.nocookie.net/__cb20130524024810/logopedia/images/f/fa/Apple_logo_black.svg "Image")

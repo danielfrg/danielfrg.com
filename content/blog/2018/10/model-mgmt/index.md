@@ -187,7 +187,7 @@ $ helm install polyaxon/polyaxon --name=polyaxon --namespace=polyaxon -f polyaxo
 
 When the command finishes you will get something like this:
 
-```
+```terminal
 Polyaxon is currently running:
 
 1. Get the application URL by running these commands:

@@ -20,9 +20,9 @@
             </div>
         </footer>
 
-        <script src="/js/main.js"></script>
-        {{ block "before_body" . }}{{ end }}
+        {{ block "before_body_end" . }}{{ end }}
         {{ partial "analytics.html" . }}
+        <script src="/js/main.js"></script>
     </body>
 </html>
 {{ end }}

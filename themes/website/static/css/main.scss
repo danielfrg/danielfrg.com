@@ -86,8 +86,8 @@ header.navbar-dark  {
     z-index: 1071;
 
     .container {
-        max-width: 720px;
-        padding: 0 35px;
+        max-width: 740px;
+        padding: 0 20px;
     }
 
     a {
@@ -358,7 +358,6 @@ article {
         font-size: 0.875rem;
         padding: 0.3em 0.625em;
         border-radius: 3px;
-        
     }
 
     .video {
@@ -375,11 +374,12 @@ article {
 
     pre {
         border-radius: 3px;
+        border: none;
         background-color: rgb(27, 33, 45);
         color: rgb(248, 248, 242);
-        border: none;
         padding: 10px;
         padding: 20px 12px;
+        position: relative;
         
         code {
             background: none;
@@ -392,6 +392,24 @@ article {
 
     pre.terminal {
         background: #000;
+        padding: 30px 12px 20px;
+    }
+
+    pre.terminal::before {
+        // content: "<i class=\"fas fa-terminal\"></i> terminal";
+        font-family: "Font Awesome 5 Free", Arial, Helvetica, sans-serif;
+        font-weight: 600;
+        content: "\f120    terminal";
+        font-size: 0.75rem;
+        color: #FFF;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid;
+        padding: 3px 0;
+        text-indent: 15px;
     }
 
     .metabox {
