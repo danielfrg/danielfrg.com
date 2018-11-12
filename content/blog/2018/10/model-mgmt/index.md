@@ -14,7 +14,7 @@ A more complete definition would be that model management involves developing to
 
 At the same time model management includes all the requirements of more traditional applications such as API development and versioning, package management, containerization, reproducibility, scale, monitoring, logging and more.
 
-The objective of this article is to propose an repeatable pipeline to make your life easier and make iterations faster. I think this quote captures the spirit pretty well.
+The objective of this article is to propose a repeatable pipeline to make your life easier and make iterations faster. I think this quote captures the spirit pretty well.
 
 > *We don't deploy one model, we deploy the process for repeatedly making more. When you deploy a ML model into production you are not saying "this is the best model and we should use it forever". What it actually means is deploying the pipeline for model building and making it more repeatable.*
 >
