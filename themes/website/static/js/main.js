@@ -1,7 +1,19 @@
-// Add a `terminal` class to the parents of the `language-terminal` elements
+// Terminal CSS
+// Iterate all the items with class: `language-terminal`
 var terminals = document.getElementsByClassName("language-terminal")
 for(var i = 0; i < terminals.length; i++) {
-    terminals[i].parentElement.className = "terminal";
+    // Add a `terminal` class to the parents of the `language-terminal` elements
+    // So we can add the `::before`
+    var terminal_item = terminals[i];
+    terminal_item.parentElement.className = "terminal";
+
+    // Modify the text to surrond the `$` with a span, so we can make it non-selectable
+    // We need this hack until this is added/fixed: https://github.com/alecthomas/chroma/issues/137
+    var find = "^\\$";
+    var re = new RegExp(find, "gm");
+    var str = terminal_item.innerHTML;
+    str = str.replace(re, "<span class=\"dollar-sign\">$</span>");
+    terminal_item.innerHTML = str;
 }
 
 // Images zoom on click

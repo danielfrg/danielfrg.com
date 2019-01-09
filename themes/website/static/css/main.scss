@@ -391,24 +391,32 @@ article {
     }
 
     pre.terminal {
-        background: #000;
+        background: #212121;
         padding: 30px 12px 20px;
+
+        code {
+            color: #FFF;
+            color: #64DD17;
+            
+            .dollar-sign {
+                color: #9E9E9E;
+                user-select: none;
+            }
+        }
     }
 
     pre.terminal::before {
-        // content: "<i class=\"fas fa-terminal\"></i> terminal";
+        content: "\f120    terminal";
+        // background-color: #000;
         font-family: "Font Awesome 5 Free", Arial, Helvetica, sans-serif;
         font-weight: 600;
-        content: "\f120    terminal";
         font-size: 0.75rem;
-        color: #FFF;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        text-align: center;
         border-bottom: 1px solid;
-        padding: 3px 0;
+        padding: 3px 0 3px 5px;
         text-indent: 15px;
     }
 

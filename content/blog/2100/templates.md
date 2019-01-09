@@ -60,8 +60,11 @@ Sed vestibulum justo et turpis ullamcorper, a interdum sapien tristique. Donec u
 $ echo "hello world!"
 hello work
 
-$cat file.pem
+$ cat file.pem
 {}
+
+$ A test of the dollar sign in a line $$$$
+$ The one above should be selectable ^^^
 ```
 
 This is just an image

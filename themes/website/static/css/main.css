@@ -392,23 +392,34 @@ article pre code {
 }
 
 article pre.terminal {
-  background: #000;
+  background: #212121;
   padding: 30px 12px 20px;
 }
 
+article pre.terminal code {
+  color: #FFF;
+  color: #64DD17;
+}
+
+article pre.terminal code .dollar-sign {
+  color: #9E9E9E;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
 article pre.terminal::before {
+  content: "\f120    terminal";
   font-family: "Font Awesome 5 Free", Arial, Helvetica, sans-serif;
   font-weight: 600;
-  content: "\f120    terminal";
   font-size: 0.75rem;
-  color: #FFF;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  text-align: center;
   border-bottom: 1px solid;
-  padding: 3px 0;
+  padding: 3px 0 3px 5px;
   text-indent: 15px;
 }
 
