@@ -1,17 +1,40 @@
 {{ define "main" }}
 
 <main class="index container">
-    {{ partial "list_filter.html" . }}
-
-    {{- if isset .Site.Taxonomies "tags" }}
-    {{- if not (eq (len .Site.Taxonomies.tags) 0) }}
-    <div class="tag-cloud">
-        {{- range $name, $items := .Site.Taxonomies.tags }}
-        <a class="tag" href="{{ "/tags/" | relLangURL }}{{ $name | urlize | lower }}" title="{{ $name }}">{{ $name }} ({{ $items.Count }})</a>
-        {{- end }}
+    
+    <div class="row apps">
+        <div class="col-md-6">
+            <div class="card mb-6 shadow-sm">
+                <a href="http://word2vec.danielfrg.com"><img class="app" src="/images/word2vec.png"></a>
+                <!-- <img class="app" src="/images/word2vec.png" height="225"> -->
+                <div class="card-body">
+                <p class="card-text">word2vec prediction app powered by Algorithmia.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    <a class="btn btn-sm btn-outline-secondary" href="http://word2vec.danielfrg.com">View</a>
+                    <a class="btn btn-sm btn-outline-secondary" href="/blog/2018/09/word2vec-app-algorithmia/">Read blogpost</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
     </div>
-    {{- end }}
-    {{- end }}
+
+    <div class="row articles archive">
+        <h1>Articles</h1>
+        {{ partial "list_filter.html" . }}
+    </div>
+
+    <!-- <div class="row articles">
+        <h1>Latest articles<a class="view-all" href="/archive/">view all</a></h1>
+            
+        </span>
+        <ul>
+        {{ range first 10 (.Pages.ByDate).Reverse }}
+            <li><h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2></li>
+        {{ end }}
+        </ul>
+    </div> -->
 </main>
 
 {{ end }}

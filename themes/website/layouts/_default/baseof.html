@@ -11,18 +11,11 @@
     
     <body>
         {{ partial "header.html" . }}
-
         {{ block "main" . }}{{ end }}
-
-        <footer class="footer">
-            <div class="container">
-                <span>Daniel Rodriguez &copy; 2018</span>
-            </div>
-        </footer>
+        {{ partial "footer.html" }}
 
         {{ block "before_body_end" . }}{{ end }}
         {{ partial "analytics.html" . }}
-        <script src="/js/main.js"></script>
     </body>
 </html>
 {{ end }}

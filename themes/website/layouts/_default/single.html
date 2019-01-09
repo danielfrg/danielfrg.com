@@ -11,7 +11,6 @@
         </div>
 
         <div class="metabox">
-            <!-- <hr class="post-divider"> -->
             <div class="tags">
                 {{ range $k, $v := .Params.Tags }}
                 <a class="tag" href="{{ "/tags/" | relURL }}{{ . | urlize }}">{{ . }}</a>

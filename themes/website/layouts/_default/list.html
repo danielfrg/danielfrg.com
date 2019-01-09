@@ -1,5 +1,5 @@
 {{ define "main" }}
-<main id="index" class="index container">
+<main class="archive container">
     {{- with .Title }}
         <h1>{{ with $.Data.Singular }}{{ . | humanize }}: {{ end }}{{ . }}</h1>
     {{- end }}

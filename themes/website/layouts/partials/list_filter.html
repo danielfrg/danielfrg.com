@@ -6,14 +6,14 @@
     </form>
     
     <nav>
-        <table class="double-list">
+        <table class="articles">
             <tbody>
                 <tr v-for="item in filteredItems">
-                    <td>
-                        <a :href="item.url">{{ "{{ item.title }}" }}</a>
-                    </td> 
-                    <td>
+                    <td class="date-col">
                         <span class="date">{{ "{{ item.date }}" }}</span>
+                    </td> 
+                    <td class="title-col">
+                        <a :href="item.url">{{ "{{ item.title }}" }}</a>
                     </td>
                 </tr>
             </tbody>
@@ -27,7 +27,7 @@
             {
                 title: '{{ .Title }}',
                 url: '{{ .RelPermalink }}',
-                date: '{{ .Date.Format "01/2006" }}',
+                date: '{{ .Date.Format "Jan 2006" }}',
                 tags: [
                     {{ range .Params.Tags }}
                     '{{ . }}',

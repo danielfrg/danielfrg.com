@@ -19,37 +19,7 @@ body {
     font-size: 1.125rem;
     font-weight: 400;
     text-rendering: optimizelegibility;
-    margin-bottom: 60px; // Fix footer craziness
-}
-
-.page404 {
-    max-width: 650px;
-    height: calc(100vh - 45px - 100px - 60px);
-    
-    .error-message {
-        color: #000;
-        text-align: center;
-    }
-    
-    .error-code {
-        margin: 100px 0 10px;
-        font-size: 12vw;
-        line-height: 1em;
-        letter-spacing: -5px;
-        opacity: .3;
-    }
-    
-    .error-description {
-        margin: 0;
-        font-size: 3rem;
-        line-height: 1.3em;
-        font-weight: 600;
-    }
-
-    .error-link {
-        display: inline-block;
-        margin-top: 5px;
-    }
+    margin-bottom: 40px; // Fix footer craziness
 }
 
 a.tag {
@@ -125,64 +95,25 @@ header.navbar-dark  {
 }
 
 .index {
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
 
-    form.filter {
-        padding: 1rem 15px;
-        margin: 0 -15px;
-
-        span {
-            flex: 1;
-        }
-
-        .btn {
-            cursor: pointer;
-            background: #fff;
-        }
-    }
-
-    table.double-list {
-        width: 100%;
+    h1 {
+        font-size: 40px;
+        font-weight: 300;
+        line-height: 1.0;
+        color: #000;
         margin: 0;
-        padding: 0 0 30px 0;
-        list-style-type: none;
-        border-collapse: separate;
-        border-spacing: 0px 5px;
-
-        tr {
-            margin: 8px 0;
-        }
-
-        a {
-            color: #000;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        a:hover {
-            color: $link-color;
-        }
-
-
-        span.date {
-            font-family: sans-serif;
-            text-transform: uppercase;
-            text-align: right;
-            float: right;
-            padding-top: 3px;
-            font-size: 12px;
-            color: #999;
-            display: none;
-
-            @media(min-width: 768px) {
-                display: block;
-            }
-        }
+        padding: .5em 0 0;
     }
 
-    .tag-cloud {
-        padding-bottom: 25px;
+    .apps {
+        padding-top: 20px;
+
+        img {
+            width: 100%;
+            height: 225px;
+        }
     }
 }
 
@@ -454,13 +385,122 @@ article {
     }
 }
 
+.archive {
+    max-width: 700px;
+    
+    h1 {
+        font-size: 48px;
+        font-weight: 300;
+        line-height: 1.0;
+        color: #000;
+        margin: 0;
+        padding: .5em 0 0;
+    }
+
+    form.filter {
+        padding: 1rem 15px 0;
+        margin: 0 -15px;
+
+        span {
+            flex: 1;
+        }
+
+        .btn {
+            cursor: pointer;
+            background: #fff;
+        }
+    }
+
+    table.articles {
+        width: 100%;
+        margin: 0;
+        padding: 0 0 30px 0;
+        list-style-type: none;
+        border-collapse: separate;
+        border-spacing: 0px 5px;
+
+        tr {
+            margin: 8px 0;
+
+            td.date-col {
+                width: 60px;
+                vertical-align: text-top;
+                padding-top: 5px;
+                text-align: left;
+            }
+
+            td.title-col {
+                padding-left: 5px;
+            }
+        }
+
+        a {
+            color: #000;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        a:hover {
+            color: $link-color;
+        }
+
+
+        span.date {
+            font-family: sans-serif;
+            text-transform: uppercase;
+            padding-top: 3px;
+            font-size: 12px;
+            color: #999;
+            display: none;
+
+            @media(min-width: 768px) {
+                display: block;
+            }
+        }
+    }
+
+    .tag-cloud {
+        padding-bottom: 25px;
+    }
+}
+
+.page404 {
+    max-width: 650px;
+    height: calc(100vh - 45px - 100px - 60px);
+    
+    .error-message {
+        color: #000;
+        text-align: center;
+    }
+    
+    .error-code {
+        margin: 100px 0 10px;
+        font-size: 12vw;
+        line-height: 1em;
+        letter-spacing: -5px;
+        opacity: .3;
+    }
+    
+    .error-description {
+        margin: 0;
+        font-size: 3rem;
+        line-height: 1.3em;
+        font-weight: 600;
+    }
+
+    .error-link {
+        display: inline-block;
+        margin-top: 5px;
+    }
+}
+
 .footer {
     background-color: $header-bg;
     color: #fff;
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 60px;
+    height: 40px;
     line-height: 40px;
     font-size: 0.8rem;
     text-decoration: none;
