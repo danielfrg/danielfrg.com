@@ -17,5 +17,5 @@ make
 or 
 
 ```
-make serve
+make server
 ```
