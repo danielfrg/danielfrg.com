@@ -2,7 +2,7 @@
 
 Source for [danielfrg.com](https://danielfrg.com)
 
-Convert notebooks to md:
+Convert notebooks to markdown:
 
 ```
 make notebooks
