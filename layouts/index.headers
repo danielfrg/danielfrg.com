@@ -6,5 +6,6 @@
 */
   Link: <{{ "/css/main.min.css" | relURL }}>; rel=preload; as=style
   Link: <{{ "/css/pygments-hashicorp.min.css" | relURL }}>; rel=preload; as=style
+  Link: <{{ "/js/main.js" | relURL }}>; rel=preload; as=script
   Link: <{{ "/js/anchor.min.js" | relURL }}>; rel=preload; as=script
   Link: <{{ "/js/medium-zoom.min.js" | relURL }}>; rel=preload; as=script
