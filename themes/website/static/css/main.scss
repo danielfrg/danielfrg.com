@@ -387,6 +387,10 @@ article {
 
 .archive {
     max-width: 700px;
+
+    section#filtered_list {
+        width: 100%;
+    }
     
     h1 {
         font-size: 48px;
