@@ -1,0 +1,10 @@
+/*
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: origin-when-cross-origin
+*/
+  Link: <{{ "/css/main.css" | relURL }}>; rel=preload; as=style
+  Link: <{{ "/css/pygments-hashicorp.css" | relURL }}>; rel=preload; as=style
+  Link: <{{ "/js/anchor.min.js" | relURL }}>; rel=preload; as=script
+  Link: <{{ "/js/medium-zoom.min.js" | relURL }}>; rel=preload; as=script
