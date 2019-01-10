@@ -34,6 +34,14 @@ pre code {
     display: none !important;
 }
 
+// Align input and output prompts
+div.input_prompt {
+    padding: 0.2em 0.4em;
+}
+div.output_prompt {
+    padding: 0.4em;
+}
+
 // Remove padding on MD (text) cells so the width matches MD posts
 .text_cell {
     margin: 0 !important;

@@ -143,7 +143,7 @@ def get_html_from_filepath(filepath,
     # end-fix
 
     # Since we make a Markdown file we need to remove empty lines and strip
-    content = "\n".join([line.strip() for line in content.split("\n") if line.strip()])
+    content = "\n".join([line.rstrip() for line in content.split("\n") if line.rstrip()])
 
     return content, info
 
@@ -160,7 +160,7 @@ def custom_highlight_code(source, language="python", metadata=None):
     print("!!! custom highlight_code filter")
     if not language:
         language = "ipython3"
-    
+
     formatter = HtmlFormatter(cssclass=" highlight highlight-ipynb hl-"+language)
     output = _pygments_highlight(source, formatter, language, metadata)
     return output
@@ -212,6 +212,7 @@ if __name__ == "__main__":
     input_dir = os.path.join(THIS_DIR, "../content/blog/notebooks")
     output_dir = os.path.join(THIS_DIR, "../content/blog/generated")
 
+    # Iterate the notebooks directory and convert all notebooks
     glob_expr = os.path.join(input_dir, "**/*.ipynb")
     for notebook in  glob.glob(glob_expr, recursive=True):
         content = convert(notebook)

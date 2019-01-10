@@ -9,18 +9,3 @@
 <!-- From: https://github.com/bryanbraun/anchorjs -->
 <script src="/js/anchor.min.js"></script>
 <script src="/js/main.js"></script>
-
-{{ range .Params.include }}
-    {{ if eq . "jquery" }}
-        <script async src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    {{ end }}
-    {{ if eq . "requirejs" }}
-        <script async src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.js"></script>
-    {{ end }}
-    {{ if eq . "vuejs" }}
-        <script async src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-    {{ end }}
-    {{ if eq . "angular1" }}
-        <script async src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
-    {{ end }}
-{{ end }}
