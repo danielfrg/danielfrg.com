@@ -1,6 +1,6 @@
-$header-bg: #24292e;
-$text-color: #373942;
-$link-color: #0070c9;
+$header-bg: #1a1a1a;
+$text-color: #1a1a1a;
+$link-color: #1a1a1a;
 $font-sans: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 
 html {
@@ -127,6 +127,19 @@ header.navbar-dark  {
             width: 100%;
             height: 225px;
         }
+
+        .btn-group {
+            .btn {
+                color: $text-color;
+                border-color: $text-color;
+            }
+
+            .btn-outline-secondary:hover {
+                color: #fff;
+                background-color:$text-color;
+                // border-color: #6c757d;
+            }
+        }
     }
 }
 
@@ -134,7 +147,7 @@ article {
     max-width: 740px;
     margin: 0 auto;
     padding: 0 20px;
-    
+
     header {
         margin: 0 auto;
         padding: 1.5vw 0;
@@ -186,10 +199,11 @@ article {
     }
 
     p {
-        font-family: $font-sans;;
+        font-family: $font-sans;
         font-size: 1.0625rem;
-        line-height: 1.75rem;
-        font-weight: 400;
+        // line-height: 1.75rem;
+        line-height: 30px;
+        font-weight: 300;
         margin-bottom: 1.45rem;
     }
 
@@ -219,7 +233,7 @@ article {
         padding: 0.8em 0.733em;
         border-radius: 3px;
     }
-    
+
     p.alert {
         color: #fd0000;
         background-color: #ffe2e2;
@@ -243,28 +257,40 @@ article {
         font-family: $font-sans;
         font-size: 1.0625rem;
         line-height: 1.75rem;
+        font-weight: 300;
         margin-bottom: 3px;
     }
 
     a {
         color: $link-color;
         text-decoration: none;
+        background: linear-gradient(to top, hsl(0,0%, 10%) 1px, transparent 1px);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        transition-property: color, background-size;
+        transition-duration: 200ms;
+        padding-bottom: 1px;
+
+        &:hover {
+            background-size: 0% 100%;
+            color: gray;
+            text-decoration: none;
+        }
+    }
+
+    a.anchorjs-link {
+        background: none;
     }
 
     hr {
         border-top: 1px solid #d6d6d6;
     }
-    
-    a:hover {
-        color: $link-color;
-        text-decoration: none;
-        border-bottom: 1px solid $link-color;
-    }
 
     blockquote {
         font-size: inherit;
         border-left: 4px solid #e5e6eb;
-        color: rgb(55, 57, 66);
+        color: #666;
         font-style: italic;
         margin: 2em 0;
         padding: 0 0 0 25px;
@@ -319,12 +345,13 @@ article {
     pre {
         border-radius: 3px;
         border: none;
-        background-color: rgb(27, 33, 45);
+        background-color: #1a1a1a;
+        // background-color: rgb(27, 33, 45);
         color: rgb(248, 248, 242);
         padding: 10px;
         padding: 20px 12px;
         position: relative;
-        
+
         code {
             background: none;
             color: rgb(248, 248, 242);
@@ -335,16 +362,16 @@ article {
     }
 
     pre.terminal {
-        background: #212121;
+        background: #1a1a1a;
         padding: 30px 12px 20px;
 
         code {
             color: #FFF;
-            color: #64DD17;
-            
+
             .dollar-sign {
-                color: #9E9E9E;
+                color: #aaa;
                 user-select: none;
+                padding-right: 6px;
             }
         }
     }
@@ -400,11 +427,12 @@ article {
 
 .archive {
     max-width: 700px;
+    font-weight: 300;
 
     section#filtered_list {
         width: 100%;
     }
-    
+
     h1 {
         font-size: 48px;
         font-weight: 300;
@@ -452,15 +480,23 @@ article {
         }
 
         a {
-            color: #000;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        a:hover {
             color: $link-color;
-        }
+            font-size: 16px;
+            text-decoration: none;
+            background: linear-gradient(to top, hsl(0,0%, 10%) 1px, transparent 1px);
+            background-size: 0% 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            transition-property: color, background-size;
+            transition-duration: 200ms;
+            padding-bottom: 2px;
 
+            &:hover {
+                background-size: 100% 100%;
+                color: gray;
+                text-decoration: none;
+            }
+        }
 
         span.date {
             font-family: sans-serif;
@@ -478,12 +514,12 @@ article {
 .page404 {
     max-width: 650px;
     height: calc(100vh - 45px - 100px - 60px);
-    
+
     .error-message {
         color: #000;
         text-align: center;
     }
-    
+
     .error-code {
         margin: 100px 0 10px;
         font-size: 12vw;
@@ -491,7 +527,7 @@ article {
         letter-spacing: -5px;
         opacity: .3;
     }
-    
+
     .error-description {
         margin: 0;
         font-size: 3rem;
@@ -507,7 +543,7 @@ article {
 
 .footer {
     background-color: $header-bg;
-    color: #fff;
+    color: #666;
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -517,8 +553,8 @@ article {
     text-decoration: none;
     text-align: center;
 
-    
-    .container { 
+
+    .container {
         max-width: 860px;
     }
 

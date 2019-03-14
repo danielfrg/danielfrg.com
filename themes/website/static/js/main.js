@@ -9,7 +9,7 @@ for(var i = 0; i < terminals.length; i++) {
 
     // Modify the text to surrond the `$` with a span, so we can make it non-selectable
     // We need this hack until this is added/fixed: https://github.com/alecthomas/chroma/issues/137
-    var find = "^\\$";
+    var find = "^\\$ ";
     var re = new RegExp(find, "gm");
     var str = terminal_item.innerHTML;
     str = str.replace(re, "<span class=\"dollar-sign\">$</span>");
@@ -17,7 +17,7 @@ for(var i = 0; i < terminals.length; i++) {
 }
 
 // Images zoom on click
-const zoomDefault = mediumZoom("article img", { background: "#24292e", scrollOffset: 0, margin: 30 });
+const zoomDefault = mediumZoom("article img", { background: "#1a1a1a", scrollOffset: 0, margin: 30 });
 
 // Anchors for headers
 anchors.options = {

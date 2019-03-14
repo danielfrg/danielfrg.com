@@ -2,6 +2,13 @@
 
 Source for [danielfrg.com](https://danielfrg.com)
 
+Dev:
+
+```
+poetry install
+source ./.venv/bin/activate
+```
+
 Convert notebooks to markdown:
 
 ```
@@ -14,7 +21,7 @@ Generate site:
 make
 ```
 
-or 
+or
 
 ```
 make server

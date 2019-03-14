@@ -8,6 +8,10 @@
 .rendered_html :visited {
     text-decoration: inherit !important;
 }
+.rendered_html pre {
+    // background: inherit !important;  // This doesn't work well...
+    background-color: #1a1a1a;  // Hard code it to my theme
+}
 
 // Theme reset: Code blocks use the theme
 pre code {
@@ -17,7 +21,7 @@ pre code {
 // Pygments reset: Back to default since its not set on what Jupyter adds
 .highlight {
     color: #000000;
-    
+
     code {
         color: #000000;
     }

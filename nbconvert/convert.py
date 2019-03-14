@@ -139,7 +139,7 @@ def get_html_from_filepath(filepath,
     content, info = exporter.from_filename(filepath)
 
     # Fix for nbconvert bug
-    content = content.replace("<pre>", '<pre class="highlight highlight-ipynb">')
+    # content = content.replace("<pre>", '<pre class="highlight highlight-ipynb">')
     # end-fix
 
     # Since we make a Markdown file we need to remove empty lines and strip
@@ -151,13 +151,12 @@ def get_html_from_filepath(filepath,
 def custom_highlight_code(source, language="python", metadata=None):
     """
     Makes the syntax highlighting from pygments in the Notebook output
-    have the prefix(`highlight-ipynb`). 
-    
+    have the prefix(`highlight-ipynb`).
+
     So it doesn"t break the theme pygments
 
     This modifies only html content, not css
     """
-    print("!!! custom highlight_code filter")
     if not language:
         language = "ipython3"
 
