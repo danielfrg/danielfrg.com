@@ -1,7 +1,7 @@
 {{ define "main" }}
 
 <main class="index container">
-    
+
     <div class="row apps">
         <div class="col-md-6">
             <div class="card mb-6 shadow-sm">
@@ -24,16 +24,6 @@
         {{ partial "list_filter.html" . }}
     </div>
 
-    <!-- <div class="row articles">
-        <h1>Latest articles<a class="view-all" href="/archive/">view all</a></h1>
-            
-        </span>
-        <ul>
-        {{ range first 10 (.Pages.ByDate).Reverse }}
-            <li><h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2></li>
-        {{ end }}
-        </ul>
-    </div> -->
 </main>
 
 {{ end }}
