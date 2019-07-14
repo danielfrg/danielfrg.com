@@ -1,4 +1,4 @@
-pGENERATED_MD = """
+GENERATED_MD = """
 ---
 {metadata}
 ---
