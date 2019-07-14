@@ -6,14 +6,14 @@
             <input type="text" id="filter" v-model="filter" class="form-control" placeholder="Filter by title or tag" alt="Filter by title or tag" autocomplete="off" spellcheck="false" />
         </span>
     </form>
-    
+
     <nav>
         <table class="articles">
             <tbody>
                 <tr v-for="item in filteredItems">
-                    <td class="date-col">
+                    <!-- <td class="date-col">
                         <span class="date">{{ "{{ item.date }}" }}</span>
-                    </td> 
+                    </td>  -->
                     <td class="title-col">
                         <a :href="item.url">{{ "{{ item.title }}" }}</a>
                     </td>

@@ -4,21 +4,21 @@
     <article>
         <header>
             <h1>{{ .Title }}</h1>
+            <span class="metadata">Posted on <time datetime="{{ .Date.Format "2006-01-02" }}" pubdate>{{ .Date.Format "Jan 02, 2006" }}</time></span>
         </header>
 
         <div class="content">
             {{ .Content }}
         </div>
 
-        <div class="metabox">
+        <div class="metadata">
             <div class="tags">
-                {{ range $k, $v := .Params.Tags }}
-                <a class="tag" href="{{ "/tags/" | relURL }}{{ . | urlize }}">{{ . }}</a>
+                Tagged &nbsp;
+                {{ with .Params.tags }}
+                    {{ range $i, $e := . }}{{ if $i }}, {{ end }}<a href="{{ "tags/" | absURL }}{{ $e | urlize }}" rel="tag">{{ $e }}</a>{{ end }}
                 {{ end }}
+                <!-- Posted in {{ delimit .Params.tags ", " ", and" }} -->
             </div>
-            <p class="date">
-                <time datetime="{{ .Date.Format "2006-01-02" }}" pubdate>{{ .Date.Format "Jan 02, 2006" }}</time>
-            </p>
         </div>
     </article>
 </main>
