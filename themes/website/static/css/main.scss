@@ -3,7 +3,6 @@ $text-color: #202038;
 $link-color: #1268da;;
 $font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 
-
 html {
     position: relative;
     min-height: 100%;
@@ -43,14 +42,6 @@ a {
     padding: 0;
     position: absolute;
     width: 1px;
-}
-
-hr.post-divider {
-    overflow: visible;
-    margin: 20px 0;
-    border: none;
-    background:  rgba(0,0,0,0.1);
-    height: 1px;
 }
 
 header.navbar-dark  {
@@ -102,15 +93,9 @@ header.navbar-dark  {
 .index {
     max-width: 700px;
     margin: 0 auto;
-
-    h2 {
-        font-weight: 600;
-        line-height: 1.0;
-        color: #202038;
-        padding: .5em 0 .2em;
-        margin: 0;
+    a {
+        font-size: 16px;
     }
-
     .apps {
         padding-top: 20px;
 
@@ -119,16 +104,9 @@ header.navbar-dark  {
             height: 225px;
         }
 
-        .btn-group {
-            .btn {
-                color: $text-color;
-                border-color: $text-color;
-            }
-
-            .btn-outline-secondary:hover {
-                color: #fff;
-                background-color:$text-color;
-            }
+        .card-link {
+            margin-left: 0;
+            font-size: 0.9em;
         }
     }
 }
