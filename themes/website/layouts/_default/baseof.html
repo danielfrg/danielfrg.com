@@ -5,14 +5,14 @@
 {{ end }}
 
 {{ define "description" }}
-Daniel Rodriguez data science website, blog and apps.
+Data science website, blog and apps.
 {{ end }}
 
 {{ define "html" }}
 <!DOCTYPE html>
 <html lang="en">
     {{ partial "head.html" . }}
-    
+
     <body>
         {{ partial "header.html" . }}
         {{ block "main" . }}{{ end }}

@@ -1,5 +1,5 @@
-baseURL = "https://danielfrg.com/"
-title = "Daniel Rodriguez"
+baseURL = "https://extrapolations.dev/"
+title = "Extrapolations"
 languageCode = "en-us"
 
 preserveTaxonomyNames = true

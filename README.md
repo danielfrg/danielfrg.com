@@ -1,6 +1,6 @@
-# danielfrg.com
+# extrapolations.dev
 
-Source for [danielfrg.com](https://danielfrg.com)
+Source for [extrapolations.dev](https://extrapolations.dev)
 
 Dev:
 
