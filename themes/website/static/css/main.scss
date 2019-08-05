@@ -1,7 +1,7 @@
 $text-color: #202038;
-$link-color: #1268da;;
+$link-color: #1268da;
 $font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-$font-secondary: 'Varela Round';
+$font-secondary: 'Proxima Nova', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 
 html {
     position: relative;
@@ -24,11 +24,12 @@ body {
 
 a {
     color: $link-color;
-    text-decoration: none;
+    // font-weight: 600;
+    text-decoration: underline;
+    text-decoration-skip-ink: auto !important;
 
     &:hover {
         color: #003ab7;
-        text-decoration: none;
     }
 }
 
@@ -49,7 +50,7 @@ header.navbar  {
     padding: 2rem 0;
     position: relative;
     color: #666;
-    font-family: 'Varela Round';
+    font-family: $font-secondary;
 
     .container {
         max-width: 740px;
@@ -58,6 +59,7 @@ header.navbar  {
 
     a {
         color: #666;
+        text-decoration: none;
     }
 
     a:hover {
@@ -68,7 +70,7 @@ header.navbar  {
         color: #272c31;
         font-weight: 800;
         font-size: 2em;
-        letter-spacing: .2px;
+        letter-spacing: -0.8px;
         padding: 0 0 0 0;
         margin: 0;
     }
@@ -112,6 +114,7 @@ header.navbar  {
         .card-link {
             margin-left: 0;
             font-size: 0.9em;
+            text-decoration: none;
         }
     }
 }
@@ -134,7 +137,7 @@ article {
             margin: 0.5em 0 0.5em;
             font-size: 3em;
             line-height: 1.1em;
-            font-weight: 600;
+            font-weight: 800;
         }
     }
 
@@ -420,8 +423,6 @@ article {
         span {
             flex: 1;
         }
-
-
     }
 
     table.articles {
@@ -448,6 +449,7 @@ article {
 
         a {
             font-size: 16px;
+            text-decoration: none;
         }
 
         span.date {
