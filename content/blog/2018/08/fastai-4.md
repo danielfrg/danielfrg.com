@@ -1,7 +1,7 @@
 +++
 title = "Notes for: Fast.ai 2018 - Lesson 4: Structured data, time series and language models"
 slug = "fastai-lesson-1"
-date = 2018-08-15
+date = 2018-08-07T18:00:00Z
 tags = ["Tech notes", "Fast.ai", "Machine Learning", "Deep Learning", "NLP"]
 author = "Daniel Rodriguez"
 +++
@@ -26,7 +26,7 @@ Why in early training is the validation loss better than the training loss? This
 
 In the backend Pytorch and Tensorflow does some balancing so accommodate the dropout, for example for p=0.5 after it remove half the activations it doubles the other half. The idea is to delete things without propagating it, so we need to do that balance.
 
-How to pick the probability of the multiple dropout layers? In general 0.25 - 0.5 is probably a good number to start, if the model starts to overfit start increasing it. The bigger the network is (Resnet 24 vs Resnet 50) it could start to overfit more so it increasing dropout might be a good idea. 
+How to pick the probability of the multiple dropout layers? In general 0.25 - 0.5 is probably a good number to start, if the model starts to overfit start increasing it. The bigger the network is (Resnet 24 vs Resnet 50) it could start to overfit more so it increasing dropout might be a good idea.
 
 Overfitting is when Train loss is (a lot?) lower Validation loss but at the end the main objective is to get the validation loss low, maybe even if its overfitting a little bit. For each problem you need to get a sense of how much overfitting is good and bad.
 
@@ -72,7 +72,7 @@ Before we start training a model for positive or negative comments we want to ge
 
 What this initial model does is to concatenate all the tokenized reviews into one huge block of text and split it into sections of contiguous tokens of size K, for example 64. So the input is going to be  example `NxK` (where `N = total number of tokens / K`).
 
-Then the actual input batches size (bptt) is going to take from that matrix, this can be for example 70. 
+Then the actual input batches size (bptt) is going to take from that matrix, this can be for example 70.
 
 The output that we are trying to predict is going to be a rank one tensor of the next token of the sentence (input). This is kinda hard to explain but easy to see on the video.
 
