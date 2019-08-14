@@ -1,5 +1,3 @@
-PREFIX?=$(shell pwd)
-
 all: build
 
 .PHONY: build
@@ -18,8 +16,11 @@ clean-notebooks: ##
 	rm -rf content/blog/generated/*.md
 
 .PHONY: server
-server: ##
+serve: ##
 	hugo serve -F -D
+
+.PHONY: server
+server: serve
 
 .PHONY: clean
 clean: clean-notebooks ##
