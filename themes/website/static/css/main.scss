@@ -332,8 +332,16 @@ article {
         }
     }
 
+    div.pre-filename {
+        background-color: #575A5E;
+        color: #FFF;
+        padding: 4px 12px;
+        font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+        font-size: 0.875rem;
+    }
+
     pre {
-        border-radius: 3px;
+        // border-radius: 3px;
         border: none;
         background-color: #252937;
         color: rgb(248, 248, 242);
@@ -369,7 +377,7 @@ article {
         content: "\f120    terminal";
         font-family: "Font Awesome 5 Free", Arial, Helvetica, sans-serif;
         font-weight: 600;
-        font-size: 0.75rem;
+        font-size: 0.8rem;
         position: absolute;
         top: 0;
         left: 0;
