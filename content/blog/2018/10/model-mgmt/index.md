@@ -3,6 +3,7 @@ title = "Polyaxon, Argo and Seldon for model training, package and deployment in
 slug = "model-management-polyaxon-argo-seldon"
 date = "2018-10-13"
 tags = ["Model management", "Kubernetes", "Polyaxon", "Argo", "Seldon"]
+author = "Daniel Rodriguez"
 +++
 
 <p class="subtitle">
@@ -392,7 +393,7 @@ spec:
     targetPort: 8888
 ```
 
-This Jupyter Lab installation will have the right mounts for you move the serialized model: 
+This Jupyter Lab installation will have the right mounts for you move the serialized model:
 
 ```terminal
 $ cp /output/root/mnist/groups/12/120/model.dat /home/jovyan/deployments/mnist/
@@ -410,7 +411,7 @@ from network import Network
 from torchvision import datasets, transforms
 
 class MnistModel(object):
-    
+
     def __init__(self):
         self.model = Network()
         self.model.load_state_dict(torch.load("./model.dat"))
@@ -455,7 +456,7 @@ metadata:
   generateName: model-pkg-
 spec:
   entrypoint: model-pkg
-  
+
   volumes:
   - name: work-volume
     persistentVolumeClaim:

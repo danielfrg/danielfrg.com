@@ -1,8 +1,10 @@
 {{ define "main" }}
 <main class="archive container">
     {{- with .Title }}
-        <h1>{{ with $.Data.Singular }}{{ . | humanize }}: {{ end }}{{ . }}</h1>
+        <header>
+            <h1 class="smaller">{{ with $.Data.Singular }}{{ . | humanize }}: {{ end }}{{ . }}</h1>
+        </header>
     {{- end }}
-    {{ partial "list_filter.html" . }}
+    {{ partial "posts.html" . }}
 </main>
 {{ end }}

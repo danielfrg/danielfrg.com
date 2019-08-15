@@ -25,4 +25,4 @@ anchors.options = {
     // visible: "always",
     icon: "»"
 };
-anchors.add("article h2, article h3");
+anchors.add("h2:not(.no-anchor), article h3");

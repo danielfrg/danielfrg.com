@@ -18,8 +18,11 @@
     </div>
 
     <div class="row archive">
-        <h2>Articles</h2>
+        <h2 class="no-anchor">Latest posts</h2>
+        {{ .Scratch.Set "filter" false }}
+        {{ .Scratch.Set "limit" 20 }}
         {{ partial "list_filter.html" . }}
+        <a href="/archive">All posts</a>
     </div>
 
 </main>

@@ -6,6 +6,8 @@ tags: ["Spark", "Livy", "Hadoop", "Kerberos", "Python", "Spark magic"]
 author: Daniel Rodriguez
 ---
 
+Notes on getting Livy configured with Kerberos in CDH. Oh yeah and use it in Python via Sparkmagic.
+
 ## Install Livy
 
 Create a Livy user to run the livy server

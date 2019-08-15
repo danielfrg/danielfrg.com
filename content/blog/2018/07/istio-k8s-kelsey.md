@@ -20,7 +20,13 @@ New tools gave us new ways to package. Docker allows you to have that to have a 
 
 Kubernetes: Take your container images and gives you an application API across your machines. Gives you reliability (your app is always running) and collects some metrics (that the kernel knows about: CPU, memory, but not details).
 
-Kubernetes is not a complete platform. what about: Visibility? Istio. Secrets at a detail level on the applications? Vault. Details about the requests? Success vs failure? Prometheus. Tracing? Zipkin. Applications credentials (app needs access to DB)? Spiffe.
+Kubernetes is not a complete platform. what about:
+
+- Visibility? Istio
+- Secrets at a detail level on the applications? Vault
+- Details about the requests? Success vs failure? Prometheus
+- Tracing? Zipkin
+- Applications credentials (app needs access to DB)? Spiffe
 
 Image a function that is 6 lines of code. To add one of this things it will maybe become 25 lines of code. No one will add those lines.
 
@@ -83,7 +89,7 @@ k8s allows to do rolling upgrades and downgrades. but what if you want to first 
 
 Using route rules you can use for example match headers of requests and route them to a different version.
 
-Istio allows you do to stuff like retries automatically (with timeouts) in case a service is maybe down for a second but it comes up again, instead of failing retry a couple of times. 
+Istio allows you do to stuff like retries automatically (with timeouts) in case a service is maybe down for a second but it comes up again, instead of failing retry a couple of times.
 
 For an upgrade:
 

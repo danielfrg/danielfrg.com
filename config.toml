@@ -1,5 +1,6 @@
 baseURL = "https://extrapolations.dev/"
 title = "Extrapolations"
+author = "Daniel Rodriguez"
 languageCode = "en-us"
 
 preserveTaxonomyNames = true
