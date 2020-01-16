@@ -5,8 +5,7 @@ Source for [extrapolations.dev](https://extrapolations.dev)
 Dev:
 
 ```
-poetry install
-source ./.venv/bin/activate
+conda env create
 ```
 
 Convert notebooks to markdown:

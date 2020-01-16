@@ -11,21 +11,22 @@ hugo: ##
 notebooks: ##
 	python nbconvert/convert.py
 
-.PHONY: clean-notebooks
-clean-notebooks: ##
-	rm -rf content/blog/generated/*.md
-
-.PHONY: server
+.PHONY: serve server
+server: serve
 serve: ##
 	hugo serve -F -D
-
-.PHONY: server
-server: serve
 
 .PHONY: clean
 clean: clean-notebooks ##
 	rm -rf public
 
-PHONY: help
-help:
-	@grep -E '^[a-zA-Z_-]+:.*?##.*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?##"; OFS="\t\t"}; {printf "\033[36m%-30s\033[0m %s\n", $$1, ($$2==""?"":$$2)}'
+.PHONY: clean-notebooks
+clean-notebooks: ##
+	rm -rf content/blog/generated/*.md
+
+.PHONY: netlify
+netlify: build  ## Build docs on Netlify
+
+.PHONY: help
+help:  ## Show this help menu
+	@grep -E '^[0-9a-zA-Z_-]+:.*?##.*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?##"; OFS="\t\t"}; {printf "\033[36m%-30s\033[0m %s\n", $$1, ($$2==""?"":$$2)}'

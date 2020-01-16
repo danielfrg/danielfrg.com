@@ -1,5 +1,5 @@
 [build]
-  command = "make"
+  command = "make netlify"
   publish = "public"
 
 [context.production.environment]

@@ -1,0 +1,17 @@
+name: extrapolations.dev
+channels:
+  - conda-forge
+dependencies:
+  - python=3.7
+  - pip
+  - pyyaml
+  - ipython
+  - nbconvert
+  # Used by notebooks
+  - notebook
+  - numpy
+  - pandas
+  - scipy
+  - matplotlib
+  - plotly
+  - bokeh

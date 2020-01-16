@@ -25,6 +25,7 @@ THIS_DIR = os.path.dirname(os.path.realpath(__file__))
 def convert(nb_path):
     """convert a notebook to html with css included and fixes
     """
+    print("Converting: {nb_path}".format(nb_path=nb_path))
     metadata = get_metadata(nb_path)
     if not metadata:
         return
@@ -32,7 +33,7 @@ def convert(nb_path):
 
     html = nb2html(nb_path)
 
-    print("Converted: {nb_path}".format(nb_path=nb_path))
+    print("Done")
     return GENERATED_MD.format(metadata=metadata_s, html=html)
 
 
