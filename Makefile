@@ -1,3 +1,11 @@
+SHELL := bash
+.ONESHELL:
+.SHELLFLAGS := -eu -o pipefail -c
+.DELETE_ON_ERROR:
+MAKEFLAGS += --warn-undefined-variables
+MAKEFLAGS += --no-builtin-rules
+
+
 all: build
 
 .PHONY: build
@@ -11,8 +19,7 @@ hugo: ##
 notebooks: ##
 	python nbconvert/convert.py
 
-.PHONY: serve server
-server: serve
+.PHONY: serve
 serve: ##
 	hugo serve -F -D
 

@@ -12,7 +12,7 @@ for(var i = 0; i < terminals.length; i++) {
     var find = "^\\$ ";
     var re = new RegExp(find, "gm");
     var str = terminal_item.innerHTML;
-    str = str.replace(re, "<span class=\"dollar-sign\">$</span>");
+    str = str.replace(re, "<span class=\"no-select\">$</span>");
     terminal_item.innerHTML = str;
 }
 

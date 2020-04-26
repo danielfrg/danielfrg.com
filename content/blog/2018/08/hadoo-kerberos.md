@@ -11,7 +11,10 @@ For CentOS
 ### KDC Server
 
 Install:
-	yum install -y openldap-clients krb5-server krb5-workstation krb5-libs
+
+```
+yum install -y openldap-clients krb5-server krb5-workstation krb5-libs
+```
 
 There is 3 files that are important:
 

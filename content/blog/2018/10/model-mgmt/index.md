@@ -154,7 +154,6 @@ $ helm repo update
 Now we can start Polyaxon using Helm, the only extra thing we need is a `polyaxon-config.yml` config file and run Helm:
 
 <div class="pre-filename">File: polyaxon-config.yml</div>
-
 ```yaml
 rbac:
   enabled: true

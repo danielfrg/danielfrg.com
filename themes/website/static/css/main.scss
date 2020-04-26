@@ -1,6 +1,4 @@
-$text-color: #202038;
-$link-color: #1268da;
-$font-sans: 'Proxima Nova', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+@import './primer.scss';
 
 html {
     position: relative;
@@ -12,41 +10,23 @@ body {
     background-color: #FFF;
     margin: 0;
     padding: 0;
-    font-family: $font-sans;
-    color: $text-color;
+    font-family: $body-font;
+    color: $black;
     font-size: 1em;
     font-weight: 400;
     text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased;
 }
 
-
-b, strong {
-    font-weight: 600;
-}
-
 a {
-    color: $link-color;
-    // font-weight: 600;
-    text-decoration: underline;
-    text-decoration-skip-ink: auto !important;
+    color: rgb(3, 102, 214);
 
     &:hover {
-        color: #003ab7;
+        // Remove reset.css
+        color: #007bff;
     }
 }
 
-.hide-element {
-    border: 0;
-    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-    clip: rect(1px, 1px, 1px, 1px);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-}
 
 header.navbar  {
     margin: 0 0 0 0;
@@ -101,49 +81,26 @@ header.navbar  {
     }
 }
 
-.index {
-    max-width: 700px;
-    margin: 0 auto;
-
-    .apps {
-        padding: 0 0 30px;
-
-        img {
-            width: 100%;
-            height: 225px;
-        }
-
-        .card-link {
-            margin-left: 0;
-            font-size: 0.9em;
-            text-decoration: none;
-        }
-    }
-}
-
 article {
     max-width: 800px;
     padding: 0 3.2rem 5em;
     margin: 0 auto;
-
-
-    h1, h2, h3, h4 {
-
-    }
 
     header {
         margin: 0 auto;
         padding: 2.6em 0;
 
         h1 {
-            margin: 0 0 0.1em;
-            font-size: 3em;
+            margin: 8px 0 0;
+            font-size: $h00-size;
             line-height: 1.1em;
-            font-weight: 800;
+            font-weight: bold;
+            // border-bottom: none;
         }
     }
 
     .metadata {
+        margin-top: 50px;
         font-size: 13px;
         font-weight: 300;
         color: #999;
@@ -167,58 +124,13 @@ article {
             }
         }
     }
+}
 
-    h1 {
-        font-size: 48px;
-        font-weight: 400;
-        line-height: 1.0;
-        color: #202038;
-        margin: .5em 0;
-    }
-
-    h2 {
-        font-size: 34px;
-        font-weight: 400;
-        line-height: 1.09375;
-        letter-spacing: .011em;
-        margin: 56px 0 25px;
-    }
-
-    h3 {
-        font-size: 26px;
-        font-weight: 400;
-        line-height: 1.20849;
-        letter-spacing: .015em;
-        margin: 35px 0 15px;
-    }
-
-    h4 {
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 1.20849;
-        letter-spacing: .015em;
-        margin: 35px 0 15px;
-    }
-
-    .anchorjs-link {
-        margin-left: 10px;
-        padding: 0 !important;
-    }
-
-    strong {
-        font-weight: 700;
-    }
-
-    p {
-        font-size: 1.0625rem;
-        line-height: 1.8em;
-        font-weight: 400;
-        margin-bottom: 1.45rem;
-    }
+.markdown-body {
 
     p.subtitle, p.tldr {
         color: rgba(0, 0, 0, 0.54);
-        font-size: 1.375rem;
+        font-size: $h3-size;
         font-weight: 400;
         letter-spacing: .016em;
         line-height: 1.2;
@@ -226,63 +138,37 @@ article {
         margin-bottom: 30px;
     }
 
-    p.note {
-        color: $text-color;
-        background: #f5f5f5;
-        border: 1px solid #9a9aa2;
-        padding: 0.8em 0.733em;
-        border-radius: 3px;
+    .anchorjs-link {
+        margin-left: 10px;
+        padding: 0 !important;
     }
 
-    p.warning, p.update {
-        color: #694d11;
-        background-color: #fbf8e5;
-        border: 1px solid #b98921;
-        padding: 0.8em 0.733em;
-        border-radius: 3px;
+    p {
+        font-size: 17px;
+        line-height: 1.7em;
     }
 
-    p.alert {
-        color: #712727;
-        background-color: #ffe2e2;
-        border: 1px solid #d21515;
-        padding: 0.8em 0.733em;
-        border-radius: 3px;
+    p.grey-box, p.note {
+        background: #e4e4e4;
+        // border: 1px solid #9a9aa2;
+        padding: 0.733em 0.9em;
+        border-radius: 0;
     }
 
-    i, cite, em, var, address, dfn {
-        font-style: italic;
+    p.yellow-box, p.warning, p.update {
+        // color: #694d11;
+        background-color: #fff6ba;
+        // border: 1px solid #b98921;
+        padding: 0.733em 0.9em;
+        // border-radius: 0;
     }
 
-    ul, ol {
-        margin-top: 0px 0 1.45rem;
-        padding-left: 2rem;
-        line-height: 1.45rem;
-        list-style-position: outside;
-    }
-
-    li {
-        font-size: 1.0625rem;
-        line-height: 1.75rem;
-        font-weight: 400;
-        margin-bottom: 3px;
-    }
-
-    a.anchorjs-link {
-        background: none;
-    }
-
-    hr {
-        border-top: 1px solid #d6d6d6;
-    }
-
-    blockquote {
-        font-size: inherit;
-        border-left: 4px solid #e5e6eb;
-        color: #666;
-        font-style: italic;
-        margin: 2em 0;
-        padding: 0 0 0 25px;
+    p.red-box, p.alert {
+        // color: #712727;
+        background-color: #ffc8c8;
+        // border: 1px solid #d21515;
+        padding: 0.733em 0.9em;
+        border-radius: 0;
     }
 
     img {
@@ -312,14 +198,6 @@ article {
         }
     }
 
-    code {
-        color: $text-color;
-        background-color: rgba(0, 0, 0, .05);;
-        font-size: 0.875rem;
-        padding: 0.3em 0.625em;
-        border-radius: 3px;
-    }
-
     .video {
         position: relative;
         height: 0;
@@ -333,39 +211,35 @@ article {
     }
 
     div.pre-filename {
-        background-color: #575A5E;
+        background-color: #252937;
         color: #FFF;
         padding: 4px 12px;
-        font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+        font-family: $mono-font;
         font-size: 0.875rem;
+        border-bottom: 1px solid white;
     }
 
-    pre {
-        // border-radius: 3px;
-        border: none;
+    pre, pre.chroma {
         background-color: #252937;
         color: rgb(248, 248, 242);
-        padding: 10px;
-        padding: 20px 12px;
-        position: relative;
+        border-radius: 0;
 
         code {
-            background: none;
             color: rgb(248, 248, 242);
-            border: none;
-            font-size: 0.875rem;
-            padding: 0;
         }
     }
 
-    pre.terminal {
-        background: #1a1a1a;
-        padding: 30px 12px 20px;
+    .highlight pre.terminal {
+        background: $black !important;
+        border-radius: 0;
+        color: #FFF;
+        padding: 40px 12px 20px;
+        position: relative;
 
         code {
             color: #FFF;
 
-            .dollar-sign {
+            .no-select {
                 color: #aaa;
                 user-select: none;
                 padding-right: 6px;
@@ -387,22 +261,54 @@ article {
         text-indent: 15px;
     }
 
-    .read_more {
-        padding-top: 1.5rem;
-        margin-top: 2rem;
+    .highlight pre {
+        // Fix for Jupyter
+        background-color: #252937 !important;
+        border-radius: 0;
 
-        a.link {
-            font-size: 14px;
-            font-weight: 800;
-            padding: 10px 20px;
-            color: #007EE5;
-            background: #FFF;
-            border: 1px solid #007EE5;
+        .n, .p {
+            color: #f8f8f2 !important;
         }
+    }
 
-        a.link:hover {
-            color: #FFF;
-            background: #007EE5;
+    .highlight-ipynb pre {
+        // Fix for Jupyter
+        background-color: transparent !important;
+
+        .n, .p {
+            color: black !important;
+        }
+    }
+}
+
+.index {
+    max-width: 700px;
+    margin: 0 auto;
+
+    .cards {
+        display: flex;
+        flex-direction: row;
+        padding: 0 0 30px;
+
+        .card {
+            flex: 1 1 0px;
+            margin-right: 30px;
+            border-radius: 0;
+
+            img {
+                width: 100%;
+                max-width: 325px;
+                height: 225px;
+            }
+
+            .card-link {
+                margin-left: 0;
+                font-size: 0.9em;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
     }
 }
@@ -496,7 +402,7 @@ article {
 
         a {
             font-size: 16px;
-            text-decoration: none;
+            // text-decoration: none;
         }
 
         span.date {

@@ -13,6 +13,7 @@ Challenge of DS: Taking a vague question and making it precise enough that you c
 Import data -> make it tidy -> Job as DS is to understand the data
 
 Understand is a loop of:
+
 1. Transforming: Create new variable & summaries
 2. Visualizing: Surprises but doesn't scale
 	1. You can start with a vague question and the viz will help you
@@ -22,13 +23,16 @@ Understand is a loop of:
 	1. Makes assumptions that cannot break, so it cannot surprise you
 
 After understanding you want to:
+
 1. Communicate - with a supervisor or whatever
 2. Automate - how to deploy
 
 Why program if i want to do DS?
+
 - What do you do in a DS problem: Think it  (what are you going to do) -> Describe (precisely) it (The computer can understand) -> Do it (Computer runs it)
 
 Two extremes:
+
 1. Excel: you can see what you can do but you are constrained
 2. You don't see whats possible (blink cursor) but you are free to
 
@@ -36,6 +40,7 @@ Programming languages are languages - you can express your thoughts in it
 It can be hard to express thoughts (code/text makes it easier)
 
 Coding is just text:
+
 - Allows you to copy paste. Readable, Diffable, Reproducible, Open, Sharable, share (email, tweet it).
 - Thanks to that tools like Stack Overflow and Github exist and are amazing
 - Narratives (using code) using Notebooks and Rmarkdown
@@ -51,11 +56,13 @@ In a GUI: You live in fear of clicking the wrong thing and making it permanent s
 R is a vector language
 
 Missing values included
+
 - This logic can be tricky
 
 Data Frame (table) included
 
 Functional programming
+
 - You work with it by concatenating functions and doing stuff with functions
 - This is a good fit for DS
 
