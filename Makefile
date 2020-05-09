@@ -16,6 +16,8 @@ first: help
 .PHONY: clean
 clean:  ## Clean build files
 	@rm -rf public
+	@find . -type f -name '*.css' -delete
+	@find . -type f -name '*.css.map' -delete
 	@find . -type f -name '*.py[co]' -delete
 	@find . -type d -name __pycache__ -exec rm -rf {} +
 	@find . -type d -name .ipynb_checkpoints -exec rm -rf {} +
