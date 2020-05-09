@@ -1,4 +1,6 @@
-# This is used by Netlify
+# Used for CI - It should match environment.yml
+
+# Base conda deps: NBconvert
 pyyaml
 ipython
 nbconvert

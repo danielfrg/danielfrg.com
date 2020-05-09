@@ -4,10 +4,25 @@ channels:
 dependencies:
   - python=3.7
   - pip
+
+  # Base conda deps
+  - setuptools
+  - setuptools_scm
+  - pylint
+  - flake8
+  - black
+  - isort
+  - twine
+  - wheel
+  - pytest
+  - pytest-cov
+
+  # Base conda deps: NBconvert
   - pyyaml
   - ipython
   - nbconvert
-  # Used by notebooks
+
+  # Base conda deps: Notebooks
   - notebook
   - numpy
   - pandas
