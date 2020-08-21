@@ -1,9 +1,0 @@
-[build]
-  command = "make netlify"
-  publish = "public"
-
-[context.production.environment]
-  HUGO_VERSION = "0.48"
-
-[context.deploy-preview.environment]
-  HUGO_VERSION = "0.48"

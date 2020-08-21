@@ -1,0 +1,52 @@
+name: docs
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: git fetch --prune --unshallow
+
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.8'
+
+      - name: Install Python dependencies
+        run: |
+          cd python
+          python -m pip install --upgrade pip
+          pip install -U -r requirements.txt
+          pip freeze
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.74.2'
+
+      - name: Build docs
+        run: |
+          make build
+
+      - name: Push docs (branch)
+        uses: jsmrcaga/action-netlify-deploy@master
+        if: github.event_name == 'pull_request'
+        with:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          build_directory: public
+
+      - name: Push docs (master)
+        uses: jsmrcaga/action-netlify-deploy@master
+        if: (github.event_name == 'push') && endsWith(github.ref, '/master')
+        with:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_DEPLOY_TO_PROD: true
+          build_directory: public

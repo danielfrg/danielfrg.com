@@ -4,7 +4,7 @@ Create dev environment
 
 ```
 make env
-conda activate dinero
+conda activate extrapolations.dev
 make develop
 ```
 

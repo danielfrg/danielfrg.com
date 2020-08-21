@@ -2,20 +2,14 @@ name: extrapolations.dev
 channels:
   - conda-forge
 dependencies:
-  - python=3.7
+  - python=3.8
   - pip
 
   # Base conda deps
-  - setuptools
-  - setuptools_scm
   - pylint
   - flake8
   - black
   - isort
-  - twine
-  - wheel
-  - pytest
-  - pytest-cov
 
   # Base conda deps: NBconvert
   - pyyaml

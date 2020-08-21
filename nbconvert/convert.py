@@ -2,8 +2,8 @@ import os
 import re
 from copy import deepcopy
 
-import jinja2
 import yaml
+import jinja2
 from nbconvert.exporters import HTMLExporter
 from nbconvert.filters.highlight import _pygments_highlight
 from nbconvert.nbconvertapp import NbConvertApp
@@ -11,7 +11,6 @@ from nbconvert.preprocessors import Preprocessor
 from pygments.formatters import HtmlFormatter
 from templates import GENERATED_MD, LATEX_CUSTOM_SCRIPT
 from traitlets import Integer
-
 
 CURDIR = os.path.dirname(os.path.realpath(__file__))
 
