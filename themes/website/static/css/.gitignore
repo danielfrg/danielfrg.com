@@ -1,3 +1,4 @@
 *.css
 *.min.css
 *.css.map
+!main.min.css

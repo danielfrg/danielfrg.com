@@ -18,6 +18,9 @@ disableAliases = true  # This is done via redirect headers
 [outputs]
 home = [ "HTML", "RSS", "REDIR", "HEADERS" ]
 
+[markup.goldmark.renderer]
+unsafe = true
+
 [mediaTypes]
 [mediaTypes."text/netlify"]
 suffixes = [ "" ]
@@ -29,6 +32,7 @@ mediatype = "text/netlify"
 baseName = "_redirects"
 isPlainText = true
 notAlternative = true
+
 [outputFormats.HEADERS]
 mediatype = "text/netlify"
 baseName = "_headers"

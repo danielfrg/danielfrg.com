@@ -13,24 +13,6 @@ LOG ?= info
 
 first: help
 
-.PHONY: clean
-clean:  ## Clean build files
-	@rm -rf public
-	@find . -type f -name '*.css' -delete
-	@find . -type f -name '*.css.map' -delete
-	@find . -type f -name '*.py[co]' -delete
-	@find . -type d -name __pycache__ -exec rm -rf {} +
-	@find . -type d -name .ipynb_checkpoints -exec rm -rf {} +
-
-
-.PHONY: cleanall
-cleanall: clean   ## Clean everything
-	@ rm -rf content/blog/generated/*.md
-
-
-.PHONY: help
-help:  ## Show this help menu
-	@grep -E '^[0-9a-zA-Z_-]+:.*?##.*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?##"; OFS="\t\t"}; {printf "\033[36m%-30s\033[0m %s\n", $$1, ($$2==""?"":$$2)}'
 
 # ------------------------------------------------------------------------------
 # Project specific
@@ -45,7 +27,7 @@ build: clean notebooks hugo  ## Build site
 
 
 .PHONY: hugo
-hugo: ##
+hugo: ## Run hugo build
 	hugo
 
 
@@ -59,18 +41,31 @@ serve:  ## Serve website
 	hugo serve -F -D
 
 
-.PHONY: netlify
-netlify: build  ## Build docs on Netlify
-
-
 .PHONY: check
 check:  ## Check linting
-	@flake8
-	@isort --check-only --diff --recursive --project dinero --section-default THIRDPARTY nbconvert
-	@black --check nbconvert
+	cd $(CURDIR)/python; flake8
+	cd $(CURDIR)/python; isort --check-only --diff --recursive --project dinero --section-default THIRDPARTY .
+	cd $(CURDIR)/python; black --check nbconvert
 
 
 .PHONY: fmt
 fmt:  ## Format source
-	@isort --recursive --project dinero --section-default THIRDPARTY nbconvert
-	@black nbconvert
+	cd $(CURDIR)/python; isort --recursive --project dinero --section-default THIRDPARTY.
+	cd $(CURDIR)/python; black nbconvert
+
+# ------------------------------------------------------------------------------
+# Other
+
+.PHONY: clean
+clean:  ## Clean build files
+	@rm -rf public
+
+
+.PHONY: cleanall
+cleanall: clean   ## Clean everything
+	@rm -rf content/blog/generated/*.md
+
+
+.PHONY: help
+help:  ## Show this help menu
+	@grep -E '^[0-9a-zA-Z_-]+:.*?##.*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?##"; OFS="\t\t"}; {printf "\033[36m%-30s\033[0m %s\n", $$1, ($$2==""?"":$$2)}'

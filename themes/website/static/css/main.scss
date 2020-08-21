@@ -1,4 +1,5 @@
 @import './primer.scss';
+@import './pygments-hashicorp.scss';
 
 html {
     position: relative;
@@ -289,6 +290,7 @@ article {
         display: flex;
         flex-direction: row;
         padding: 0 0 30px;
+        // max-width: 305px;
 
         .card {
             flex: 1 1 0px;
@@ -309,6 +311,10 @@ article {
                     text-decoration: underline;
                 }
             }
+        }
+
+        .noborder {
+            border: none;
         }
     }
 }
