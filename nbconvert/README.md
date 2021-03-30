@@ -1,5 +1,5 @@
-# Convert helper for hugo
+# Jupyter Notebook convert helper for hugo
 
-Converts the notebooks using nbconvert to html and puts the it into a md file that Hugo can use.
+Converts the notebooks using `nbconvert` to `html` and puts the content into a Markdown file for Hugo.
 
-Reads all notebooks from `content/notebooks` and outputs it to `content/posts-nb`.
+Reads notebooks from `content/notebooks` and outputs it to `content/blog/generated-nbs`.

@@ -4,30 +4,58 @@ on:
   push:
     branches: [master]
   pull_request:
+  schedule:
+    - cron: "0 5 * * *"
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        python-version: [3.8]
+        node-version: ["12"]
+        hugo-version: ['0.74.2']
+
     steps:
       - uses: actions/checkout@v2
       - run: git fetch --prune --unshallow
 
-      - name: Set up Python
-        uses: actions/setup-python@v1
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
         with:
-          python-version: '3.8'
+          python-version: ${{ matrix.python-version }}
 
       - name: Install Python dependencies
         run: |
+          which python
+          which pip
+          python --version
+          pip --version
           python -m pip install --upgrade pip
           pip install -U -r requirements.txt
           pip freeze
 
-      - name: Setup Hugo
+      - name: Install NodeJS ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install theme JS deps
+        run: |
+          cd theme
+          make npm-install
+
+      - name: Build theme
+        run: |
+          cd theme
+          make npm-build
+
+      - name: Setup Hugo ${{ matrix.hugo-version }}
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.74.2'
+          hugo-version: ${{ matrix.hugo-version }}
 
       - name: Build docs
         run: |
@@ -49,3 +77,10 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_DEPLOY_TO_PROD: true
           build_directory: public
+
+      - name: Upload website
+        uses: actions/upload-artifact@v1
+        if: always()
+        with:
+          name: website
+          path: public

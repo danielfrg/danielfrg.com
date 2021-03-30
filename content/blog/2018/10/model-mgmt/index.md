@@ -6,7 +6,7 @@ tags = ["Model management", "Kubernetes", "Polyaxon", "Argo", "Seldon"]
 author = "Daniel Rodriguez"
 +++
 
-<p class="subtitle">
+<p class="summary">
   The ultimate combination of open-source frameworks for model management in Kubernetes?
 </p>
 
@@ -61,7 +61,13 @@ $ git clone https://github.com/SeldonIO/seldon-core.git
 
 This section is a small reference from each project documentation so be sure to read that if something here doesn't work or gets outdated.
 
-The next few sections will walk through the installation and configuration of five components that we'll use to build a model deployment pipeline: 1) Kubernetes cluster, 2) NFS for persistent storage, 3) Polyaxon for distributed model training, 4) Argo to build a model containerization workflow, and 5) Seldon for model deployment.
+The next few sections will walk through the installation and configuration of five components that we'll use to build a model deployment pipeline:
+
+1. Kubernetes cluster
+2. NFS for persistent storage
+3. Polyaxon for distributed model training
+4. Argo to build a model containerization workflow
+5. Seldon for model deployment
 
 Once we installed and configured each of these components, we'll train, build, package, and deploy a model starting in Section "Polyaxon: Training models".
 So just go there if you want to skip all the installation bits.
@@ -154,6 +160,7 @@ $ helm repo update
 Now we can start Polyaxon using Helm, the only extra thing we need is a `polyaxon-config.yml` config file and run Helm:
 
 <div class="pre-filename">File: polyaxon-config.yml</div>
+
 ```yaml
 rbac:
   enabled: true

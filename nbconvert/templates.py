@@ -8,7 +8,7 @@ GENERATED_MD = """
 </div>
 """
 
-LATEX_CUSTOM_SCRIPT = """
+MATHJAX_SCRIPT = """
 <script type="text/javascript">if (!document.getElementById("mathjaxscript_pelican_#%@#$@#")) {
     var mathjaxscript = document.createElement("script");
     mathjaxscript.id = "mathjaxscript_pelican_#%@#$@#";

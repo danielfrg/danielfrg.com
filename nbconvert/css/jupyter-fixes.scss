@@ -10,7 +10,7 @@
 }
 .rendered_html pre {
     // background: inherit !important;  // This doesn't work well...
-    background-color: #1a1a1a;  // Hard code it to my theme
+    background-color: #1a1a1a; // Hard code it to my theme
 }
 
 // Theme reset: Code blocks use the theme
@@ -89,7 +89,8 @@ div.input_area > div.highlight {
     font-size: 13px;
     line-height: 20px;
 }
-.output_html table.dataframe th, td {
+.output_html table.dataframe th,
+td {
     padding: 4px;
     text-align: left;
 }

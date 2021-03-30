@@ -1,0 +1,37 @@
+{{ define "body" }}
+
+{{- partial "header.html" . -}}
+
+<main class="container article">
+    <article class="markdown-body">
+        <header>
+                <p class="date">
+
+                    <time datetime="{{ .Date.Format "2006-31-01" }}">{{ .Date.Format "2 January 2006" }}</time>
+                </p>
+            <h1 class="no-anchor">{{ .Title }}</h1>
+
+            {{ if .Param "summary" }}
+                <p class="summary">{{ .Summary }}</p>
+            {{ end }}
+        </header>
+
+        <section>
+            {{ .Content }}
+        </section>
+
+        <footer class="metadata">
+
+            <div class="tags">
+                Tagged:
+                {{ with .Params.tags }}
+                    {{ range $i, $e := . }}{{ if $i }}, {{ end }}<a href="{{ "tags/" | absURL }}{{ $e | urlize }}" rel="tag">{{ $e }}</a>{{ end }}
+                {{ end }}
+            </div>
+        </footer>
+    </article>
+</main>
+
+{{- partial "footer.html" $ -}}
+
+{{ end }}

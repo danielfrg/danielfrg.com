@@ -6,8 +6,8 @@ tags: ["Test"]
 author: Daniel Rodriguez
 ---
 
-<p class="subtitle">
-TL'DR This is the subtitle of the post
+<p class="summary">
+TL'DR This is the summary of the post
 </p>
 
 Text can be **bold**, _italic_, or ~~strikethrough~~. [Links](https://github.com) should be blue with no underlines (unless hovered over).

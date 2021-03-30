@@ -4,34 +4,34 @@ from copy import deepcopy
 
 import yaml
 import jinja2
+from traitlets import Integer
+from pygments.formatters import HtmlFormatter
 from nbconvert.exporters import HTMLExporter
 from nbconvert.filters.highlight import _pygments_highlight
 from nbconvert.nbconvertapp import NbConvertApp
 from nbconvert.preprocessors import Preprocessor
-from pygments.formatters import HtmlFormatter
-from templates import GENERATED_MD, LATEX_CUSTOM_SCRIPT
-from traitlets import Integer
+
+from templates import GENERATED_MD, MATHJAX_SCRIPT
+
 
 CURDIR = os.path.dirname(os.path.realpath(__file__))
 
 
 def convert(nb_path):
-    """convert a notebook to html with css included and fixes
-    """
+    """Convert a notebook to html with css included and fixes"""
     print("Converting: {nb_path}".format(nb_path=nb_path))
+
     metadata = get_metadata(nb_path)
     if not metadata:
         return
-    metadata_s = yaml.dump(metadata, default_flow_style=False)
+    metadata_str = yaml.dump(metadata, default_flow_style=False)
 
     html = nb2html(nb_path)
-
-    print("Done")
-    return GENERATED_MD.format(metadata=metadata_s, html=html)
+    return GENERATED_MD.format(metadata=metadata_str, html=html)
 
 
 def get_metadata(nb_path):
-    """Read the .nbdata file associated with a notebook and return the metadata"""
+    """Read the <notebook>.yml file associated with a notebook and return the metadata"""
     filedir = os.path.dirname(nb_path)
     filename = os.path.basename(nb_path)
     metadata_filename = os.path.splitext(filename)[0] + ".yml"
@@ -43,7 +43,7 @@ def get_metadata(nb_path):
 
     with open(os.path.join(filedir, metadata_filename), "r") as f:
         try:
-            return yaml.load(f)
+            return yaml.load(f, Loader=yaml.FullLoader)
         except yaml.YAMLError as exc:
             print(exc)
 
@@ -79,13 +79,12 @@ def nb2html(nb_path):
     content, info = get_html_from_filepath(nb_path, template=template)
 
     # Fix CSS
-    html = generate_html(content, info, fix_css=True, ignore_css=False)
+    html = generate_html(content, info, fix_css=False, ignore_css=False)
     return html
 
 
 def get_html_from_filepath(filepath, start=0, end=None, template=None):
-    """Return the HTML from a Jupyter Notebook
-    """
+    """Return the HTML from a Jupyter Notebook"""
     preprocessors_ = [SubCell]
 
     template_file = "basic"
@@ -100,7 +99,7 @@ def get_html_from_filepath(filepath, start=0, end=None, template=None):
 
     app.config.update(
         {
-            # This Preprocessor changes the pygments css prefixes
+            # This Preprocessor changes the pygments CSS prefixes
             # from .highlight to .highlight-ipynb
             "CSSHTMLHeaderPreprocessor": {
                 "enabled": True,
@@ -111,8 +110,6 @@ def get_html_from_filepath(filepath, start=0, end=None, template=None):
     )
 
     # Overwrite Custom jinja filters
-    # This is broken right now so needs fix from below
-    # https://github.com/jupyter/nbconvert/pull/877
     filters = {"highlight_code": custom_highlight_code}
 
     exporter = HTMLExporter(
@@ -123,10 +120,6 @@ def get_html_from_filepath(filepath, start=0, end=None, template=None):
         preprocessors=preprocessors_,
     )
     content, info = exporter.from_filename(filepath)
-
-    # Fix for nbconvert bug
-    # content = content.replace("<pre>", '<pre class="highlight highlight-ipynb">')
-    # end-fix
 
     # Since we make a Markdown file we need to remove empty lines and strip
     content = "\n".join(
@@ -146,9 +139,9 @@ def custom_highlight_code(source, language="python", metadata=None):
     This modifies only html content, not css
     """
     if not language:
-        language = "ipython3"
+        language = "python"
 
-    formatter = HtmlFormatter(cssclass=" highlight highlight-ipynb hl-" + language)
+    formatter = HtmlFormatter(cssclass="highlight-ipynb hl-" + language)
     output = _pygments_highlight(source, formatter, language, metadata)
     return output
 
@@ -161,47 +154,48 @@ def generate_html(content, info, fix_css=True, ignore_css=False):
     ignore_css is to not include at all the Jupyter CSS
     """
 
-    def style_tag(styles):
-        return '<style type="text/css">{0}</style>'.format(styles)
+    # def style_tag(styles):
+    #     return '<style type="text/css">{0}</style>'.format(styles)
 
-    def filter_css(style):
-        """
-        This is a little bit of a Hack.
-        Jupyter returns a lot of CSS including its own bootstrap.
-        We try to get only the Jupyter Notebook CSS without the extra stuff.
-        """
-        index = style.find("/*!\n*\n* IPython notebook\n*\n*/")
-        if index > 0:
-            style = style[index:]
-        index = style.find("/*!\n*\n* IPython notebook webapp\n*\n*/")
-        if index > 0:
-            style = style[:index]
+    # def filter_css(style):
+    #     """
+    #     This is a little bit of a Hack.
+    #     Jupyter returns a lot of CSS including its own bootstrap.
+    #     We try to get only the Jupyter Notebook CSS without the extra stuff.
+    #     """
+    #     index = style.find("/*!\n*\n* IPython notebook\n*\n*/")
+    #     if index > 0:
+    #         style = style[index:]
+    #     index = style.find("/*!\n*\n* IPython notebook webapp\n*\n*/")
+    #     if index > 0:
+    #         style = style[:index]
 
-        style = re.sub(r"color\:\#0+(;)?", "", style)
-        style = re.sub(
-            r"\.rendered_html[a-z0-9,._ ]*\{[a-z0-9:;%.#\-\s\n]+\}", "", style
-        )
-        return style_tag(style)
+    #     style = re.sub(r"color\:\#0+(;)?", "", style)
+    #     style = re.sub(
+    #         r"\.rendered_html[a-z0-9,._ ]*\{[a-z0-9:;%.#\-\s\n]+\}", "", style
+    #     )
+    #     return style_tag(style)
 
-    if not ignore_css:
-        jupyter_css = "\n".join(style_tag(style) for style in info["inlining"]["css"])
-        if fix_css:
-            jupyter_css = "\n".join(
-                filter_css(style) for style in info["inlining"]["css"]
-            )
-        content = jupyter_css + content
-    content = content + LATEX_CUSTOM_SCRIPT
+    # if not ignore_css:
+    #     jupyter_css = "\n".join(style_tag(style) for style in info["inlining"]["css"])
+    #     if fix_css:
+    #         jupyter_css = "\n".join(
+    #             filter_css(style) for style in info["inlining"]["css"]
+    #         )
+    #     content = jupyter_css + content
+
+    content = content + MATHJAX_SCRIPT
     return content
 
 
-if __name__ == "__main__":
+def main(filter=""):
     import glob
 
     input_dir = os.path.join(CURDIR, "../content/blog/notebooks")
-    output_dir = os.path.join(CURDIR, "../content/blog/generated")
+    output_dir = os.path.join(CURDIR, "../content/blog/generated-nbs")
 
     # Iterate the notebooks directory and convert all notebooks
-    glob_expr = os.path.join(input_dir, "**/*.ipynb")
+    glob_expr = os.path.join(input_dir, f"**/*{filter}*.ipynb")
     for notebook in glob.glob(glob_expr, recursive=True):
         content = convert(notebook)
         if not content:
@@ -212,3 +206,9 @@ if __name__ == "__main__":
         output_path = os.path.join(output_dir, output_fname)
         with open(output_path, "w") as file:
             file.write(content)
+
+
+if __name__ == "__main__":
+    import fire
+
+    fire.Fire(main)
