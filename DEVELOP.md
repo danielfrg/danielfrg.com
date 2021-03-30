@@ -4,7 +4,7 @@ Create dev environment
 
 ```
 make env
-conda activate extrapolations.dev
+conda activate danielfrg.com
 ```
 
 Convert notebooks to markdown:

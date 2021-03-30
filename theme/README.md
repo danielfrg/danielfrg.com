@@ -1,4 +1,4 @@
-# Extrapolations Theme
+# Theme
 
 This theme is based on:
 - [Bootstrap](https://getbootstrap.com/)

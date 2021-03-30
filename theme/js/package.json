@@ -1,16 +1,16 @@
 {
-    "name": "@danielfrg/extrapolaciones.com",
+    "name": "@danielfrg/danielfrg.com",
     "version": "1.0.0",
     "description": "",
     "author": "Daniel Rodriguez",
     "license": "Apache-2.0",
-    "homepage": "https://github.com/danielfrg/extrapolaciones.com",
+    "homepage": "https://github.com/danielfrg/danielfrg.com",
     "bugs": {
-        "url": "https://github.com/danielfrg/extrapolaciones.com/issues"
+        "url": "https://github.com/danielfrg/danielfrg.com/issues"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/danielfrg/extrapolaciones.com"
+        "url": "https://github.com/danielfrg/danielfrg.com"
     },
     "browserslist": [
         "last 2 Chrome versions"
@@ -31,6 +31,7 @@
         "test:watch": "jest --watch"
     },
     "dependencies": {
+        "@primer/css": "^16.1.1",
         "anchor-js": "^4.3.0",
         "medium-zoom": "^1.0.6"
     },
