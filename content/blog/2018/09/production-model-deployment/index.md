@@ -2,7 +2,7 @@
 title = "Notes: Production Model Deployment"
 slug = "production-model-deployment"
 date = "2018-09-27"
-tags = ["ML Models", "Algorithmia", "word2vec", "Vue.JS"]
+tags = ["MLOps", "Notes"]
 author = "Daniel Rodriguez"
 +++
 

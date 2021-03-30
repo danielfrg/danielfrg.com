@@ -1,0 +1,20 @@
+<footer class="site-footer">
+    <div class="container mx-auto">
+        <div class="row justify-content-center">
+            <p>
+                {{ range $.Site.Menus.footer }}
+                <a href="{{ .URL }}" title="{{- .Title -}}">{{ .Name }}</a>
+                {{ end }}
+                {{ range $.Site.Menus.header }}
+                &bull; <a href="{{ .URL }}" title="{{- .Title -}}">{{ .Name }}</a>
+                {{ end }}
+            </p>
+        </div>
+
+        <div class="row justify-content-center">
+            <p>{{ .Site.Title }} &copy; 2021</p>
+        </div>
+    </div>
+</footer>
+
+<script src="/theme/bundle.js"></script>

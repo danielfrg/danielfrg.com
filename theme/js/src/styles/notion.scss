@@ -1,0 +1,206 @@
+.notion-page {
+    --main-dark: rgb(55, 53, 47);
+    --font-size: 1em;
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    // font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji",
+    //     NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
+    //     EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto,
+    //     "Helvetica Neue", "Noto Sans", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol";
+    color: var(--main-dark);
+
+    h1 {
+        margin: 0.9em 0 4px 0;
+        padding: 3px 2px 0.5rem;
+        font-weight: 600;
+    }
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0.8em 0 2px 0;
+        padding: 3px 2px 0.5rem;
+        font-weight: 600;
+    }
+
+    p {
+        margin: 1px 0 1px 0;
+        padding: 3px 2px;
+        font-size: var(--font-size);
+        min-height: 28px;
+    }
+
+    blockquote {
+        margin: 1px 0 1px 0;
+        padding: 6px 10px 6px 1em;
+        border-left: 0.25em solid var(--main-dark);
+        font-size: var(--font-size);
+    }
+
+    pre {
+        margin: 1px 0 1px 0;
+        padding: 20px;
+        max-width: 100%;
+        background-color: rgb(247, 246, 243);
+        color: var(--main-dark);
+        font-size: 0.9rem;
+        line-height: 1.5em;
+    }
+
+    hr {
+        margin: 5px 0 5px 0;
+        color: rgb(228, 227, 226);
+    }
+
+    input[type="checkbox"] {
+        margin-right: 10px;
+    }
+
+    .notion-list {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        width: 100%;
+        // padding-left: 2px;
+        padding: 5px;
+        color: inherit;
+        fill: inherit;
+
+        .li_before {
+            margin-right: 5px;
+            width: 24px;
+            display: flex;
+            // align-items: center;
+            justify-content: center;
+            flex-grow: 0;
+            flex-shrink: 0;
+            // min-height: calc(1.5em + 3px + 3px);
+
+            .ul_disc {
+                font-size: var(--font-size);
+                // line-height: 1;
+                // margin-bottom: 0.1em;
+            }
+
+            .ol_disc {
+                font-size: var(--font-size);
+                // line-height: 1;
+            }
+        }
+
+        .li_content {
+            p {
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        .list:last-child {
+            padding-bottom: 0;
+        }
+    }
+
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 100%;
+    }
+
+    // For YouTube and other embeded content
+    div.notion-video {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    table {
+        display: block;
+        width: 100%; // keep for backwards compatibility
+        width: max-content;
+        max-width: 100%;
+        overflow: auto;
+        margin: 0.5em 0;
+
+        th {
+            font-weight: 600;
+        }
+
+        th,
+        td {
+            // stylelint-disable-next-line primer/spacing
+            padding: 6px 13px;
+            // stylelint-disable-next-line primer/borders
+            border: 1px solid lighten(#d1d5da, 5%);
+        }
+
+        tr {
+            background-color: #fff;
+            // stylelint-disable-next-line primer/borders
+            border-top: 1px solid darken(#d1d5da, 4%);
+
+            &:nth-child(2n) {
+                background-color: #f6f8fa;
+            }
+        }
+
+        img {
+            background-color: transparent;
+        }
+    }
+
+    // Inline code and code in tables
+    p code,
+    table code {
+        word-break: break-all;
+        background-color: #eee;
+        color: #000;
+        padding: 2px 5px;
+        font-size: 0.8em;
+        line-height: 1em;
+        font-weight: 400 !important;
+        border-radius: 3px;
+    }
+
+    .notion-column-list {
+        .notion-column {
+            padding: 12px 2px;
+            min-width: 0;
+        }
+    }
+
+    // Colors
+    .gray_background {
+        background: rgb(235, 236, 237);
+    }
+    .brown_background {
+        background: rgb(233, 229, 227);
+    }
+    .orange_background {
+        background: rgb(250, 235, 221);
+    }
+    .yellow_background {
+        background: rgb(251, 243, 219);
+    }
+    .teal_background {
+        background: rgb(221, 237, 234);
+    }
+    .blue_background {
+        background: rgb(221, 235, 241);
+    }
+    .purple_background {
+        background: rgb(234, 228, 242);
+    }
+    .pink_background {
+        background: rgb(244, 223, 235);
+    }
+    .red_background {
+        background: rgb(251, 228, 228);
+    }
+}

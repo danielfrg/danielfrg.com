@@ -1,0 +1,64 @@
+{
+    "name": "@danielfrg/danielfrg.com",
+    "version": "1.0.0",
+    "description": "",
+    "author": "Daniel Rodriguez",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/danielfrg/danielfrg.com",
+    "bugs": {
+        "url": "https://github.com/danielfrg/danielfrg.com/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/danielfrg/danielfrg.com"
+    },
+    "browserslist": [
+        "last 2 Chrome versions"
+    ],
+    "index": "src/index.js",
+    "scripts": {
+        "dev": "webpack --watch --mode=development",
+        "dev:prod": "webpack --watch --mode=production",
+        "build": "webpack --mode=production",
+        "build:watch": "webpack --mode=production --watch",
+        "fmt": "prettier --write \"src/**/*.{js,jsx}\"",
+        "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
+        "clean": "rm -rf .cache/ dist/ lib/",
+        "reset": "npm run clean && rm -rf node_modules",
+        "test": "jest --silent",
+        "test:coverage": "jest --coverage",
+        "test:update": "jest -u",
+        "test:watch": "jest --watch"
+    },
+    "dependencies": {
+        "@primer/css": "^16.1.1",
+        "anchor-js": "^4.3.0",
+        "medium-zoom": "^1.0.6"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.10.2",
+        "@babel/plugin-proposal-class-properties": "^7.4.0",
+        "@babel/preset-env": "^7.10.2",
+        "@babel/preset-react": "^7.13.13",
+        "@types/papaparse": "^5.0.3",
+        "babel-eslint": "^10.1.0",
+        "babel-loader": "^8.1.0",
+        "css-loader": "^3.5.3",
+        "eslint": "^7.2.0",
+        "eslint-config-airbnb": "^18.1.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-plugin-import": "^2.20.2",
+        "eslint-plugin-jsx-a11y": "^6.2.3",
+        "eslint-plugin-prettier": "^3.1.3",
+        "file-loader": "^6.0.0",
+        "jest": "^26.0.1",
+        "mini-css-extract-plugin": "^0.9.0",
+        "prettier": "^2.0.5",
+        "sass": "^1.26.8",
+        "sass-loader": "^8.0.2",
+        "style-loader": "^1.2.1",
+        "url-loader": "^4.1.0",
+        "webpack": "^4.43.0",
+        "webpack-cli": "^3.3.11"
+    }
+}

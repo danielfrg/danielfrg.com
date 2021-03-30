@@ -1,22 +1,22 @@
-name: extrapolations.dev
+name: danielfrg.com
 channels:
   - conda-forge
 dependencies:
   - python=3.8
   - pip
 
-  # Base conda deps
+  # Development deps
   - pylint
   - flake8
   - black
   - isort
 
-  # Base conda deps: NBconvert
+  # NBconvert
   - pyyaml
   - ipython
   - nbconvert
 
-  # Base conda deps: Notebooks
+  # Notebooks
   - notebook
   - numpy
   - pandas
@@ -24,3 +24,6 @@ dependencies:
   - matplotlib
   - plotly
   - bokeh
+
+  - pip:
+      - fire

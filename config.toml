@@ -1,11 +1,11 @@
-baseURL = "https://extrapolations.dev/"
-title = "Extrapolations"
+baseURL = "https://danielfrg.com"
+title = "Daniel Rodriguez"
 author = "Daniel Rodriguez"
 languageCode = "en-us"
 
-preserveTaxonomyNames = true
+theme = "theme"
+themesDir = "."
 
-theme = "website"
 pygmentsCodeFences = true
 pygmentsUseClasses = true
 pygmentsCodefencesGuessSyntax = true
@@ -20,6 +20,38 @@ home = [ "HTML", "RSS", "REDIR", "HEADERS" ]
 
 [markup.goldmark.renderer]
 unsafe = true
+
+[params]
+  description = "Daniel Rodriguez website and blog about data science, apps and open source projects"
+  keywords = "Daniel Rodriguez, danielfrg, Python, Data, Science, Kubernetes"
+  author = "Daniel Rodriguez"
+
+[menu]
+  [[menu.header]]
+    identifier = "blog"
+    name = "Blog"
+    url = "/blog"
+    title = "Blog articles"
+    weight = 10
+  [[menu.header]]
+    identifier = "github"
+    name = "GitHub"
+    url = "https://github.com/danielfrg"
+    title = "@danielfrg GitHub page"
+    weight = 11
+  [[menu.header]]
+    identifier = "twitter"
+    name = "Twitter"
+    url = "https://twitter.com/danielfrg"
+    title = "@danielfrg twitter page"
+    weight = 20
+
+  [[menu.footer]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    title = "Home"
+    weight = 10
 
 [mediaTypes]
 [mediaTypes."text/netlify"]
