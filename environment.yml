@@ -24,3 +24,6 @@ dependencies:
   - matplotlib
   - plotly
   - bokeh
+
+  - pip:
+      - fire
