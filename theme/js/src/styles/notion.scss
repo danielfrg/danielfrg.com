@@ -1,23 +1,11 @@
 .notion-page {
-    --main-dark: rgb(55, 53, 47);
-    --font-size: 1em;
-
     display: flex;
     flex-direction: column;
     height: 100%;
-    // font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji",
-    //     NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
-    //     EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto,
-    //     "Helvetica Neue", "Noto Sans", sans-serif;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-        "Segoe UI Symbol";
-    color: var(--main-dark);
 
     h1 {
         margin: 0.9em 0 4px 0;
         padding: 3px 2px 0.5rem;
-        font-weight: 600;
     }
 
     h2,
@@ -27,31 +15,13 @@
     h6 {
         margin: 0.8em 0 2px 0;
         padding: 3px 2px 0.5rem;
-        font-weight: 600;
     }
 
     p {
         margin: 1px 0 1px 0;
         padding: 3px 2px;
-        font-size: var(--font-size);
+        padding: 5px 3px;
         min-height: 28px;
-    }
-
-    blockquote {
-        margin: 1px 0 1px 0;
-        padding: 6px 10px 6px 1em;
-        border-left: 0.25em solid var(--main-dark);
-        font-size: var(--font-size);
-    }
-
-    pre {
-        margin: 1px 0 1px 0;
-        padding: 20px;
-        max-width: 100%;
-        background-color: rgb(247, 246, 243);
-        color: var(--main-dark);
-        font-size: 0.9rem;
-        line-height: 1.5em;
     }
 
     hr {
@@ -109,8 +79,7 @@
 
     img {
         display: block;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 20px auto;
         max-width: 100%;
     }
 

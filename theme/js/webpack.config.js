@@ -61,7 +61,7 @@ var rules = [
     },
 ];
 
-var distRoot = path.resolve(__dirname, "..", "..", "static", "theme");
+var distRoot = path.resolve(__dirname, "..", "static", "theme");
 
 module.exports = [
     {

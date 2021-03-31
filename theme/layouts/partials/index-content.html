@@ -1,0 +1,76 @@
+{{ partial "header.html" . }}
+
+<main class="index">
+
+    <h2>Applications</h2>
+
+    <div class="container box-grid">
+
+        <div class="box">
+            <a href="http://demucs.danielfrg.com"><img class="app" alt="demucs app" src="/images/demucs.png"></a>
+            <div class="body">
+                <p>Demucs: Music source separation</p>
+                <div class="text-center">
+                    <a href="http://demucs.danielfrg.com">Go to app</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <a href="http://word2vec.danielfrg.com"><img class="app" alt="word2vec app" src="/images/word2vec.png"></a>
+            <div class="body">
+                <p>word2vec: Word embedding functions</p>
+                <div class="text-center">
+                    <a href="http://word2vec.danielfrg.com">Go to app</a> |
+                    <a href="/blog/2018/09/word2vec-app-algorithmia/">Read blogpost</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <a href="http://nbviewer.danielfrg.com"><img class="app" alt="nbviewer.js app" src="/images/nbviewerjs.png"></a>
+            <div class="body">
+                <p>nbviewer.js: Client-only Jupyter Notebook viewer</p>
+                <div class="text-center">
+                    <a href="http://nbviewer.danielfrg.com">Go to app</a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <h2>Open Source</h2>
+
+    <div class="container box-grid">
+        <div class="box">
+            <a href="http://jupyter-flex.danielfrg.com"><img class="app" alt="word2vec app" src="/images/jupyter-flex.png"></a>
+            <div class="body">
+                <p>Quickly develop dashboards using Jupyter Notebooks</p>
+                <div class="text-center">
+                    <a href="http://jupyter-flex.danielfrg.com">Go to docs</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul>
+        <li><a href="https://github.com/danielfrg/mkdocs-jupyter">mkdocs-jupyter</a> Use Jupyter Notebook in mkdocs</li>
+        <li><a href="https://github.com/danielfrg/pelican-jupyter">pelican-jupyter</a> Pelican plugin for blogging with Jupyter/IPython Notebooks
+
+            Topics
+            </li>
+        <li><a href="https://github.com/danielfrg/s3contents">s3-contents</a> A S3 backed ContentsManager implementation for Jupyter
+        </li>
+        <li><a href="https://github.com/danielfrg/illusionist">illusionist</a>Interactive client-only reports based on Jupyter Notebooks and Jupyter widgets.</li>
+        <li><a href="https://github.com/danielfrg/word2vec">word2vec</a> Python interface to Google word2vec
+
+        </li>
+        <li><a href="https://github.com/danielfrg/tsne">tsne</a> A python wrapper for Barnes-Hut tsne
+
+        </li>
+    </ul>
+
+</main>
+
+{{ partial "footer.html" . }}

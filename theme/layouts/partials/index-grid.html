@@ -1,0 +1,9 @@
+{{- partial "header.html" . -}}
+
+<main class="container post-grid">
+    {{ range $index, $element := .Site.RegularPages }}
+    {{- partial "post-card.html" (dict "context" . "index" $index "home" $.IsHome) -}}
+    {{ end }}
+</main>
+
+{{- partial "footer.html" $ -}}

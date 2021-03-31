@@ -34,14 +34,6 @@ main.article {
         }
     }
 
-    .notion-page {
-        font-size: 1.1rem;
-
-        a {
-            color: rgb(3, 102, 214);
-        }
-    }
-
     .metadata {
         font-size: 0.85em;
         color: #757575;
@@ -67,9 +59,14 @@ main.article {
 .markdown-body {
     font-size: 1.1rem;
 
-    .anchorjs-link {
+    a.anchorjs-link {
         margin-left: 10px;
         padding: 0 !important;
+        color: var(--color-txt--subtle);
+
+        &:hover {
+            color: var(--color-txt--action);
+        }
     }
 
     p.summary,
@@ -158,6 +155,9 @@ main.article {
     blockquote {
         color: var(--color-text-tertiary);
         border-left: 0.25em solid var(--color-markdown-blockquote-border);
+        font-style: italic;
+        color: var(--color-txt--subtle);
+        margin: 16px 0;
     }
 
     code {
