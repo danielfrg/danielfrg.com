@@ -1,8 +1,10 @@
+"""
+This modules uses nbconvert to convert a Notebook to HTML and clean as much as
+possible
+"""
 import os
-import re
 from copy import deepcopy
 
-import yaml
 import jinja2
 from traitlets import Integer
 from pygments.formatters import HtmlFormatter
@@ -11,46 +13,8 @@ from nbconvert.filters.highlight import _pygments_highlight
 from nbconvert.nbconvertapp import NbConvertApp
 from nbconvert.preprocessors import Preprocessor
 
-import nbconvert2
-from templates import GENERATED_MD, MATHJAX_SCRIPT
-
 
 THIS_DIR = os.path.dirname(os.path.realpath(__file__))
-
-
-def convert(nb_path):
-    """Convert a notebook to html with css included and fixes"""
-    print("Converting: {nb_path}".format(nb_path=nb_path))
-
-    metadata = get_metadata(nb_path)
-    if not metadata:
-        return
-    metadata_str = yaml.dump(metadata, default_flow_style=False)
-
-    html = nbconvert2.nb2html(nb_path)
-    return GENERATED_MD.format(metadata=metadata_str, html=html)
-
-
-def get_metadata(nb_path):
-    """Read the <notebook>.yml file associated with a notebook and return the metadata"""
-    filedir = os.path.dirname(nb_path)
-    filename = os.path.basename(nb_path)
-    metadata_filename = os.path.splitext(filename)[0] + ".yml"
-    metadata_filepath = os.path.join(filedir, metadata_filename)
-
-    if not os.path.exists(metadata_filepath):
-        print("No .yml file found for {f}".format(f=nb_path))
-        return
-
-    with open(os.path.join(filedir, metadata_filename), "r") as f:
-        try:
-            return yaml.load(f, Loader=yaml.FullLoader)
-        except yaml.YAMLError as exc:
-            print(exc)
-
-
-# ------------------------------------------------------------------------------
-# NBConvert
 
 
 def nb2html(nb_path):
