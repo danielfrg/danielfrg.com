@@ -1,4 +1,4 @@
-pyyaml
-ipython
+mkdocs_jupyter
 nbconvert
+pyyaml
 fire

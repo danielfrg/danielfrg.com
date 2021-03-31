@@ -16,7 +16,7 @@ jobs:
       matrix:
         python-version: [3.8]
         node-version: ["12"]
-        hugo-version: ['0.74.2']
+        hugo-version: ["0.74.2"]
 
     steps:
       - uses: actions/checkout@v2
@@ -27,12 +27,15 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install Python dependencies
+      - name: Print Python versions
         run: |
           which python
           which pip
           python --version
           pip --version
+
+      - name: Install Python dependencies
+        run: |
           python -m pip install --upgrade pip
           pip install -U -r requirements.txt
           pip freeze
