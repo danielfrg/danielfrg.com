@@ -5,13 +5,13 @@ dependencies:
   - python=3.8
   - pip
 
-  # Development deps
+  # Dev tools
   - pylint
   - flake8
   - black
   - isort
 
-  # NBconvert
+  # nbconvert
   - pyyaml
   - ipython
   - nbconvert
@@ -27,3 +27,4 @@ dependencies:
 
   - pip:
       - fire
+      - mkdocs_jupyter

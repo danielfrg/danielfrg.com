@@ -13,7 +13,7 @@ pygmentsCodefencesGuessSyntax = true
 disableAliases = true  # This is done via redirect headers
 
 [permalinks]
-  blog = "blog/:year/:month/:slug/"
+blog = "blog/:year/:month/:slug/"
 
 [outputs]
 home = [ "HTML", "RSS", "REDIR", "HEADERS" ]

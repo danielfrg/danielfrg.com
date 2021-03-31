@@ -1,6 +1,8 @@
-# Contributing
+# Develop
 
-Create dev environment
+## Python
+
+Create Python environment:
 
 ```
 make env
@@ -13,7 +15,7 @@ Convert notebooks to markdown:
 make notebooks
 ```
 
-Build Theme:
+## Theme (JS)
 
 ```
 cd theme
@@ -21,7 +23,7 @@ make npm-i
 make npm-build
 ```
 
-Generate site:
+## Generate site
 
 ```
 make build
