@@ -18,3 +18,11 @@
 </footer>
 
 <script src="/theme/bundle.js"></script>
+
+{{ range .Site.Params.include_js }}
+<script src="{{ . }}"></script>
+{{ end }}
+
+{{ range .Site.Params.include_css }}
+<link href="{{ . }}" rel="stylesheet">
+{{ end }}
