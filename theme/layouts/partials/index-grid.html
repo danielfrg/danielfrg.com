@@ -2,7 +2,9 @@
 
 <main class="container post-grid">
     {{ range $index, $element := .Site.RegularPages }}
+    {{ if not .Params.hidden }}
     {{- partial "post-card.html" (dict "context" . "index" $index "home" $.IsHome) -}}
+    {{ end }}
     {{ end }}
 </main>
 
