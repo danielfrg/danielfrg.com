@@ -11,6 +11,7 @@ pygmentsUseClasses = true
 pygmentsCodefencesGuessSyntax = true
 
 disableAliases = true  # This is done via redirect headers
+googleAnalytics = "UA-35523657-5"
 
 [permalinks]
 blog = "blog/:year/:month/:slug/"
