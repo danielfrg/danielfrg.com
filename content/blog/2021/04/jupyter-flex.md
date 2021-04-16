@@ -1,6 +1,6 @@
 +++
-title = "Introducing Jupyter-Flex"
-slug = "introducing-jupyter-flex"
+title = "Jupyter-Flex"
+slug = "jupyter-flex"
 date = "2021-04-15"
 tags = ["Jupyter", "Voila", "Dashboards", "React"]
 author = "Daniel Rodriguez"

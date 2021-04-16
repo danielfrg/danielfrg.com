@@ -1,6 +1,6 @@
 +++
-title = "Introducing NBViewer.JS"
-slug = "introducing-nbviewer-js"
+title = "NBViewer.JS"
+slug = "nbviewer-js"
 date = "2021-04-01"
 tags = ["Jupyter", "Apps", "React"]
 author = "Daniel Rodriguez"
