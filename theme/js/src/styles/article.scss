@@ -59,6 +59,12 @@ main.article {
 .markdown-body {
     font-size: 1.1rem;
 
+    p {
+        letter-spacing: 0.0125em;
+        line-height: 30px;
+        margin-bottom: 20px;
+    }
+
     a.anchorjs-link {
         margin-left: 10px;
         padding: 0 !important;

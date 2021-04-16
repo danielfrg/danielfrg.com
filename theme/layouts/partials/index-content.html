@@ -11,7 +11,8 @@
             <div class="body">
                 <p>Demucs: Music source separation</p>
                 <div class="text-center">
-                    <a href="http://demucs.danielfrg.com">Go to app</a>
+                    <a href="http://demucs.danielfrg.com">Go to app</a> |
+                    <a href="/blog/2020/10/demucs-app/">Read blogpost</a>
                 </div>
             </div>
         </div>
@@ -54,22 +55,53 @@
         </div>
     </div>
 
-    <ul>
-        <li><a href="https://github.com/danielfrg/mkdocs-jupyter">mkdocs-jupyter</a> Use Jupyter Notebook in mkdocs</li>
-        <li><a href="https://github.com/danielfrg/pelican-jupyter">pelican-jupyter</a> Pelican plugin for blogging with Jupyter/IPython Notebooks
 
-            Topics
-            </li>
-        <li><a href="https://github.com/danielfrg/s3contents">s3-contents</a> A S3 backed ContentsManager implementation for Jupyter
-        </li>
-        <li><a href="https://github.com/danielfrg/illusionist">illusionist</a>Interactive client-only reports based on Jupyter Notebooks and Jupyter widgets.</li>
-        <li><a href="https://github.com/danielfrg/word2vec">word2vec</a> Python interface to Google word2vec
+    <p></p>
+    <p>
+        <b><a href="https://github.com/danielfrg/mkdocs-jupyter">mkdocs-jupyter</a></b>
+        - Use Jupyter Notebook in mkdocs-jupyter
+    </p>
+    <p>
+        <b><a href="https://github.com/danielfrg/s3contents">s3-contents</a></b>
+        - A S3 backed ContentsManager implementation for Jupyter
+    </p>
+    <p>
+        <b><a href="https://github.com/danielfrg/illusionist">illusionist</a></b>
+        - Interactive client-only reports based on Jupyter Notebooks and Jupyter widgets
+    </p>
+    <p>
+        <b><a href="https://github.com/danielfrg/word2vec">word2vec</a></b>
+        - Python interface to Google word2vec
+    </p>
+    <p>
+        <b><a href="https://github.com/danielfrg/tsne">tsne</a></b>
+        - A python wrapper for Barnes-Hut tsne
+    </p>
+    <p>
+        <b><a href="https://github.com/danielfrg/pelican-jupyter">pelican-jupyter</a></b>
+        - Pelican plugin for blogging with Jupyter/IPython Notebooks
+    </p>
 
-        </li>
-        <li><a href="https://github.com/danielfrg/tsne">tsne</a> A python wrapper for Barnes-Hut tsne
+    <h2>Latests Posts</h2>
 
-        </li>
-    </ul>
+    <div class="archive">
+        <table class="articles">
+            <tbody>
+                {{ range first 5 .Site.RegularPages }}
+                {{ if not .Params.hidden }}
+                <tr>
+                    <td class="date-col">
+                        <span class="date">{{ .Date.Format "Jan 2006" }}</span>
+                    </td>
+                    <td class="title-col">
+                        <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    </td>
+                </tr>
+                {{ end }}
+                {{ end }}
+            </tbody>
+        </table>
+    </div>
 
 </main>
 
