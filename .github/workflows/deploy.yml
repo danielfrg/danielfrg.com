@@ -48,12 +48,12 @@ jobs:
       - name: Install theme JS deps
         run: |
           cd theme
-          make npm-install
+          make install
 
       - name: Build theme
         run: |
           cd theme
-          make npm-build
+          make build
 
       - name: Setup Hugo ${{ matrix.hugo-version }}
         uses: peaceiris/actions-hugo@v2
