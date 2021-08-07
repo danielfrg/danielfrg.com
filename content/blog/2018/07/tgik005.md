@@ -6,36 +6,44 @@ tags: ["Tech notes", "Kubernetes", "Pods", "Deployments", "Probes"]
 author: Daniel Rodriguez
 ---
 
-{{< youtube id="xEdBSVaUtp4" class="video" >}}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xEdBSVaUtp4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Pods, ReplicaSets and Deployments
 
 `kubectl run` is a nice tool to launch pods, deployments and other objects based on some hardcoded generators. Lets launch a Pod:
 
-	kubectl run kuard --generator=run-pod/v1 --image=gcr.io/kuar-demo/kuard-amd64:1
+```plain
+kubectl run kuard --generator=run-pod/v1 --image=gcr.io/kuar-demo/kuard-amd64:1
+```
 
 We can get the full k8s object yaml that the system is using and do things more declaratively things is using:
 
-	kubectl get pods kuard -o yaml
-	
-	# Some interesting things:
-	  resourceVersion: "15084"
+```plain
+kubectl get pods kuard -o yaml
+
+# Some interesting things:
+	resourceVersion: "15084"
+```
 
 If we try to `kubectl apply` this yaml it wont work because of that version number. We can add an `--export` flag to get a yaml that is more friendly and that we can actually change. We still need to remove some things like the `nodeName`.
 
 Another much better options is to use the generator and add `-o yaml --dry-run`:
 
-	kubectl run kuard --generator=run-pod/v1 --image=gcr.io/kuar-demo/kuard-amd64:1 -o yaml --dry-run
+```plain
+kubectl run kuard --generator=run-pod/v1 --image=gcr.io/kuar-demo/kuard-amd64:1 -o yaml --dry-run
+```
 
 This will return a super clean yaml that is sent to the system.
 
 **Tip:** we can use `-w` to watch the output e.g:
 
-	kubectl get pod kuard -w -o wide
+```plain
+kubectl get pod kuard -w -o wide
+```
 
 Joe goes through a nice demo of killing the docker container directly and the Pod dying and getting restarted since it has `restartPolicy: Always`. Then he terminates a k8s node where the Pod is running and this time the Pod is actually gone because **once a Pod gets assigned to a Node stays on that Node**.
 
-The reason for this is that in distributed systems when something (a node) fails you don't know for how long is it going to be down, it could be 30 secs or 30 days. If a node fails and Pods gets rescheduled in another node but then node comes back with the same Pod running things can get weird for other systems that do tracing and logging. The real answer for this problem is a ReplicaSet. 
+The reason for this is that in distributed systems when something (a node) fails you don't know for how long is it going to be down, it could be 30 secs or 30 days. If a node fails and Pods gets rescheduled in another node but then node comes back with the same Pod running things can get weird for other systems that do tracing and logging. The real answer for this problem is a ReplicaSet.
 
 When we wrap a Pod spec into a ReplicaSet, so the Pods is managed by the ReplicaSet, it will launch a Pod with a name like `<name>-<uuid>`.
 
@@ -47,8 +55,10 @@ Deployments are ReplicaSets + roll-upgrades and rollback-downgrades.
 
 Deplyments create ReplicaSets and ReplicaSets create Pods. If you do:
 
-	$ kubectl get pods
-	kuard-XXXXXXXX-YYYY ...
+```plain
+$ kubectl get pods
+kuard-XXXXXXXX-YYYY ...
+```
 
 - `kuard` is the name of the deployment
 - `kuard-XXXXXXXX` is the name of the ReplicaSet

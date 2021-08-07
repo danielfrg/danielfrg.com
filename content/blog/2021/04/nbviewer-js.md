@@ -1,10 +1,11 @@
-+++
-title = "NBViewer.JS"
-slug = "nbviewer-js"
-date = "2021-04-01"
-tags = ["Jupyter", "Apps", "React"]
-author = "Daniel Rodriguez"
-+++
+---
+title: "NBViewer.JS"
+slug: "nbviewer-js"
+date: 2021-04-01
+tags: ["Jupyter", "Apps", "React"]
+author: "Daniel Rodriguez"
+summary: Pure Javascript Jupyter notebook viewer
+---
 
 As a long time Jupyter user that has hundreds of `.ipynb` files on my GitHub repos
 I have always hated the way GitHub renders notebooks.

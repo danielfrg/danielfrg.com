@@ -6,7 +6,7 @@ tags: ["Tech notes", "R", "Python"]
 author: Daniel Rodriguez
 ---
 
-{{< youtube id="cpbtcsGE0OA" class="video" >}}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cpbtcsGE0OA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Challenge of DS: Taking a vague question and making it precise enough that you can answer and use it qualitatively
 

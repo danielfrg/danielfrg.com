@@ -1,10 +1,10 @@
-+++
-title = "Demucs App"
-slug = "demucs-app"
-date = "2020-10-10"
-tags = ["ml-models", "apps", "music"]
-author = "Daniel Rodriguez"
-+++
+---
+title: "Demucs App"
+slug: "demucs-app"
+date: 2020-10-10
+tags: ["ml-models", "apps", "music"]
+author: "Daniel Rodriguez"
+---
 
 Music has always been one of my hobbies.
 I play a little bit of piano and more recently I picked up the Ukulele.

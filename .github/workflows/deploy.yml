@@ -15,8 +15,7 @@ jobs:
     strategy:
       matrix:
         python-version: [3.8]
-        node-version: ["12"]
-        hugo-version: ["0.74.2"]
+        node-version: ["16"]
 
     steps:
       - uses: actions/checkout@v2
@@ -40,28 +39,18 @@ jobs:
           pip install -U -r requirements.txt
           pip freeze
 
+      - name: Convert notebooks
+        run: |
+          make notebooks
+
       - name: Install NodeJS ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install theme JS deps
+      - name: Build website
         run: |
-          cd theme
-          make install
-
-      - name: Build theme
-        run: |
-          cd theme
-          make build
-
-      - name: Setup Hugo ${{ matrix.hugo-version }}
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: ${{ matrix.hugo-version }}
-
-      - name: Build docs
-        run: |
+          npm install
           make build
 
       - name: Push docs (main)
@@ -71,7 +60,7 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_DEPLOY_TO_PROD: true
-          build_directory: public
+          build_directory: out
 
       - name: Push docs (branch)
         uses: jsmrcaga/action-netlify-deploy@master
@@ -79,11 +68,11 @@ jobs:
         with:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          build_directory: public
+          build_directory: out
 
       - name: Upload website
         uses: actions/upload-artifact@v1
         if: always()
         with:
           name: website
-          path: public
+          path: out

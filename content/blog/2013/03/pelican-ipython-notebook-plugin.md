@@ -33,7 +33,7 @@ In both cases also need to modify the MARKUP setting: On the `pelicanconf.py` pu
 
 Download the `ipython.css` file from the `assets` directory and place it in your theme static folder. Then include the CSS on the theme template:
 
-```
+```plain
 {% if article.ipython %}
     <link rel="stylesheet" href="/theme/css/ipython.min.css">
 {% endif %}
@@ -45,7 +45,7 @@ Write the post using the iPython notebook interface, using markdown or anything.
 
 Then open the `.ipynb` file in a text editor and should see.
 
-```
+```plain
 {
     "metadata": {
         "name": "Super iPython NB"
@@ -55,7 +55,7 @@ Then open the `.ipynb` file in a text editor and should see.
 
 Add the metadata for example:
 
-```
+```plain
 {
  "metadata": {
         "name": "Super iPython NB",

@@ -1,7 +1,7 @@
 ---
 title: "Talk @ AnacondaCON 2018: Deploying Python and R to Spark"
-slug: anacondacon-deploying-python-r-to-spark
-date: 2017-04-17
+slug: anacondacon
+date: 2018-04-17
 tags: ["Talk", "Python", "R", "Spark", "Hadoop"]
 author: Daniel Rodriguez
 ---
@@ -9,7 +9,7 @@ author: Daniel Rodriguez
 Watch me give a talk at our annual Anaconda conference about the work we are doing
 to make data scientist deploy Python and R easier inside Anaconda Enterprise 5.
 
-{{< youtube id="vmd7L-FAhus" class="video" >}}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vmd7L-FAhus" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Official abstract:
 

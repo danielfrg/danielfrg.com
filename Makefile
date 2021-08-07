@@ -14,7 +14,7 @@ LOG ?= info
 first: help
 
 
-build: clean notebooks hugo  ## Build site
+build: clean notebooks npm-build  ## Build site
 
 # ------------------------------------------------------------------------------
 # Python (Notebooks)
@@ -25,6 +25,10 @@ env:
 
 notebooks:  ## Convert notebooks
 	python nbconvert/convert.py
+
+
+cleangen:  ## Clean generated notebooks
+	rm -rf content/blog/generated-nbs/*.md
 
 
 check:  ## Check linting
@@ -38,27 +42,40 @@ fmt:  ## Format source
 	cd $(CURDIR)/python; black nbconvert
 
 
-
 # ------------------------------------------------------------------------------
-# Hugo
+# JS
+
+npm-build:  ## Build website
+	npm run build
+	npm run export
 
 
-hugo: ## Run hugo build
-	hugo
+npm-i: npm-install
+npm-install:  ## Install JS dependencies
+	npm install
 
 
-serve:  ## Serve website
-	hugo serve -F -D
+npm-dev:  ## Run dev server
+	npm run dev
+
+
+cleanjs:  ## Clean JS files
+	rm -rf $(CURDIR)/.out
+	rm -rf $(CURDIR)/.next
+
+
+cleanalljs: cleanjs  ## Clean JS files
+	rm -rf $(CURDIR)/node_modules
+	rm -rf $(CURDIR)/package-lock.json
+
 
 # ------------------------------------------------------------------------------
 # Other
 
-clean:  ## Clean build files
-	rm -rf public
+clean: cleanjs  ## Clean build files
 
 
-cleanall: clean   ## Clean everything
-	rm -rf content/blog/generated/*.md
+cleanall: clean cleangen  ## Clean everything
 
 
 help:  ## Show this help menu

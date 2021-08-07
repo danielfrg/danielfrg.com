@@ -1,9 +1,0 @@
-{{ define "body" }}
-
-{{ if eq .Site.Params.index "grid" }}
-{{ partial "index-grid.html" . }}
-{{ else }}
-{{ partial "index-content.html" . }}
-{{ end }}
-
-{{ end }}

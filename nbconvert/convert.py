@@ -45,10 +45,34 @@ def convert(nb_path):
         return
     metadata_str = yaml.dump(metadata, default_flow_style=False)
 
-    html = nbconvert2.nb2html(nb_path)
+    html_base = nbconvert2.nb2html(nb_path)
 
-    # Since we make a Markdown file we need to remove empty lines and strip
-    html = "\n".join([line.rstrip() for line in html.split("\n") if line.rstrip()])
+    # Since we make a Markdown file based on the HTML we need to:
+    # - remove empty lines
+    # - strip possible HTML lines that are indented: styles and script tags
+
+    html = ""
+    onHead = True
+    for i, line in enumerate(html_base.split("\n")):
+        stripped = line.strip()
+        # html += stripped
+        if len(stripped) > 0:
+            # if onHead:
+            # if '<div class="jupyter-wrapper">' in line:
+            #     onHead = False
+            if (
+                stripped.startswith("<style ")
+                or stripped.startswith("<script ")
+                or stripped.startswith("<!--")
+                or stripped.startswith("<div")
+            ):
+                html += stripped
+            else:
+                html += line
+            # else:
+            #     html += line
+
+            html += "\n"
 
     styles = open(os.path.join(THIS_DIR, "jupyter-fixes.css"), "r").read()
 

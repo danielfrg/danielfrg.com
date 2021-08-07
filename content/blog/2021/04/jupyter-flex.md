@@ -1,10 +1,11 @@
-+++
-title = "Jupyter-Flex"
-slug = "jupyter-flex"
-date = "2021-04-15"
-tags = ["Jupyter", "Voila", "Dashboards", "React"]
-author = "Daniel Rodriguez"
-+++
+---
+title: "Jupyter-Flex"
+slug: "jupyter-flex"
+date: 2021-04-15
+tags: ["Jupyter", "Voila", "Dashboards", "React"]
+author: "Daniel Rodriguez"
+summary: Easy dashboards for Jupyter
+---
 
 One of the advantages of working at places very opposed to what one is used to is all the
 new ideas that can come out of interacting with new and different people.
@@ -47,7 +48,7 @@ So jupyter-flex supports bundling the dashboards into a single `.html` file that
 
 You can simply install it using pip:
 
-```
+```plain
 pip install jupyter-flex
 ```
 

@@ -6,7 +6,7 @@ tags: ["Tech notes", "Kubernetes", "Istio"]
 author: Daniel Rodriguez
 ---
 
-{{< youtube id="WnDG-5cvEew" class="video" >}}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/WnDG-5cvEew" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Idea: You have services running in a microservice architecture and you want them to talk to each other.
 

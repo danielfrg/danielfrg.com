@@ -6,7 +6,7 @@ tags: ["Tech notes", "Kubernetes"]
 author: Daniel Rodriguez
 ---
 
-{{< youtube id="9YYeE-bMWv8" class="video" >}}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9YYeE-bMWv8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 This spends a lot of time going trough a k8s install in AWS using Heptio's tool. Its kinda not as useful anymore since all clouds have a k8s as a service option.
 
@@ -22,10 +22,12 @@ There is some things of the control plane that run inside k8s, the kube-system n
 
 Run a sample pod:
 
-	kubectl run --generator=run-pod/v1 --image=gcr.io/kuar-demo/kuard-amd64:1 kuard
-	kubectl get pods
+```plain
+kubectl run --generator=run-pod/v1 --image=gcr.io/kuar-demo/kuard-amd64:1 kuard
+kubectl get pods
+```
 
-> Pod. For most users pod=container. but also sometimes there is a set of containers that work well as an unit and we want them to run on the same machine and have a level of trusted communication between them. 
+> Pod. For most users pod=container. but also sometimes there is a set of containers that work well as an unit and we want them to run on the same machine and have a level of trusted communication between them.
 
 > Its the fundamental thing that k8s cares about placing on machines.
 
@@ -40,7 +42,7 @@ Things are great because you know what to run and k8s finds a place to run it. T
 
 - you have to manage them one by one, you usually want a set of things running specially in production
 - once a pod lands on a node, its on that node forever. If the node dies, the pod dies with it
-	- Imagine a node is "down" but what does "down" really means? it could be a network blip (maybe it just a lot of load) and it will come back in 5 minutes. If k8s decides to relaunch the pod immediately when the node comes back there is going to be 2 copies running in the system at the same time. This could be bad for multiple reasons, logging aggregation is one since there is going to be 2 pods with the same name sending different information 
+	- Imagine a node is "down" but what does "down" really means? it could be a network blip (maybe it just a lot of load) and it will come back in 5 minutes. If k8s decides to relaunch the pod immediately when the node comes back there is going to be 2 copies running in the system at the same time. This could be bad for multiple reasons, logging aggregation is one since there is going to be 2 pods with the same name sending different information
 
 > k8s deals with sets very well instead of individual things
 
@@ -55,11 +57,13 @@ We cannot use port-forward to access a deployment because it only works with a p
 
 A `Service` helps with that by creating a load-balancer and everytime a request comes in send it to one of the pods.
 
-	kubectl expose deployment kuard --type=LoadBalancer --port=80 --target-port=8080
+```plain
+kubectl expose deployment kuard --type=LoadBalancer --port=80 --target-port=8080
+```
 
 A service does this:
 
-1. Finds a way to name a set of pods. via labels. 
+1. Finds a way to name a set of pods. via labels.
 	- A Service and a deployment don't know about each other but a service can target the same set of pods based on the labels the deployment creates for the pods
 2. Collect all the IP address and put an internal k8s LoadBalancer infront of those, this is the internal system called ClusterIP. Makes it easy to access services from one k8s pod to another through the service abstraction. This only works inside the cluster.
 3. It takes a port across the cluster and make it so if you hit that port in any node it gets routed to that service. This is a NodePort. This only works inside a VPC, nodes have access to the cluster nodes.
@@ -68,14 +72,18 @@ A service does this:
 
 You can scale up and down the number of pods of a deployment.
 
-	kubectl scale deployment kuard --replicas=10
-	kubectl edit deploy kuard
+```plain
+kubectl scale deployment kuard --replicas=10
+kubectl edit deploy kuard
+```
 
 If you `kubectl edit` the deployment you can see everything it was uploaded and also the current status of the deployment, for example number of replicas available.
 
 You can update the version of the deployment by just changing the image that is being deployed.
 
-	kubectl set image deployment kuard kuard=gcr.io/kuar-demo/kuard-amd64:2
+```plain
+kubectl set image deployment kuard kuard=gcr.io/kuar-demo/kuard-amd64:2
+```
 
 This will perform a rolling upgrade and no connections have been lost.
 

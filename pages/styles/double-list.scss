@@ -1,0 +1,38 @@
+.double-list {
+    h2.title {
+        margin: 0 auto 30px;
+        padding-bottom: 0;
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    table {
+        width: 100%;
+        margin: 0;
+        padding: 0 0 10px 0;
+        list-style-type: none;
+        border-collapse: separate;
+        border-spacing: 0px 10px;
+
+        tr {
+            td.col1 {
+                width: 80px;
+                vertical-align: text-top;
+                text-align: left;
+            }
+
+            td.col2 {
+                padding: 0 0 0 5px;
+                font-size: 1.1em;
+            }
+        }
+
+        span {
+            font-family: sans-serif;
+            text-transform: uppercase;
+            font-size: 1em;
+            color: #999;
+        }
+    }
+}

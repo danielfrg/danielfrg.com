@@ -59,12 +59,14 @@ print(close)
 
 Just using `clock()` and `time()` to see if it was worth it. It is.
 
-    Directory empty: Download and save 5 stocks
-        1.4336301090943933 1.434000015258789
-    Load 5 stocks from .csv
-        0.023402424167761726 0.023000001907348633
-    Load 5 stocks from serialized
-        0.0007370202310554852 0.0009999275207519531
+```plain
+Directory empty: Download and save 5 stocks
+    1.4336301090943933 1.434000015258789
+Load 5 stocks from .csv
+    0.023402424167761726 0.023000001907348633
+Load 5 stocks from serialized
+    0.0007370202310554852 0.0009999275207519531
+```
 
 ## Where to find the code
 

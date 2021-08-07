@@ -6,7 +6,7 @@ tags: ["Tech notes", "Kubernetes", "Istio"]
 author: Daniel Rodriguez
 ---
 
-{{< youtube id="s4qasWn_mFc" class="video" >}}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/s4qasWn_mFc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Istio goal is to make easy to: have policy between your applications, have observability, security per application instance and reliability.
 
@@ -77,7 +77,9 @@ Istio allow us to do stuff like traffic shaping: Decide which endpoints see what
 
 This work with a simple file (like k8s) that target objects based on k8s labels. Then you use the `istioctl`
 
-	istioctl mixer rule create global bar.default.svc.cluster.local -f <file.yaml>
+```plain
+istioctl mixer rule create global bar.default.svc.cluster.local -f <file.yaml>
+```
 
 After setting the rule requests start to fail and we can see them in Grafana and Zipkin. After we remove the rule everything starts to work again, no need to restart anything!
 

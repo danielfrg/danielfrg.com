@@ -1,14 +1,11 @@
 ---
 title: Plain markdown test
 slug: markdown-templates
-date: 2100-12-31
+date: 2100-01-01
 tags: ["Test"]
 author: Daniel Rodriguez
+summary: TL'DR This is the summary of the post
 ---
-
-<p class="summary">
-TL'DR This is the summary of the post
-</p>
 
 Text can be **bold**, _italic_, or ~~strikethrough~~. [Links](https://github.com) should be blue with no underlines (unless hovered over).
 
@@ -138,7 +135,8 @@ Code snippets like `var foo = "bar";` can be shown inline.
 Also, `this should vertically align` ~~`with this`~~ ~~and this~~.
 
 Code can also be shown in a block element.
-```
+
+```plain
 var foo = "bar";
 ```
 
@@ -147,7 +145,7 @@ Code can also use syntax highlighting.
 var foo = "bar";
 ```
 
-```
+```plain
 Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
 ```
 
@@ -172,7 +170,7 @@ Large images should always scale down and fit in the content container.
 
 ![](http://placekitten.com/g/1200/800/)
 
-```
+```plain
 This is the final element on the page and there should be no margin below this.
 ```
 
@@ -212,10 +210,6 @@ $ cat file.pem
 $ A test of the dollar sign in a line  $$$$
 $ This ones above should be selectable ^^^^
 ```
-
-This is a `figure`!!
-
-{{< figure src="http://placekitten.com/g/300/200/" title="Kitten" >}}
 
 The different type of notes we have:
 

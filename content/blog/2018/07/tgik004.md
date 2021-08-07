@@ -6,43 +6,49 @@ tags: ["Tech notes", "Kubernetes", "RBAC"]
 author: Daniel Rodriguez
 ---
 
-{{< youtube id="slUMVwRXlRo" class="video" >}}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/slUMVwRXlRo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 How to do Authentication and Authorization for k8s.
 
 The kubeconfig file:
 
-	clusters:
-	- cluster:
-		certificate-authority-data:
-			<This is the root CA that I am going to trust since its a TLS connection to the server>
-	    server: <URL>
-	  name: <c-name>
+```plain
+clusters:
+- cluster:
+	certificate-authority-data:
+		<This is the root CA that I am going to trust since its a TLS connection to the server>
+	server: <URL>
+	name: <c-name>
+```
 
 With this you could connect (hitting) but you cannot Authenticate to the server, you need:
 
-	users:
-	- name: admin
-	  user: 
-		client-certificate-data: <>
-		client-key-data: <>
+```plain
+users:
+- name: admin
+	user:
+	client-certificate-data: <>
+	client-key-data: <>
+```
 
 The `client-key-data` is basically the password.
 
 Then the `context` maps a cluster with a user:
 
-	- context:
-		cluster: gke_continuum-compute_us-central1-a_daniel-ml
-		user: gke_continuum-compute_us-central1-a_daniel-ml
-	  name: gke_continuum-compute_us-central1-a_daniel-ml
+```plain
+- context:
+	cluster: gke_continuum-compute_us-central1-a_daniel-ml
+	user: gke_continuum-compute_us-central1-a_daniel-ml
+	name: gke_continuum-compute_us-central1-a_daniel-ml
+```
 
 > Recommendation: Use a single file per cluster. You can tell kubectl which file to use with KUBECONFIG
 
 ## How certificates work
 
-You create one public and one private key. You never share the private key and leave it at one place all the time. To enable trust you make the public key public, saying "I want someone to identify me this way". 
+You create one public and one private key. You never share the private key and leave it at one place all the time. To enable trust you make the public key public, saying "I want someone to identify me this way".
 
-You sign something with a public key and that becomes a CSR (Certificate Signing Request). You hand the CSR to the server, the server says "i know this is you" (via some out of band mechanism) and is able to trust that and stamp and you get a Signed Certificate. 
+You sign something with a public key and that becomes a CSR (Certificate Signing Request). You hand the CSR to the server, the server says "i know this is you" (via some out of band mechanism) and is able to trust that and stamp and you get a Signed Certificate.
 
 When you present the Signed Certificate to somebody and if you have the Private Key you can prove that you are who you say you are.
 
@@ -56,38 +62,47 @@ The full list of methods to authenticate to k8s can be found here:
 
 For example for using x509 certificates you can add users by adding k8s CSR like:
 
-	apiVersion: certificates.k8s.io/v1beta1
-	kind: CertificateSigningRequest
-	metadata:
-	  name: user-request-jakub
-	spec:
-	  groups:
-	  - system:authenticated
-	  request: <>
-	  usages:
-	  - digital signature
-	  - key encipherment
-	  - client auth
+```plain
+apiVersion: certificates.k8s.io/v1beta1
+kind: CertificateSigningRequest
+metadata:
+	name: user-request-jakub
+spec:
+	groups:
+	- system:authenticated
+	request: <>
+	usages:
+	- digital signature
+	- key encipherment
+	- client auth
+```
 
 And running:
 
-	kubectl create -f ...
-	kubectl certificate approve user-request-jakub
-	kubectl get csr user-request-jakub -o jsonpath='{.status.certificate}' | base64 -d > jakub.crt
+```plain
+kubectl create -f ...
+kubectl certificate approve user-request-jakub
+kubectl get csr user-request-jakub -o jsonpath='{.status.certificate}' | base64 -d > jakub.crt
+```
 
 Now we can modify the k8s config file and use the generated key and CSR to login
 
-	kubectl config set-credentials jakub --client-certificate=jakub.crt --client-key=jakub.pem --embed-certs=true
+```plain
+kubectl config set-credentials jakub --client-certificate=jakub.crt --client-key=jakub.pem --embed-certs=true
+```
 
 What happens when we try to do something?
 
-	kubectl get pods
-	
-	> Error from server (Forbidden): User "jakub" cannot list pods in the namespace "default". (get pods)
+```plain
+kubectl get pods
+
+> Error from server (Forbidden): User "jakub" cannot list pods in the namespace "default". (get pods)
+```
 
 We can hit the server but we cannot do any action until we create some roles.
 
 ## Authorization
+
 a.k.a What can you do?
 
 There is a plugin model in k8s: There is an interface and a couple of implementations and you can change which one to use with some CLI flags.

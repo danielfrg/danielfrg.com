@@ -1,0 +1,440 @@
+.post {
+    max-width: 704px;
+    margin: 0 auto 70px;
+    padding: 15px 10px;
+    font-size: 1.1rem;
+
+    header {
+        margin: 0 0 30px 0;
+
+        h1 {
+            margin: 0;
+            padding: 0;
+            border: none;
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .date {
+            font-size: 0.9em;
+            color: var(--color-txt--subtle);
+            text-align: center;
+            margin: 0;
+        }
+
+        p.summary {
+            margin: 0;
+            padding: 0;
+            color: var(--color-txt--subtle);
+            font-style: italic;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    }
+
+    .metadata {
+        font-size: 0.85em;
+        color: #757575;
+        margin: 100px auto 20px;
+
+        .tags {
+            padding: 10px 0 0;
+
+            a {
+                margin: 0 5px;
+                color: var(--color-txt--subtle);
+                font-weight: 600;
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: #1268da;
+                text-decoration: none;
+            }
+        }
+    }
+
+    p {
+        letter-spacing: 0.0125em;
+        line-height: 30px;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        padding-bottom: 0.3em;
+        font-size: 2em;
+        border-bottom: 1px solid var(--color-border-secondary);
+    }
+
+    h2 {
+        padding-bottom: 0.3em;
+        font-size: 1.5em;
+        border-bottom: 1px solid var(--color-border-secondary);
+    }
+
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-size: 1.25em;
+    }
+
+    pre {
+        // padding: 16px;
+        overflow: auto;
+        // font-size: 100%;
+        line-height: 1.45;
+        // background-color: var(--color-bg-tertiary);
+        border-radius: 6px;
+    }
+
+    a.anchorjs-link {
+        margin-left: 10px;
+        padding: 0 !important;
+        color: var(--color-txt--subtle);
+
+        &:hover {
+            color: var(--color-txt--action);
+        }
+    }
+
+    p.grey-box,
+    p.note {
+        background: #e4e4e4;
+        // border: 1px solid #9a9aa2;
+        padding: 0.733em 0.9em;
+        border-radius: 0;
+    }
+
+    p.yellow-box,
+    p.warning,
+    p.update {
+        // color: #694d11;
+        background-color: #fff6ba;
+        // border: 1px solid #b98921;
+        padding: 0.733em 0.9em;
+        // border-radius: 0;
+    }
+
+    p.red-box,
+    p.alert {
+        // color: #712727;
+        background-color: #ffc8c8;
+        // border: 1px solid #d21515;
+        padding: 0.733em 0.9em;
+        border-radius: 0;
+    }
+
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 95%;
+    }
+
+    figure {
+        padding: 5px;
+        background: #fff;
+
+        figcaption {
+            padding-top: 5px;
+
+            h4 {
+                color: var(--color-txt--subtle);
+                font-size: 15px;
+                text-align: center;
+                line-height: 1.52947;
+                font-weight: 400;
+                letter-spacing: -0.021em;
+                margin: 0 auto;
+                max-width: 95%;
+            }
+        }
+    }
+
+    .video {
+        position: relative;
+        height: 0;
+        overflow: hidden;
+        padding-bottom: 56.25%;
+        margin-bottom: 1.444444444444445rem;
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    }
+
+    blockquote {
+        margin: 16px 0;
+        padding: 0 15px;
+        border-left: 0.25em solid var(--color-markdown-blockquote-border);
+        font-style: italic;
+        color: var(--color-txt--subtle);
+    }
+
+    code {
+        margin: 0;
+        padding: 0.2em 0.4em;
+        background-color: var(--color-markdown-code-bg);
+        color: var(--color-rgb--dark);
+        font-size: 85%;
+        border-radius: 6px;
+    }
+
+    pre {
+        code {
+            margin: 0;
+            padding: 0;
+            font-size: 85% !important;
+            background-color: transparent;
+        }
+    }
+
+    .highlight-ipynb pre {
+        font-size: 1.1em !important;
+    }
+
+    .jp-OutputArea-output pre {
+        font-size: 1.1em !important;
+    }
+
+    ul,
+    ol {
+        padding-left: 1.5em;
+
+        li {
+            padding-left: 3px;
+        }
+    }
+    li + li,
+    li > ul,
+    li > ol {
+        margin-top: 0.5em;
+    }
+
+    hr {
+        margin: 24px 0;
+        padding: 0;
+        background-color: rgb(228, 227, 226);
+        height: 0.1em;
+        border: 0;
+    }
+
+    table {
+        display: block;
+        border-spacing: 0;
+        width: 100%; // keep for backwards compatibility
+        width: max-content;
+        max-width: 100%;
+        overflow: auto;
+        margin: 0.5em 0;
+
+        th {
+            font-weight: 600;
+        }
+
+        th,
+        td {
+            // stylelint-disable-next-line primer/spacing
+            padding: 6px 13px;
+            // stylelint-disable-next-line primer/borders
+            border: 1px solid lighten(#d1d5da, 5%);
+        }
+
+        tr {
+            background-color: #fff;
+            // stylelint-disable-next-line primer/borders
+            border-top: 1px solid darken(#d1d5da, 4%);
+
+            &:nth-child(2n) {
+                background-color: #f6f8fa;
+            }
+        }
+
+        img {
+            background-color: transparent;
+        }
+    }
+}
+
+// .notion-page {
+//     display: flex;
+//     flex-direction: column;
+//     height: 100%;
+
+//     h1 {
+//         margin: 0.9em 0 4px 0;
+//         padding: 3px 2px 0.5rem;
+//     }
+
+//     h2,
+//     h3,
+//     h4,
+//     h5,
+//     h6 {
+//         margin: 0.8em 0 2px 0;
+//         padding: 3px 2px 0.5rem;
+//     }
+
+//     p {
+//         // margin: 1px 0 1px 0;
+//         padding: 3px 2px;
+//         padding: 5px 3px;
+//         min-height: 28px;
+//     }
+
+//     hr {
+//         margin: 5px 0 5px 0;
+//         color: rgb(228, 227, 226);
+//     }
+
+//     input[type="checkbox"] {
+//         margin-right: 10px;
+//     }
+
+//     .notion-list {
+//         display: flex;
+//         flex-direction: row;
+//         align-items: flex-start;
+//         width: 100%;
+//         // padding-left: 2px;
+//         padding: 5px;
+//         color: inherit;
+//         fill: inherit;
+
+//         .li_before {
+//             margin-right: 5px;
+//             width: 24px;
+//             display: flex;
+//             // align-items: center;
+//             justify-content: center;
+//             flex-grow: 0;
+//             flex-shrink: 0;
+//             // min-height: calc(1.5em + 3px + 3px);
+
+//             .ul_disc {
+//                 font-size: var(--font-size);
+//                 // line-height: 1;
+//                 // margin-bottom: 0.1em;
+//             }
+
+//             .ol_disc {
+//                 font-size: var(--font-size);
+//                 // line-height: 1;
+//             }
+//         }
+
+//         .li_content {
+//             p {
+//                 margin: 0;
+//                 padding: 0;
+//             }
+//         }
+
+//         .list:last-child {
+//             padding-bottom: 0;
+//         }
+//     }
+
+//     img {
+//         display: block;
+//         margin: 20px auto;
+//         max-width: 100%;
+//     }
+
+//     // For YouTube and other embeded content
+//     div.notion-video {
+//         margin-top: 1rem;
+//         margin-bottom: 1rem;
+//     }
+
+//     table {
+//         display: block;
+//         width: 100%; // keep for backwards compatibility
+//         width: max-content;
+//         max-width: 100%;
+//         overflow: auto;
+//         margin: 0.5em 0;
+
+//         th {
+//             font-weight: 600;
+//         }
+
+//         th,
+//         td {
+//             // stylelint-disable-next-line primer/spacing
+//             padding: 6px 13px;
+//             // stylelint-disable-next-line primer/borders
+//             border: 1px solid lighten(#d1d5da, 5%);
+//         }
+
+//         tr {
+//             background-color: #fff;
+//             // stylelint-disable-next-line primer/borders
+//             border-top: 1px solid darken(#d1d5da, 4%);
+
+//             &:nth-child(2n) {
+//                 background-color: #f6f8fa;
+//             }
+//         }
+
+//         img {
+//             background-color: transparent;
+//         }
+//     }
+
+//     // Inline code and code in tables
+//     p code,
+//     table code {
+//         word-break: break-all;
+//         background-color: #eee;
+//         color: #000;
+//         padding: 2px 5px;
+//         font-size: 0.8em;
+//         line-height: 1em;
+//         font-weight: 400 !important;
+//         border-radius: 3px;
+//     }
+
+//     .notion-column-list {
+//         .notion-column {
+//             padding: 12px 2px;
+//             min-width: 0;
+//         }
+//     }
+
+//     // Colors
+//     .gray_background {
+//         background: rgb(235, 236, 237);
+//     }
+//     .brown_background {
+//         background: rgb(233, 229, 227);
+//     }
+//     .orange_background {
+//         background: rgb(250, 235, 221);
+//     }
+//     .yellow_background {
+//         background: rgb(251, 243, 219);
+//     }
+//     .teal_background {
+//         background: rgb(221, 237, 234);
+//     }
+//     .blue_background {
+//         background: rgb(221, 235, 241);
+//     }
+//     .purple_background {
+//         background: rgb(234, 228, 242);
+//     }
+//     .pink_background {
+//         background: rgb(244, 223, 235);
+//     }
+//     .red_background {
+//         background: rgb(251, 228, 228);
+//     }
+// }
