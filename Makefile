@@ -14,7 +14,7 @@ LOG ?= info
 first: help
 
 
-build: clean notebooks npm-build  ## Build site
+build: npm-build  ## Build site
 
 # ------------------------------------------------------------------------------
 # Python (Notebooks)

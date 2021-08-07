@@ -4,7 +4,6 @@ import { Container } from "@material-ui/core";
 
 import Header from "../components/header";
 import Footer from "../components/footer";
-import FeatureGrid from "../components/feature-grid";
 import DoubleList from "../components/double-list";
 
 import { getPosts } from "../lib/posts";
