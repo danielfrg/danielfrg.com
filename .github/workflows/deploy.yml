@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v2
       - run: git fetch --prune --unshallow
 
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Setup Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
@@ -43,7 +43,7 @@ jobs:
         run: |
           make notebooks
 
-      - name: Install NodeJS ${{ matrix.node-version }}
+      - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
@@ -53,7 +53,7 @@ jobs:
           npm install
           make build
 
-      - name: Push docs (main)
+      - name: Push website (main)
         uses: jsmrcaga/action-netlify-deploy@master
         if: (github.event_name == 'push') && endsWith(github.ref, '/main')
         with:
@@ -62,7 +62,7 @@ jobs:
           NETLIFY_DEPLOY_TO_PROD: true
           build_directory: out
 
-      - name: Push docs (branch)
+      - name: Push website (branch)
         uses: jsmrcaga/action-netlify-deploy@master
         if: github.event_name == 'pull_request'
         with:

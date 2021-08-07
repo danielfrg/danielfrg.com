@@ -5,11 +5,6 @@ SHELL := bash
 MAKEFLAGS += --warn-undefined-variables
 MAKEFLAGS += --no-builtin-rules
 
-PWD := $(shell pwd)
-
-YES ?= 0
-LOG ?= info
-
 
 first: help
 
@@ -28,7 +23,7 @@ notebooks:  ## Convert notebooks
 
 
 cleangen:  ## Clean generated notebooks
-	rm -rf content/blog/generated-nbs/*.md
+	rm -rf content/blog/generated-*/*.md
 
 
 check:  ## Check linting
