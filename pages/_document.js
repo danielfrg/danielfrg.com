@@ -8,6 +8,8 @@ class MyDocument extends Document {
     }
 
     render() {
+        const trackingID = "UA-35523657-5";
+
         return (
             <Html>
                 <Head>
@@ -21,6 +23,21 @@ class MyDocument extends Document {
                         httpEquiv="X-UA-Compatible"
                         content="IE=edge,chrome=1"
                     ></meta>
+                    <script
+                        async
+                        src={`https://www.googletagmanager.com/gtag/js?id=${trackingID}`}
+                    />
+
+                    <script
+                        dangerouslySetInnerHTML={{
+                            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${trackingID}', { page_path: window.location.pathname });
+            `,
+                        }}
+                    />
                 </Head>
                 <body>
                     <Main />
