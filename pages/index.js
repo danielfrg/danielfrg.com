@@ -110,7 +110,7 @@ export default function Homepage({ posts }) {
     for (var i = 0; i < max; i++) {
         const post = posts[i];
         const dateStr = post.year + "-" + post.month + "-" + post.day;
-        posts.push({ col1: dateStr, col2: post.title, link: post.url });
+        postItems.push({ col1: dateStr, col2: post.title, link: post.url });
     }
 
     return (
