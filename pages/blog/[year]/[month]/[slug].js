@@ -2,17 +2,43 @@ import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 
+import MaterialLink from "@material-ui/core/Link";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-// import { dark as SyntaxTheme } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-import MaterialLink from "@material-ui/core/Link";
-
+import SiteConfig from "../../../../lib/config";
 import { getAllPostsIDs, getPost } from "../../../../lib/posts";
 import Header from "../../../../components/header";
 import Footer from "../../../../components/footer";
+
+export async function getStaticPaths() {
+    // Return a list of possible posts
+    const paths = getAllPostsIDs();
+    return {
+        paths,
+        fallback: false, // Show 404 if page is missing
+    };
+}
+
+export async function getStaticProps({ params }) {
+    // Fetch necessary data for the blog post using params.id
+    const post = getPost(params.year, params.month, params.slug);
+
+    return {
+        props: {
+            title: post.title,
+            date: post.date,
+            summary: post.summary ? post.summary : null,
+            tags: post.tags,
+            year: post.year,
+            month: post.month,
+            day: post.day,
+            content: post.content,
+        },
+    };
+}
 
 const mdComponents = {
     code({ node, inline, className, children, ...props }) {
@@ -34,10 +60,6 @@ const mdComponents = {
 };
 
 export default function Post(props) {
-    // Variables
-    const siteTitle = "Daniel Rodriguez";
-    // ---
-
     const dateStr = props.year + "-" + props.month + "-" + props.day;
 
     let tags = props.tags.map((tag, i) => {
@@ -53,10 +75,10 @@ export default function Post(props) {
         <>
             <Head>
                 <title>
-                    {props.title} - {siteTitle}
+                    {props.title} - {SiteConfig.title}
                 </title>
             </Head>
-            <Header />
+            <Header title={SiteConfig.title} nav={SiteConfig.headerNav} />
             <main className="post">
                 <article>
                     <header>
@@ -84,34 +106,7 @@ export default function Post(props) {
                     </footer>
                 </article>
             </main>
-            <Footer />
+            <Footer title={SiteConfig.title} nav={SiteConfig.footerNav} />
         </>
     );
-}
-
-export async function getStaticPaths(year, month, slug) {
-    // Return a list of possible value for the post
-    const paths = getAllPostsIDs();
-    return {
-        paths,
-        fallback: false,
-    };
-}
-
-export async function getStaticProps({ params }) {
-    // Fetch necessary data for the blog post using params.id
-    const post = getPost(params.year, params.month, params.slug);
-
-    return {
-        props: {
-            title: post.title,
-            date: post.date,
-            summary: post.summary ? post.summary : null,
-            tags: post.tags,
-            year: post.year,
-            month: post.month,
-            day: post.day,
-            content: post.content,
-        },
-    };
 }

@@ -4,10 +4,7 @@ import Link from "next/link";
 import { Typography } from "@material-ui/core";
 
 export default function PostCard(props) {
-    // const classes = useStyles();
-
     const style = props.style == "large" ? "post-card-large" : "";
-    // console.log(style);
 
     return (
         <div className={`post-card ${style}`}>

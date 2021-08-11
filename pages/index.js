@@ -2,6 +2,7 @@ import React from "react";
 import Head from "next/head";
 import { Container } from "@material-ui/core";
 
+import SiteConfig from "../lib/config";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import FeatureGrid from "../components/feature-grid";
@@ -19,17 +20,14 @@ export async function getStaticProps() {
     };
 }
 
-export default function Homepage(props) {
-    // Variables
-    const siteTitle = "Daniel Rodriguez";
-
+export default function Homepage({ posts }) {
     const appsGrid = [
         {
             title: "demucs",
             desc: "Music source separation",
             img: "/images/demucs.png",
             links: [
-                { text: "Go to app", href: "https://demucs.danielfrg.com/" },
+                { text: "Go to app", href: "https://demucs.danielfrg.com" },
                 { text: "Read blogpost", href: "/blog/2020/10/demucs" },
             ],
         },
@@ -38,7 +36,7 @@ export default function Homepage(props) {
             desc: "Word embedding functions",
             img: "/images/word2vec.png",
             links: [
-                { text: "Go to app", href: "https://word2vec.danielfrg.com/" },
+                { text: "Go to app", href: "https://word2vec.danielfrg.com" },
                 {
                     text: "Read blogpost",
                     href: "/blog/2018/09/word2vec-algorithmia",
@@ -50,7 +48,7 @@ export default function Homepage(props) {
             desc: "Client-only Jupyter Notebook viewer",
             img: "/images/nbviewerjs.png",
             links: [
-                { text: "Go to app", href: "https://nbviewer.danielfrg.com/" },
+                { text: "Go to app", href: "https://nbviewer.danielfrg.com" },
                 { text: "Read blogpost", href: "/blog/2021/03/nbviewer-js" },
             ],
         },
@@ -64,7 +62,7 @@ export default function Homepage(props) {
             links: [
                 {
                     text: "Go to docs",
-                    href: "https://jupyter-flex.danielfrg.com/",
+                    href: "https://jupyter-flex.danielfrg.com",
                 },
                 { text: "Read blogpost", href: "/blog/2021/04/jupyter-flex" },
             ],
@@ -103,32 +101,29 @@ export default function Homepage(props) {
 
     // ---
 
-    let posts = [];
+    let postItems = [];
 
     const maxPosts = 10;
-    var arrayLength = props.posts.length;
+    var arrayLength = posts.length;
     const max = arrayLength < maxPosts ? arrayLength : maxPosts;
 
     for (var i = 0; i < max; i++) {
-        const post = props.posts[i];
+        const post = posts[i];
         const dateStr = post.year + "-" + post.month + "-" + post.day;
         posts.push({ col1: dateStr, col2: post.title, link: post.url });
     }
 
     return (
         <>
-            <Head>
-                <title>{siteTitle}</title>
-            </Head>
-            <Header />
+            <Header title={SiteConfig.title} nav={SiteConfig.headerNav} />
             <main className="index">
                 <Container maxWidth="md">
                     <FeatureGrid title="Applications" items={appsGrid} />
                     <FeatureGrid title="Open Source" items={openSourceGrid} />
-                    <DoubleList title="Latests Posts" items={posts} />
+                    <DoubleList title="Latests Posts" items={postItems} />
                 </Container>
             </main>
-            <Footer />
+            <Footer title={SiteConfig.title} nav={SiteConfig.footerNav} />
         </>
     );
 }

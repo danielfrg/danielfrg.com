@@ -2,11 +2,11 @@ import React from "react";
 import Head from "next/head";
 import { Container } from "@material-ui/core";
 
+import SiteConfig from "../lib/config";
+import { getPosts } from "../lib/posts";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import DoubleList from "../components/double-list";
-
-import { getPosts } from "../lib/posts";
 
 export async function getStaticProps() {
     const posts = getPosts();
@@ -18,31 +18,27 @@ export async function getStaticProps() {
     };
 }
 
-export default function Homepage(props) {
-    // Variables
-    const siteTitle = "Daniel Rodriguez";
-    // ---
+export default function Homepage({ posts }) {
+    let postsItems = [];
 
-    let posts = [];
-
-    for (var i = 0; i < props.posts.length; i++) {
-        const post = props.posts[i];
+    for (var i = 0; i < posts.length; i++) {
+        const post = posts[i];
         const dateStr = post.year + "-" + post.month + "-" + post.day;
-        posts.push({ col1: dateStr, col2: post.title, link: post.url });
+        postsItems.push({ col1: dateStr, col2: post.title, link: post.url });
     }
 
     return (
         <>
             <Head>
-                <title>Blog - {siteTitle}</title>
+                <title>Blog - {SiteConfig.title}</title>
             </Head>
-            <Header />
+            <Header title={SiteConfig.title} nav={SiteConfig.headerNav} />
             <main className="index">
                 <Container maxWidth="md">
-                    <DoubleList title="Blog" items={posts} />
+                    <DoubleList title="Blog" items={postsItems} />
                 </Container>
             </main>
-            <Footer />
+            <Footer title={SiteConfig.title} nav={SiteConfig.footerNav} />
         </>
     );
 }

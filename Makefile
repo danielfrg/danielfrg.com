@@ -23,7 +23,7 @@ notebooks:  ## Convert notebooks
 
 
 cleangen:  ## Clean generated notebooks
-	rm -rf content/blog/generated-*/*.md
+	rm -rf $(CURDIR)/content/blog/generated-*/*.md
 
 
 check:  ## Check linting
@@ -55,7 +55,7 @@ npm-dev:  ## Run dev server
 
 
 cleanjs:  ## Clean JS files
-	rm -rf $(CURDIR)/.out
+	rm -rf $(CURDIR)/out
 	rm -rf $(CURDIR)/.next
 
 
@@ -70,7 +70,7 @@ cleanalljs: cleanjs  ## Clean JS files
 clean: cleanjs  ## Clean build files
 
 
-cleanall: clean cleangen  ## Clean everything
+cleanall: cleanalljs cleangen  ## Clean everything
 
 
 help:  ## Show this help menu

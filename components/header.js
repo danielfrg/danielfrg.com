@@ -5,18 +5,7 @@ import { Container } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import MaterialLink from "@material-ui/core/Link";
 
-export default function Header(props) {
-    // Variables
-    const siteTitle = "Daniel Rodriguez";
-
-    const nav = [
-        { text: "Blog", href: "/blog" },
-        { text: "GitHub", href: "https://github.com/danielfrg" },
-        { text: "Twitter", href: "https://twitter.com/danielfrg" },
-    ];
-
-    // ---
-
+export default function Header({ title, nav }) {
     let navEls = null;
     if (nav) {
         navEls = nav.map((navItem, i) => {
@@ -40,7 +29,7 @@ export default function Header(props) {
                 <Grid container spacing={2}>
                     <Grid item sm={7}>
                         <Link href="/">
-                            <a className="navbar-brand">{siteTitle}</a>
+                            <a className="navbar-brand">{title}</a>
                         </Link>
                     </Grid>
                     <Grid item sm={5}>

@@ -1,6 +1,8 @@
 import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
+import SiteConfig from "../lib/config";
+
 class MyDocument extends Document {
     static async getInitialProps(ctx) {
         const initialProps = await Document.getInitialProps(ctx);
@@ -8,8 +10,6 @@ class MyDocument extends Document {
     }
 
     render() {
-        const trackingID = "UA-35523657-5";
-
         return (
             <Html>
                 <Head>
@@ -25,7 +25,7 @@ class MyDocument extends Document {
                     ></meta>
                     <script
                         async
-                        src={`https://www.googletagmanager.com/gtag/js?id=${trackingID}`}
+                        src={`https://www.googletagmanager.com/gtag/js?id=${SiteConfig.trackingID}`}
                     />
 
                     <script
@@ -34,7 +34,7 @@ class MyDocument extends Document {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', '${trackingID}', { page_path: window.location.pathname });
+              gtag('config', '${SiteConfig.trackingID}', { page_path: window.location.pathname });
             `,
                         }}
                     />

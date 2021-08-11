@@ -4,6 +4,7 @@ import Head from "next/head";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
+import SiteConfig from "../lib/config";
 import theme from "../lib/theme";
 import "./styles/index.scss";
 
@@ -12,7 +13,7 @@ export default function MyApp({ Component, pageProps }) {
     return (
         <>
             <Head>
-                <title>My page</title>
+                <title>{SiteConfig.siteTitle}</title>
                 <meta
                     name="viewport"
                     content="minimum-scale=1, initial-scale=1, width=device-width"

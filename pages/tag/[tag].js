@@ -3,16 +3,13 @@ import Head from "next/head";
 
 import { Container } from "@material-ui/core";
 
+import SiteConfig from "../../lib/config";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import DoubleList from "../../components/double-list";
 import { getAllTags, getTagPosts } from "../../lib/posts";
 
 export default function Tag({ title, posts }) {
-    // Variables
-    const siteTitle = "Daniel Rodriguez";
-    // ---
-
     const postsItems = [];
 
     for (var i = 0; i < posts.length; i++) {
@@ -25,16 +22,16 @@ export default function Tag({ title, posts }) {
         <>
             <Head>
                 <title>
-                    {title} - {siteTitle}
+                    {title} - {SiteConfig.siteTitle}
                 </title>
             </Head>
-            <Header />
+            <Header title={SiteConfig.title} nav={SiteConfig.headerNav} />
             <main className="index">
                 <Container maxWidth="md">
                     <DoubleList title={`Tag: ${title}`} items={postsItems} />
                 </Container>
             </main>
-            <Footer />
+            <Footer title={SiteConfig.title} nav={SiteConfig.footerNav} />
         </>
     );
 }
