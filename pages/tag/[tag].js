@@ -22,7 +22,7 @@ export default function Tag({ title, posts }) {
         <>
             <Head>
                 <title>
-                    {title} - {SiteConfig.siteTitle}
+                    {title} - {SiteConfig.title}
                 </title>
             </Head>
             <Header title={SiteConfig.title} nav={SiteConfig.headerNav} />

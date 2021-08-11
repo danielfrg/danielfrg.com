@@ -48,9 +48,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: Install JS deps
+        run: |
+          make npm-install
+
       - name: Build website
         run: |
-          npm install
           make build
 
       - name: Push website (main)

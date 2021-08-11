@@ -23,11 +23,11 @@ class MyDocument extends Document {
                         httpEquiv="X-UA-Compatible"
                         content="IE=edge,chrome=1"
                     ></meta>
+
                     <script
                         async
                         src={`https://www.googletagmanager.com/gtag/js?id=${SiteConfig.trackingID}`}
                     />
-
                     <script
                         dangerouslySetInnerHTML={{
                             __html: `
