@@ -108,6 +108,9 @@ dmypy.json
 # setuptools_scm
 _generated_version.py
 
+# Ignore dynaconf secret files
+.secrets.*
+
 ### JS/Next.JS ###
 # dependencies
 /node_modules

@@ -1,4 +1,0 @@
-mkdocs_jupyter
-nbconvert
-pyyaml
-fire

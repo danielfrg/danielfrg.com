@@ -9,13 +9,13 @@ MAKEFLAGS += --no-builtin-rules
 first: help
 
 
-build: npm-build  ## Build site
+all: notebooks npm-build  ## Build site
 
 # ------------------------------------------------------------------------------
 # Python (Notebooks)
 
 env:
-	mamba env create
+	poetry install
 
 
 notebooks:  ## Convert notebooks
@@ -28,14 +28,13 @@ cleangen:  ## Clean generated notebooks
 
 check:  ## Check linting
 	cd $(CURDIR)/python; flake8
-	cd $(CURDIR)/python; isort --check-only --diff --recursive --project dinero --section-default THIRDPARTY .
-	cd $(CURDIR)/python; black --check nbconvert
+	cd $(CURDIR)/python; isort --check-only --diff .
+	cd $(CURDIR)/python; black --check .
 
 
 fmt:  ## Format source
-	cd $(CURDIR)/python; isort --recursive --project dinero --section-default THIRDPARTY.
-	cd $(CURDIR)/python; black nbconvert
-
+	cd $(CURDIR)/python; isort .
+	cd $(CURDIR)/python; black .
 
 # ------------------------------------------------------------------------------
 # JS

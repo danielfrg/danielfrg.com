@@ -6,7 +6,7 @@ Create Python environment:
 
 ```
 make env
-conda activate danielfrg.com
+source ./venv/bin/activate
 ```
 
 Convert notebooks to markdown:
@@ -15,23 +15,8 @@ Convert notebooks to markdown:
 make notebooks
 ```
 
-## Theme (JS)
-
-```
-cd theme
-make npm-i
-make npm-build
-```
-
 ## Generate site
 
 ```
-make build
+make npm-build
 ```
-
-Serve site
-
-```
-make serve
-```
-

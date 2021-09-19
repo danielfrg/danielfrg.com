@@ -1,17 +1,17 @@
 import React from "react";
 import Link from "next/link";
 
-import MaterialLink from "@material-ui/core/Link";
-
-function makeRow(props, key) {
+function Row(props) {
     return (
-        <tr key={key}>
-            <td className="col1">
-                <span>{props.col1}</span>
+        <tr className="border-0">
+            <td className="pt-0 font-thin">
+                <time className="text-gray-500" dateTime={props.col1}>
+                    {props.col1}
+                </time>
             </td>
-            <td className="col2">
+            <td className="pt-0 col2">
                 <Link href={props.link} passHref={true}>
-                    <MaterialLink>{props.col2}</MaterialLink>
+                    <a className="font-light">{props.col2}</a>
                 </Link>
             </td>
         </tr>
@@ -22,17 +22,19 @@ export default function DoubleList(props) {
     let rows = [];
 
     props.items.forEach((item, i) => {
-        rows.push(makeRow(item, i));
+        rows.push(<Row key={i} index={i} {...item}></Row>);
     });
 
     return (
-        <div className="double-list">
-            <h2 className="title">{props.title}</h2>
+        <section className="container mx-auto max-w-screen-sm prose">
+            <h1 className="text-center m-1 text-4xl font-bold">
+                {props.title}
+            </h1>
             <nav>
                 <table>
                     <tbody>{rows}</tbody>
                 </table>
             </nav>
-        </div>
+        </section>
     );
 }

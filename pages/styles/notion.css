@@ -1,0 +1,70 @@
+.prose {
+    input[type="checkbox"] {
+        margin-right: 10px;
+    }
+
+    .notion-list {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        width: 100%;
+        padding: 5px;
+
+        .li_before {
+            margin-right: 5px;
+            width: 24px;
+            display: flex;
+            justify-content: center;
+            flex-grow: 0;
+            flex-shrink: 0;
+
+            .ul_disc {
+                /* font-size: var(--font-size); */
+            }
+
+            .ol_disc {
+                /* font-size: var(--font-size); */
+            }
+        }
+
+        .li_content {
+            p {
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        .list:last-child {
+            padding-bottom: 0;
+        }
+    }
+
+    /* Colors */
+    .gray_background {
+        background: rgb(235, 236, 237);
+    }
+    .brown_background {
+        background: rgb(233, 229, 227);
+    }
+    .orange_background {
+        background: rgb(250, 235, 221);
+    }
+    .yellow_background {
+        background: rgb(251, 243, 219);
+    }
+    .teal_background {
+        background: rgb(221, 237, 234);
+    }
+    .blue_background {
+        background: rgb(221, 235, 241);
+    }
+    .purple_background {
+        background: rgb(234, 228, 242);
+    }
+    .pink_background {
+        background: rgb(244, 223, 235);
+    }
+    .red_background {
+        background: rgb(251, 228, 228);
+    }
+}

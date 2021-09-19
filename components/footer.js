@@ -1,9 +1,6 @@
 import React from "react";
 import Link from "next/link";
 
-import { Container } from "@material-ui/core";
-import MaterialLink from "@material-ui/core/Link";
-
 export default function Footer({ title, nav }) {
     const year = new Date().getFullYear();
 
@@ -12,30 +9,42 @@ export default function Footer({ title, nav }) {
         navEls = nav.map((navItem, i) => {
             return (
                 <Link key={i} href={navItem.href} passHref={true}>
-                    <MaterialLink className="nav-link">
+                    <a className="m-3 text-xs font-light text-gray-500 hover:underline">
                         {navItem.text}
-                    </MaterialLink>
+                    </a>
                 </Link>
             );
         });
-
-        navEls = (
-            <div className="justify-content-center">
-                <p>{navEls}</p>
-            </div>
-        );
     }
 
     return (
-        <footer className="site-footer">
-            <Container maxWidth="md">
-                {navEls}
-                <div className="justify-content-center">
-                    <p>
+        <footer className="container mx-auto max-w-screen-md p-5">
+            <div className="flex flex-wrap">
+                <div className="w-full">
+                    <div className="flex justify-center">
+                        <div className="justify-content-center">
+                            <p>{navEls}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="w-full text-center">
+                    <p className="m-3 text-xs font-light text-gray-500">
                         {title} &copy; {year}
                     </p>
                 </div>
-            </Container>
+            </div>
         </footer>
+
+        // <footer className="site-footer">
+        //     <Container maxWidth="md">
+        //         {navEls}
+        //         <div className="justify-content-center">
+        //             <p>
+        //                 {title} &copy; {year}
+        //             </p>
+        //         </div>
+        //     </Container>
+        // </footer>
     );
 }

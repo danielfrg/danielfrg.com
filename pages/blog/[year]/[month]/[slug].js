@@ -2,7 +2,6 @@ import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 
-import MaterialLink from "@material-ui/core/Link";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -10,8 +9,84 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
 import SiteConfig from "../../../../lib/config";
 import { getAllPostsIDs, getPost } from "../../../../lib/posts";
-import Header from "../../../../components/header";
-import Footer from "../../../../components/footer";
+import Layout from "../../../../components/layout";
+
+export default function Post(props) {
+    const dateStr = props.year + "-" + props.month + "-" + props.day;
+
+    let tags = props.tags.map((tag, i) => {
+        const href = "/tag/" + tag.toLowerCase();
+        return (
+            <Link key={i} href={href} passHref={true}>
+                <a className="mx-1 no-underline text-gray-900 hover:text-link hover:underline">
+                    {tag}
+                </a>
+            </Link>
+        );
+    });
+
+    return (
+        <>
+            <Head>
+                <title>
+                    {props.title} - {SiteConfig.title}
+                </title>
+            </Head>
+
+            <Layout>
+                <main className="container mx-auto max-w-screen-sm">
+                    <article className="prose font-light p-3">
+                        <header className="-mt-5 mb-10 md:mt-0 md:mb-10">
+                            <p className="m-0 p-0 text-center text-gray-500 font-extralight">
+                                <time dateTime={dateStr}>{dateStr}</time>
+                            </p>
+                            <h1 className="text-center m-1 text-5xl font-bold">
+                                {props.title}
+                            </h1>
+                            <p className="m-0 text-center text-xl text-gray-500 italic">
+                                {props.summary}
+                            </p>
+                        </header>
+
+                        <section>
+                            <ReactMarkdown
+                                components={mdComponents}
+                                remarkPlugins={[remarkGfm]}
+                                rehypePlugins={[rehypeRaw]}
+                            >
+                                {props.content}
+                            </ReactMarkdown>
+                        </section>
+
+                        <footer className="mt-20 mb-10 text-center text-sm text-gray-500">
+                            <p>Tagged: {tags}</p>
+                        </footer>
+                    </article>
+                </main>
+            </Layout>
+        </>
+    );
+}
+
+const mdComponents = {
+    code({ node, inline, className, children, ...props }) {
+        const match = /language-(\w+)/.exec(className || "");
+        return !inline && match ? (
+            <SyntaxHighlighter
+                // style={SyntaxTheme}
+                language={match[1]}
+                PreTag="div"
+                // eslint-disable-next-line react/no-children-prop
+                children={String(children).replace(/\n$/, "")}
+                {...props}
+            />
+        ) : (
+            <code className={className} {...props}>
+                {children}
+            </code>
+        );
+    },
+};
 
 export async function getStaticPaths() {
     // Return a list of possible posts
@@ -38,75 +113,4 @@ export async function getStaticProps({ params }) {
             content: post.content,
         },
     };
-}
-
-const mdComponents = {
-    code({ node, inline, className, children, ...props }) {
-        const match = /language-(\w+)/.exec(className || "");
-        return !inline && match ? (
-            <SyntaxHighlighter
-                // style={SyntaxTheme}
-                language={match[1]}
-                PreTag="div"
-                children={String(children).replace(/\n$/, "")}
-                {...props}
-            />
-        ) : (
-            <code className={className} {...props}>
-                {children}
-            </code>
-        );
-    },
-};
-
-export default function Post(props) {
-    const dateStr = props.year + "-" + props.month + "-" + props.day;
-
-    let tags = props.tags.map((tag, i) => {
-        const href = "/tag/" + tag.toLowerCase();
-        return (
-            <Link key={i} href={href} passHref={true}>
-                <MaterialLink className="tag">{tag}</MaterialLink>
-            </Link>
-        );
-    });
-
-    return (
-        <>
-            <Head>
-                <title>
-                    {props.title} - {SiteConfig.title}
-                </title>
-            </Head>
-            <Header title={SiteConfig.title} nav={SiteConfig.headerNav} />
-            <main className="post">
-                <article>
-                    <header>
-                        <p className="date">
-                            <time dateTime={dateStr}>{dateStr}</time>
-                        </p>
-                        <h1 className="no-anchor">{props.title}</h1>
-                        {props.summary ? (
-                            <p className="summary">{props.summary}</p>
-                        ) : null}
-                    </header>
-
-                    <section>
-                        <ReactMarkdown
-                            components={mdComponents}
-                            remarkPlugins={[remarkGfm]}
-                            rehypePlugins={[rehypeRaw]}
-                        >
-                            {props.content}
-                        </ReactMarkdown>
-                    </section>
-
-                    <footer className="metadata justify-content-center">
-                        <div className="tags">Tagged: {tags}</div>
-                    </footer>
-                </article>
-            </main>
-            <Footer title={SiteConfig.title} nav={SiteConfig.footerNav} />
-        </>
-    );
 }

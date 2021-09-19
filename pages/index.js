@@ -1,14 +1,11 @@
 import React from "react";
 import Head from "next/head";
-import { Container } from "@material-ui/core";
 
 import SiteConfig from "../lib/config";
-import Header from "../components/header";
-import Footer from "../components/footer";
-import FeatureGrid from "../components/feature-grid";
-import DoubleList from "../components/double-list";
-
 import { getPosts } from "../lib/posts";
+import Layout from "../components/layout";
+import DoubleList from "../components/double-list";
+import FeatureGrid from "../components/feature-grid";
 
 export async function getStaticProps() {
     const posts = getPosts();
@@ -115,15 +112,19 @@ export default function Homepage({ posts }) {
 
     return (
         <>
-            <Header title={SiteConfig.title} nav={SiteConfig.headerNav} />
-            <main className="index">
-                <Container maxWidth="md">
+            <Head>
+                <title>{SiteConfig.title}</title>
+            </Head>
+
+            <Layout>
+                <main className="container mx-auto max-w-screen-lg">
                     <FeatureGrid title="Applications" items={appsGrid} />
+                    <div className="h-8"></div>
                     <FeatureGrid title="Open Source" items={openSourceGrid} />
+                    <div className="h-8"></div>
                     <DoubleList title="Latests Posts" items={postItems} />
-                </Container>
-            </main>
-            <Footer title={SiteConfig.title} nav={SiteConfig.footerNav} />
+                </main>
+            </Layout>
         </>
     );
 }

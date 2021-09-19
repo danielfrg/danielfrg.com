@@ -35,8 +35,8 @@ online terminal sold me the service, I test it and didn't disappoint me.
 
 I was able with one-click to clone the repository on my Github and run
 the code on their infrastructure (powered by [OpenShift][]) with no
-problems at all. Just need to install the required libraries ([numpy][]
-- running `easy_install numpy`) and then it was as simple as run `python portfolio.py` and see the code running much faster than on my PC.
+problems at all. Just need to install the required libraries ([numpy][] running `easy_install numpy`)
+and then it was as simple as run `python portfolio.py` and see the code running much faster than on my PC.
 
 Also the ability to run the code and edit it from everywhere is amazing.
 I was able to connect from my University and keep testing better

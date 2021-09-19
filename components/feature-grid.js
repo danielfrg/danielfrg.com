@@ -1,82 +1,60 @@
 import React from "react";
 import Link from "next/link";
 
-import Grid from "@material-ui/core/Grid";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import MaterialLink from "@material-ui/core/Link";
-import Typography from "@material-ui/core/Typography";
-
-import { insertBetween } from "../lib/utils";
-
-function makeCard(props) {
+function Card(props) {
     let img;
     if (props.img) {
         const link = props.links[0];
         img = (
             <Link href={link.href} passHref={true}>
-                <MaterialLink>
-                    <CardMedia image={props.img} title="Feature Image" />
-                </MaterialLink>
+                <a>
+                    <img className="w-full h-full" src={props.img} />
+                </a>
             </Link>
-        );
-    }
-
-    let title;
-    if (props.title) {
-        title = (
-            <Typography gutterBottom variant="h5" component="h2">
-                {props.title}
-            </Typography>
-        );
-    }
-
-    let text;
-    if (props.desc) {
-        text = (
-            <Typography color="textSecondary" component="p">
-                {props.desc}
-            </Typography>
         );
     }
 
     let buttons = props.links.map((link, i) => {
         let linkEl = (
             <Link key={i} href={link.href} passHref={true}>
-                <MaterialLink>{link.text}</MaterialLink>
+                <a className="px-3 text-link hover:underline">{link.text}</a>
             </Link>
         );
 
         return linkEl;
     });
 
-    buttons = insertBetween(buttons, " | ");
-
     return (
-        <Card variant="outlined">
-            {img}
-            <CardContent>
-                {title}
-                {text}
-            </CardContent>
-            <CardActions>{buttons}</CardActions>
-        </Card>
+        <div className="w-full rounded">
+            <div className="w-full h-full p-3 flex flex-col min-h-[8rem] bg-gray-50 hover:bg-gray-100">
+                <div className="w-full rounded">{img}</div>
+                <div className="flex-1 flex flex-col m-2 md:w-full justify-center">
+                    <h2 className="text-2xl font-bold text-center">
+                        {props.title}
+                    </h2>
+                    <p className="text-md text-gray-600 text-center font-extralight">
+                        {props.desc}
+                    </p>
+                    <p className="text-sm text-center font-extralight divide-x divide-solid divide-fuchsia-300">
+                        {buttons}
+                    </p>
+                </div>
+            </div>
+        </div>
     );
 }
 
-function makeListItem(props, i) {
+function ListItem(props) {
     let linkEl = (
-        <Typography key={i} className="secondary-item" component="p">
+        <p className="prose font-light">
             <b>
                 <Link href={props.link} passHref={true}>
-                    <MaterialLink>{props.title}</MaterialLink>
+                    <a>{props.title}</a>
                 </Link>
             </b>
             {" - "}
             {props.desc}
-        </Typography>
+        </p>
     );
 
     return linkEl;
@@ -88,25 +66,19 @@ export default function FeatureGrid(props) {
 
     props.items.forEach((item, i) => {
         if (item.img) {
-            const card = makeCard(item);
-            cards.push(
-                <Grid item key={i} xs={6}>
-                    {card}
-                </Grid>
-            );
+            cards.push(<Card key={i} {...item}></Card>);
         } else {
-            const listItem = makeListItem(item, i);
-            list.push(listItem);
+            list.push(<ListItem key={i} {...item}></ListItem>);
         }
     });
 
     return (
-        <div className="feature-grid">
-            <h2 className="title">{props.title}</h2>
-            <Grid container spacing={3}>
-                {cards}
-            </Grid>
-            <div className="secondary-list">{list}</div>
+        <div className="container mx-auto max-w-screen-sm mt-5 mb-5">
+            <h2 className="text-center mt-2 mb-5 text-4xl font-bold">
+                {props.title}
+            </h2>
+            <div className="grid gap-2 grid-cols-2 justify-evenly">{cards}</div>
+            <div className="mt-5">{list}</div>
         </div>
     );
 }

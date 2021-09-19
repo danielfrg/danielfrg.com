@@ -1,11 +1,8 @@
 import React from "react";
 import Head from "next/head";
 
-import { Container } from "@material-ui/core";
-
 import SiteConfig from "../../lib/config";
-import Header from "../../components/header";
-import Footer from "../../components/footer";
+import Layout from "../../components/layout";
 import DoubleList from "../../components/double-list";
 import { getAllTags, getTagPosts } from "../../lib/posts";
 
@@ -25,13 +22,10 @@ export default function Tag({ title, posts }) {
                     {title} - {SiteConfig.title}
                 </title>
             </Head>
-            <Header title={SiteConfig.title} nav={SiteConfig.headerNav} />
-            <main className="index">
-                <Container maxWidth="md">
-                    <DoubleList title={`Tag: ${title}`} items={postsItems} />
-                </Container>
-            </main>
-            <Footer title={SiteConfig.title} nav={SiteConfig.footerNav} />
+
+            <Layout>
+                <DoubleList title={`Tag: ${title}`} items={postsItems} />
+            </Layout>
         </>
     );
 }
