@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 
 function Row(props) {
     return (
@@ -10,9 +9,9 @@ function Row(props) {
                 </time>
             </td>
             <td className="pt-0 col2">
-                <Link href={props.link} passHref={true}>
-                    <a className="font-light">{props.col2}</a>
-                </Link>
+                <a href={props.link} className="font-light">
+                    {props.col2}
+                </a>
             </td>
         </tr>
     );

@@ -1,24 +1,25 @@
 import React from "react";
-import Link from "next/link";
 
 function Card(props) {
     let img;
     if (props.img) {
         const link = props.links[0];
         img = (
-            <Link href={link.href} passHref={true}>
-                <a>
-                    <img className="w-full h-full" src={props.img} />
-                </a>
-            </Link>
+            <a href={link.href}>
+                <img className="w-full h-full" src={props.img} />
+            </a>
         );
     }
 
     let buttons = props.links.map((link, i) => {
         let linkEl = (
-            <Link key={i} href={link.href} passHref={true}>
-                <a className="px-3 text-link hover:underline">{link.text}</a>
-            </Link>
+            <a
+                key={i}
+                href={link.href}
+                className="px-3 text-link hover:underline"
+            >
+                {link.text}
+            </a>
         );
 
         return linkEl;
@@ -48,9 +49,7 @@ function ListItem(props) {
     let linkEl = (
         <p className="prose font-light">
             <b>
-                <Link href={props.link} passHref={true}>
-                    <a>{props.title}</a>
-                </Link>
+                <a href={props.link}>{props.title}</a>
             </b>
             {" - "}
             {props.desc}
