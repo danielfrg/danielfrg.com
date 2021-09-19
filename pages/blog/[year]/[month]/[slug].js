@@ -1,6 +1,5 @@
 import React from "react";
 import Head from "next/head";
-import Link from "next/link";
 
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -17,11 +16,13 @@ export default function Post(props) {
     let tags = props.tags.map((tag, i) => {
         const href = "/tag/" + tag.toLowerCase();
         return (
-            <Link key={i} href={href} passHref={true}>
-                <a className="mx-1 no-underline text-gray-900 hover:text-link hover:underline">
-                    {tag}
-                </a>
-            </Link>
+            <a
+                key={i}
+                href={href}
+                className="mx-1 no-underline text-gray-900 hover:text-link hover:underline"
+            >
+                {tag}
+            </a>
         );
     });
 

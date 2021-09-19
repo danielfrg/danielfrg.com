@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 
 export default function Footer({ title, nav }) {
     const year = new Date().getFullYear();
@@ -8,11 +7,13 @@ export default function Footer({ title, nav }) {
     if (nav) {
         navEls = nav.map((navItem, i) => {
             return (
-                <Link key={i} href={navItem.href} passHref={true}>
-                    <a className="m-3 text-xs font-light text-gray-500 hover:underline">
-                        {navItem.text}
-                    </a>
-                </Link>
+                <a
+                    key={i}
+                    href={navItem.href}
+                    className="m-3 text-xs font-light text-gray-500 hover:underline"
+                >
+                    {navItem.text}
+                </a>
             );
         });
     }
