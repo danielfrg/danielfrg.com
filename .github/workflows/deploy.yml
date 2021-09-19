@@ -46,6 +46,7 @@ jobs:
 
       - name: Convert notebooks
         run: |
+          source .venv/bin/activate
           make notebooks
 
       - name: Setup Node.js ${{ matrix.node-version }}
