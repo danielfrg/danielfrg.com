@@ -25,7 +25,7 @@ export default function Homepage({ posts }) {
             img: "/images/demucs.png",
             links: [
                 { text: "Go to app", href: "https://demucs.danielfrg.com" },
-                { text: "Read blogpost", href: "/blog/2020/10/demucs" },
+                { text: "Read blogpost", href: "/blog/2020/10/demucs-app" },
             ],
         },
         {
