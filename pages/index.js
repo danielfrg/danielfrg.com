@@ -7,17 +7,7 @@ import Layout from "../components/layout";
 import DoubleList from "../components/double-list";
 import FeatureGrid from "../components/feature-grid";
 
-export async function getStaticProps() {
-    const posts = getPosts();
-
-    return {
-        props: {
-            posts: posts,
-        },
-    };
-}
-
-export default function Homepage({ posts }) {
+export default function Index({ posts }) {
     const appsGrid = [
         {
             title: "demucs",
@@ -127,4 +117,14 @@ export default function Homepage({ posts }) {
             </Layout>
         </>
     );
+}
+
+export async function getStaticProps() {
+    const posts = getPosts();
+
+    return {
+        props: {
+            posts: posts,
+        },
+    };
 }

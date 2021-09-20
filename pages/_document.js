@@ -11,22 +11,24 @@ class MyDocument extends Document {
 
     render() {
         return (
-            <Html lang="es">
+            <Html lang="en">
                 <Head>
                     <meta charSet="utf-8" />
                     <meta
                         name="description"
                         content="Un blog de Daniel Rodriguez"
                     />
+                    <meta
+                        httpEquiv="X-UA-Compatible"
+                        content="IE=edge,chrome=1"
+                    ></meta>
+
                     <link
                         rel="shortcut icon"
                         type="image/png"
                         href="/favicon.png"
                     />
-                    <meta
-                        httpEquiv="X-UA-Compatible"
-                        content="IE=edge,chrome=1"
-                    ></meta>
+
                     <script
                         async
                         src={`https://www.googletagmanager.com/gtag/js?id=${SiteConfig.trackingID}`}
@@ -42,6 +44,7 @@ class MyDocument extends Document {
                         }}
                     />
                 </Head>
+
                 <body>
                     <Main />
                     <NextScript />

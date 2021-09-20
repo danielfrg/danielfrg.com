@@ -36,16 +36,5 @@ export default function Footer({ title, nav }) {
                 </div>
             </div>
         </footer>
-
-        // <footer className="site-footer">
-        //     <Container maxWidth="md">
-        //         {navEls}
-        //         <div className="justify-content-center">
-        //             <p>
-        //                 {title} &copy; {year}
-        //             </p>
-        //         </div>
-        //     </Container>
-        // </footer>
     );
 }
