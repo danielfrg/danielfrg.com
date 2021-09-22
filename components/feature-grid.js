@@ -16,7 +16,7 @@ function Card(props) {
             <a
                 key={i}
                 href={link.href}
-                className="px-3 text-link hover:underline"
+                className="px-3 text-link hover:underline dark:text-link-dark"
             >
                 {link.text}
             </a>
@@ -27,13 +27,13 @@ function Card(props) {
 
     return (
         <div className="w-full rounded">
-            <div className="w-full h-full p-3 flex flex-col min-h-[8rem] bg-gray-50 hover:bg-gray-100">
+            <div className="w-full h-full p-3 flex flex-col min-h-[8rem] bg-gray-50 hover:bg-gray-100 dark:bg-dark dark:hover:bg-gray-900">
                 <div className="w-full rounded">{img}</div>
                 <div className="flex-1 flex flex-col m-2 md:w-full justify-center">
-                    <h2 className="text-2xl font-bold text-center">
+                    <h2 className="text-2xl font-bold text-center dark:text-white">
                         {props.title}
                     </h2>
-                    <p className="text-md text-gray-600 text-center font-extralight">
+                    <p className="text-md text-gray-600 text-center font-extralight dark:text-gray-100">
                         {props.desc}
                     </p>
                     <p className="text-sm text-center font-extralight divide-x divide-solid divide-fuchsia-300">
@@ -72,12 +72,18 @@ export default function FeatureGrid(props) {
     });
 
     return (
-        <div className="container mx-auto max-w-screen-sm mt-5 mb-5">
-            <h2 className="text-center mt-2 mb-5 text-4xl font-bold">
-                {props.title}
-            </h2>
-            <div className="grid gap-2 grid-cols-2 justify-evenly">{cards}</div>
-            <div className="mt-5">{list}</div>
+        <div className={`${props.dark ? "dark" : ""} w-full`}>
+            <div className="dark:bg-dark">
+                <div className="container mx-auto max-w-screen-sm py-5">
+                    <h2 className="text-center mt-2 mb-5 text-4xl font-bold dark:text-white">
+                        {props.title}
+                    </h2>
+                    <div className="grid gap-2 grid-cols-2 justify-evenly">
+                        {cards}
+                    </div>
+                    <div className="mt-5">{list}</div>
+                </div>
+            </div>
         </div>
     );
 }

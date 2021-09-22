@@ -8,7 +8,7 @@ export default function BaseLayout({ children }) {
     return (
         <div className="flex flex-col h-screen justify-between">
             <Header title={SiteConfig.title} nav={SiteConfig.headerNav} />
-            <main className="mb-auto">{children}</main>
+            <main>{children}</main>
             <Footer title={SiteConfig.title} nav={SiteConfig.footerNav} />
         </div>
     );

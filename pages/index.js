@@ -3,7 +3,8 @@ import Head from "next/head";
 
 import SiteConfig from "../lib/config";
 import { getPosts } from "../lib/posts";
-import Layout from "../components/layout";
+import Header from "../components/header";
+import Footer from "../components/footer";
 import DoubleList from "../components/double-list";
 import FeatureGrid from "../components/feature-grid";
 
@@ -106,15 +107,26 @@ export default function Index({ posts }) {
                 <title>{SiteConfig.title}</title>
             </Head>
 
-            <Layout>
-                <main className="container mx-auto max-w-screen-lg">
-                    <FeatureGrid title="Applications" items={appsGrid} />
+            <div className="flex flex-col h-screen justify-between">
+                <Header
+                    title={SiteConfig.title}
+                    nav={SiteConfig.headerNav}
+                    dark={true}
+                />
+
+                <main>
+                    <FeatureGrid
+                        title="Applications"
+                        items={appsGrid}
+                        dark={true}
+                    />
                     <div className="h-8"></div>
                     <FeatureGrid title="Open Source" items={openSourceGrid} />
                     <div className="h-8"></div>
                     <DoubleList title="Latests Posts" items={postItems} />
                 </main>
-            </Layout>
+                <Footer title={SiteConfig.title} nav={SiteConfig.footerNav} />
+            </div>
         </>
     );
 }

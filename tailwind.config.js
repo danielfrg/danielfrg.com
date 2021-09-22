@@ -1,4 +1,4 @@
-const { colors } = require("tailwindcss/defaultTheme");
+// const { colors } = require("tailwindcss/defaultTheme");
 
 module.exports = {
     mode: "jit",
@@ -7,11 +7,13 @@ module.exports = {
         "./pages/**/*.{js,ts,jsx,tsx}",
         "./components/**/*.{js,ts,jsx,tsx}",
     ],
-    darkMode: false, // or 'media' or 'class'
+    darkMode: "class", // false or 'media' or 'class'
     theme: {
         extend: {
             colors: {
+                dark: "#222",
                 link: "#0366d6",
+                "link-dark": "#0089c7",
             },
             typography: {
                 DEFAULT: {
