@@ -1,7 +1,24 @@
 import React from "react";
-import Image from "next/image";
+
+// Saving this because it was annoying to figure out how to make
+// the images look good with the Image component
+// but it doesn't work with next export - Hopefully one day it will
+// import Image from "next/image";
+{
+    /* <Image
+    width={500}
+    height={300}
+    layout="responsive"
+    objectFit="cover"
+    src={props.feature_image}
+/> */
+}
 
 export function PostCard(props) {
+    const img_src = props.feature_image
+        ? props.feature_image
+        : "https://images.unsplash.com/photo-1523275335684-37898b6baf30";
+
     if (props.index == 0) {
         return (
             <div className="w-full md:col-span-2 lg:col-span-2">
@@ -10,13 +27,9 @@ export function PostCard(props) {
                     className="flex flex-col md:flex-row p-3 hover:bg-gray-800"
                 >
                     <div className="h-3/6 max-h-[20rem] md:w-1/2">
-                        <Image
-                            width={500}
-                            height={300}
-                            layout="responsive"
-                            objectFit="cover"
-                            src={props.feature_image}
-                            // src="https://images.unsplash.com/photo-1523275335684-37898b6baf30"
+                        <img
+                            className="w-full h-64 object-cover"
+                            src={img_src}
                         />
                     </div>
                     <div className="flex-1 flex flex-col m-2 w-full md:md:w-1/2 justify-center">
@@ -41,13 +54,9 @@ export function PostCard(props) {
                 >
                     <div className="w-2/6 md:w-full mt-2 md:mt-0">
                         {props.feature_image ? (
-                            <Image
-                                width={500}
-                                height={200}
-                                layout="responsive"
-                                objectFit="cover"
-                                src={props.feature_image}
-                                // src="https://images.unsplash.com/photo-1523275335684-37898b6baf30"
+                            <img
+                                className="w-full h-48 object-cover"
+                                src={img_src}
                             />
                         ) : null}
                     </div>
@@ -72,13 +81,9 @@ export function PostCard(props) {
             >
                 <div className="w-2/6 md:w-full mt-2 md:mt-0">
                     {props.feature_image ? (
-                        <Image
-                            width={500}
-                            height={300}
-                            layout="responsive"
-                            objectFit="cover"
-                            src={props.feature_image}
-                            // src="https://images.unsplash.com/photo-1523275335684-37898b6baf30"
+                        <img
+                            className="w-full h-40 object-cover"
+                            src={img_src}
                         />
                     ) : null}
                 </div>
