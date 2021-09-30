@@ -9,44 +9,50 @@ MAKEFLAGS += --no-builtin-rules
 first: help
 
 
-all: notebooks npm-build  ## Build site
+all: notebooks website  ## Build site
+
 
 # ------------------------------------------------------------------------------
 # Python (Notebooks)
 
-env:
-	poetry install
+env:  ## Create Python env
+	poetry install --with dev
 
 
 notebooks:  ## Convert notebooks
 	python nbconvert/convert.py
 
 
+check:  ## Check linting
+	cd $(CURDIR)/nbconvert; isort . --check-only --diff
+	cd $(CURDIR)/nbconvert; black . --check
+	cd $(CURDIR)/nbconvert; flake8
+
+
+fmt:  ## Format source
+	cd $(CURDIR)/nbconvert; isort .
+	cd $(CURDIR)/nbconvert; black .
+
+
 cleangen:  ## Clean generated notebooks
 	rm -rf $(CURDIR)/content/blog/generated-*/*.md
 
 
-check:  ## Check linting
-	cd $(CURDIR)/python; flake8
-	cd $(CURDIR)/python; isort --check-only --diff .
-	cd $(CURDIR)/python; black --check .
+resetpython:  ## Reset Python
+	rm -rf .venv
 
-
-fmt:  ## Format source
-	cd $(CURDIR)/python; isort .
-	cd $(CURDIR)/python; black .
 
 # ------------------------------------------------------------------------------
 # JS
 
-npm-build:  ## Build website
+website:  ## Build website
 	npm run build
 	npm run export
 
 
-npm-i: npm-install
 npm-install:  ## Install JS dependencies
 	npm install
+npm-i: npm-install
 
 
 npm-dev:  ## Run dev server
@@ -65,12 +71,6 @@ cleanalljs: cleanjs  ## Clean JS files
 
 # ------------------------------------------------------------------------------
 # Other
-
-clean: cleanjs  ## Clean build files
-
-
-cleanall: cleanalljs cleangen  ## Clean everything
-
 
 help:  ## Show this help menu
 	@grep -E '^[0-9a-zA-Z_-]+:.*?##.*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?##"; OFS="\t\t"}; {printf "\033[36m%-30s\033[0m %s\n", $$1, ($$2==""?"":$$2)}'

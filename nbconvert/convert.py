@@ -45,7 +45,7 @@ def convert(nb_path):
         return
     metadata_str = yaml.dump(metadata, default_flow_style=False)
 
-    html_base = nbconvert2.nb2html(nb_path)
+    html_base = nbconvert2.nb2html(nb_path, theme="light")
 
     # Since we make a Markdown file based on the HTML we need to:
     # - remove empty lines
