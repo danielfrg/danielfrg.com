@@ -6,7 +6,9 @@
         "dev": "clear && next dev",
         "build": "next build",
         "start": "next start",
-        "export": "next export"
+        "export": "next export",
+        "clean": "rm -rf .next out",
+        "reset": "npm run clean && rm -rf node_modules"
     },
     "dependencies": {
         "@next/bundle-analyzer": "^11.0.1",

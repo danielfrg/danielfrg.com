@@ -9,11 +9,11 @@ MAKEFLAGS += --no-builtin-rules
 first: help
 
 
-all: notebooks website  ## Build site
+all: notebooks website  ## Build everything
 
 
 # ------------------------------------------------------------------------------
-# Python (Notebooks)
+# Python: Notebooks
 
 env:  ## Create Python env
 	poetry install --with dev
@@ -60,13 +60,11 @@ npm-dev:  ## Run dev server
 
 
 cleanjs:  ## Clean JS files
-	rm -rf $(CURDIR)/out
-	rm -rf $(CURDIR)/.next
+	npm run clean
 
 
-cleanalljs: cleanjs  ## Clean JS files
-	rm -rf $(CURDIR)/node_modules
-	rm -rf $(CURDIR)/package-lock.json
+resetjs: cleanjs  ## Clean JS files
+	npm run reset
 
 
 # ------------------------------------------------------------------------------
