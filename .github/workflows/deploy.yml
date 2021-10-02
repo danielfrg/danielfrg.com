@@ -72,7 +72,7 @@ jobs:
         id: cached-node_modules
         uses: actions/cache@v2
         with:
-          path: js/node_modules
+          path: node_modules
           key: node_modules-${{ runner.os }}-node${{ matrix.node-version }}-${{ hashFiles('package*.json') }}
 
       - name: Install JS deps
