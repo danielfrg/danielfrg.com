@@ -13,7 +13,7 @@ class MyDocument extends Document {
         return (
             <Html lang="en">
                 <Head>
-                    <meta charSet="utf-8" />
+                    <meta charset="utf-8" />
                     <meta
                         name="description"
                         content="Un blog de Daniel Rodriguez"
