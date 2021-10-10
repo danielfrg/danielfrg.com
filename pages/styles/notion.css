@@ -1,44 +1,4 @@
 .prose {
-    input[type="checkbox"] {
-        margin-right: 10px;
-    }
-
-    .notion-list {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        width: 100%;
-        padding: 5px;
-
-        .li_before {
-            margin-right: 5px;
-            width: 24px;
-            display: flex;
-            justify-content: center;
-            flex-grow: 0;
-            flex-shrink: 0;
-
-            .ul_disc {
-                /* font-size: var(--font-size); */
-            }
-
-            .ol_disc {
-                /* font-size: var(--font-size); */
-            }
-        }
-
-        .li_content {
-            p {
-                margin: 0;
-                padding: 0;
-            }
-        }
-
-        .list:last-child {
-            padding-bottom: 0;
-        }
-    }
-
     /* Colors */
     .gray_background {
         background: rgb(235, 236, 237);
