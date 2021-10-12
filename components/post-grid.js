@@ -1,6 +1,6 @@
 import React from "react";
 
-// Saving this because it was annoying to figure out how to make
+// Saving this snippet because it was annoying to figure out how to make
 // the images look good with the Image component
 // but it doesn't work with next export - Hopefully one day it will
 // import Image from "next/image";
@@ -53,12 +53,10 @@ export function PostCard(props) {
                     className="w-full h-full p-3 flex flex-row md:flex-col min-h-[8rem] hover:bg-gray-800"
                 >
                     <div className="w-2/6 md:w-full mt-2 md:mt-0">
-                        {props.feature_image ? (
-                            <img
-                                className="w-full h-48 object-cover"
-                                src={img_src}
-                            />
-                        ) : null}
+                        <img
+                            className="w-full h-48 object-cover"
+                            src={img_src}
+                        />
                     </div>
                     <div className="flex-1 flex flex-col m-2 mt-0 w-4/6 md:w-full justify-start">
                         <h2 className="text-2xl text-white font-bold">
@@ -80,12 +78,7 @@ export function PostCard(props) {
                 className="w-full h-full p-3 flex flex-row md:flex-col min-h-[8rem] hover:bg-gray-100"
             >
                 <div className="w-2/6 md:w-full mt-2 md:mt-0">
-                    {props.feature_image ? (
-                        <img
-                            className="w-full h-40 object-cover"
-                            src={img_src}
-                        />
-                    ) : null}
+                    <img className="w-full h-40 object-cover" src={img_src} />
                 </div>
                 <div className="flex-1 flex flex-col m-2 mt-0 w-4/6 md:w-full justify-start start">
                     <h2 className="text-2xl font-bold">{props.title}</h2>
