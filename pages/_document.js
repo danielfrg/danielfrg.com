@@ -1,6 +1,5 @@
+import Document, { Head, Html, Main, NextScript } from "next/document";
 import React from "react";
-import Document, { Html, Head, Main, NextScript } from "next/document";
-
 import SiteConfig from "../lib/config";
 
 class MyDocument extends Document {
@@ -13,7 +12,7 @@ class MyDocument extends Document {
         return (
             <Html lang="en">
                 <Head>
-                    <meta charset="utf-8" />
+                    <meta charSet="utf-8" />
                     <meta
                         name="description"
                         content="Un blog de Daniel Rodriguez"
