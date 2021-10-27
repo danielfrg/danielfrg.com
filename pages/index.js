@@ -1,12 +1,11 @@
-import React from "react";
 import Head from "next/head";
-
-import SiteConfig from "../lib/config";
-import { getPosts } from "../lib/posts";
-import Header from "../components/header";
-import Footer from "../components/footer";
+import React from "react";
 import DoubleList from "../components/double-list";
 import FeatureGrid from "../components/feature-grid";
+import Footer from "../components/footer";
+import Header from "../components/header";
+import SiteConfig from "../lib/config";
+import { getPosts } from "../lib/posts";
 
 export default function Index({ posts }) {
     const appsGrid = [
@@ -101,6 +100,68 @@ export default function Index({ posts }) {
         postItems.push({ col1: dateStr, col2: post.title, link: post.url });
     }
 
+    const profile = (
+        <div className="w-full">
+            <div className="container mx-auto max-w-screen-sm my-20">
+                <div className="grid gap-2 grid-cols-2 mb-5">
+                    <img
+                        className="flex-col w-32 h-32 md:w-48 md:h-auto rounded-full mx-auto"
+                        src="/images/profile.jpeg"
+                        alt="profile"
+                        width="512"
+                        height="512"
+                    ></img>
+                    <div className="flex-col prose my-auto">
+                        <p>
+                            Software engineer building Data Engineering and Data
+                            Science tools
+                        </p>
+                    </div>
+                </div>
+                <div className="prose">
+                    <p>
+                        I have 10 years of experience in the Data Science and
+                        Machine Learning ecosystem in different roles including
+                        engineering, product management, and sales plus my
+                        experience as a full-stack data software engineer give
+                        me a unique perspective on how to solve technical
+                        challenges to deliver successful products.
+                    </p>
+                    <p>
+                        On this website you can find links to applications I
+                        have build,{" "}
+                        <a href="https://github.com/danielfrg">
+                            my open-source projects
+                        </a>{" "}
+                        and thoughts around technical topics on my blog.
+                    </p>
+                    <p>
+                        For a look on my professional career see my{" "}
+                        <a href="https://linkedin.com/in/danielfrg">LinkedIn</a>
+                        .
+                    </p>
+                    <p>
+                        Every now and then I also do live streams on{" "}
+                        <a href="https://twitch.tv/danielfrg">twitch</a>.
+                    </p>
+                    <p>
+                        For a more personal content you can find me on{" "}
+                        <a href="https://twitter.com/danielfrg">
+                            twitter @danielfrg
+                        </a>
+                        ,{" "}
+                        <a href="https://instagram.com/danielfrg2">instagram</a>{" "}
+                        and on{" "}
+                        <a href="https://www.youtube.com/channel/UCeDe6wayUUcW8au0p_2p38A">
+                            youtube
+                        </a>
+                        .
+                    </p>
+                </div>
+            </div>
+        </div>
+    );
+
     return (
         <>
             <Head>
@@ -111,10 +172,11 @@ export default function Index({ posts }) {
                 <Header
                     title={SiteConfig.title}
                     nav={SiteConfig.headerNav}
-                    dark={true}
+                    dark={false}
                 />
 
                 <main>
+                    {profile}
                     <FeatureGrid
                         title="Applications"
                         items={appsGrid}

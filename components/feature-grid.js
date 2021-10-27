@@ -26,9 +26,9 @@ function Card(props) {
     });
 
     return (
-        <div className="w-full rounded">
+        <div className="w-full">
             <div className="w-full h-full p-3 flex flex-col min-h-[8rem] bg-gray-50 hover:bg-gray-100 dark:bg-dark dark:hover:bg-gray-900">
-                <div className="w-full rounded">{img}</div>
+                <div className="w-full">{img}</div>
                 <div className="flex-1 flex flex-col m-2 md:w-full justify-center">
                     <h2 className="text-2xl font-bold text-center dark:text-white">
                         {props.title}
