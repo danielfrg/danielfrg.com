@@ -85,7 +85,7 @@ jobs:
           make website
 
       - name: Push website (main)
-        uses: jsmrcaga/action-netlify-deploy@master
+        uses: jsmrcaga/action-netlify-deploy@v1.6.0
         if: (github.event_name != 'pull_request') && endsWith(github.ref, '/main')
         with:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
