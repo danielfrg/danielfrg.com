@@ -94,7 +94,7 @@ jobs:
           build_directory: out
 
       - name: Push website (branch)
-        uses: jsmrcaga/action-netlify-deploy@master
+        uses: jsmrcaga/action-netlify-deploy@1.6.0
         if: github.event_name == 'pull_request'
         with:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
