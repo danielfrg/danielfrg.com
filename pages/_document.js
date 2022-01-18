@@ -44,8 +44,7 @@ class MyDocument extends Document {
                     />
                     <script
                         async
-                        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3750136993687031"
-                        crossOrigin="anonymous"
+                        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5544330748126919"
                     ></script>
                 </Head>
 
