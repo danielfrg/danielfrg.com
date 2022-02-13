@@ -84,7 +84,7 @@ jobs:
         run: |
           make website
 
-      - name: Push website (prod)
+      - name: Push website to Netlify (prod)
         uses: jsmrcaga/action-netlify-deploy@v1.6.0
         if: (github.event_name != 'pull_request') && endsWith(github.ref, '/main')
         with:
@@ -93,7 +93,7 @@ jobs:
           NETLIFY_DEPLOY_TO_PROD: true
           build_directory: out
 
-      - name: Push website (preview)
+      - name: Push website to Netlify (preview)
         uses: jsmrcaga/action-netlify-deploy@v1.6.0
         if: github.event_name == 'pull_request'
         with:
@@ -101,7 +101,7 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           build_directory: out
 
-      - name: Upload artifact to GitHub
+      - name: Upload website to GitHub
         uses: actions/upload-artifact@v2
         if: failure()
         with:
