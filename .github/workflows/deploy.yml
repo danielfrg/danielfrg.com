@@ -84,26 +84,21 @@ jobs:
         run: |
           make website
 
-      - name: Push website to Netlify (prod)
-        uses: jsmrcaga/action-netlify-deploy@v1.6.0
-        if: (github.event_name != 'pull_request') && endsWith(github.ref, '/main')
-        with:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_DEPLOY_TO_PROD: true
-          build_directory: out
+      # ------------------------------------------------------------------------
+      # Release
 
-      - name: Push website to Netlify (preview)
-        uses: jsmrcaga/action-netlify-deploy@v1.6.0
-        if: github.event_name == 'pull_request'
+      - name: Staging - Upload to Netlify
+        uses: netlify/actions/cli@master
         with:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          args: deploy --dir=out
+        env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          build_directory: out
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
 
-      - name: Upload website to GitHub
-        uses: actions/upload-artifact@v2
-        if: failure()
+      - name: Prod - Upload to Netlify
+        uses: netlify/actions/cli@master
         with:
-          name: website
-          path: out
+          args: deploy --dir=out --prod
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
