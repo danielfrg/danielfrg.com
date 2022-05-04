@@ -1,39 +1,20 @@
 {
-    "name": "danielfrg.com",
-    "version": "1.0.0",
-    "private": true,
-    "scripts": {
-        "dev": "clear && next dev",
-        "build": "next build",
-        "start": "next start",
-        "export": "next export",
-        "clean": "rm -rf .next out",
-        "reset": "npm run clean && rm -rf node_modules"
-    },
-    "dependencies": {
-        "@next/bundle-analyzer": "^11.0.1",
-        "@next/mdx": "^11.0.1",
-        "@tailwindcss/typography": "^0.4.1",
-        "glob": "^7.1.7",
-        "gray-matter": "4.0.3",
-        "next": "^12.1.0",
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2",
-        "react-markdown": "^6.0.0",
-        "react-syntax-highlighter": "^15.4.4",
-        "rehype-raw": "^5.1.0",
-        "remark": "^13.0.0",
-        "remark-gfm": "^1.0.0",
-        "remark-html": "^13.0.1",
-        "tailwindcss": "^2.2.15"
-    },
-    "devDependencies": {
-        "autoprefixer": "^10.3.4",
-        "eslint": "^7.32.0",
-        "eslint-config-next": "^11.0.1",
-        "eslint-plugin-react": "^7.24.0",
-        "postcss": "^8.3.6",
-        "postcss-import": "^14.0.2",
-        "styled-components": "^5.3.0"
-    }
+  "name": "danielfrg.com",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/preact": "^0.1.2",
+    "@astrojs/tailwind": "^0.2.1",
+    "@tailwindcss/typography": "^0.5.2",
+    "astro": "^1.0.0-beta.20",
+    "postcss-import": "^14.1.0",
+    "prettier-plugin-astro": "^0.0.12",
+    "rehype-raw": "^6.1.1"
+  }
 }

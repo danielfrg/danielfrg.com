@@ -1,0 +1,28 @@
+---
+export interface Props {
+    title?: string;
+    items: object[];
+}
+
+const { title, items } = Astro.props;
+---
+
+<div class="container mx-auto max-w-screen-sm prose prose-lg">
+    <h2 class="text-center mb-10 text-5xl font-extrabold">
+        {title}
+    </h2>
+    <nav>
+        <ul class="">
+            {items.map((item, index) => {
+                const d = new Date(item.frontmatter.publishDate)
+                return (
+                    <li>
+                        <a href={item.url}>
+                            {item.frontmatter.title}
+                        </a>
+                    </li>)
+                }
+            )}
+        </ul>
+    </nav>
+</div>

@@ -1,0 +1,55 @@
+---
+import "../../styles/global.css";
+
+export interface Props {
+    title: string;
+    description: string;
+    permalink: string;
+    highlight?: boolean;
+}
+
+const { title, description, permalink, highlight } = Astro.props;
+const analyticsId = "UA-35523657-5";
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+<link rel="icon" type="image/png" href="/favicon.png" />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+{highlight ? <link rel="stylesheet" href="/assets/highlight.css" /> : null}
+
+<!-- Fonts -->
+<!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={permalink} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<!-- <meta property="og:image" content="https://astro.build/social.jpg?v=1" /> -->
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={permalink} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<!-- <meta property="twitter:image" content="https://astro.build/social.jpg?v=1" /> -->
+
+<!-- Analytics -->
+<script async src={`https://www.googletagmanager.com/gtag/js?id=${analyticsId}`}
+></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", analyticsId, { page_path: window.location.pathname });
+</script>

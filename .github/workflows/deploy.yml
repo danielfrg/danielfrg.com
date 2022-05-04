@@ -5,100 +5,59 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
-  # schedule:
-  #   - cron: "0 5 * * *"
 
 jobs:
   deploy:
     runs-on: ubuntu-20.04
-
-    strategy:
-      matrix:
-        python-version: [3.8]
-        node-version: ["16"]
 
     steps:
       - uses: actions/checkout@v2
       - run: git fetch --prune --unshallow
 
       # ------------------------------------------------------------------------
-      #  Python
+      #  Setup
 
-      - name: Python - Setup Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-
-      - name: Python - Install Poetry
-        uses: snok/install-poetry@v1
-        with:
-          version: 1.2.0a2
-          virtualenvs-create: true
-          virtualenvs-in-project: true
-
-      - name: Python - Load cached venv
-        id: cached-python-env
-        uses: actions/cache@v2
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-py${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
-
-      - name: Python - Ensure cache is healthy
-        id: cached-python-env-check
-        continue-on-error: true
-        if: steps.cached-python-env.outputs.cache-hit == 'true'
-        run: poetry run python --version
-
-      - name: Python - Install dependencies
-        if: steps.cached-python-env.outputs.cache-hit != 'true' || steps.cached-python-env-check.conclusion != 'success'
-        run: |
-          rm -rf .venv || true
-          poetry install --no-interaction
-
-      - name: Convert notebooks
-        run: |
-          source .venv/bin/activate
-          make notebooks
-
-      # ------------------------------------------------------------------------
-      #  JS
-
-      - name: JS - Setup Node.js ${{ matrix.node-version }}
+      - name: Setup Node.js 18
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 18
 
-      - name: JS - Load cached node_modules
+      - name: Load cached node_modules
         id: cached-node_modules
         uses: actions/cache@v2
         with:
           path: node_modules
-          key: node_modules-${{ runner.os }}-node${{ matrix.node-version }}-${{ hashFiles('package*.json') }}
+          key: node_modules-${{ runner.os }}-node18-${{ hashFiles('package-lock.json') }}
 
-      - name: JS - Install dependencies
+      - name: Install JS dependencies
         if: steps.cached-node_modules.outputs.cache-hit != 'true'
         run: |
-          make npm-install
+          npm install
+
+      # ------------------------------------------------------------------------
+      #  Build
 
       - name: Build website
         run: |
-          make website
+          npm run build
 
       # ------------------------------------------------------------------------
-      # Release
+      #  Release
 
-      - name: Staging - Upload to Netlify
+      - name: Preview - Upload to Netlify
+        if: github.event_name == 'pull_request'
         uses: netlify/actions/cli@master
         with:
-          args: deploy --dir=out
+          args: deploy --dir=dist
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
 
       - name: Prod - Upload to Netlify
+        if: (github.event_name != 'pull_request') && endsWith(github.ref, '/main')
         uses: netlify/actions/cli@master
         with:
-          args: deploy --dir=out --prod
+          args: deploy --dir=dist --prod
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}

@@ -1,0 +1,36 @@
+---
+export interface Props {
+    title: string;
+    nav?: object[];
+    dark?: boolean;
+}
+
+const { nav, dark } = Astro.props;
+const title = "Daniel Rodriguez"
+---
+
+<header class={`${dark ? "dark" : ""}`}>
+    <div class="dark:bg-dark">
+        <div
+            class="container max-w-screen-md flex flex-col md:flex-row gap-4 md:gap-0 mx-auto p-10 align-baseline "
+        >
+            <div class="flex-1 text-center md:text-left">
+                <a
+                    href="/"
+                    class="font-extrabold text-4xl text-neutral-900 dark:text-white align-center"
+                >
+                    {title}
+                </a>
+            </div>
+
+            <!-- <div class="flerx flex-col "> -->
+            <div class="flex flex-row justify-center items-end">
+                {nav?.map((item) => (
+                    <a href={item.href} class="mx-1 px-3 py-1 text-sm rounded-md text-gray-500 dark:text-gray-200 hover:bg-gray-500 transition-all ease-out">
+                        {item.text}
+                    </a>
+                ))}
+            </div>
+        </div>
+    </div>
+</header>

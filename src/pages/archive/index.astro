@@ -1,0 +1,44 @@
+---
+import BaseHead from "../../components/global/BaseHead.astro";
+import SiteFooter from "../../components/global/SiteFooter.astro";
+import SiteHeader from "../../components/global/SiteHeader.astro";
+import TwoColumnList from "../../components/grid/TwoColumnList.astro";
+
+let title = "Daniel Rodriguez";
+let description = "Un blog de Daniel Rodriguez";
+let permalink = "https://danielfrg.com/";
+
+let headerNav = [
+    { text: "Blog", href: "/archive" },
+    { text: "GitHub", href: "https://github.com/danielfrg" },
+    { text: "Twitter", href: "https://twitter.com/danielfrg" },
+];
+
+// Data Fetching
+let allPosts = await Astro.glob("../blog/**/*.md");
+
+allPosts = allPosts.sort(
+    (a, b) =>
+        new Date(b.frontmatter.publishDate).valueOf() -
+        new Date(a.frontmatter.publishDate).valueOf()
+);
+---
+
+<html lang="en">
+    <head>
+        <BaseHead {title} {description} {permalink} />
+    </head>
+
+    <body class="text-black">
+        <div class="flex flex-col w-full">
+            <SiteHeader {title} nav={headerNav} dark={true} />
+
+            <!-- Posts -->
+            <div class="slice pt-12 pb-20 px-3">
+                <TwoColumnList title="Articles" items={allPosts} />
+            </div>
+
+            <SiteFooter />
+        </div>
+    </body>
+</html>

@@ -1,13 +1,19 @@
 import os
+
 import yaml
 from mkdocs_jupyter import nbconvert2
 
 THIS_DIR = os.path.dirname(os.path.realpath(__file__))
 
 GENERATED_MD = """---
+layout: ../../../../layouts/NotebookBlogPost.astro
 {metadata}
+notebook_html_path: ../src/pages/blog/generated-nbs/{fpath}
 ---
 
+"""
+
+GENERATED_HTML = """
 {html}
 
 <style>
@@ -20,24 +26,39 @@ def main(filter=""):
     import glob
 
     # Iterate the notebooks directory and convert all notebooks
-    input_dir = os.path.join(THIS_DIR, "../content/blog/notebooks")
-    output_dir = os.path.join(THIS_DIR, "../content/blog/generated-nbs")
+    input_dir = os.path.join(THIS_DIR, "../src/pages/blog/notebooks")
+    output_dir = os.path.join(THIS_DIR, "../src/pages/blog/")
+    output_dir_gen = os.path.join(THIS_DIR, "../src/pages/blog/generated-nbs")
     glob_expr = os.path.join(input_dir, f"**/*{filter}*.ipynb")
 
     for notebook in glob.glob(glob_expr, recursive=True):
         print("Converting:", notebook)
-        content = convert(notebook)
-        if not content:
-            continue
 
         basename = os.path.basename(notebook)
-        output_fname = basename[:-6] + ".md"
-        output_path = os.path.join(output_dir, output_fname)
-        with open(output_path, "w") as file:
-            file.write(content)
+        output_fname_md = basename[:-6] + ".md"
+        output_fname_html = basename[:-6] + ".html"
+        head, name = os.path.split(notebook)
+        head, month = os.path.split(head)
+        head, year = os.path.split(head)
+        output_path_md = os.path.join(output_dir, year, month, output_fname_md)
+        output_path_html = os.path.join(output_dir_gen, output_fname_html)
+
+        metadata_html_path = os.path.join(output_dir_gen, output_fname_html)
+
+        md, html = convert(notebook, fpath=output_fname_html)
+        if not md:
+            continue
+
+        with open(output_path_md, "w") as file:
+            print("Writing to:", output_path_md)
+            file.write(md)
+
+        with open(output_path_html, "w") as file:
+            print("Writing to:", output_path_html)
+            file.write(html)
 
 
-def convert(nb_path):
+def convert(nb_path, fpath):
     """Convert a notebook to html with css included and fixes"""
 
     metadata = get_metadata(nb_path)
@@ -76,7 +97,9 @@ def convert(nb_path):
 
     styles = open(os.path.join(THIS_DIR, "jupyter-fixes.css"), "r").read()
 
-    return GENERATED_MD.format(metadata=metadata_str, html=html, styles=styles)
+    return GENERATED_MD.format(
+        metadata=metadata_str, fpath=fpath
+    ), GENERATED_HTML.format(html=html, styles=styles)
 
 
 def get_metadata(nb_path):

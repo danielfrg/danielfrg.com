@@ -1,0 +1,23 @@
+---
+import PreviewCard from "./PreviewCard.astro";
+
+export interface Props {
+    title?: string;
+    items: object[];
+}
+
+const { title, items } = Astro.props;
+---
+
+<div class="container mx-auto max-w-screen-md py-2">
+    <h2
+        class="text-center mb-10 text-5xl font-extrabold"
+    >
+        {title}
+    </h2>
+    <div class="grid gap-5 grid-cols-2 justify-evenly">
+        {items.map((item) => (
+            <PreviewCard title={item.title} desc={item.desc} img={item.img} links={item.links} />
+        ))}
+    </div>
+</div>

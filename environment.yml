@@ -1,0 +1,20 @@
+name: danielfrg.com
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9
+  - pip
+
+  # Dev
+  - pylint
+  - black
+  - isort
+  - flake8
+
+  # Deps
+  - nbconvert
+  - fire
+
+  - pip:
+      # Deps
+      - mkdocs-jupyter

@@ -1,0 +1,55 @@
+---
+export interface Props {
+    title: string;
+    author: string;
+    publishDate: string;
+    tags: string;
+}
+
+const { title, publishDate, summary, tags } = Astro.props;
+
+const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+];
+
+const date = new Date(publishDate);
+const month = monthNames[date.getMonth()];
+const dateStr: string = `${month} ${date.getDate()}th, ${date.getFullYear()}`;
+---
+
+<div class="slice">
+    <article
+        class="container mx-auto my-10 p-3 pb-16 max-w-[35em] prose prose-lg leading-8"
+    >
+        <header class="mb-10 md:mt-0 md:mb-10">
+            <p class="m-0 p-0 text-center text-md text-gray-400">
+                <time datetime={publishDate}>{dateStr}</time>
+            </p>
+            <h1 class="text-center mb-1 text-4xl font-bold">
+                {title}
+            </h1>
+            <p class="m-0 text-center text-xl text-gray-500 italic">
+                {summary}
+            </p>
+        </header>
+
+        <main class="">
+            <slot />
+        </main>
+
+        <footer class="mt-20 mb-10 text-center text-sm text-gray-500">
+            <p>Tags: {tags.join(", ")}</p>
+        </footer>
+    </article>
+</div>

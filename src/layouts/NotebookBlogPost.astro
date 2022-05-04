@@ -1,0 +1,44 @@
+---
+import fs from "node:fs/promises";
+import BlogPost from "../components/BlogPost.astro";
+import BaseHead from "../components/global/BaseHead.astro";
+import SiteFooter from "../components/global/SiteFooter.astro";
+import SiteHeader from "../components/global/SiteHeader.astro";
+
+let headerNav = [
+    { text: "Blog", href: "/archive" },
+    { text: "GitHub", href: "https://github.com/danielfrg" },
+    { text: "Twitter", href: "https://twitter.com/danielfrg" },
+];
+
+const { content } = Astro.props;
+const {
+    title,
+    description,
+    publishDate,
+    author,
+    permalink,
+    tags,
+    notebook_html_path,
+} = content;
+
+console.log(notebook_html_path);
+const url = new URL(notebook_html_path, import.meta.url);
+const html = await fs.readFile(url, "utf-8");
+---
+
+<html lang="es">
+    <head>
+        <BaseHead {title} {description} {permalink} highlight={true} />
+    </head>
+
+    <body>
+        <SiteHeader {title} nav={headerNav} dark={true} />
+
+        <BlogPost {title} {author} {publishDate} {tags}>
+            <div class="notebook-content" set:html={html}></div>
+        </BlogPost>
+
+        <SiteFooter />
+    </body>
+</html>
