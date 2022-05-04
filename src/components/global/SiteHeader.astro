@@ -1,12 +1,20 @@
 ---
 export interface Props {
-    title: string;
+    title?: string;
     nav?: object[];
     dark?: boolean;
 }
 
-const { nav, dark } = Astro.props;
+// const { dark } = Astro.props;
+
+let nav = [
+    { text: "Blog", href: "/archive" },
+    { text: "GitHub", href: "https://github.com/danielfrg" },
+    { text: "Twitter", href: "https://twitter.com/danielfrg" },
+];
+
 const title = "Daniel Rodriguez"
+const dark = true
 ---
 
 <header class={`${dark ? "dark" : ""}`}>

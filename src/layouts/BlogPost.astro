@@ -4,12 +4,6 @@ import BaseHead from "../components/global/BaseHead.astro";
 import SiteFooter from "../components/global/SiteFooter.astro";
 import SiteHeader from "../components/global/SiteHeader.astro";
 
-let headerNav = [
-    { text: "Blog", href: "/archive" },
-    { text: "GitHub", href: "https://github.com/danielfrg" },
-    { text: "Twitter", href: "https://twitter.com/danielfrg" },
-];
-
 const { content } = Astro.props;
 const { title, description, publishDate, author, permalink, tags } = content;
 ---
@@ -20,7 +14,7 @@ const { title, description, publishDate, author, permalink, tags } = content;
     </head>
 
     <body>
-        <SiteHeader {title} nav={headerNav} dark={true} />
+        <SiteHeader />
 
         <BlogPost {title} {author} {publishDate} {tags}>
             <slot />

@@ -1,0 +1,30 @@
+---
+import BaseHead from "../components/global/BaseHead.astro";
+import SiteFooter from "../components/global/SiteFooter.astro";
+import SiteHeader from "../components/global/SiteHeader.astro";
+
+let title = "Daniel Rodriguez";
+let description = "Daniel Rodriguez website, blog and portfolio";
+let permalink = "https://danielfrg.com/";
+---
+
+<html lang="en">
+    <head>
+        <BaseHead {title} {description} {permalink} />
+    </head>
+
+    <body class="text-black">
+        <div class="flex flex-col w-full">
+            <SiteHeader />
+
+            <div class="container mx-auto max-w-screen-sm prose prose-lg">
+                <h2 class="text-center my-10 text-5xl font-extrabold">
+                    404 - Page not found
+                </h2>
+
+                <img src="https://placekitten.com/500/500" alt="" />
+            </div>
+            <SiteFooter />
+        </div>
+    </body>
+</html>
