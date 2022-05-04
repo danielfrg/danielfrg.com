@@ -5,24 +5,50 @@ export interface Props {
 }
 
 const { title, items } = Astro.props;
+
+const monthNames = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+];
+
+function fmtDate(publishDate: string) {
+    const date = new Date(publishDate);
+    const month = monthNames[date.getMonth()];
+    const dateStr: string = `${month} ${date.getDate()}, ${date.getFullYear()}`;
+    return dateStr;
+}
 ---
 
 <div class="container mx-auto max-w-screen-sm prose prose-lg">
     <h2 class="text-center mb-10 text-5xl font-extrabold">
         {title}
     </h2>
-    <nav>
-        <ul class="">
-            {items.map((item, index) => {
-                const d = new Date(item.frontmatter.publishDate)
-                return (
-                    <li>
-                        <a href={item.url}>
+    <div class="flex flex-col gap-4">
+        {items.map((item, index) => {
+            const d = new Date(item.frontmatter.publishDate)
+            return (
+                <div class="flex flex-row gap-2">
+                    <div class="mx-4 text-gray-400 w-28">
+                        {fmtDate(item.frontmatter.publishDate)}
+                    </div>
+                    <div class="flex-1">
+                        <a href={item.url}
+                        class="font-bold text-xl text-dark/90">
                             {item.frontmatter.title}
                         </a>
-                    </li>)
-                }
-            )}
-        </ul>
-    </nav>
+                    </div>
+                </div>)
+            }
+        )}
+    </div>
 </div>

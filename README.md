@@ -30,3 +30,8 @@ Convert notebooks to markdown:
 ```shell
 python nbconvert/convert.py
 ```
+
+## Design ideas
+
+- https://culturedcode.com/things/blog
+- https://ciechanow.ski

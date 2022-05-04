@@ -7,14 +7,14 @@ export interface Props {
 
 // const { dark } = Astro.props;
 
-let nav = [
+const title = "Daniel Rodriguez"
+const dark = true
+
+const nav = [
     { text: "Blog", href: "/archive" },
     { text: "GitHub", href: "https://github.com/danielfrg" },
     { text: "Twitter", href: "https://twitter.com/danielfrg" },
 ];
-
-const title = "Daniel Rodriguez"
-const dark = true
 ---
 
 <header class={`${dark ? "dark" : ""}`}>
@@ -31,7 +31,6 @@ const dark = true
                 </a>
             </div>
 
-            <!-- <div class="flerx flex-col "> -->
             <div class="flex flex-row justify-center items-end">
                 {nav?.map((item) => (
                     <a href={item.href} class="mx-1 px-3 py-1 text-sm rounded-md text-gray-500 dark:text-gray-200 hover:bg-gray-500 transition-all ease-out">
