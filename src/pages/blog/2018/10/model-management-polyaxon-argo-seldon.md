@@ -45,7 +45,7 @@ The final output is a ML pipeline that trains multiple models, explore the metri
 
 All the code needed to follow along can be found here: [danielfrg/polyaxon-argo-seldon-example](https://github.com/danielfrg/polyaxon-argo-seldon-example). Locally you won't need much more than a couple of client CLIs and clone a couple of repos.
 
-```terminal
+```shell
 $ brew install kubectx
 $ brew install kubernetes-helm
 $ pip install polyaxon-cli
@@ -74,13 +74,13 @@ So just go there if you want to skip all the installation bits.
 
 I used GKE but it could be any Kubernetes cluster, either use the GCP console or with a command like this one:
 
-```terminal
+```shell
 $ gcloud beta container --project "<project-name>" clusters create "model-mgmt" --zone "us-central1-a" --cluster-version "1.10.7-gke.2" --machine-type "n1-standard-2" --image-type "COS" --disk-size "10" --num-nodes "3" --network "default"
 ```
 
 Configure your local `kubectl`:
 
-```terminal
+```shell
 $ gcloud container clusters get-credentials model-mgmt --zone us-central1-a
 ```
 
@@ -96,7 +96,7 @@ We need to create a couple of directories in the NFS server, so SSH into the nod
 
 Once in the instance create some directory structure for Polyaxon and Jupyter Lab and Argo later.
 
-```terminal
+```shell
 $ cd /data
 $ mkdir -m 777 data
 $ mkdir -m 777 outputs
@@ -111,7 +111,7 @@ $ chmod 777 deployments/
 
 Get the (private) IP of the NFS server either with the command below or just search for it on the Google Cloud console in the VMs. In my case `10.240.0.8`.
 
-```terminal
+```shell
 $ gcloud compute instances describe polyaxon-nfs-vm --zone=us-central1-f --format='value(networkInterfaces[0].networkIP)'
 10.240.0.8
 ```
@@ -119,7 +119,7 @@ $ gcloud compute instances describe polyaxon-nfs-vm --zone=us-central1-f --forma
 
 Finally create some PVCs for Polyaxon and the other tools to use. **Note that** you need to edit the `*-pvc.yml` files and add the correct IP Address:
 
-```terminal
+```shell
 $ cd <polyaxon-argo-seldon-example repo>
 $ cd gke/
 
@@ -144,7 +144,7 @@ $ kubectl apply -f upload-pvc.yml
 
 With the PVCs already created it's relatively easy to install it [based on the docs](https://docs.polyaxon.com/). First some permissions for the tiller (helm server) service account.
 
-```terminal
+```shell
 # Configure tiller to have the access it needs
 $ kubectl --namespace kube-system create sa tiller
 $ kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
@@ -185,7 +185,7 @@ persistence:
       mountPath: /outputs
 ```
 
-```terminal
+```shell
 $ cd <polyaxon-argo-seldon-example repo>
 $ cd polyaxon
 
@@ -194,7 +194,7 @@ $ helm install polyaxon/polyaxon --name=polyaxon --namespace=polyaxon -f polyaxo
 
 When the command finishes you will get something like this:
 
-```terminal
+```shell
 Polyaxon is currently running:
 
 1. Get the application URL by running these commands:
@@ -217,7 +217,7 @@ Polyaxon is currently running:
 
 So execute those instructions and login using the `polyaxon-cli`. The default `username:password` pair is: `root:rootpassword`:
 
-```terminal
+```shell
 $ polyaxon login --username=root --password=rootpassword
 ```
 
@@ -229,7 +229,7 @@ You can also visit the URL that is printed to visit the Polyaxon UI.
 
 [Full docs here](https://github.com/argoproj/argo/blob/master/demo.md) (the permissions section is important), basically:
 
-```terminal
+```shell
 $ kubectl create ns argo
 $ kubectl apply -n argo -f https://raw.githubusercontent.com/argoproj/argo/v2.2.1/manifests/install.yaml
 $ kubectl create rolebinding default-admin --clusterrole=admin --serviceaccount=default:default
@@ -244,7 +244,7 @@ Now we could visit the argo UI that looks like this with a couple of workflows:
 
 There is multiple ways to [install Seldon](https://github.com/SeldonIO/seldon-core/blob/master/notebooks/helm_examples.ipynb), I picked to use helm because I honestly don't fully understand ksonnet.
 
-```terminal
+```shell
 $ cd <seldon-core repo>
 
 $ kubectl create namespace seldon
@@ -257,7 +257,7 @@ $ helm install ./helm-charts/seldon-core --name seldon-core --namespace seldon  
 
 Run this in another terminal to proxy the Ambassador service:
 
-```terminal
+```shell
 $ kubectl port-forward $(kubectl get pods -n seldon -l service=ambassador -o jsonpath='{.items[0].metadata.name}') -n seldon 8003:8080
 ```
 
@@ -273,7 +273,7 @@ Polyaxon takes care of executing the jobs based on an imperative definitions in 
 
 Following the Polyaxon docs we can create a new project based on the examples.
 
-```terminal
+```shell
 $ polyaxon project create --name=mnist --description='Train and evaluate a model for the MNIST dataset'
 $ polyaxon init mnist
 ```
@@ -320,7 +320,7 @@ run:
 
 Now we can run the experiment:
 
-```terminal
+```shell
 $ cd <polyaxon-argo-seldon-example repo>
 $ polyaxon run -u -f polyaxonfile_hyperparams.yml
 ```
@@ -401,7 +401,7 @@ spec:
 
 This Jupyter Lab installation will have the right mounts for you move the serialized model:
 
-```terminal
+```shell
 $ cp /output/root/mnist/groups/12/120/model.dat /home/jovyan/deployments/mnist/
 ```
 
@@ -445,7 +445,7 @@ To support this I created a simple docker image that executes s2i and pushes an 
 
 Since we are going to push an image to Docker hub first we need to create a secret with the credentials to login to the registry.
 
-```terminal
+```shell
 $ kubectl create secret docker-registry regcred --docker-server=<your-registry-server> --docker-username=<your-name> --docker-password=<your-pword> --docker-email=<your-email>
 ```
 
@@ -500,7 +500,7 @@ spec:
 
 Then just execute the argo pipeline
 
-```terminal
+```shell
 $ argo submit argo/pipeline.yaml
 ```
 

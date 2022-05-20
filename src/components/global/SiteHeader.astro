@@ -25,7 +25,7 @@ const nav = [
             <div class="flex-1 text-center md:text-left">
                 <a
                     href="/"
-                    class="font-extrabold text-4xl text-neutral-900 dark:text-white align-center"
+                    class="font-bold text-4xl text-neutral-900 dark:text-white align-center hover:underline"
                 >
                     {title}
                 </a>
@@ -33,7 +33,7 @@ const nav = [
 
             <div class="flex flex-row justify-center items-end">
                 {nav?.map((item) => (
-                    <a href={item.href} class="mx-1 px-3 py-1 text-sm rounded-md text-gray-500 dark:text-gray-200 hover:bg-gray-500 transition-all ease-out">
+                    <a href={item.href} class="mx-1 px-3 py-1 text-sm font-mono uppercase rounded-md text-gray-500 dark:text-gray-200 hover:bg-gray-500 transition-all ease-out">
                         {item.text}
                     </a>
                 ))}

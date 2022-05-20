@@ -1,24 +1,37 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
+const round = (num) =>
+    num
+        .toFixed(7)
+        .replace(/(\.[0-9]+?)0+$/, "$1")
+        .replace(/\.0$/, "");
+const rem = (px) => `${round(px / 16)}rem`;
+const em = (px, base) => `${round(px / base)}em`;
+
 module.exports = {
     content: ["./src/**/*.{astro,html,js,jsx,svelte,ts,tsx,vue}"],
     darkMode: "class", // false or 'media' or 'class'
     theme: {
         extend: {
+            fontFamily: {
+                sans: ["Founders Grotesk", ...defaultTheme.fontFamily.sans],
+                mono: ["JetBrains Mono", ...defaultTheme.fontFamily.mono],
+            },
             colors: {
                 dark: "#1D1D1D",
-                black: "#303336",
-                link: "#0078e9",
-                lightgray: "#f5f5f7",
+                black: "#272727",
+                lightgrey: "#ececec",
+                yellow: "#ffb200",
             },
             typography: {
                 DEFAULT: {
                     css: {
-                        // p: {
-                        //     padding: "10px 1px",
-                        //     margin: "1px",
-                        // },
+                        color: "#272727",
+                        fontSize: rem(24),
                         a: {
                             color: "#0078e9",
                             textDecoration: "none",
+                            fontWeight: "normal",
                             "&:hover": {
                                 textDecoration: "underline",
                                 textDecorationColor: "#0078e9",
@@ -28,23 +41,13 @@ module.exports = {
                             marginLeft: "auto",
                             marginRight: "auto",
                         },
-                        table: {
-                            maxWidth: "100%",
-                            display: "inline-block",
-                            overflow: "auto",
-                        },
                         pre: {
-                            padding: 0,
-                            color: "unset",
-                            backgroundColor: "unset",
+                            fontSize: rem(16),
+                            borderRadius: "0",
                         },
-                        "code::before": false,
-                        "code::after": false,
-                        "blockquote p:first-of-type::before": false,
-                        "blockquote p:last-of-type::after": false,
                         blockquote: {
-                            color: "rgba(35, 28, 51, 0.66)",
-                            fontWeight: 300,
+                            fontStyle: "italic",
+                            color: "#6b7280",
                         },
                     },
                 },

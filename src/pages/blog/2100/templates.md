@@ -202,7 +202,7 @@ for directory in directories:
 
 Our terminal design:
 
-```terminal
+```shell
 $ echo "hello world!"
 hello work
 

@@ -24,8 +24,9 @@ const { title, description, permalink, highlight } = Astro.props;
 {highlight ? <link rel="stylesheet" href="/assets/highlight.css" /> : null}
 
 <!-- Fonts -->
-<!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
@@ -41,7 +42,7 @@ const { title, description, permalink, highlight } = Astro.props;
 <meta property="twitter:description" content={description} />
 <!-- <meta property="twitter:image" content="https://astro.build/social.jpg?v=1" /> -->
 
-<!-- Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3673QMK9C4"></script>
 <script>
   window.dataLayer = window.dataLayer || [];

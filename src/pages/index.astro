@@ -15,7 +15,7 @@ const apps = [
         desc: "Music source separation",
         img: "/images/demucs.png",
         links: [
-            { text: "Go to app", href: "https://demucs.danielfrg.com" },
+            { text: "Visit app", href: "https://demucs.danielfrg.com" },
             { text: "Read blogpost", href: "/blog/2020/10/demucs" },
         ],
     },
@@ -24,7 +24,7 @@ const apps = [
         desc: "Word embedding functions",
         img: "/images/word2vec.png",
         links: [
-            { text: "Go to app", href: "https://word2vec.danielfrg.com" },
+            { text: "Visit app", href: "https://word2vec.danielfrg.com" },
             {
                 text: "Read blogpost",
                 href: "/blog/2018/09/word2vec-algorithmia",
@@ -36,7 +36,7 @@ const apps = [
         desc: "Client-only Jupyter Notebook viewer",
         img: "/images/nbviewerjs.png",
         links: [
-            { text: "Go to app", href: "https://nbviewer.danielfrg.com" },
+            { text: "Visit app", href: "https://nbviewer.danielfrg.com" },
             { text: "Read blogpost", href: "/blog/2021/03/nbviewer-js" },
         ],
     },
@@ -45,14 +45,18 @@ const apps = [
 const openSource = [
     {
         title: "jupyter-flex",
-        desc: "",
+        desc: "Dashboards for Jupyter",
         img: "https://jupyter-flex.danielfrg.com/assets/img/logo-square.png",
         links: [
             {
-                text: "Go to docs",
+                text: "Visit docs",
                 href: "https://jupyter-flex.danielfrg.com",
             },
             { text: "Read blogpost", href: "/blog/2021/04/jupyter-flex" },
+            {
+                text: "View on GitHub",
+                href: "https://github.com/danielfrg/jupyter-flex",
+            },
         ],
     },
     {
@@ -83,7 +87,7 @@ const openSourceList = [
     {
         title: "illusionist",
         link: "https://github.com/danielfrg/illusionist",
-        desc: "Interactive client-only reports based on Jupyter Notebooks and Jupyter widgets",
+        desc: "Interactive client-only Jupyter Notebooks",
     },
     {
         title: "word2vec",
@@ -118,69 +122,68 @@ allPosts = allPosts.filter((post) => post.frontmatter.draft !== true);
             <SiteHeader />
 
             <!-- Profile -->
-            <div class="slice">
-                <div class="container max-w-screen-md mx-auto prose pb-36 px-3">
-                    <div class="grid gap-2 grid-cols-2">
-                        <img
-                            class="flex-col w-32 h-32 md:w-48 md:h-auto rounded-full mx-auto"
-                            src="/images/profile.jpeg"
-                            alt="profile"
-                            width="512"
-                            height="512"
-                        />
-                        <div class="flex-col my-auto">
-                            <p class="text-3xl">
-                                Engineer building data engineering and data
-                                science tools
-                            </p>
-                        </div>
-                    </div>
-                    <div class="prose-lg">
-                        <p class="my-2">
-                            I have 10 years of experience in the Data Science
-                            and Machine Learning ecosystem in different roles
-                            including engineering, product management, and sales
-                            plus my experience as a full-stack data software
-                            engineer give me a unique perspective on how to
-                            solve technical challenges to deliver successful
-                            products.
-                        </p>
-                        <p class="mt-4">
-                            Here you can find links to applications I have
-                            build,{" "}
-                            <a href="https://github.com/danielfrg">
-                                my open-source projects
-                            </a>{" "}
-                            and thoughts around technical topics on my blog. For
-                            a look on my professional career see my{" "}
-                            <a href="https://linkedin.com/in/danielfrg"
-                                >LinkedIn</a
-                            >.
+
+            <div class="container max-w-screen-md mx-auto prose pb-36 px-3">
+                <div class="grid gap-2 grid-cols-2">
+                    <img
+                        class="flex-col w-32 h-32 md:w-48 md:h-auto rounded-full mx-auto"
+                        src="/images/profile.jpeg"
+                        alt="profile"
+                        width="512"
+                        height="512"
+                    />
+                    <div class="flex-col my-auto">
+                        <p class="text-3xl">
+                            Engineer building data engineering and data
+                            science tools
                         </p>
                     </div>
+                </div>
+                <div class="text-2xl">
+                    <p class="my-2">
+                        I have 10 years of experience in the Data Science
+                        and Machine Learning ecosystem in different roles
+                        including engineering, product management, and sales
+                        plus my experience as a full-stack data software
+                        engineer give me a unique perspective on how to
+                        solve technical challenges to deliver successful
+                        products.
+                    </p>
+                    <p class="mt-4">
+                        Here you can find links to applications I have
+                        build,{" "}
+                        <a href="https://github.com/danielfrg">
+                            my open-source projects
+                        </a>{" "}
+                        and thoughts around technical topics on my blog. For
+                        a look on my professional career see my{" "}
+                        <a href="https://linkedin.com/in/danielfrg"
+                            >LinkedIn</a
+                        >.
+                    </p>
                 </div>
             </div>
 
             <!-- Apps -->
-            <div class="slice pt-16 pb-36 px-3">
+            <div class="pt-16 pb-36 px-3">
                 <PreviewGrid title="Applications" items={apps} />
             </div>
 
             <!-- OSS -->
-            <div class="slice pt-16 pb-36 px-3">
+            <div class="pt-16 pb-36 px-3">
                 <PreviewGrid title="Open Source" items={openSource} />
 
-                <div class="container max-w-screen-md mx-auto prose prose-lg mt-6 px-3">
-                {openSourceList.map((item, index) => (
-                    <p class="m-0">
-                        <a href={item.link}><b>{item.title}</b></a> - {item.desc}
-                    </p>
-                ))}
+                <div class="container max-w-screen-md mx-auto prose mt-6 px-3">
+                    {openSourceList.map((item, index) => (
+                        <p class="m-0 text-xl">
+                            <a href={item.link} class="font-mono text-lg">{item.title}</a> - {item.desc}
+                        </p>
+                    ))}
                 </div>
             </div>
 
             <!-- Posts -->
-            <div class="slice pt-16 pb-36 px-3">
+            <div class="pt-16 pb-36 px-3">
                 <TwoColumnList title="Latests posts" items={allPosts.slice(0, 10)} />
             </div>
 
