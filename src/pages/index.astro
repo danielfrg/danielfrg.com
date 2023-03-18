@@ -1,194 +1,76 @@
 ---
 import BaseHead from "../components/global/BaseHead.astro";
-import SiteFooter from "../components/global/SiteFooter.astro";
-import SiteHeader from "../components/global/SiteHeader.astro";
-import PreviewGrid from "../components/grid/PreviewGrid.astro";
-import TwoColumnList from "../components/grid/TwoColumnList.astro";
-
 let title = "Daniel Rodriguez";
 let description = "Daniel Rodriguez website, blog and portfolio";
 let permalink = "https://danielfrg.com/";
-
-const apps = [
-    {
-        title: "demucs",
-        desc: "Music source separation",
-        img: "/images/demucs.png",
-        links: [
-            { text: "Visit app", href: "https://demucs.danielfrg.com" },
-            { text: "Read blogpost", href: "/blog/2020/10/demucs" },
-        ],
-    },
-    {
-        title: "word2vec",
-        desc: "Word embedding functions",
-        img: "/images/word2vec.png",
-        links: [
-            { text: "Visit app", href: "https://word2vec.danielfrg.com" },
-            {
-                text: "Read blogpost",
-                href: "/blog/2018/09/word2vec-algorithmia",
-            },
-        ],
-    },
-    {
-        title: "nbviewer.js",
-        desc: "Client-only Jupyter Notebook viewer",
-        img: "/images/nbviewerjs.png",
-        links: [
-            { text: "Visit app", href: "https://nbviewer.danielfrg.com" },
-            { text: "Read blogpost", href: "/blog/2021/03/nbviewer-js" },
-        ],
-    },
-];
-
-const openSource = [
-    {
-        title: "jupyter-flex",
-        desc: "Dashboards for Jupyter",
-        img: "https://jupyter-flex.danielfrg.com/assets/img/logo-square.png",
-        links: [
-            {
-                text: "Visit docs",
-                href: "https://jupyter-flex.danielfrg.com",
-            },
-            { text: "Read blogpost", href: "/blog/2021/04/jupyter-flex" },
-            {
-                text: "View on GitHub",
-                href: "https://github.com/danielfrg/jupyter-flex",
-            },
-        ],
-    },
-    {
-        title: "mkdocs-jupyter",
-        desc: "",
-        img: "https://raw.githubusercontent.com/danielfrg/mkdocs-jupyter/main/docs/logo-square.png",
-        links: [
-            {
-                text: "View on GitHub",
-                href: "https://github.com/danielfrg/mkdocs-jupyter",
-            },
-        ],
-    },
-    {
-        title: "s3-contents",
-        desc: "",
-        img: "https://raw.githubusercontent.com/danielfrg/s3contents/main/docs/logo-square.png",
-        links: [
-            {
-                text: "View on GitHub",
-                href: "https://github.com/danielfrg/s3contents",
-            },
-        ],
-    },
-];
-
-const openSourceList = [
-    {
-        title: "illusionist",
-        link: "https://github.com/danielfrg/illusionist",
-        desc: "Interactive client-only Jupyter Notebooks",
-    },
-    {
-        title: "word2vec",
-        link: "https://github.com/danielfrg/word2vec",
-        desc: "Python interface to Google word2vec",
-    },
-    {
-        title: "tsne",
-        link: "https://github.com/danielfrg/tsne",
-        desc: "A python wrapper for Barnes-Hut tsne",
-    },
-    {
-        title: "pelican-jupyter",
-        link: "https://github.com/danielfrg/pelican-jupyter",
-        desc: "Pelican plugin for blogging with Jupyter/IPython Notebooks",
-    },
-];
-
-// Data Fetching
-let allPosts = await Astro.glob("./blog/**/*.md");
-allPosts = allPosts.sort((a, b) => new Date(b.frontmatter.publishDate).valueOf() - new Date(a.frontmatter.publishDate).valueOf());
-allPosts = allPosts.filter((post) => post.frontmatter.draft !== true);
 ---
 
 <html lang="en">
     <head>
-        <BaseHead {title} {description} {permalink} />
+        <BaseHead
+            title={title}
+            description={description}
+            permalink={permalink}
+        />
     </head>
 
-    <body class="text-black">
-        <div class="flex flex-col w-full">
-            <SiteHeader />
-
-            <!-- Profile -->
-
-            <div class="container max-w-screen-md mx-auto prose pb-36 px-3">
-                <div class="grid gap-2 grid-cols-2">
-                    <img
-                        class="flex-col w-32 h-32 md:w-48 md:h-auto rounded-full mx-auto"
-                        src="/images/profile.jpeg"
-                        alt="profile"
-                        width="512"
-                        height="512"
-                    />
-                    <div class="flex-col my-auto">
-                        <p class="text-3xl">
-                            Engineer building data engineering and data
-                            science tools
-                        </p>
+    <body>
+        <div class="flex h-screen">
+            <div class="lg:w-2/3 mx-4 m-auto lg:m-auto">
+                <div>
+                    <h1
+                        class="py-2 text-5xl font-extrabold tracking-tighter bg-clip-text bg-gradient-to-r from-myorange to-mypink text-transparent"
+                    >
+                        Daniel Rodriguez
+                    </h1>
+                    <div
+                        class="text-gray-700 text-lg font-light leading-loose mt-2"
+                    >
+                        <strong class="font-bold text-gray-700">
+                            I build data science tools.
+                        </strong>
+                        I'm currently working as a Developer Relations Engineer at
+                        Google.
                     </div>
                 </div>
-                <div class="text-2xl">
-                    <p class="my-2">
-                        I have 10 years of experience in the Data Science
-                        and Machine Learning ecosystem in different roles
-                        including engineering, product management, and sales
-                        plus my experience as a full-stack data software
-                        engineer give me a unique perspective on how to
-                        solve technical challenges to deliver successful
-                        products.
-                    </p>
-                    <p class="mt-4">
-                        Here you can find links to applications I have
-                        build,{" "}
-                        <a href="https://github.com/danielfrg">
-                            my open-source projects
-                        </a>{" "}
-                        and thoughts around technical topics on my blog. For
-                        a look on my professional career see my{" "}
-                        <a href="https://linkedin.com/in/danielfrg"
-                            >LinkedIn</a
-                        >.
-                    </p>
+
+                <div class="my-8 lg:text-right">
+                    <ul class="text-2xl tracking-tight nav-links">
+                        <li class="lg:inline">
+                            <a href="/about" class="abold md:px-6 py-4 abold"
+                                >About</a
+                            >
+                        </li>
+                        <li class="lg:inline">
+                            <a href="/blog" class="abold md:px-6 py-4"
+                                >Writing</a
+                            >
+                        </li>
+                        <li class="lg:inline">
+                            <a href="/projects" class="abold md:px-6 py-4"
+                                >Projects</a
+                            >
+                        </li>
+                        <li class="lg:inline">
+                            <a
+                                href="https://github.com/danielfrg"
+                                class="abold md:px-6 py-4">Code</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+                <div class="my-8 lg:text-right">
+                    <ul class="text-2xl tracking-tight nav-links">
+                        <li class="lg:inline">
+                            <a
+                                href="https://lapalabradeldia.com"
+                                class="abold md:px-6 py-4 !text-mygreen hover:underline"
+                                >Wordle En Español</a
+                            >
+                        </li>
+                    </ul>
                 </div>
             </div>
-
-            <!-- Apps -->
-            <div class="pt-16 pb-36 px-3">
-                <PreviewGrid title="Applications" items={apps} />
-            </div>
-
-            <!-- OSS -->
-            <div class="pt-16 pb-36 px-3">
-                <PreviewGrid title="Open Source" items={openSource} />
-
-                <div class="container max-w-screen-md mx-auto prose mt-6 px-3">
-                    {openSourceList.map((item, index) => (
-                        <p class="m-0 text-xl">
-                            <a href={item.link} class="font-mono text-lg">{item.title}</a> - {item.desc}
-                        </p>
-                    ))}
-                </div>
-            </div>
-
-            <!-- Posts -->
-            <div class="pt-16 pb-36 px-3">
-                <TwoColumnList title="Latests posts" items={allPosts.slice(0, 10)} />
-            </div>
-
-
-            <SiteFooter />
         </div>
     </body>
 </html>

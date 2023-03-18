@@ -10,7 +10,12 @@ const { title, description, publishDate, author, permalink, tags } = content;
 
 <html lang="es">
     <head>
-        <BaseHead {title} {description} {permalink} highlight={true} />
+        <BaseHead
+            title={title}
+            description={description}
+            permalink={permalink}
+            highlight={true}
+        />
     </head>
 
     <body>

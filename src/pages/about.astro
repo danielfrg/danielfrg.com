@@ -1,0 +1,71 @@
+---
+import BaseHead from "../components/global/BaseHead.astro";
+import SiteFooter from "../components/global/SiteFooter.astro";
+import SiteHeader from "../components/global/SiteHeader.astro";
+
+let title = "Daniel Rodriguez";
+let description = "Daniel Rodriguez website, blog and portfolio";
+let permalink = "https://danielfrg.com/";
+---
+
+<html lang="en">
+    <head>
+        <BaseHead
+            title={title}
+            description={description}
+            permalink={permalink}
+        />
+    </head>
+
+    <body>
+        <div class="flex flex-col w-full">
+            <SiteHeader />
+
+            <div class="container max-w-screen-md mx-auto pb-36 px-3">
+                <div class="grid gap-2 grid-cols-2 p-8">
+                    <div class="flex-col my-auto">
+                        <p class="text-4xl font-bold tracking-tighter">
+                            Software Engineer building data science tools
+                        </p>
+                    </div>
+                    <img
+                        class="transform lg:rotate-3 rounded-md"
+                        src="/images/profile.jpeg"
+                        alt="profile"
+                        width="512"
+                        height="512"
+                    />
+                </div>
+                <div class="text-xl subpixel-antialiased words leading-relaxed">
+                    <p class="my-2">
+                        I have 10 years of experience in the Data Science and
+                        Machine Learning ecosystem in different roles including
+                        engineering, product management, and sales plus my
+                        experience as a full-stack data software engineer give
+                        me a unique perspective on how to solve technical
+                        challenges to deliver successful products.
+                    </p>
+                    <p class="my-4">
+                        I'm currently working as a Developer Relations Engineer
+                        at <a
+                            href="https://developers.google.com/google-ads/api/docs/start"
+                            >Google Ads</a
+                        >.
+                    </p>
+                    <p class="mt-4">
+                        You can see my applications and Open Source work in the
+                        <a href="/projects"> projects section</a>, and on
+                        <a href="https://github.com/danielfrg"> my Github</a>,
+                        thoughts around technical topics on my <a href="/blog">
+                            my blog</a
+                        >, and my professional career on{" "}
+                        <a href="https://linkedin.com/in/danielfrg">LinkedIn</a
+                        >.
+                    </p>
+                </div>
+            </div>
+
+            <SiteFooter />
+        </div>
+    </body>
+</html>

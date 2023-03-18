@@ -1,0 +1,158 @@
+---
+import BaseHead from "../components/global/BaseHead.astro";
+import SiteFooter from "../components/global/SiteFooter.astro";
+import SiteHeader from "../components/global/SiteHeader.astro";
+import PreviewGrid from "../components/grid/PreviewGrid.astro";
+
+let title = "Daniel Rodriguez";
+let description = "Daniel Rodriguez website, blog and portfolio";
+let permalink = "https://danielfrg.com/";
+
+const apps = [
+    {
+        title: "demucs",
+        desc: "Music source separation",
+        img: "/images/demucs.png",
+        links: [
+            { text: "Visit app", href: "https://demucs.danielfrg.com" },
+            { text: "Read blogpost", href: "/blog/2020/10/demucs" },
+        ],
+    },
+    {
+        title: "word2vec",
+        desc: "Word embedding functions",
+        img: "/images/word2vec.png",
+        links: [
+            { text: "Visit app", href: "https://word2vec.danielfrg.com" },
+            {
+                text: "Read blogpost",
+                href: "/blog/2018/09/word2vec-algorithmia",
+            },
+        ],
+    },
+    {
+        title: "nbviewer.js",
+        desc: "Client-only Jupyter Notebook viewer",
+        img: "/images/nbviewerjs.png",
+        links: [
+            { text: "Visit app", href: "https://nbviewer.danielfrg.com" },
+            { text: "Read blogpost", href: "/blog/2021/03/nbviewer-js" },
+        ],
+    },
+];
+
+const openSource = [
+    {
+        title: "jupyter-flex",
+        desc: "Dashboards for Jupyter",
+        img: "https://jupyter-flex.danielfrg.com/assets/img/logo-square.png",
+        links: [
+            {
+                text: "Visit docs",
+                href: "https://jupyter-flex.danielfrg.com",
+            },
+            { text: "Read blogpost", href: "/blog/2021/04/jupyter-flex" },
+            {
+                text: "View on GitHub",
+                href: "https://github.com/danielfrg/jupyter-flex",
+            },
+        ],
+    },
+    {
+        title: "mkdocs-jupyter",
+        desc: "",
+        img: "https://raw.githubusercontent.com/danielfrg/mkdocs-jupyter/main/docs/logo-square.png",
+        links: [
+            {
+                text: "View on GitHub",
+                href: "https://github.com/danielfrg/mkdocs-jupyter",
+            },
+        ],
+    },
+    {
+        title: "s3-contents",
+        desc: "",
+        img: "https://raw.githubusercontent.com/danielfrg/s3contents/main/docs/logo-square.png",
+        links: [
+            {
+                text: "View on GitHub",
+                href: "https://github.com/danielfrg/s3contents",
+            },
+        ],
+    },
+];
+
+const openSourceList = [
+    {
+        title: "illusionist",
+        link: "https://github.com/danielfrg/illusionist",
+        desc: "Interactive client-only Jupyter Notebooks",
+    },
+    {
+        title: "word2vec",
+        link: "https://github.com/danielfrg/word2vec",
+        desc: "Python interface to Google word2vec",
+    },
+    {
+        title: "tsne",
+        link: "https://github.com/danielfrg/tsne",
+        desc: "A python wrapper for Barnes-Hut tsne",
+    },
+    {
+        title: "pelican-jupyter",
+        link: "https://github.com/danielfrg/pelican-jupyter",
+        desc: "Pelican plugin for blogging with Jupyter/IPython Notebooks",
+    },
+];
+
+// Data Fetching
+let allPosts = await Astro.glob("./blog/**/*.md");
+allPosts = allPosts.sort(
+    (a, b) =>
+        new Date(b.frontmatter.publishDate).valueOf() -
+        new Date(a.frontmatter.publishDate).valueOf()
+);
+allPosts = allPosts.filter((post) => post.frontmatter.draft !== true);
+---
+
+<html lang="en">
+    <head>
+        <BaseHead
+            title={title}
+            description={description}
+            permalink={permalink}
+            highlight={false}
+        />
+    </head>
+
+    <body>
+        <div class="flex flex-col w-full">
+            <SiteHeader />
+
+            <!-- OSS -->
+            <div class="pt-16 pb-36 px-3">
+                <PreviewGrid title="Open Source" items={openSource} />
+
+                <ul class="container max-w-screen-md mx-auto mt-6 px-3">
+                    {
+                        openSourceList.map((item, index) => (
+                            <li class="m-0 text-xl">
+                                <a href={item.link} class="font-mono text-lg">
+                                    {item.title}
+                                </a>
+                                - {item.desc}
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+
+            <!-- Apps -->
+            <div class="pt-16 pb-36 px-3">
+                <PreviewGrid title="Applications" items={apps} />
+            </div>
+
+            <SiteFooter />
+        </div>
+    </body>
+</html>

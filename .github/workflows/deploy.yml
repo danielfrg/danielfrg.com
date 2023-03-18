@@ -7,24 +7,31 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
-    runs-on: ubuntu-20.04
+  run:
+    name: Deploy website
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        node-version: ["18"]
 
     steps:
-      - uses: actions/checkout@v2
-      - run: git fetch --prune --unshallow
+      - uses: actions/checkout@v3
 
       # ------------------------------------------------------------------------
       #  Setup
 
-      - name: Setup Node.js 18
-        uses: actions/setup-node@v2
+      - name: JS - Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: ${{ matrix.node-version }}
 
       - name: Load cached node_modules
         id: cached-node_modules
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: node_modules
           key: node_modules-${{ runner.os }}-node18-${{ hashFiles('package-lock.json') }}
@@ -42,7 +49,7 @@ jobs:
           npm run build
 
       # ------------------------------------------------------------------------
-      #  Release
+      #  Deploy
 
       - name: Preview - Upload to Netlify
         if: github.event_name == 'pull_request'

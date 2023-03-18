@@ -20,10 +20,14 @@ allPosts = allPosts.filter((post) => post.frontmatter.draft !== true);
 
 <html lang="en">
     <head>
-        <BaseHead {title} {description} {permalink} />
+        <BaseHead
+            title={title}
+            description={description}
+            permalink={permalink}
+        />
     </head>
 
-    <body class="text-black">
+    <body>
         <div class="flex flex-col w-full">
             <SiteHeader />
 

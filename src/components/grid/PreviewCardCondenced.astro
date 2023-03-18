@@ -25,16 +25,25 @@ const { title, desc, img, links } = Astro.props;
             {title}
         </h3>
     </div>
-    <div class="group w-full h-full text-white transition-all ease-out duration-150">
+    <div
+        class="group w-full h-full text-white transition-all ease-out duration-150"
+    >
         <div
             class="absolute w-full h-full rounded-2xl bg-transparent hover:bg-black/60"
         >
             <div
                 class="flex flex-col md:flex-row gap-4 w-full h-full justify-center items-center invisible group-hover:visible"
             >
-               {links.map((link, index) => (
-                    <a href={link.href} class="bg-white text-black rounded-full px-5 py-3 font-bold">{link.text}</a>
-                ))}
+                {
+                    links.map((link, index) => (
+                        <a
+                            href={link.href}
+                            class="bg-white rounded-full px-5 py-3 font-bold"
+                        >
+                            {link.text}
+                        </a>
+                    ))
+                }
             </div>
         </div>
     </div>

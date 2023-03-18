@@ -23,14 +23,19 @@ const html = await fs.readFile(url, "utf-8");
 
 <html lang="es">
     <head>
-        <BaseHead {title} {description} {permalink} highlight={true} />
+        <BaseHead
+            title={title}
+            description={description}
+            permalink={permalink}
+            highlight={true}
+        />
     </head>
 
     <body>
         <SiteHeader />
 
         <BlogPost {title} {author} {publishDate} {tags}>
-            <div class="notebook-content" set:html={html}></div>
+            <div class="notebook-content" set:html={html} />
         </BlogPost>
 
         <SiteFooter />

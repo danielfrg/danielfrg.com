@@ -14,10 +14,14 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ["Founders Grotesk", ...defaultTheme.fontFamily.sans],
+                sans: ["Inter", ...defaultTheme.fontFamily.sans],
                 mono: ["JetBrains Mono", ...defaultTheme.fontFamily.mono],
             },
             colors: {
+                myorange: "#fb5607",
+                mypink: "#ff006e",
+                myblue: "#3a86ff",
+                mygreen: "#43a047",
                 dark: "#1D1D1D",
                 black: "#272727",
                 lightgrey: "#ececec",
@@ -27,14 +31,15 @@ module.exports = {
                 DEFAULT: {
                     css: {
                         color: "#272727",
-                        fontSize: rem(24),
+                        fontSize: rem(18),
                         a: {
-                            color: "#0078e9",
+                            color: "#3a86ff",
                             textDecoration: "none",
                             fontWeight: "normal",
                             "&:hover": {
-                                textDecoration: "underline",
-                                textDecorationColor: "#0078e9",
+                                color: "#fb5607",
+                                // textDecoration: "underline",
+                                // textDecorationColor: "#3b82f6",
                             },
                         },
                         img: {

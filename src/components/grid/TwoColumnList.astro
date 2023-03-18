@@ -29,26 +29,27 @@ function fmtDate(publishDate: string) {
 }
 ---
 
-<div class="container mx-auto max-w-screen-sm prose">
-    <h2 class="text-center mb-10 text-5xl md:text-7xl font-bold">
+<div class="container mx-auto max-w-screen-sm">
+    <h2 class="text-center mb-10 text-4xl md:text-6xl font-bold">
         {title}
     </h2>
-    <div class="flex flex-col gap-4">
-        {items.map((item, index) => {
-            const d = new Date(item.frontmatter.publishDate)
-            return (
-                <div class="flex flex-row gap-2">
-                    <div class="font-mono text-sm text-gray-400 w-28 flex items-center">
-                        <span>{fmtDate(item.frontmatter.publishDate)}</span>
+    <div class="flex flex-col gap-8">
+        {
+            items.map((item, index) => {
+                const d = new Date(item.frontmatter.publishDate);
+                return (
+                    <div class="flex flex-row gap-2">
+                        <div class="font-mono text-sm text-gray-400 w-28 flex items-center">
+                            <span>{fmtDate(item.frontmatter.publishDate)}</span>
+                        </div>
+                        <div class="flex-1">
+                            <a href={item.url} class="text-xl">
+                                {item.frontmatter.title}
+                            </a>
+                        </div>
                     </div>
-                    <div class="flex-1">
-                        <a href={item.url}
-                        class="text-xl text-black">
-                            {item.frontmatter.title}
-                        </a>
-                    </div>
-                </div>)
-            }
-        )}
+                );
+            })
+        }
     </div>
 </div>

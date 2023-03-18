@@ -4,6 +4,18 @@ body {
     -webkit-text-size-adjust: 100%;
 }
 
+a {
+    @apply text-myblue hover:text-blue-800 border-b-2 border-myblue no-underline
+ }
+
+ a:hover {
+    @apply no-underline text-myorange border-myorange
+ }
+
+ a.abold {
+    @apply text-black hover:text-myblue font-bold border-b-0
+ }
+
 .prose {
     .gray_background {
         background: rgb(235, 236, 237);
@@ -51,7 +63,7 @@ body {
     background-repeat: no-repeat;
 }
 
-@font-face {
+/* @font-face {
     font-family: 'Founders Grotesk';
     src: url('/assets/fonts/founders-grotesk/FoundersGrotesk-Regular.otf') format('opentype');
     font-weight: 400;
@@ -115,4 +127,4 @@ body {
   font-weight: 700;
   font-style: normal;
   font-display: swap;
-}
+} */

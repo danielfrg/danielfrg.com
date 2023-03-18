@@ -11,11 +11,9 @@ const { title, desc, img, links } = Astro.props;
 
 <div class="flex flex-col bg-lightgrey p-1">
     <div class="flex-1">
-        <img src="${img}" class="w-full min-h-[260px] object-cover" />
+        <img src={img} class="w-full min-h-[260px] object-cover" />
     </div>
-    <div
-        class="flex flex-col px-2 py-2 text-center"
-    >
+    <div class="flex flex-col px-2 py-2 text-center">
         <span class="font-mono text-sm">{desc}</span>
 
         <h3 class="text-2xl md:text-3xl font-extrabold uppercase mb-4">
@@ -25,9 +23,16 @@ const { title, desc, img, links } = Astro.props;
         <div
             class="flex flex-col md:flex-row gap-4 w-full h-full justify-center items-center"
         >
-        {links.map((link, index) => (
-                <a href={link.href} class="underline">{link.text}</a>
-            ))}
+            {
+                links.map((link, index) => (
+                    <a
+                        href={link.href}
+                        class="border-0 underline hover:underline"
+                    >
+                        {link.text}
+                    </a>
+                ))
+            }
         </div>
     </div>
 </div>

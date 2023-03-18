@@ -9,15 +9,24 @@ export interface Props {
 const { title, items } = Astro.props;
 ---
 
-<div class="container max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg mx-auto py-2">
-    <h2
-        class="text-center mb-10 text-5xl md:text-7xl font-bold"
-    >
+<div
+    class="container max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg mx-auto py-2"
+>
+    <h2 class="text-center mb-10 text-5xl md:text-5xl font-bold italic">
         {title}
     </h2>
-    <div class="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-evenly">
-        {items.map((item) => (
-            <PreviewCard title={item.title} desc={item.desc} img={item.img} links={item.links} />
-        ))}
+    <div
+        class="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-evenly"
+    >
+        {
+            items.map((item) => (
+                <PreviewCard
+                    title={item.title}
+                    desc={item.desc}
+                    img={item.img}
+                    links={item.links}
+                />
+            ))
+        }
     </div>
 </div>
