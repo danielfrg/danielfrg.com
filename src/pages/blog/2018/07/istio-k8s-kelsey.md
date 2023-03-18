@@ -78,7 +78,7 @@ Istio allow us to do stuff like traffic shaping: Decide which endpoints see what
 
 This work with a simple file (like k8s) that target objects based on k8s labels. Then you use the `istioctl`
 
-```plain
+```
 istioctl mixer rule create global bar.default.svc.cluster.local -f <file.yaml>
 ```
 

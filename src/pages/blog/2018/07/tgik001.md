@@ -23,7 +23,7 @@ There is some things of the control plane that run inside k8s, the kube-system n
 
 Run a sample pod:
 
-```plain
+```
 kubectl run --generator=run-pod/v1 --image=gcr.io/kuar-demo/kuard-amd64:1 kuard
 kubectl get pods
 ```
@@ -58,7 +58,7 @@ We cannot use port-forward to access a deployment because it only works with a p
 
 A `Service` helps with that by creating a load-balancer and everytime a request comes in send it to one of the pods.
 
-```plain
+```
 kubectl expose deployment kuard --type=LoadBalancer --port=80 --target-port=8080
 ```
 
@@ -73,7 +73,7 @@ A service does this:
 
 You can scale up and down the number of pods of a deployment.
 
-```plain
+```
 kubectl scale deployment kuard --replicas=10
 kubectl edit deploy kuard
 ```
@@ -82,7 +82,7 @@ If you `kubectl edit` the deployment you can see everything it was uploaded and 
 
 You can update the version of the deployment by just changing the image that is being deployed.
 
-```plain
+```
 kubectl set image deployment kuard kuard=gcr.io/kuar-demo/kuard-amd64:2
 ```
 

@@ -11,20 +11,20 @@ author: Daniel Rodriguez
 
 Create a deployment:
 
-```plain
+```
 kubectl run --image=gcr.io/kuar-demo/kuard-amd64:1 kuard
 kubectl port-forward kuard-XXXX-XXXX 8080:8080
 ```
 
 We can get into that pod using (basically ssh'ing into the container):
 
-```plain
+```
 kubectl exec -it kuard-XXXXX-XXXXX ash
 ```
 
 Inside the container we can for example execute `ifconfig` and it will tell use the IP address e.g. `inet addr:192.168.89.66` . Every single pod in k8s get a different IP address different than the node they are running on, we can see them both of them with `kubectl get pods -o wide`:
 
-```plain
+```
 NAME  READY  STATUS   RESTARTS  AGE  IP             NODE
 XXX.  X.     XXXX.    XXXX.     X.   192.168.89.66  ip-10-0-25-2...
 ```
@@ -58,7 +58,7 @@ Ideal number of containers per pod? As few as you can get away with. Run more co
 
 We can expose this pods using a `Service`:
 
-```plain
+```
 kubectl expose deploy kuard --type=LoadBalancer --port=80 --target-port=8080
 ```
 
@@ -88,7 +88,7 @@ In all the nodes there is a `kube-proxy` service and it's what makes this magic 
 
 If we `iptables -L` we can see a bunch of rules with comments like `/* cali:XXXXXXX */`, all of those are managed by calico (or the network plugin). If we look for out service name `kuard` we can find that there is something like:
 
-```plain
+```
 -A KUBE-SERVICES -d <ClusterIP> .... -j KUBE-SVC-XYZ
 ...
 -A KUBE-SVC-XYZ ... --probability 0.1 -j KUBE-SEP-ABC

@@ -13,13 +13,13 @@ author: Daniel Rodriguez
 
 `kubectl run` is a nice tool to launch pods, deployments and other objects based on some hardcoded generators. Lets launch a Pod:
 
-```plain
+```
 kubectl run kuard --generator=run-pod/v1 --image=gcr.io/kuar-demo/kuard-amd64:1
 ```
 
 We can get the full k8s object yaml that the system is using and do things more declaratively things is using:
 
-```plain
+```
 kubectl get pods kuard -o yaml
 
 # Some interesting things:
@@ -30,7 +30,7 @@ If we try to `kubectl apply` this yaml it wont work because of that version numb
 
 Another much better options is to use the generator and add `-o yaml --dry-run`:
 
-```plain
+```
 kubectl run kuard --generator=run-pod/v1 --image=gcr.io/kuar-demo/kuard-amd64:1 -o yaml --dry-run
 ```
 
@@ -38,7 +38,7 @@ This will return a super clean yaml that is sent to the system.
 
 **Tip:** we can use `-w` to watch the output e.g:
 
-```plain
+```
 kubectl get pod kuard -w -o wide
 ```
 
@@ -56,7 +56,7 @@ Deployments are ReplicaSets + roll-upgrades and rollback-downgrades.
 
 Deplyments create ReplicaSets and ReplicaSets create Pods. If you do:
 
-```plain
+```
 $ kubectl get pods
 kuard-XXXXXXXX-YYYY ...
 ```

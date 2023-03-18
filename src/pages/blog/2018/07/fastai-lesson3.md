@@ -19,7 +19,7 @@ Looking again [at this demo](http://setosa.io/ev/image-kernels/) we can get an i
 
 - We will have multiple kernels that do different things, for example right or left edges. For a kernel that detects bottom edges. We can see green where it matches and red where it doesn't
 
-```plain
+```
 Kernel: [ [ -1 -1 -1 ], [0 0 0] [ 1 1 1] ]
 ```
 

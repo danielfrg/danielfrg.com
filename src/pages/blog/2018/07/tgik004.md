@@ -13,7 +13,7 @@ How to do Authentication and Authorization for k8s.
 
 The kubeconfig file:
 
-```plain
+```
 clusters:
 - cluster:
 	certificate-authority-data:
@@ -24,7 +24,7 @@ clusters:
 
 With this you could connect (hitting) but you cannot Authenticate to the server, you need:
 
-```plain
+```
 users:
 - name: admin
 	user:
@@ -36,7 +36,7 @@ The `client-key-data` is basically the password.
 
 Then the `context` maps a cluster with a user:
 
-```plain
+```
 - context:
 	cluster: gke_continuum-compute_us-central1-a_daniel-ml
 	user: gke_continuum-compute_us-central1-a_daniel-ml
@@ -63,7 +63,7 @@ The full list of methods to authenticate to k8s can be found here:
 
 For example for using x509 certificates you can add users by adding k8s CSR like:
 
-```plain
+```
 apiVersion: certificates.k8s.io/v1beta1
 kind: CertificateSigningRequest
 metadata:
@@ -80,7 +80,7 @@ spec:
 
 And running:
 
-```plain
+```
 kubectl create -f ...
 kubectl certificate approve user-request-jakub
 kubectl get csr user-request-jakub -o jsonpath='{.status.certificate}' | base64 -d > jakub.crt
@@ -88,13 +88,13 @@ kubectl get csr user-request-jakub -o jsonpath='{.status.certificate}' | base64 
 
 Now we can modify the k8s config file and use the generated key and CSR to login
 
-```plain
+```
 kubectl config set-credentials jakub --client-certificate=jakub.crt --client-key=jakub.pem --embed-certs=true
 ```
 
 What happens when we try to do something?
 
-```plain
+```
 kubectl get pods
 
 > Error from server (Forbidden): User "jakub" cannot list pods in the namespace "default". (get pods)

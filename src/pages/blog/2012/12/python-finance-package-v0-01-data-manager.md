@@ -60,7 +60,7 @@ print(close)
 
 Just using `clock()` and `time()` to see if it was worth it. It is.
 
-```plain
+```
 Directory empty: Download and save 5 stocks
     1.4336301090943933 1.434000015258789
 Load 5 stocks from .csv

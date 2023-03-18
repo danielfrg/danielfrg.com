@@ -49,7 +49,7 @@ So jupyter-flex supports bundling the dashboards into a single `.html` file that
 
 You can simply install it using pip:
 
-```plain
+```
 pip install jupyter-flex
 ```
 

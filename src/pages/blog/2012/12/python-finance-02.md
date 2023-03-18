@@ -65,7 +65,7 @@ plt.show()
 
 Output:
 
-```plain
+```
               Portfolio
   Date
   2011-01-10  1000000

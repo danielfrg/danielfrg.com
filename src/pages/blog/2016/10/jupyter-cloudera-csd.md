@@ -54,7 +54,7 @@ It was **very** easy to change the example to make it run a Jupyter Notebook ser
 
 Basically all is needed is two files plus one optional icon file:
 
-```plain
+```
 ./JUPYTER-1.0/
     descriptor/
         service.sdl
@@ -72,7 +72,7 @@ Right now the Anaconda Parcel provides `spark-plugin` which is probably a copy p
 
 This is the complete `service.sdl`:
 
-```plain
+```
 {
   "name" : "JUPYTER",
   "label" : "Jupyter Notebook",

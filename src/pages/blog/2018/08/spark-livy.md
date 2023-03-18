@@ -13,7 +13,7 @@ Notes on getting Livy configured with Kerberos in CDH. Oh yeah and use it in Pyt
 
 Create a Livy user to run the livy server
 
-```plain
+```
 sudo useradd -m -p $(echo livy | openssl passwd -1 -stdin) livy
 ```
 
@@ -23,7 +23,7 @@ Download Livy (0.5-incubating) at the time of writing this and unzip/untar it in
 
 Create HDFS directory for Livy
 
-```plain
+```
 kinit hdfs # password: hdfs in this doc
 
 hdfs dfs -mkdir -p /user/livy
@@ -40,7 +40,7 @@ You have to change the hostname to the node that is running.
 
 In my tests I used password livy for both principals.
 
-```plain
+```
 $ sudo kadmin.local
 
 kadmin.local:  addprinc -randkey livy/$HOSTNAME
@@ -58,7 +58,7 @@ kadmin.local:  xst -norandkey -k httplivy.keytab livy/$HOSTNAME@ANACONDA.COM HTT
 - The HTTP principal must be in the format `HTTP/fully.qualified.domain.name@YOUR-REALM.COM`. The first component of the principal must be the literal string `HTTP`. This format is standard for HTTP principals in SPNEGO and is hard-coded in Hadoop. It cannot be deviated from.
 - Make sure that those two keytabs are readable by the user executing the livy-server
 
-```plain
+```
 sudo chown livy:livy -.keytab
 sudo chmod 644 -.keytab
 sudo mv -.keytab /etc/security
@@ -68,7 +68,7 @@ sudo mv -.keytab /etc/security
 
 - Populate the  `conf/livy.conf` (note the hostnames will be different):
 
-```plain
+```
 livy.server.port = 8998
 
 # Auth
@@ -95,7 +95,7 @@ livy.spark.deployMode = cluster
 
 - Set  this variables in `/conf/livy-env.sh`:
 
-```plain
+```
 export JAVA_HOME=/usr/java/jdk1.8.0_121-cloudera/jre/
 export SPARK_HOME=/opt/cloudera/parcels/CDH/lib/spark/
 export SPARK_CONF_DIR=$SPARK_HOME/conf/
@@ -107,7 +107,7 @@ export HADOOP_CONF_DIR=$HADOOP_HOME/conf
 
 - Start livy-server, you should see something like:
 
-```plain
+```
 $ ./bin/livy-server
 ...
 KerberosAuthenticationHandler: Login using keytab ./http-livy-ip-172-31-0-40.ec2.internal.keytab, for principal http-livy/ip-172-31-0-40.ec2.internal@ANACONDA.COM
@@ -125,7 +125,7 @@ Commit Succeeded
 
 If impersonation is not enabled, the user executing the livy-server (usually livy) must exist on every machine. So you have do do (in all the nodes):
 
-```plain
+```
 sudo useradd -m livy
 ```
 
@@ -135,7 +135,7 @@ You also need to enable some settings in the `core-site.xml`:
 
 - In Cloudera Manager go to the `HDFS configuration`, search for `Cluster-wide Advanced Configuration Snippet` for `core-site.xml` and add two new options for:
 
-```plain
+```
 <property>
 <name>hadoop.proxyuser.livy.hosts</name>
   <value>-</value>
@@ -153,7 +153,7 @@ In this case livy is the user that is allowed to impersonate users, so in this c
 
 You might need to create an HDFS home directory for the users that are going to be impersonated. To do that kinit as `hdfs@ANACONDA.COM`:
 
-```plain
+```
 $ kinit hdfs@ANACONDA.COM  # password `hdfs` in this document
 
 $ hdfs dfs -mkdir /user/centos
@@ -165,7 +165,7 @@ $ hdfs dfs -chown centos:centos /user/centos
 
 Now you can kinit and connect to Livy for example using sparkmagic with a  `~/.sparkmagic/config.json` like:
 
-```plain
+```
 {
 "kernel_python_credentials" : {
 	"username": "",

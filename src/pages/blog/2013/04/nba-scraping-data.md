@@ -67,7 +67,7 @@ copper.save(teams, 'teams')
 
 This saves `teams.csv` file with the 30 teams in this format.
 
-```csv
+```
 team,prefix_1,prefix_2,url
 Boston Celtics,bos,boston-celtics,http://espn.go.com/nba/team/_/name/bos/boston-celtics
 Brooklyn Nets,bkn,brooklyn-nets,http://espn.go.com/nba/team/_/name/bkn/brooklyn-nets
@@ -214,7 +214,7 @@ copper.save(players, 'players')
 
 The file looks like this:
 
-```plain
+```
 ,id,team,player,MIN,FGM-A,3PM-A,FTM-A,OREB,DREB,REB,AST,STL,BLK,TO,PF,+/-,PTS
 0,400277722,Boston Celtics,Brandon Bass,28,6-11,0-0,3-4,6,5,11,1,0,0,1,2,-8,15
 0,400277722,Boston Celtics,Paul Pierce,41,6-15,2-4,9-9,0,5,5,5,2,0,0,3,-17,23

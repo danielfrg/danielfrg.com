@@ -59,7 +59,7 @@ print(index, all_dates[index])
 
 Output:
 
-```plain
+```
 [datetime.datetime(2000, 1, 3, 0, 0),
 datetime.datetime(2000, 1, 4, 0, 0),
 datetime.datetime(2000, 1, 5, 0, 0),
@@ -101,7 +101,7 @@ print(len(sp500_2012), sp500_2012)
 
 Output:
 
-```plain
+```
 501 ['A', 'AA', 'AAPL', ... ,'YUM', 'ZION', 'ZMH']
 ```
 
@@ -143,7 +143,7 @@ plt.show()
 
 Output:
 
-```plain
+```
 Date
 2008-12-18 0.024165
 2008-12-19 0.028294
@@ -189,7 +189,7 @@ print(evtf.matrix)
 
 Output:
 
-```plain
+```
 2
 
             AMD  CBG
@@ -246,7 +246,7 @@ plt.show()
 
 Output:
 
-```plain
+```
     -20   -0.064385
     -19    0.073792
      ...

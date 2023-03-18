@@ -85,7 +85,7 @@ testing. The available data is:
 
 The file looks like this:
 
-```plain
+```
 CustomerID,NGIF,RAMN,LASG,LASD,RFA1,RFA2,Order
 1,2,30,20,200503,1,6,1
 2,25,207,20,200503,1,6,0

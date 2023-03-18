@@ -13,7 +13,7 @@ For CentOS
 
 Install:
 
-```plain
+```
 yum install -y openldap-clients krb5-server krb5-workstation krb5-libs
 ```
 
@@ -52,7 +52,7 @@ includedir /etc/krb5.conf.d/
 
 This just have some settings to make it compatible with MIT KDC, if using AD might need something different.
 
-```plain
+```
 [kdcdefaults]
 	kdc_ports = 88
 	kdc_tcp_ports = 88
@@ -76,7 +76,7 @@ This just have some settings to make it compatible with MIT KDC, if using AD mig
 
 This just allows anyone under `*/admin@ANACONDA.COM` for example `daniel/admin@ANACONDA.COM` to do anything
 
-```plain
+```
 */admin@ANACONDA.COM	*
 ```
 
@@ -84,13 +84,13 @@ This just allows anyone under `*/admin@ANACONDA.COM` for example `daniel/admin@A
 
 This will create the database with password anaconda
 
-```plain
+```
 sudo kdb5_util -P anaconda create -s
 ```
 
 **Start services**
 
-```plain
+```
 sudo service krb5kdc start
 sudo service kadmin start
 ```
@@ -99,7 +99,7 @@ sudo service kadmin start
 
 We will use this to test and allow cloudera to do more stuff later
 
-```plain
+```
 sudo kadmin.local addprinc -pw centos centos@ANACONDA.COM
 sudo kadmin.local addprinc -pw cloudera cloudera-scm/admin@ANACONDA.COM
 ```
@@ -110,7 +110,7 @@ Other nodes will just connect to the kerberos admin server so just repeat the in
 
 Then you can just:
 
-```plain
+```
 kinit  # Here use the password of the centos user: `centos`
 klist
 # Should allow you
@@ -135,7 +135,7 @@ Some needed values are:
 
 Once thats done you can no longer do:
 
-```plain
+```
 sudo su - hdfs
 hadoop fs -ls /
 ```
@@ -148,7 +148,7 @@ Now that unauthenticated users cannot use the services we need create a way for 
 
 Create a principal, e.g. for the centos user with password centos:
 
-```plain
+```
 sudo kadmin.local addprinc -pw centos centos@ANACONDA.COM
 
 # Also create one for the hdfs superuser
@@ -157,7 +157,7 @@ sudo kadmin.local addprinc -pw hdfs hdfs@ANACONDA.COM
 
 Now the centos user can kinit with his password and use hdfs or hive or impala-shell:
 
-```plain
+```
 $ kinit
 
 Password for centos@ANACONDA.COM:
@@ -195,7 +195,7 @@ Notes:
 
 To get access without password we can create a keytab for the users, for example centos.
 
-```plain
+```
 $ ktutil
 ktutil:  add_entry -password -p centos@ANACONDA.COM -k 1 -e rc4-hmac
 Password for centos@ANACONDA.COM:  # centos in this doc
@@ -205,7 +205,7 @@ ktutil:  clear
 
 Now we have a `centos.keytab` that we can use to kinit:
 
-```plain
+```
 $ kinit centos -kt centos.keytab
 $ klist
 Ticket cache: FILE:/tmp/krb5cc_1000
@@ -224,7 +224,7 @@ drwxr-xr-x   - hdfs supergroup          0 2018-01-26 15:20 /user
 
 To check the principals:
 
-```plain
+```
 sudo kadmin.local list_principals
 ```
 

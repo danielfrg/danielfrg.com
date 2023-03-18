@@ -26,7 +26,7 @@ Vagrant is used to create the instance and provision it with salt using one comm
 Install conda using a salt states is pretty easy because salt has support for pip, and conda is pip
 installable (you have to run `conda init` after `pip install conda`) so is as simple as:
 
-```YAML
+```yaml
 pip-packages:
   pip.installed:
     - user: root
@@ -59,7 +59,7 @@ install the ipython-notebook, numpy, scipy and pandas libraries using the conda 
 also will install luigi (or any other python library you want) using regular pip.
 All of this will be inside the conda virtual env, because you **should** use virtual envs.
 
-```YAML
+```yaml
 venv:
   conda.managed:
     - user: ubuntu
@@ -79,7 +79,7 @@ venv-pip:
 
 I created another module to start the ipython notebook in the background since salt does not support this natively, the state looks like this:
 
-```YAML
+```yaml
 /home/vagrant/nbserver.pid:
   nbserver.start_server:
     - ip: 0.0.0.0
