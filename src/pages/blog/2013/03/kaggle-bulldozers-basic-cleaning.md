@@ -9,6 +9,6 @@ tags:
 - Machine Learning
 title: 'Kaggle bulldozers: Basic cleaning'
 
-notebook_html_path: ../src/pages/blog/generated-nbs/kaggle-bulldozers-basic-cleaning.html
+notebook_html_path: ../../generated-nbs/kaggle-bulldozers-basic-cleaning.html
 ---
 

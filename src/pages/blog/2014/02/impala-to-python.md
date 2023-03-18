@@ -10,6 +10,6 @@ tags:
 - Thrift
 title: 'Impala to python: ODBC and thrift'
 
-notebook_html_path: ../src/pages/blog/generated-nbs/impala-to-python.html
+notebook_html_path: ../../generated-nbs/impala-to-python.html
 ---
 

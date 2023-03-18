@@ -9,6 +9,6 @@ tags:
 - Neural Networks
 title: A not so basic neural network on python
 
-notebook_html_path: ../src/pages/blog/generated-nbs/not-so-basic-neural-network-python.html
+notebook_html_path: ../../generated-nbs/not-so-basic-neural-network-python.html
 ---
 

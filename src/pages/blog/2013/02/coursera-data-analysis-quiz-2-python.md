@@ -9,6 +9,6 @@ tags:
 - Data
 title: Coursera Data Analysis - Quiz 2 on python
 
-notebook_html_path: ../src/pages/blog/generated-nbs/coursera-data-analysis-quiz-2-python.html
+notebook_html_path: ../../generated-nbs/coursera-data-analysis-quiz-2-python.html
 ---
 

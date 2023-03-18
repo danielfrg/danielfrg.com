@@ -14,6 +14,6 @@ tags:
 title: "ReproduceIt: FiveThirtyEight - How Baltimore\u2019s Young Black Men Are Boxed\
   \ In"
 
-notebook_html_path: ../src/pages/blog/generated-nbs/reproduceit-538-baltimore-post.html
+notebook_html_path: ../../generated-nbs/reproduceit-538-baltimore-post.html
 ---
 

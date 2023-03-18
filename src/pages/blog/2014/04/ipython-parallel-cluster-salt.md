@@ -10,6 +10,6 @@ tags:
 - Vagrant
 title: IPython.parallel cluster using salt
 
-notebook_html_path: ../src/pages/blog/generated-nbs/ipython-parallel-cluster-salt.html
+notebook_html_path: ../../generated-nbs/ipython-parallel-cluster-salt.html
 ---
 

@@ -9,6 +9,6 @@ tags:
 - Neural Networks
 title: Basic [1 hidden layer] neural network on Python
 
-notebook_html_path: ../src/pages/blog/generated-nbs/basic-neural-network-python.html
+notebook_html_path: ../../generated-nbs/basic-neural-network-python.html
 ---
 

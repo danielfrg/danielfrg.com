@@ -10,6 +10,6 @@ tags:
 - Readability
 title: Relevant content blog crawler
 
-notebook_html_path: ../src/pages/blog/generated-nbs/relevant-content-blog-crawler.html
+notebook_html_path: ../../generated-nbs/relevant-content-blog-crawler.html
 ---
 

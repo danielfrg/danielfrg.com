@@ -8,7 +8,7 @@ THIS_DIR = os.path.dirname(os.path.realpath(__file__))
 GENERATED_MD = """---
 layout: ../../../../layouts/NotebookBlogPost.astro
 {metadata}
-notebook_html_path: ../src/pages/blog/generated-nbs/{fpath}
+notebook_html_path: ../../generated-nbs/{fpath}
 ---
 
 """

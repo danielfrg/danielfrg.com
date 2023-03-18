@@ -10,6 +10,6 @@ tags:
 - Selenium
 title: Crawling with Python, Selenium and Docker
 
-notebook_html_path: ../src/pages/blog/generated-nbs/docker-selenium-crawler.html
+notebook_html_path: ../../generated-nbs/docker-selenium-crawler.html
 ---
 
