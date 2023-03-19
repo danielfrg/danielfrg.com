@@ -28,7 +28,7 @@ def main(filter=""):
     # Iterate the notebooks directory and convert all notebooks
     input_dir = os.path.join(THIS_DIR, "../src/pages/blog/notebooks")
     output_dir = os.path.join(THIS_DIR, "../src/pages/blog/")
-    output_dir_gen = os.path.join(THIS_DIR, "../src/pages/blog/generated-nbs")
+    output_dir_gen = os.path.join(THIS_DIR, "../public/generated-nbs")
     glob_expr = os.path.join(input_dir, f"**/*{filter}*.ipynb")
 
     for notebook in glob.glob(glob_expr, recursive=True):
@@ -66,7 +66,7 @@ def convert(nb_path, fpath):
         return
     metadata_str = yaml.dump(metadata, default_flow_style=False)
 
-    html_base = nbconvert2.nb2html(nb_path, theme="light")
+    html_base = nbconvert2.nb2html(nb_path, theme="light", highlight_extra_classes="not-prose")
 
     # Since we make a Markdown file based on the HTML we need to:
     # - remove empty lines

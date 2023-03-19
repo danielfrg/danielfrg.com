@@ -13,6 +13,6 @@ tags:
 - Bokeh
 title: 'ReproduceIt: Name Trends'
 
-notebook_html_path: ../../generated-nbs/ssn-names.html
+notebook_html_path: ../../public/generated-nbs/ssn-names.html
 ---
 
