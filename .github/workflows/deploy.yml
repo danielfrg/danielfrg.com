@@ -34,7 +34,11 @@ jobs:
         uses: actions/cache@v3
         with:
           path: node_modules
-          key: node_modules-${{ runner.os }}-node18-${{ hashFiles('package-lock.json') }}
+          key: >
+            node_modules
+            ${{ runner.os }}
+            node-${{ matrix.node-version }}
+            ${{ hashFiles('package-lock.json') }}
 
       - name: Install JS dependencies
         if: steps.cached-node_modules.outputs.cache-hit != 'true'
@@ -51,20 +55,26 @@ jobs:
       # ------------------------------------------------------------------------
       #  Deploy
 
-      - name: Preview - Upload to Netlify
-        if: github.event_name == 'pull_request'
-        uses: netlify/actions/cli@master
+      - name: Configure GCP auth
+        uses: google-github-actions/auth@v1
         with:
-          args: deploy --dir=dist
-        env:
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}}
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
 
-      - name: Prod - Upload to Netlify
-        if: (github.event_name != 'pull_request') && endsWith(github.ref, '/main')
-        uses: netlify/actions/cli@master
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+
+      - name: Upload to GCS
+        uses: google-github-actions/upload-cloud-storage@v1
         with:
-          args: deploy --dir=dist --prod
-        env:
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          path: dist
+          destination: ${{ secrets.GCP_BUCKET }}
+          parent: false
+          headers: |-
+            cache-control: no-cache
+      - name: Upload to GCS (sync)
+        run: gsutil rsync -r -d dist gs://${{ secrets.GCP_BUCKET }}
+
+      - name: Configure GSC Cache
+        run: |
+          gsutil setmeta -r -h "Cache-Control: no-cache" gs://${{ secrets.GCP_BUCKET }}
