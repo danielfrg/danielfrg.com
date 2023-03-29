@@ -83,3 +83,9 @@ jobs:
       - name: Configure GSC Cache
         run: |
           gsutil setmeta -r -h "Cache-Control: no-cache" gs://${{ secrets.GCP_BUCKET }}
+
+      - name: Purge Cloudflare Cache
+        uses: jakejarvis/cloudflare-purge-action@v0.3.0
+        env:
+          CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
+          CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
