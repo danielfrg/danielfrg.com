@@ -62,7 +62,7 @@ jobs:
       - name: Configure GCP auth
         uses: google-github-actions/auth@v1
         with:
-          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
           workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
 
       - name: Set up Cloud SDK
