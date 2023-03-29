@@ -7,16 +7,20 @@ on:
   workflow_dispatch:
 
 jobs:
-  run:
+  deploy:
     name: Deploy website
 
-    runs-on: ${{ matrix.os }}
+    permissions:
+      contents: "read"
+      id-token: "write"
 
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
         node-version: ["18"]
+
+    runs-on: ${{ matrix.os }}
 
     steps:
       - uses: actions/checkout@v3
@@ -72,6 +76,7 @@ jobs:
           parent: false
           headers: |-
             cache-control: no-cache
+
       - name: Upload to GCS (sync)
         run: gsutil rsync -r -d dist gs://${{ secrets.GCP_BUCKET }}
 
