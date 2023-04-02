@@ -3,12 +3,11 @@ name: deploy
 on:
   push:
     branches: [main]
-  pull_request:
   workflow_dispatch:
 
 jobs:
   deploy:
-    name: Deploy website
+    name: deploy
 
     permissions:
       contents: "read"
@@ -17,18 +16,16 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
         node-version: ["18"]
 
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
 
       # ------------------------------------------------------------------------
-      #  Setup
 
-      - name: JS - Setup Node.js ${{ matrix.node-version }}
+      - name: Set up Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
