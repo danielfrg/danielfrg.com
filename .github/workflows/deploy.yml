@@ -6,55 +6,72 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
-    name: deploy
-
-    permissions:
-      contents: read
-      id-token: write
-
-    strategy:
-      fail-fast: false
-      matrix:
-        node-version: [18]
+  build:
+    name: build
 
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
 
-      # ------------------------------------------------------------------------
-
-      - name: Set up Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
+      - name: Set up Node.JS
+        uses: volta-cli/action@v3
 
       - name: Load cached node_modules
-        id: cached-node_modules
+        id: cache-node_modules
         uses: actions/cache@v3
         with:
           path: node_modules
           key: >
             node_modules
             ${{ runner.os }}
-            node-${{ matrix.node-version }}
-            ${{ hashFiles('package-lock.json') }}
+            ${{ hashFiles('package*.json') }}
 
       - name: Install JS dependencies
-        if: steps.cached-node_modules.outputs.cache-hit != 'true'
+        if: steps.cache-node_modules.outputs.cache-hit != 'true'
         run: |
           npm install
 
       # ------------------------------------------------------------------------
-      #  Build
 
       - name: Build website
         run: |
           npm run build
 
-      # ------------------------------------------------------------------------
-      #  Deploy
+      - name: Cache website
+        id: cache-build
+        uses: actions/cache@v3
+        with:
+          path: build
+          key: >
+            website
+            ${{ github.run_id }}
+            ${{ github.run_attempt }}
+
+  # ---------------------------------------------------------------------------
+  #  Publish
+
+  prod:
+    name: prod
+
+    needs: [build]
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/main')
+
+    permissions:
+      contents: read
+      id-token: write
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Restore built website
+        uses: actions/cache@v3
+        with:
+          path: build
+          key: >
+            website
+            ${{ github.run_id }}
+            ${{ github.run_attempt }}
 
       - name: Configure GCP auth
         uses: google-github-actions/auth@v1
