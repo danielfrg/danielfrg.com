@@ -56,7 +56,7 @@ jobs:
     name: prod
 
     needs: [build]
-    if: (github.event_name == 'push' && github.ref == 'refs/heads/main')
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
 
     permissions:
       contents: read
