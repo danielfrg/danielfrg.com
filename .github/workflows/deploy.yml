@@ -93,11 +93,11 @@ jobs:
             cache-control: no-cache
 
       - name: Upload to GCS (sync)
-        run: gsutil rsync -r -d dist gs://${{ secrets.GCP_BUCKET }}
+        run: gsutil -m rsync -r -d dist gs://${{ secrets.GCP_BUCKET }}
 
       - name: Configure GSC Cache
         run: |
-          gsutil setmeta -r -h "Cache-Control: no-cache" gs://${{ secrets.GCP_BUCKET }}
+          gsutil -m setmeta -r -h "Cache-Control: no-cache" gs://${{ secrets.GCP_BUCKET }}
 
       - name: Purge Cloudflare Cache
         uses: jakejarvis/cloudflare-purge-action@v0.3.0
