@@ -35,6 +35,8 @@ jobs:
       - name: Build website
         run: |
           npm run build
+        env:
+          ASTRO_TELEMETRY_DISABLED: 1
 
       - name: Cache website
         id: cache-build
@@ -101,3 +103,4 @@ jobs:
         env:
           CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
           CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+
