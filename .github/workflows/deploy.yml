@@ -44,63 +44,24 @@ jobs:
         with:
           path: dist
           key: >
-            website
+            dist
             ${{ github.run_id }}
             ${{ github.run_attempt }}
 
-  # ----------------------------------------------------------------------------
-  #  Publish
-
-  prod:
-    name: prod
-
+  firebase:
+    uses: ./.github/workflows/deploy-firebase.yml
     needs: [build]
-    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
+    secrets: inherit
 
-    permissions:
-      contents: read
-      id-token: write
-
+  post-deploy:
+    needs: [firebase]
     runs-on: ubuntu-latest
 
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'prod')
+
     steps:
-      - name: Restore built website
-        uses: actions/cache@v3
-        with:
-          path: dist
-          key: >
-            website
-            ${{ github.run_id }}
-            ${{ github.run_attempt }}
-
-      - name: Configure GCP auth
-        uses: google-github-actions/auth@v1
-        with:
-          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
-          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
-
-      - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@v1
-
-      - name: Upload to GCS
-        uses: google-github-actions/upload-cloud-storage@v1
-        with:
-          path: dist
-          destination: ${{ secrets.GCP_BUCKET }}
-          parent: false
-          headers: |-
-            cache-control: no-cache
-
-      - name: Upload to GCS (sync)
-        run: gsutil -m rsync -r -d dist gs://${{ secrets.GCP_BUCKET }}
-
-      - name: Configure GSC Cache
-        run: |
-          gsutil -m setmeta -r -h "Cache-Control: no-cache" gs://${{ secrets.GCP_BUCKET }}
-
       - name: Purge Cloudflare Cache
         uses: jakejarvis/cloudflare-purge-action@v0.3.0
         env:
           CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
           CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
-
