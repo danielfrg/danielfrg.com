@@ -54,14 +54,6 @@ jobs:
     secrets: inherit
 
   post-deploy:
+    uses: ./.github/workflows/deploy-cloudflare.yml
     needs: [firebase]
-    runs-on: ubuntu-latest
-
-    if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'workflow_dispatch' && github.event.inputs.environment == 'prod')
-
-    steps:
-      - name: Purge Cloudflare Cache
-        uses: jakejarvis/cloudflare-purge-action@v0.3.0
-        env:
-          CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
-          CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+    secrets: inherit

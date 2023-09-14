@@ -81,10 +81,6 @@ jobs:
             ${{ github.run_attempt }}
           fail-on-cache-miss: true
 
-      - name: Move dist to tmp location
-        run: |
-          mv dist ci/firebase-preview/
-
       - name: Configure GCP auth
         uses: google-github-actions/auth@v1
         id: gcloud-auth
@@ -102,4 +98,3 @@ jobs:
           firebaseServiceAccount: "${{ env.SERVICE_ACCOUNT_KEY }}"
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           expires: 2d
-          entryPoint: ci/firebase-preview
