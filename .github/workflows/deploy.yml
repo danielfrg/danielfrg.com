@@ -6,9 +6,18 @@ on:
   pull_request:
   workflow_dispatch:
 
+concurrency:
+  group: deploy-${{ github.head_ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  id-token: write
+  pull-requests: write
+  checks: write
+
 jobs:
   build:
-    name: build
     runs-on: ubuntu-latest
 
     steps:
