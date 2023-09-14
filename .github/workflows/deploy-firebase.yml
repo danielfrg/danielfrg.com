@@ -1,9 +1,5 @@
 name: deploy-firebase
 
-concurrency:
-  group: deploy-firebase
-  cancel-in-progress: true
-
 on:
   workflow_call:
     secrets:
