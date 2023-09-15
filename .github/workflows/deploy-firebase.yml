@@ -28,7 +28,7 @@ jobs:
         with:
           path: dist
           key: >
-            dist
+            website
             ${{ github.run_id }}
             ${{ github.run_attempt }}
           fail-on-cache-miss: true
@@ -72,7 +72,7 @@ jobs:
         with:
           path: dist
           key: >
-            dist
+            website
             ${{ github.run_id }}
             ${{ github.run_attempt }}
           fail-on-cache-miss: true

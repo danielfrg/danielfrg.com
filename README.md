@@ -7,8 +7,8 @@ Source for [danielfrg.com](danielfrg.com).
 ## JS
 
 ```shell
-npm install
-npm dev
+pnpm install
+pnpm dev
 ```
 
 ## Notebooks

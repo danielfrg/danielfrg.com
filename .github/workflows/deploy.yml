@@ -23,27 +23,24 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Node.JS
-        uses: volta-cli/action@v3
-
-      - name: Load cached node_modules
-        id: cache-node_modules
-        uses: actions/cache@v3
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v2
         with:
-          path: node_modules
-          key: >
-            node_modules
-            ${{ runner.os }}
-            ${{ hashFiles('package*.json') }}
+          version: 8
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: pnpm
 
       - name: Install JS dependencies
-        if: steps.cache-node_modules.outputs.cache-hit != 'true'
         run: |
-          npm install
+          pnpm install
 
       - name: Build website
         run: |
-          npm run build
+          pnpm run build
         env:
           ASTRO_TELEMETRY_DISABLED: 1
 
@@ -53,7 +50,7 @@ jobs:
         with:
           path: dist
           key: >
-            dist
+            website
             ${{ github.run_id }}
             ${{ github.run_attempt }}
 
