@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "danielfrg-com",
     "public": "dist",
     "cleanUrls": true,
     "trailingSlash": false,

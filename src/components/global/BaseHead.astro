@@ -14,12 +14,17 @@ const { title, description, permalink, highlight } = Astro.props;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
-<link rel="icon" type="image/png" href="/favicon.png" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+
+<!-- Icons -->
+<link rel="icon" type="image/ico" href="favicon.ico" />
+<link rel="apple-touch-icon" type="image/png" href="apple-touch-icon.png" />
+<link rel="manifest" href="manifest.webmanifest" />
 
 {highlight ? <link rel="stylesheet" href="/assets/highlight.css" /> : null}
 
