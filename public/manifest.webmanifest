@@ -1,7 +1,6 @@
 {
     "name": "danielfrg.com",
     "short_name": "danielfrg.com",
-    "start_url": "https://danielfrg.com",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -14,7 +13,8 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "theme_color": "#000000",
+    "background_color": "#000000",
+    "start_url": "/",
     "display": "standalone"
 }
