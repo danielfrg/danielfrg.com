@@ -11,5 +11,5 @@ tags:
   - Bokeh
 title: "ReproduceIt: Name Trends"
 
-notebook_html_path: ../../src/content/gen_blog_notebooks/ssn-names.html
+notebook_html_path: ../../../src/content/gen_blog_notebooks/ssn-names.html
 ---

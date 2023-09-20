@@ -7,5 +7,5 @@ tags:
   - Data
 title: Coursera Data Analysis - Quiz 2 on python
 
-notebook_html_path: ../../src/content/gen_blog_notebooks/coursera-data-analysis-quiz-2-python.html
+notebook_html_path: ../../../src/content/gen_blog_notebooks/coursera-data-analysis-quiz-2-python.html
 ---

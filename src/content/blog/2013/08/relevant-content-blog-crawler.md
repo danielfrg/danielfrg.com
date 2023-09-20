@@ -8,5 +8,5 @@ tags:
   - Readability
 title: Relevant content blog crawler
 
-notebook_html_path: ../../src/content/gen_blog_notebooks/relevant-content-blog-crawler.html
+notebook_html_path: ../../../src/content/gen_blog_notebooks/relevant-content-blog-crawler.html
 ---

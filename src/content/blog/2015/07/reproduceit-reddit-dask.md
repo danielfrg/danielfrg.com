@@ -8,5 +8,5 @@ tags:
   - Dask
 title: "ReproduceIt: Reddit word count"
 
-notebook_html_path: ../../src/content/gen_blog_notebooks/reproduceit-reddit-dask.html
+notebook_html_path: ../../../src/content/gen_blog_notebooks/reproduceit-reddit-dask.html
 ---

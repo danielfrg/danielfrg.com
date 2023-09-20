@@ -8,5 +8,5 @@ tags:
   - Thrift
 title: "Impala to python: ODBC and thrift"
 
-notebook_html_path: ../../src/content/gen_blog_notebooks/impala-to-python.html
+notebook_html_path: ../../../src/content/gen_blog_notebooks/impala-to-python.html
 ---
