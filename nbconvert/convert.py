@@ -43,9 +43,7 @@ def main(filter=""):
         # metadata_html_path = os.path.join(output_dir_gen, output_fname_html)
         output_path_html = os.path.join(output_dir_gen, output_fname_html)
 
-        md, html = convert(notebook, fpath=output_fname_html)
-        if not md:
-            continue
+        html = convert(notebook, fpath=output_fname_html)
 
         # with open(output_path_md, "w") as file:
         #     print("Writing to:", output_path_md)
@@ -62,10 +60,10 @@ def main(filter=""):
 def convert(nb_path, fpath):
     """Convert a notebook to html with css included and fixes"""
 
-    metadata = get_metadata(nb_path)
-    if not metadata:
-        return
-    metadata_str = yaml.dump(metadata, default_flow_style=False)
+    # metadata = get_metadata(nb_path)
+    # if not metadata:
+    #     return
+    # metadata_str = yaml.dump(metadata, default_flow_style=False)
 
     html_base = nbconvert2.nb2html(nb_path, theme="light", highlight_extra_classes="not-prose")
 
@@ -98,9 +96,10 @@ def convert(nb_path, fpath):
 
     styles = open(os.path.join(THIS_DIR, "jupyter-fixes.css"), "r").read()
 
-    return GENERATED_MD.format(
-        metadata=metadata_str, fpath=fpath
-    ), GENERATED_HTML.format(html=html, styles=styles)
+    # return GENERATED_MD.format(
+    #     metadata=metadata_str, fpath=fpath
+    # ), GENERATED_HTML.format(html=html, styles=styles)
+    return GENERATED_HTML.format(html=html, styles=styles)
 
 
 def get_metadata(nb_path):
