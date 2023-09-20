@@ -10,7 +10,6 @@ let title = SITE_TITLE;
 let description = SITE_DESCRIPTION;
 let permalink = SITE_URL;
 
-// Data Fetching
 let allPosts = await getCollection('blog', ({ data }) => {
   return data.draft !== true;
 });

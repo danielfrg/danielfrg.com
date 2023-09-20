@@ -7,5 +7,5 @@ tags:
   - Machine Learning
 title: Copper - Machine Learning
 
-notebook_html_path: ../../generated-nbs/copper-machine-learning-python.html
+notebook_html_path: ../../src/content/gen_blog_notebooks/copper-machine-learning-python.html
 ---

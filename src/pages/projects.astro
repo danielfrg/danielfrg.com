@@ -106,15 +106,6 @@ const openSourceList = [
         desc: "Pelican plugin for blogging with Jupyter/IPython Notebooks",
     },
 ];
-
-// Data Fetching
-let allPosts = await Astro.glob("./blog/**/*.md");
-allPosts = allPosts.sort(
-    (a, b) =>
-        new Date(b.frontmatter.publishDate).valueOf() -
-        new Date(a.frontmatter.publishDate).valueOf()
-);
-allPosts = allPosts.filter((post) => post.frontmatter.draft !== true);
 ---
 
 <html lang="en">

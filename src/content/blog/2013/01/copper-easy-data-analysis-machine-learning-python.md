@@ -7,5 +7,5 @@ tags:
   - Machine Learning
 title: Copper - Easy data analysis and machine learning on python
 
-notebook_html_path: ../../generated-nbs/copper-easy-data-analysis-machine-learning-python.html
+notebook_html_path: ../../src/content/gen_blog_notebooks/copper-easy-data-analysis-machine-learning-python.html
 ---

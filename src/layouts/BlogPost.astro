@@ -7,8 +7,6 @@ import SiteHeader from "../components/common/SiteHeader.astro";
 
 const { title, description, publishDate, author, permalink, tags,  notebook_html_path } = Astro.props;
 
-console.log(notebook_html_path)
-
 let html = "";
 if (notebook_html_path) {
     const url = new URL(notebook_html_path, import.meta.url);
