@@ -6,7 +6,6 @@ from mkdocs_jupyter import nbconvert2
 THIS_DIR = os.path.dirname(os.path.realpath(__file__))
 
 GENERATED_MD = """---
-layout: ../../../../layouts/NotebookBlogPost.astro
 {metadata}
 notebook_html_path: ../../generated-nbs/{fpath}
 ---
@@ -26,9 +25,9 @@ def main(filter=""):
     import glob
 
     # Iterate the notebooks directory and convert all notebooks
-    input_dir = os.path.join(THIS_DIR, "../src/pages/blog/notebooks")
-    output_dir = os.path.join(THIS_DIR, "../src/pages/blog/")
-    output_dir_gen = os.path.join(THIS_DIR, "../public/generated-nbs")
+    input_dir = os.path.join(THIS_DIR, "../src/content/blog_notebooks")
+    # output_dir = os.path.join(THIS_DIR, "../src/content/gen_blog_notebooks/")
+    output_dir_gen = os.path.join(THIS_DIR, "../src/content/gen_blog_notebooks")
     glob_expr = os.path.join(input_dir, f"**/*{filter}*.ipynb")
 
     for notebook in glob.glob(glob_expr, recursive=True):
@@ -40,18 +39,20 @@ def main(filter=""):
         head, name = os.path.split(notebook)
         head, month = os.path.split(head)
         head, year = os.path.split(head)
-        output_path_md = os.path.join(output_dir, year, month, output_fname_md)
+        # output_path_md = os.path.join(output_dir, year, month, output_fname_md)
+        # metadata_html_path = os.path.join(output_dir_gen, output_fname_html)
         output_path_html = os.path.join(output_dir_gen, output_fname_html)
-
-        metadata_html_path = os.path.join(output_dir_gen, output_fname_html)
 
         md, html = convert(notebook, fpath=output_fname_html)
         if not md:
             continue
 
-        with open(output_path_md, "w") as file:
-            print("Writing to:", output_path_md)
-            file.write(md)
+        # with open(output_path_md, "w") as file:
+        #     print("Writing to:", output_path_md)
+        #     file.write(md)
+
+        if not os.path.exists(os.path.dirname(output_path_html)):
+            os.makedirs(os.path.dirname(output_path_html))
 
         with open(output_path_html, "w") as file:
             print("Writing to:", output_path_html)

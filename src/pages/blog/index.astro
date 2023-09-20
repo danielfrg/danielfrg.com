@@ -1,21 +1,23 @@
 ---
-import BaseHead from "../../components/global/BaseHead.astro";
-import SiteFooter from "../../components/global/SiteFooter.astro";
-import SiteHeader from "../../components/global/SiteHeader.astro";
+import { getCollection } from 'astro:content';
+import BaseHead from "../../components/common/BaseHead.astro";
+import SiteFooter from "../../components/common/SiteFooter.astro";
+import SiteHeader from "../../components/common/SiteHeader.astro";
 import TwoColumnList from "../../components/grid/TwoColumnList.astro";
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../../consts';
 
-let title = "Daniel Rodriguez";
-let description = "Un blog de Daniel Rodriguez";
-let permalink = "https://danielfrg.com/";
+let title = SITE_TITLE;
+let description = SITE_DESCRIPTION;
+let permalink = SITE_URL;
 
 // Data Fetching
-let allPosts = await Astro.glob("../blog/**/*.md");
-allPosts = allPosts.sort(
-    (a, b) =>
-        new Date(b.frontmatter.publishDate).valueOf() -
-        new Date(a.frontmatter.publishDate).valueOf()
+let allPosts = await getCollection('blog', ({ data }) => {
+  return data.draft !== true;
+});
+
+allPosts = allPosts .sort(
+	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
 );
-allPosts = allPosts.filter((post) => post.frontmatter.draft !== true);
 ---
 
 <html lang="en">
@@ -32,7 +34,7 @@ allPosts = allPosts.filter((post) => post.frontmatter.draft !== true);
             <SiteHeader />
 
             <div class="pt-12 pb-20 px-3">
-                <TwoColumnList title="Articles" items={allPosts} />
+                <TwoColumnList title="Articles" posts={allPosts} />
             </div>
 
             <SiteFooter />

@@ -1,10 +1,12 @@
 # Jupyter Notebook convert helper
 
-Converts the notebooks using `nbconvert` to `html` and puts the content into a Markdown file.
+Converts the notebooks using `nbconvert` to `html`.
 
-Reads notebooks from `src/pages` and outputs it to:
+Reads notebooks from `src/content/blog_notebooks` and outputs it to:
+`src/content/gen_blog_notebooks/`
 
-- MD to `src/pages/`
-- HTML to `public/generated-nbs`
+After that just create a new MD file that points to the generated HTML file
+using the key `notebook_html_path`.
+See another notebook MD file.
 
 It uses [`mkdocs-jupyter`](https://github.com/danielfrg/mkdocs-jupyter).

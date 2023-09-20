@@ -1,11 +1,13 @@
 ---
-import BaseHead from "../components/global/BaseHead.astro";
-import SiteFooter from "../components/global/SiteFooter.astro";
-import SiteHeader from "../components/global/SiteHeader.astro";
+import BaseHead from "../components/common/BaseHead.astro";
+import SiteFooter from "../components/common/SiteFooter.astro";
+import SiteHeader from "../components/common/SiteHeader.astro";
 
-let title = "Daniel Rodriguez";
-let description = "Daniel Rodriguez website, blog and portfolio";
-let permalink = "https://danielfrg.com/";
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../consts';
+
+let title = SITE_TITLE;
+let description = SITE_DESCRIPTION;
+let permalink = SITE_URL;
 ---
 
 <html lang="en">
@@ -21,12 +23,12 @@ let permalink = "https://danielfrg.com/";
         <div class="flex flex-col w-full">
             <SiteHeader />
 
-            <div class="container mx-auto max-w-screen-sm">
+            <div class="container mx-auto max-w-screen-sm my-8">
                 <h2 class="text-center my-10 text-5xl font-extrabold">
                     404 - Page not found
                 </h2>
 
-                <img src="https://placekitten.com/500/500" alt="" />
+                <img class="mx-auto" src="https://placekitten.com/500/500" alt="A cute cat" />
             </div>
             <SiteFooter />
         </div>

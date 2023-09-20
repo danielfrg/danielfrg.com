@@ -1,0 +1,7 @@
+version: 3
+
+tasks:
+  notebooks:
+    dir: nbconvert
+    cmds:
+      - python convert.py

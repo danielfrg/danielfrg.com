@@ -1,10 +1,10 @@
 ---
 export interface Props {
+    posts: object[];
     title?: string;
-    items: object[];
 }
 
-const { title, items } = Astro.props;
+const { title, posts } = Astro.props;
 
 const monthNames = [
     "Jan",
@@ -35,16 +35,16 @@ function fmtDate(publishDate: string) {
     </h2>
     <div class="flex flex-col gap-8">
         {
-            items.map((item, index) => {
-                const d = new Date(item.frontmatter.publishDate);
+            posts.map((post, index) => {
+                const d = new Date(post.data.publishDate);
                 return (
-                    <div class="flex flex-row gap-2">
-                        <div class="font-mono text-sm text-gray-400 w-28 flex items-center">
-                            <span>{fmtDate(item.frontmatter.publishDate)}</span>
+                    <div class="flex flex-row gap-2 items-end">
+                        <div class="font-mono text-sm text-gray-400 w-28 flex posts-center">
+                            <span>{fmtDate(post.data.publishDate)}</span>
                         </div>
                         <div class="flex-1">
-                            <a href={item.url} class="text-xl">
-                                {item.frontmatter.title}
+                            <a href={`/blog/${post.data.publishDate.getFullYear()}/${post.data.publishDate.getMonth() + 1}/${post.slug}`} class="text-xl">
+                                {post.data.title}
                             </a>
                         </div>
                     </div>

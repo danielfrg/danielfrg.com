@@ -1,19 +1,21 @@
 {
-    "tabWidth": 4,
-    "useTabs": false,
+    "printWidth": 100,
+    "semi": true,
+    "singleQuote": false,
+    "tabWidth": 2,
+    "trailingComma": "es5",
     "overrides": [
-        {
-            "files": ["*.html"],
-            "options": {
-                "tabWidth": 2,
-                "printWidth": 500
-            }
-        },
-        {
-            "files": ["*.yml", "*.yaml", "*.json"],
-            "options": {
-                "tabWidth": 2
-            }
+      {
+        "files": [".*", "*.json", "*.md", "*.mdx", "*.toml", "*.yml"],
+        "options": {
+          "useTabs": false
         }
+      },
+      {
+        "files": ["**/*.astro"],
+        "options": {
+          "parser": "astro"
+        }
+      }
     ]
-}
+  }

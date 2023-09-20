@@ -1,0 +1,6 @@
+title: Jupyter Notebook test
+slug: jupyter-notebook-test
+publishDate: 2100-01-01
+tags: ["Test"]
+include: ["requirejs", "jquery"]
+draft: true

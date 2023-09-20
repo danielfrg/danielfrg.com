@@ -1,8 +1,11 @@
 ---
-import BaseHead from "../components/global/BaseHead.astro";
-let title = "Daniel Rodriguez";
-let description = "Daniel Rodriguez website, blog and portfolio";
-let permalink = "https://danielfrg.com/";
+import BaseHead from "../components/common/BaseHead.astro";
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../consts';
+
+let title = SITE_TITLE;
+let description = SITE_DESCRIPTION;
+let permalink = SITE_URL;
+
 ---
 
 <!DOCTYPE html>
