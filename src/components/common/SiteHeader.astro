@@ -11,6 +11,7 @@ const title = SITE_TITLE;
 
 const nav = [
     { text: "About", href: "/about" },
+    { text: "Wiki", href: "https://wiki.danielfrg.com" },
     { text: "Blog", href: "/blog" },
     { text: "Projects", href: "/projects" },
     { text: "GitHub", href: "https://github.com/danielfrg" },
@@ -34,7 +35,7 @@ const nav = [
             nav?.map((item) => (
                 <a
                     href={item.href}
-                    class="hover:text-myorange font-bold border-b-0 text-lg lg:px-6 px-2 md:pl-0 md:pr-4 py-2 text-center"
+                    class="hover:text-myorange font-bold border-b-0 text-lg px-2 md:pl-0 md:pr-4 py-2 text-center"
                 >
                     {item.text}
                 </a>
