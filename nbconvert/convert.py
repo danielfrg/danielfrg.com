@@ -34,7 +34,7 @@ def main(filter=""):
         print("Converting:", notebook)
 
         basename = os.path.basename(notebook)
-        output_fname_md = basename[:-6] + ".md"
+        basename[:-6] + ".md"
         output_fname_html = basename[:-6] + ".html"
         head, name = os.path.split(notebook)
         head, month = os.path.split(head)
@@ -72,7 +72,6 @@ def convert(nb_path, fpath):
     # - strip possible HTML lines that are indented: styles and script tags
 
     html = ""
-    onHead = True
     for i, line in enumerate(html_base.split("\n")):
         stripped = line.strip()
         # html += stripped
