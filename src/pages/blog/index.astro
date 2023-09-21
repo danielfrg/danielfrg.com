@@ -1,10 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseHead from "../../components/common/BaseHead.astro";
-import SiteFooter from "../../components/common/SiteFooter.astro";
-import SiteHeader from "../../components/common/SiteHeader.astro";
 import TwoColumnList from "../../components/grid/TwoColumnList.astro";
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../../consts';
+import Page from '../../layouts/Page.astro';
 
 let title = SITE_TITLE;
 let description = SITE_DESCRIPTION;
@@ -19,24 +17,8 @@ allPosts = allPosts .sort(
 );
 ---
 
-<html lang="en">
-    <head>
-        <BaseHead
-            title={title}
-            description={description}
-            permalink={permalink}
-        />
-    </head>
-
-    <body>
-        <div class="flex flex-col w-full">
-            <SiteHeader />
-
-            <div class="pt-12 pb-20 px-3">
-                <TwoColumnList title="Articles" posts={allPosts} />
-            </div>
-
-            <SiteFooter />
-        </div>
-    </body>
-</html>
+<Page title={title} description={description} permalink={permalink}>
+    <div class="pt-12 pb-20 px-3">
+        <TwoColumnList title="Articles" posts={allPosts} />
+    </div>
+</Page>

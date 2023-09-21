@@ -9,7 +9,7 @@ export interface Props {
 const { title, desc, img, links } = Astro.props;
 ---
 
-<div class="flex flex-col bg-lightgrey p-1">
+<div class="flex flex-col bg-[#1F2532] p-1">
     <div class="flex-1">
         <img src={img} class="w-full min-h-[260px] object-cover" />
     </div>
@@ -27,7 +27,7 @@ const { title, desc, img, links } = Astro.props;
                 links.map((link, index) => (
                     <a
                         href={link.href}
-                        class="border-0 underline hover:underline"
+                        class="underline text-lightblue hover:text-mywhite decoration-linkline"
                     >
                         {link.text}
                     </a>

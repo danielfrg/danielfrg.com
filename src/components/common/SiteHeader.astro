@@ -1,5 +1,5 @@
 ---
-import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../../consts';
+import { SITE_TITLE } from '../../consts';
 
 export interface Props {
     title?: string;
@@ -23,7 +23,7 @@ const nav = [
     <div class="flex-1 text-center md:text-left">
         <a
             href="/"
-            class="text-3xl font-extrabold tracking-tighter bg-clip-text bg-gradient-to-r from-myorange to-mypink text-transparent border-0 hover:text-black"
+            class="text-3xl font-extrabold tracking-tighter bg-clip-text bg-gradient-to-r from-myorange to-mypink text-transparent border-0 hover:border-b-2 border-myorange"
         >
             {title}
         </a>
@@ -34,7 +34,7 @@ const nav = [
             nav?.map((item) => (
                 <a
                     href={item.href}
-                    class="abold border-0 text-lg lg:px-6 px-2 md:pl-0 md:pr-4 py-2 text-center"
+                    class="hover:text-myorange font-bold border-b-0 text-lg lg:px-6 px-2 md:pl-0 md:pr-4 py-2 text-center"
                 >
                     {item.text}
                 </a>

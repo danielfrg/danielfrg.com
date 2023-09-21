@@ -1,9 +1,7 @@
 ---
 import fs from "node:fs/promises";
 import BlogPostProse from "../components/BlogPostProse.astro";
-import BaseHead from "../components/common/BaseHead.astro";
-import SiteFooter from "../components/common/SiteFooter.astro";
-import SiteHeader from "../components/common/SiteHeader.astro";
+import Page from "./Page.astro";
 
 const { title, description, publishDate, author, permalink, tags,  notebook_html_path } = Astro.props;
 
@@ -14,27 +12,12 @@ if (notebook_html_path) {
 }
 ---
 
-<html lang="es">
-    <head>
-        <BaseHead
-            title={title}
-            description={description}
-            permalink={permalink}
-            highlight={true}
-        />
-    </head>
-
-    <body>
-        <SiteHeader />
-
-        <BlogPostProse {title} {author} {publishDate} {tags}>
+<Page>
+    <BlogPostProse {title} {author} {publishDate} {tags}>
         {notebook_html_path? (
             <div class="notebook-content" set:html={html} />
         ):(
             <slot />
         )}
-</BlogPostProse>
-
-        <SiteFooter />
-    </body>
-</html>
+    </BlogPostProse>
+</Page>

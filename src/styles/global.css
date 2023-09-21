@@ -1,64 +1,47 @@
 body {
-    background-color: #F8F8F8;
-    /* -webkit-font-smoothing: antialiased; */
-    -webkit-text-size-adjust: 100%;
+  background-color: #171b26;
+  color: rgb(229, 231, 235);
+  /* -webkit-font-smoothing: antialiased; */
+  -webkit-text-size-adjust: 100%;
 }
-
-a {
-    @apply text-myblue hover:text-blue-800 border-b-2 border-myblue no-underline
- }
-
- a:hover {
-    @apply no-underline text-myorange border-myorange
- }
-
- a.abold {
-    @apply text-black hover:text-myblue font-bold border-b-0
- }
 
 .prose {
-    .gray_background {
-        background: rgb(235, 236, 237);
-    }
-    .brown_background {
-        background: rgb(233, 229, 227);
-    }
-    .orange_background {
-        background: rgb(250, 235, 221);
-    }
-    .yellow_background {
-        background: rgb(251, 243, 219);
-    }
-    .teal_background {
-        background: rgb(221, 237, 234);
-    }
-    .blue_background {
-        background: rgb(221, 235, 241);
-    }
-    .purple_background {
-        background: rgb(234, 228, 242);
-    }
-    .pink_background {
-        background: rgb(244, 223, 235);
-    }
-    .red_background {
-        background: rgb(251, 228, 228);
-    }
+  .gray_background {
+    background: rgb(235, 236, 237);
+  }
+  .brown_background {
+    background: rgb(233, 229, 227);
+  }
+  .orange_background {
+    background: rgb(250, 235, 221);
+  }
+  .yellow_background {
+    background: rgb(251, 243, 219);
+  }
+  .teal_background {
+    background: rgb(221, 237, 234);
+  }
+  .blue_background {
+    background: rgb(221, 235, 241);
+  }
+  .purple_background {
+    background: rgb(234, 228, 242);
+  }
+  .pink_background {
+    background: rgb(244, 223, 235);
+  }
+  .red_background {
+    background: rgb(251, 228, 228);
+  }
 
-    .filename {
-        background-color: #000 !important;
-        border-top-right-radius: 5px;
-        border-top-left-radius: 5px;
-        /* border-bottom: 2px solid red; */
-        color: #fff !important;
-        margin-bottom: -11px;
-        padding: 0 10px;
-        z-index: 10;
-    }
-}
-
-.slice {
-    background-image: url(/images/blogpost-shadow-radial-reverse.png), url(/images/blogpost-gradient-bottom.png);
-    background-position: 50% 100%,50% 100%;
-    background-repeat: no-repeat;
+  .filename {
+    background-color: #000 !important;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    /* border-bottom: 2px solid red; */
+    color: #fff !important;
+    margin-bottom: -11px;
+    padding: 0 10px;
+    z-index: 10;
+  }
 }

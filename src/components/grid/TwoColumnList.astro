@@ -39,11 +39,11 @@ function fmtDate(publishDate: string) {
                 const d = new Date(post.data.publishDate);
                 return (
                     <div class="flex flex-row gap-2 items-end">
-                        <div class="font-mono text-sm text-gray-400 w-28 flex posts-center">
+                        <div class="font-mono text-sm text-lightblue w-28 flex posts-center">
                             <span>{fmtDate(post.data.publishDate)}</span>
                         </div>
                         <div class="flex-1">
-                            <a href={`/blog/${post.data.publishDate.getFullYear()}/${post.data.publishDate.getMonth() + 1}/${post.slug}`} class="text-xl">
+                            <a href={`/blog/${post.data.publishDate.getFullYear()}/${post.data.publishDate.getMonth() + 1}/${post.slug}`} class="text-xl text-lightblue underline decoration-linkline hover:text-white">
                                 {post.data.title}
                             </a>
                         </div>
