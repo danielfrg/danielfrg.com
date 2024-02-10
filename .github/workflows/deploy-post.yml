@@ -1,65 +1,28 @@
-name: deploy
+name: deploy-cloudflare
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-  workflow_dispatch:
-
-concurrency:
-  group: deploy-${{ github.head_ref }}
-  cancel-in-progress: true
-
-permissions:
-  contents: read
-  id-token: write
-  pull-requests: write
-  checks: write
+  workflow_call:
+    secrets:
+      CLOUDFLARE_ZONE:
+        required: true
+      CLOUDFLARE_TOKEN:
+        required: true
 
 jobs:
-  build:
+  clear-cache:
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
+
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
+      checks: write
+
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: pnpm
-
-      - name: Install JS dependencies
-        run: |
-          pnpm install
-
-      - name: Build website
-        run: |
-          pnpm run build
+      - name: Purge Cloudflare Cache
+        uses: jakejarvis/cloudflare-purge-action@v0.3.0
         env:
-          ASTRO_TELEMETRY_DISABLED: 1
-
-      - name: Cache website
-        id: cache-build
-        uses: actions/cache@v3
-        with:
-          path: dist
-          key: >
-            website
-            ${{ github.run_id }}
-            ${{ github.run_attempt }}
-
-  cf-pages:
-    uses: ./.github/workflows/deploy-cf-pages.yml
-    needs: [build]
-    secrets: inherit
-
-  post-deploy:
-    uses: ./.github/workflows/deploy-post.yml
-    needs: [cf-pages]
-    secrets: inherit
+          CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
+          CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
