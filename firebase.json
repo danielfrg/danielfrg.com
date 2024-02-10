@@ -1,9 +1,0 @@
-{
-  "hosting": {
-    "site": "danielfrg-com",
-    "public": "dist",
-    "cleanUrls": true,
-    "trailingSlash": false,
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
-  }
-}
