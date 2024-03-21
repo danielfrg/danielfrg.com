@@ -3,7 +3,7 @@ title: "Self-hosting plausible for 300k daily users for $5 dollars"
 slug: "plausible-300k-users-5usd"
 publishDate: 2024-04-15
 tags: ["Analytics", "Plausible", "", "React"]
-summary: tl;dr you really don't need that much to replace google analytics
+summary: "tl;dr you really don't need that much to replace google analytics"
 draft: true
 ---
 
@@ -53,26 +53,40 @@ and it passed the peak traffic of the websites so I considerd it a win.
 The problem? The on-demand price for a `t3.small` is a bit more than 15 USD per month.
 That goes above my 10 dollar imaginary treshhold.
 
-There are cheaper places to get hosting but at the same time I had to balance
-picking a serious company. So after a bit of exploring I decided to give [Hetzner](https://www.hetzner.com/)
-a try. What convinced me was a bit of twitter/X talk i saw at one point and the
-fact they [support terraform](https://registry.terraform.io/providers/hetznercloud/hcloud/latest/docs),
+There are cheaper places to get hosting but at the same time you have to balance
+your time. It has to be a company that will be here in a couple of years.
+I don't want to rely on a startup VC funded free-tier plan.
+
+So after a bit of exploring I decided to give [Hetzner](https://www.hetzner.com/)
+a try. I knew about them from some twitter/X and they also
+[support terraform](https://registry.terraform.io/providers/hetznercloud/hcloud/latest/docs),
 so I can keep using all the same tools I already use for AWS.
 
-Also the price for a 2 vCPU and 2 GiB for 3.29 EUR or 3.6 USD. Cheap AF!
+Very important was also the price of 3.29 EUR (3.6 USD) for a 2 vCPU and 2 GiB. Cheap AF!
 
 A couple of forms later I had an access/secret key pair, migrated my Terraform config
 and I was up and running.
 
 I am happy to report I have been running this for a week and saw no issues what so ever.
 
-Here are some charts of CPU/Memory usage and the traffic of the websites.
+Here are some charts of CPU usage and the traffic of the websites.
+They don't show memory on their UI but I check it out manually every day and it was basically like this:
 
-The total price for this instance running was about
+```plain
+root@plausible:~# free
+              total        used        free      shared  buff/cache   available
+Mem:        1969704      742344      478116       73544      749244      972544
+Swap:             0           0           0
+```
 
-Fun fact: Hetzner charges one dollar per month per IPv4 address.
+IMAGES
+
+The total price for this instance running for X days was: TODO
+
+Add one more dollar because Hetzner charges one dollar per month per IPv4 address.
 I technically only needed this to setup the server because I expose it using
-cloudflare tunnels so after that I could remove the IP but I kept it.
+cloudflare tunnels so after that I could remove the IP but I kept in case something
+went wrong and because to add and remove this you need to stop the instance.
 If my ISP supported IPv6 I could easily save 1 extra dollar!
 
 ### Backups and stuff
@@ -114,11 +128,14 @@ Is everything free on CF? I think so.
 Not for the games. I totally would if it was the only tracking thing I added to the websites.
 For 5 dollars per month that's fine.
 But the reality is that the websites are profitable because of Ads and they track
-everything. So it makes no sense.
+everything. It would also be just another JS to load on the page. It makes no sense.
 
 I will keep running this and migrate the tracking of my personal websites,
 documentation site for my OSS libraries and other stuff.
 
-Because of privacy? Yes and no. I like self hosting this stuff and honeslty
-liked the simplicity of Plausible.
+Because of privacy? A big part of that is privacy yes. I think that as tech
+people we should show others that this is possible and do our part.
+
+I also like self host a lot of stuff in my mini homelab and I like self self-hosting
+this stuff.
 
