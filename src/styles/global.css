@@ -6,6 +6,12 @@ body {
 }
 
 .prose {
+  a:link {
+    color: #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+    text-decoration: none;
+  }
+
   .gray_background {
     background: rgb(235, 236, 237);
   }

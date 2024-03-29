@@ -25,9 +25,9 @@ def main(filter=""):
     import glob
 
     # Iterate the notebooks directory and convert all notebooks
-    input_dir = os.path.join(THIS_DIR, "../src/content/blog_notebooks")
+    input_dir = os.path.join(THIS_DIR, "../src/content/_blog_notebooks")
     # output_dir = os.path.join(THIS_DIR, "../src/content/gen_blog_notebooks/")
-    output_dir_gen = os.path.join(THIS_DIR, "../src/content/gen_blog_notebooks")
+    output_dir_gen = os.path.join(THIS_DIR, "../src/content/_gen_blog_notebooks")
     glob_expr = os.path.join(input_dir, f"**/*{filter}*.ipynb")
 
     for notebook in glob.glob(glob_expr, recursive=True):
