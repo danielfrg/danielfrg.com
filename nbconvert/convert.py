@@ -7,7 +7,7 @@ THIS_DIR = os.path.dirname(os.path.realpath(__file__))
 
 GENERATED_MD = """---
 {metadata}
-notebook_html_path: ../../../src/content/gen_blog_notebooks/{fpath}
+notebook_html_path: ../../../src/content/_gen_blog_notebooks/{fpath}
 ---
 
 """
@@ -26,7 +26,7 @@ def main(filter=""):
 
     # Iterate the notebooks directory and convert all notebooks
     input_dir = os.path.join(THIS_DIR, "../src/content/_blog_notebooks")
-    # output_dir = os.path.join(THIS_DIR, "../src/content/gen_blog_notebooks/")
+    # output_dir = os.path.join(THIS_DIR, "../src/content/_gen_blog_notebooks/")
     output_dir_gen = os.path.join(THIS_DIR, "../src/content/_gen_blog_notebooks")
     glob_expr = os.path.join(input_dir, f"**/*{filter}*.ipynb")
 

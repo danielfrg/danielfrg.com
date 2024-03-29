@@ -9,5 +9,5 @@ tags:
   - Movies
 title: "ReproduceIt: FiveThirtyEight - The Three Types Of Adam Sandler Movies"
 
-notebook_html_path: ../../../src/content/gen_blog_notebooks/reproduceit-538-adam-sandler-movies.html
+notebook_html_path: ../../../src/content/_gen_blog_notebooks/reproduceit-538-adam-sandler-movies.html
 ---
