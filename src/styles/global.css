@@ -6,7 +6,7 @@ body {
 }
 
 .prose {
-  a:link {
+  a {
     color: #f0f0f0;
     border-bottom: 1px solid #f0f0f0;
     text-decoration: none;
