@@ -26,7 +26,7 @@ I would have to be in the 5 million page views per month plan of plausible which
 Thats too much for something that I get for free from Google specially compared to the revenue I get from Ads.
 Keep in mind that while there are a lot of page views I don't run that many ads on them because the space for the game is limited, everyone plays on their phone, and in countries with low CPM.
 
-## The experiment
+## The Experiment: Self-Hosting Plausible on a Budget
 
 I still wanted to run an experiment on self-hosting Plausible
 and see how little can I pay to have a service that can handle the traffic of
@@ -118,7 +118,7 @@ Another fun thing you can do with plausible is send [custom events](https://plau
 
 The lag on this data on GA is bad. And getting reports is not just doing some  SQL. I get it, they have so much data it’s actually impressive it works as fast as it does but in plausible it’s instant. I just process my data.
 
-## The other key player: Cloudflare
+## Cloudflare: The Unsung Hero
 
 Nothing would be possible if Cloudfare didn't cache everything.
 I would probably have to pay a tons of ingress fees. They are be the real MVP here.
