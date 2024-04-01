@@ -93,7 +93,7 @@ You can backup this directly on Hetzner and it will cost "20 % of your server pl
 Math: `3.6 * 0.2 = 0.72` EUR per month. For a total of 7 rotating backups.
 That sounds like a great deal to me.
 
-![](/blog/2024/04/plausible/hz-backups.png)
+![](/blog/2024/03/plausible/hz-backups.png)
 
 I would personally also backup this to an S3 bucket with a simple nightly job.
 
