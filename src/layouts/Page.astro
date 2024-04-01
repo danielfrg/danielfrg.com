@@ -17,10 +17,11 @@ const { title, description, permalink } = Astro.props;
     </head>
 
     <body>
-        <div class="flex flex-col w-full">
+        <div class="flex flex-col w-full min-h-screen">
             <SiteHeader />
-
+            <div class="max-w-screen-md b-36 px-3 grow prose mx-auto container prose-invert">
             <slot />
+            </div>
 
             <SiteFooter />
         </div>
