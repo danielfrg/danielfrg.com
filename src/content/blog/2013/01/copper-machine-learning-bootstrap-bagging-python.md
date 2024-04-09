@@ -1,5 +1,5 @@
 ---
-publishDate: 2013-01-30
+pubDate: 2013-01-30
 slug: copper-machine-learning-bootstrap-bagging-python
 tags:
   - Python

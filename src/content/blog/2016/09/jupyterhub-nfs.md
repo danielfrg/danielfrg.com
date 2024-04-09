@@ -1,7 +1,7 @@
 ---
 title: "Jupyter Hub on Kubernetes Part II: NFS"
 slug: jupyterhub-nfs
-publishDate: 2016-09-10
+pubDate: 2016-09-10
 tags: ["Kubernetes", "Jupyter Hub", "Docker", "LDAP", "NFS"]
 ---
 

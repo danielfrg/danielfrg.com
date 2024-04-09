@@ -1,7 +1,7 @@
 ---
 title: "Notes for: Fast.ai 2018 - Lesson 1: Intro to DNN and Image classification"
 slug: fastai-lesson-1
-publishDate: 2018-07-27T19:00:00Z
+pubDate: 2018-07-27T19:00:00Z
 tags: ["Tech notes", "Fast.ai", "Machine Learning", "Deep Learning", "Image classification"]
 ---
 

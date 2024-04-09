@@ -1,7 +1,7 @@
 ---
 title: "Notes: Production Model Deployment"
 slug: production-model-deployment
-publishDate: 2018-09-27
+pubDate: 2018-09-27
 tags: ["MLOps", "Notes"]
 ---
 

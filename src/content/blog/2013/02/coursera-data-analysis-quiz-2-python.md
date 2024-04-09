@@ -1,5 +1,5 @@
 ---
-publishDate: 2013-02-04
+pubDate: 2013-02-04
 slug: coursera-data-analysis-quiz-2-python
 tags:
   - Python

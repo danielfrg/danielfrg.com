@@ -1,7 +1,7 @@
 ---
 title: Hadoop and Kerberos a love story
 slug: hadoop-kerberos
-publishDate: 2018-09-01T17:12:00Z
+pubDate: 2018-09-01T17:12:00Z
 tags: ["Hadoop", "Kerberos"]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Talk @ PyData NYC 2015: Querying 1.6 billion reddit comments with python"
 slug: pydata-2015-quering-1-6-billion-reddit-comments-with-python
-publishDate: 2015-12-04
+pubDate: 2015-12-04
 tags: ["Talk", "PyData", "Python", "Blaze", "Ibis", "Reddit", "Impala"]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Green
 slug: green
-publishDate: 2018-06-24
+pubDate: 2018-06-24
 tags: ["Life"]
 ---
 

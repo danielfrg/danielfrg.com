@@ -1,7 +1,7 @@
 ---
 title: Multicorn in Docker + conda for Postgres Foreign Data Wrappers in Python
 slug: multicorn-docker-conda
-publishDate: 2015-10-06
+pubDate: 2015-10-06
 tags: ["Postgres", "Multicorn", "Python", "Conda", "Docker"]
 ---
 

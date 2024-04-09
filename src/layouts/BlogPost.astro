@@ -3,7 +3,7 @@ import BlogPostProse from "@components/BlogPostProse.astro";
 import fs from "node:fs/promises";
 import Prose from "./Prose.astro";
 
-const { title, description, publishDate, author, permalink, tags,  notebook_html_path } = Astro.props;
+const { title, description, pubDate, author, permalink, tags,  notebook_html_path } = Astro.props;
 
 let html = "";
 if (notebook_html_path) {
@@ -13,7 +13,7 @@ if (notebook_html_path) {
 ---
 
 <Prose {title} {description} {permalink}>
-    <BlogPostProse {title} {author} {publishDate} {tags}>
+    <BlogPostProse {title} {author} {pubDate} {tags}>
         {notebook_html_path? (
             <div class="notebook-content" set:html={html} />
         ):(

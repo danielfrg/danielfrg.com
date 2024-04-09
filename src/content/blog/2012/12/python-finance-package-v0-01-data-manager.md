@@ -1,7 +1,7 @@
 ---
 title: Python Finance Package v0.01 - Data Manager
 slug: python-finance-package-v0-01-data-manager
-publishDate: 2012-12-13T12:59:00Z
+pubDate: 2012-12-13T12:59:00Z
 tags: ["Coursera", "Finance", "Pandas", "Python", "Computational investing"]
 ---
 

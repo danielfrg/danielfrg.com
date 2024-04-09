@@ -1,7 +1,7 @@
 ---
 title: Plugin for blogging with IPython notebooks in Pelican
 slug: pelican-ipython-notebook-plugin
-publishDate: 2013-03-08
+pubDate: 2013-03-08
 tags: ["Python", "Pelican"]
 ---
 

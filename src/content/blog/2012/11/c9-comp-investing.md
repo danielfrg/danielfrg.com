@@ -1,7 +1,7 @@
 ---
 title: Using cloud9 to save computing power and to code from everywhere too
 slug: cloud9-computing-code-everywhere
-publishDate: 2012-11-03T14:46:00Z
+pubDate: 2012-11-03T14:46:00Z
 tags: ["Python", "Computational investing", "Coursera", "Numpy", "Cloud9"]
 ---
 

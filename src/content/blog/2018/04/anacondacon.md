@@ -1,7 +1,7 @@
 ---
 title: "Talk @ AnacondaCON 2018: Deploying Python and R to Spark"
 slug: anacondacon
-publishDate: 2018-04-17
+pubDate: 2018-04-17
 tags: ["Talk", "Python", "R", "Spark", "Hadoop"]
 ---
 

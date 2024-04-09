@@ -1,7 +1,7 @@
 ---
 title: "Notes for: TGIK 003: Istio"
 slug: tgik-003-istio
-publishDate: 2018-07-14T12:03:00Z
+pubDate: 2018-07-14T12:03:00Z
 tags: ["Tech notes", "Kubernetes", "Istio"]
 ---
 

@@ -7,8 +7,8 @@ export async function getStaticPaths() {
 	return posts.map((post) => ({
 		params: {
 			slug: post.slug,
-			year: post.data.publishDate.getFullYear().toString(),
-			month: (post.data.publishDate.getMonth() + 1).toString()
+			year: post.data.pubDate.getFullYear().toString(),
+			month: (post.data.pubDate.getMonth() + 1).toString()
 		},
 		props: post,
 	}));

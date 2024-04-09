@@ -1,7 +1,7 @@
 ---
 title: "Jupyter-Flex"
 slug: "jupyter-flex"
-publishDate: 2021-04-15
+pubDate: 2021-04-15
 tags: ["Jupyter", "Voila", "Dashboards", "React"]
 summary: Easy dashboards for Jupyter
 ---

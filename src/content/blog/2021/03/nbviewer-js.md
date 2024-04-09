@@ -1,7 +1,7 @@
 ---
 title: "NBViewer.JS"
 slug: "nbviewer-js"
-publishDate: 2021-04-01
+pubDate: 2021-04-01
 tags: ["Jupyter", "Apps", "React"]
 summary: Pure Javascript Jupyter notebook viewer
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Notes for: Fast.ai 2018 - Lesson 3: Understanding convolutions"
 slug: fastai-lesson-3
-publishDate: 2018-07-31T18:00:00Z
+pubDate: 2018-07-31T18:00:00Z
 tags: ["Tech notes", "Fast.ai", "Machine Learning", "Deep Learning", "CNN"]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Notes for: TGIK 004: RBAC"
 slug: tgik-004-rbac
-publishDate: 2018-07-14T15:00:00Z
+pubDate: 2018-07-14T15:00:00Z
 tags: ["Tech notes", "Kubernetes", "RBAC"]
 ---
 

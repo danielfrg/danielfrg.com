@@ -1,5 +1,5 @@
 ---
-publishDate: 2013-01-27
+pubDate: 2013-01-27
 slug: copper-machine-learning-python
 tags:
   - Python

@@ -1,7 +1,7 @@
 ---
 title: "Notes for: TGIK 002: Networking and Services"
 slug: tgik-002-networking-services
-publishDate: 2018-07-14T12:02:00Z
+pubDate: 2018-07-14T12:02:00Z
 tags: ["Tech notes", "Kubernetes", "Networking"]
 ---
 

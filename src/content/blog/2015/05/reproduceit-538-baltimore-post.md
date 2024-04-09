@@ -1,5 +1,5 @@
 ---
-publishDate: 2015-05-15
+pubDate: 2015-05-15
 slug: reproduceit-538-baltimore-black-income
 tags:
   - ReproduceIt

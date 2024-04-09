@@ -1,7 +1,7 @@
 ---
 title: "Notes for: Istio and Kubernetes"
 slug: istio-and-k8s
-publishDate: 2018-07-14T13:00:00Z
+pubDate: 2018-07-14T13:00:00Z
 tags: ["Tech notes", "Kubernetes", "Istio"]
 ---
 

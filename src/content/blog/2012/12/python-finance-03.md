@@ -1,7 +1,7 @@
 ---
 title: Python Finance Package v0.03 – Date Utils, Lists Utils, Event Studies
 slug: python-finance-03
-publishDate: 2012-12-26T21:48:00Z
+pubDate: 2012-12-26T21:48:00Z
 tags: ["Coursera", "Finance", "Pandas", "Python", "Computational investing"]
 ---
 

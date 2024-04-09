@@ -1,7 +1,7 @@
 ---
 title: "Self-hosting plausible for +350k daily users for $5"
 slug: "plausible-350k-users-5usd"
-publishDate: 2024-03-29
+pubDate: 2024-03-29
 tags: [“analytics", “plausible", “cloud”]
 summary: "you can replace Google Analytics"
 ---
@@ -116,7 +116,7 @@ They are still a lot cheaper than EC2.
 
 Another fun thing you can do with plausible is send [custom events](https://plausible.io/docs/custom-props/for-custom-events). For the longest time I tried to setup [Google Analytics custom properties/dimensions/whatever](https://support.google.com/analytics/answer/14240153?hl=en).
 
-The lag on this data on GA is bad. And getting reports is not just doing some  SQL. I get it, they have so much data it’s actually impressive it works as fast as it does but in plausible it’s instant. I just process my data.
+The lag on this data on GA is bad. And getting reports is not just doing some SQL. I get it, they have so much data it’s actually impressive it works as fast as it does but in plausible it’s instant. I just process my data.
 
 ## Cloudflare: The Unsung Hero
 

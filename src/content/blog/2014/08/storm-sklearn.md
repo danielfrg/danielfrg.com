@@ -1,7 +1,7 @@
 ---
 title: From zero to storm cluster for scikit-learn classification
 slug: storm-sklearn
-publishDate: 2014-08-01
+pubDate: 2014-08-01
 tags: ["Python", "Storm", "Salt", "scikit-learn"]
 ---
 

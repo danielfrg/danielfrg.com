@@ -1,7 +1,7 @@
 ---
 title: "Notes for: TGIK 001: A quick tour"
 slug: tgik-001-quick-tour
-publishDate: 2018-07-14T12:01:00Z
+pubDate: 2018-07-14T12:01:00Z
 tags: ["Tech notes", "Kubernetes"]
 ---
 

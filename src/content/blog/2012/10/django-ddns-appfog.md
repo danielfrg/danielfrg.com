@@ -1,7 +1,7 @@
 ---
 title: Making your own DDNS with Django and AppFog
 slug: making-your-own-ddns-with-django-and-appfog
-publishDate: 2012-10-20T21:45:00Z
+pubDate: 2012-10-20T21:45:00Z
 tags: ["django", "Python", "PaaS", "DDNS"]
 ---
 
@@ -77,7 +77,7 @@ def createuser(request):
 
 ### 1.2 Models
 
-Just one model to store the IPs by publishDate:
+Just one model to store the IPs by pubDate:
 
 ```python
 class IP(models.Model):

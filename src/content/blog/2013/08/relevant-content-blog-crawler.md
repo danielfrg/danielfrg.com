@@ -1,5 +1,5 @@
 ---
-publishDate: 2013-08-20
+pubDate: 2013-08-20
 slug: relevant-content-blog-crawler
 tags:
   - Crawling

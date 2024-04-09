@@ -1,7 +1,7 @@
 ---
 title: "Notes for: Fast.ai 2018 - Lesson 2: Image Classification with CNN"
 slug: fastai-lesson-2
-publishDate: 2018-07-27T22:00:00Z
+pubDate: 2018-07-27T22:00:00Z
 tags: ["Tech notes", "Fast.ai", "Machine Learning", "Deep Learning", "Image classification", "CNN"]
 ---
 

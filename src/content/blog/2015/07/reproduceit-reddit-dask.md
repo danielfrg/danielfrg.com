@@ -1,5 +1,5 @@
 ---
-publishDate: 2015-07-21
+pubDate: 2015-07-21
 slug: reproduceit-reddit-word-count-dask
 tags:
   - ReproduceIt

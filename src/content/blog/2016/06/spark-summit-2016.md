@@ -1,7 +1,7 @@
 ---
 title: "Talk @ Spark Summit 2015: Connecting python to the Spark Ecosystem"
 slug: spark-summit-2016-connecting-python-to-the-spark-ecosystem
-publishDate: 2016-06-08
+pubDate: 2016-06-08
 tags: ["Talk", "Spark", "Spark Summit", "Python", "Hadoop"]
 ---
 

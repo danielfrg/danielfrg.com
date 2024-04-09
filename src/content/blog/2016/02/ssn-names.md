@@ -1,7 +1,7 @@
 ---
 include:
   - jquery
-publishDate: 2016-02-23
+pubDate: 2016-02-23
 slug: reproduceit-name-trends
 tags:
   - ReproduceIt

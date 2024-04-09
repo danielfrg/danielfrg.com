@@ -1,5 +1,5 @@
 ---
-publishDate: 2013-01-26
+pubDate: 2013-01-26
 slug: copper-easy-data-analysis-machine-learning-python
 tags:
   - Python

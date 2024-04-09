@@ -1,7 +1,7 @@
 ---
 title: "Python Finance Package v0.02: Basic Utils and Market Simulator"
 slug: python-finance-package-v0-02-basic-utils-and-market-simulator
-publishDate: 2012-12-17T15:00:00Z
+pubDate: 2012-12-17T15:00:00Z
 tags: ["Coursera", "Finance", "Pandas", "Python", "Computational investing"]
 ---
 

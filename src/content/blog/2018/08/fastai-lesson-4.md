@@ -1,7 +1,7 @@
 ---
 title: "Notes for: Fast.ai 2018 - Lesson 4: Structured data, time series and language models"
 slug: fastai-lesson-4
-publishDate: 2018-08-07T18:00:00Z
+pubDate: 2018-08-07T18:00:00Z
 tags: ["Tech notes", "Fast.ai", "Machine Learning", "Deep Learning", "NLP"]
 ---
 

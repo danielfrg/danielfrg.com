@@ -1,7 +1,7 @@
 ---
 title: Django + Celery + Readability = Python relevant content crawler
 slug: django-crawler
-publishDate: 2013-09-11
+pubDate: 2013-09-11
 tags: ["Crawling", "Django", "Python", "Celery", "Readability"]
 ---
 

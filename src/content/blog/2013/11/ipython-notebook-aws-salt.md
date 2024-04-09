@@ -1,7 +1,7 @@
 ---
 title: "One-liner: Deploy python scipy stack with IPython notebook on AWS"
 slug: ipython-notebook-aws-salt
-publishDate: 2013-11-27
+pubDate: 2013-11-27
 tags: ["AWS", "Python", "Salt", "Jupyter Notebook", "IPython Notebook"]
 ---
 

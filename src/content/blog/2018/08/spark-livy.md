@@ -1,7 +1,7 @@
 ---
 title: Spark & Livy together in hell (kerberos)
 slug: spark-livy
-publishDate: 2018-09-02T17:12:00Z
+pubDate: 2018-09-02T17:12:00Z
 tags: ["Spark", "Livy", "Hadoop", "Kerberos", "Python", "Spark magic"]
 ---
 

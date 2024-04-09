@@ -1,7 +1,7 @@
 ---
 title: Jupyter Hub on Kubernetes with LDAP
 slug: jupyterhub-ldap
-publishDate: 2016-09-03
+pubDate: 2016-09-03
 tags: ["Kubernetes", "Jupyter Hub", "Docker", "LDAP"]
 ---
 

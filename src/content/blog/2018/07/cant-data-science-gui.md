@@ -1,7 +1,7 @@
 ---
 title: "Notes: You can't do data science in a GUI"
 slug: you-cant-do-data-science-guy
-publishDate: 2018-07-07T14:00:00Z
+pubDate: 2018-07-07T14:00:00Z
 tags: ["Tech notes", "R", "Python"]
 ---
 

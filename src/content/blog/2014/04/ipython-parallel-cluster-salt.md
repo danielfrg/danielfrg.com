@@ -1,5 +1,5 @@
 ---
-publishDate: 2014-04-18
+pubDate: 2014-04-18
 slug: ipython-parallel-cluster-salt
 tags:
   - Python

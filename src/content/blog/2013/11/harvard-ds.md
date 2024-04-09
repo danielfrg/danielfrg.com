@@ -1,7 +1,7 @@
 ---
 title: "Review: Harvard Data Science - Fall 2013"
 slug: harvard-ds
-publishDate: 2013-11-23
+pubDate: 2013-11-23
 tags: ["Data Science", "Python", "NLP", "Statistics", "Bayesian", "Graphs"]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "word2vec app with Algorithmia"
 slug: "word2vec-app-algorithmia"
-publishDate: 2018-09-09
+pubDate: 2018-09-09
 tags: ["ML Models", "Algorithmia", "word2vec", "Vue.JS"]
 ---
 

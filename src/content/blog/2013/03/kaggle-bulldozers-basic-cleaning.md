@@ -1,5 +1,5 @@
 ---
-publishDate: 2013-03-07
+pubDate: 2013-03-07
 slug: kaggle-bulldozers-basic-cleaning
 tags:
   - Python

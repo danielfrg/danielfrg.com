@@ -1,7 +1,7 @@
 ---
 title: "Polyaxon, Argo and Seldon for model training, package and deployment in Kubernetes"
 slug: "model-management-polyaxon-argo-seldon"
-publishDate: 2018-10-13
+pubDate: 2018-10-13
 tags: ["Model management", "Kubernetes", "Polyaxon", "Argo", "Seldon"]
 summary: "The ultimate combination of open-source frameworks for model management in Kubernetes?"
 ---

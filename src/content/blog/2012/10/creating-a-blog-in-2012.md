@@ -1,7 +1,7 @@
 ---
 title: Creating a blog in 2012
 slug: creating-a-blog-in-2012
-publishDate: 2012-10-05T03:22:00Z
+pubDate: 2012-10-05T03:22:00Z
 tags: ["This blog"]
 ---
 

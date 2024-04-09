@@ -1,5 +1,5 @@
 ---
-publishDate: 2015-05-01
+pubDate: 2015-05-01
 slug: reproduceit-538-adam-sandler-movies
 tags:
   - ReproduceIt

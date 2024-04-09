@@ -1,7 +1,7 @@
 ---
 title: "NLP at scale: Semafor + salt + celery and more"
 slug: nlp-semafor-scale
-publishDate: 2013-11-17
+pubDate: 2013-11-17
 tags: ["NLP", "Python", "Semafor", "Salt", "Celery", "Luigi", "Vagrant"]
 ---
 

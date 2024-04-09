@@ -1,7 +1,7 @@
 ---
 title: Extracting NBA data from ESPN
 slug: nba-scraping-data
-publishDate: 2013-04-01
+pubDate: 2013-04-01
 tags: ["Crawling", "Python", "Pandas", "Requests", "Beautiful Soup"]
 ---
 

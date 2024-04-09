@@ -1,5 +1,5 @@
 ---
-publishDate: 2013-02-13
+pubDate: 2013-02-13
 slug: copper-quick-data-transformation-python
 tags:
   - Python

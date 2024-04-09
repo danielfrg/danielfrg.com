@@ -1,7 +1,7 @@
 ---
 title: Month-Log.oct.2013
 slug: month-log
-publishDate: 2013-10-31
+pubDate: 2013-10-31
 tags: ["Month-Log", "Python", "Pig", "Nutch", "Crawling", "Vagrant", "Salt", "Luigi"]
 ---
 

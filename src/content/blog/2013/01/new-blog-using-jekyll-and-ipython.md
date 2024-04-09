@@ -1,7 +1,7 @@
 ---
 title: New blog using Jekyll & IPython
 slug: new-blog-using-jekyll-and-ipython
-publishDate: 2013-01-31
+pubDate: 2013-01-31
 tags: ["Jekyll", "IPython", "Python"]
 ---
 

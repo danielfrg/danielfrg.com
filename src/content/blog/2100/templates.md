@@ -2,7 +2,7 @@
 title: Plain markdown test
 layout: ../../../layouts/BlogPost.astro
 slug: markdown-templates
-publishDate: 2100-01-01
+pubDate: 2100-01-01
 tags: ["Test"]
 summary: TL'DR This is the summary of the post
 draft: true

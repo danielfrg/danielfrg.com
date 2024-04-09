@@ -1,7 +1,7 @@
 ---
 title: Python Finance Package v0.035 - Event study and market simulator Integration
 slug: python-finance-035
-publishDate: 2012-12-28T15:00:00Z
+pubDate: 2012-12-28T15:00:00Z
 tags: ["Coursera", "Finance", "Pandas", "Python", "Computational investing"]
 ---
 

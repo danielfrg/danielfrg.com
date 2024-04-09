@@ -1,7 +1,7 @@
 ---
 title: Desktop app to easily create new tasks on all task management web apps
 slug: desktop-app-to-easily-create-new-tasks
-publishDate: 2012-10-14T23:51:00
+pubDate: 2012-10-14T23:51:00
 tags: ["Python", "Encryption", "AES", "GTD", "wxPython", "pyexe"]
 ---
 

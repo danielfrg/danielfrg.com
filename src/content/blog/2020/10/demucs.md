@@ -1,7 +1,7 @@
 ---
 title: "Demucs App"
 slug: "demucs-app"
-publishDate: 2020-10-10
+pubDate: 2020-10-10
 tags: ["ml-models", "apps", "music"]
 ---
 

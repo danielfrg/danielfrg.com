@@ -1,7 +1,7 @@
 ---
 title: Jupyter Notebook Cloudera CSD
 slug: jupyter-cloudera-csd
-publishDate: 2016-10-29
+pubDate: 2016-10-29
 tags: ["Jupyter", "Cloudera", "CSD"]
 ---
 

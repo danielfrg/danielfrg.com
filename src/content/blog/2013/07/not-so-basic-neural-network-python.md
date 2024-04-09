@@ -1,5 +1,5 @@
 ---
-publishDate: 2013-07-27
+pubDate: 2013-07-27
 slug: not-so-basic-neural-network-python
 tags:
   - Python

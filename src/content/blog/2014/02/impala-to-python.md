@@ -1,5 +1,5 @@
 ---
-publishDate: 2014-02-28
+pubDate: 2014-02-28
 slug: impala-to-python
 tags:
   - Python
