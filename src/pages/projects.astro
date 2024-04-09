@@ -1,10 +1,8 @@
 ---
-import BaseHead from "../components/common/BaseHead.astro";
-import SiteFooter from "../components/common/SiteFooter.astro";
-import SiteHeader from "../components/common/SiteHeader.astro";
-import PreviewGrid from "../components/grid/PreviewGrid.astro";
+import PreviewGrid from "@components/grid/PreviewGrid.astro";
+import Base from "@layouts/Base.astro";
 
-import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../consts';
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../lib/consts';
 
 let title = SITE_TITLE;
 let description = SITE_DESCRIPTION;
@@ -108,44 +106,34 @@ const openSourceList = [
 ];
 ---
 
-<html lang="en">
-    <head>
-        <BaseHead
-            title={title}
-            description={description}
-            permalink={permalink}
-            highlight={false}
-        />
-    </head>
 
-    <body>
-        <div class="flex flex-col w-full">
-            <SiteHeader />
+<Base
+    title={title}
+    description={description}
+    permalink={permalink}
+>
+    <!-- OSS -->
+    <div class="pt-16 px-3">
+        <PreviewGrid title="Open Source" items={openSource} />
 
-            <!-- OSS -->
-            <div class="pt-16 pb-36 px-3">
-                <PreviewGrid title="Open Source" items={openSource} />
+        <ul class="max-w-screen-md mx-auto mt-6 px-3">
+            {
+                openSourceList.map((item) => (
+                    <li class="m-0 text-xl">
+                        <a href={item.link} class="underline text-lightblue hover:text-mywhite decoration-linkline font-mono text-lg">
+                            {item.title}
+                        </a>
+                        - {item.desc}
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
 
-                <ul class="container max-w-screen-md mx-auto mt-6 px-3">
-                    {
-                        openSourceList.map((item, index) => (
-                            <li class="m-0 text-xl">
-                                <a href={item.link} class="underline text-lightblue hover:text-mywhite decoration-linkline font-mono text-lg">
-                                    {item.title}
-                                </a>
-                                - {item.desc}
-                            </li>
-                        ))
-                    }
-                </ul>
-            </div>
+    <!-- Apps -->
+    <div class="pt-16 px-3">
+        <PreviewGrid title="Applications" items={apps} />
+    </div>
 
-            <!-- Apps -->
-            <div class="pt-16 pb-36 px-3">
-                <PreviewGrid title="Applications" items={apps} />
-            </div>
 
-            <SiteFooter />
-        </div>
-    </body>
-</html>
+</Base>

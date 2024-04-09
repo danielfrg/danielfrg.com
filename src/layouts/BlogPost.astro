@@ -1,7 +1,7 @@
 ---
+import BlogPostProse from "@components/BlogPostProse.astro";
 import fs from "node:fs/promises";
-import BlogPostProse from "../components/BlogPostProse.astro";
-import Page from "./Page.astro";
+import Prose from "./Prose.astro";
 
 const { title, description, publishDate, author, permalink, tags,  notebook_html_path } = Astro.props;
 
@@ -12,7 +12,7 @@ if (notebook_html_path) {
 }
 ---
 
-<Page>
+<Prose {title} {description} {permalink}>
     <BlogPostProse {title} {author} {publishDate} {tags}>
         {notebook_html_path? (
             <div class="notebook-content" set:html={html} />
@@ -20,4 +20,4 @@ if (notebook_html_path) {
             <slot />
         )}
     </BlogPostProse>
-</Page>
+</Prose>

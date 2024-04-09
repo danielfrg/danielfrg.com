@@ -1,7 +1,7 @@
 ---
-import BaseHead from "../components/common/BaseHead.astro";
-import SiteFooter from "../components/common/SiteFooter.astro";
-import SiteHeader from "../components/common/SiteHeader.astro";
+import BaseHead from "@components/common/BaseHead.astro";
+import SiteFooter from "@components/common/SiteFooter.astro";
+import SiteHeader from "@components/common/SiteHeader.astro";
 
 const { title, description, permalink } = Astro.props;
 
@@ -19,9 +19,8 @@ const { title, description, permalink } = Astro.props;
     <body>
         <div class="flex flex-col w-full min-h-screen">
             <SiteHeader />
-            <div class="max-w-screen-md b-36 px-3 grow prose mx-auto container prose-invert">
+
             <slot />
-            </div>
 
             <SiteFooter />
         </div>

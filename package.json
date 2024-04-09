@@ -5,20 +5,23 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
+    "check": "astro check",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^1.1.0",
-    "@astrojs/rss": "^3.0.0",
-    "@astrojs/sitemap": "^3.0.0",
+    "@astrojs/check": "^0.5.10",
+    "@astrojs/mdx": "^2.2.4",
+    "@astrojs/rss": "^4.0.5",
+    "@astrojs/sitemap": "^3.1.2",
     "@astrojs/svelte": "^4.0.2",
     "@astrojs/tailwind": "^5.0.0",
     "@tailwindcss/typography": "^0.5.10",
-    "astro": "^3.1.1",
+    "astro": "^4.5.16",
     "rehype-raw": "^6.1.1",
-    "tailwindcss": "^3.3.3"
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.4.4"
   },
   "devDependencies": {
     "postcss-import": "^14.1.0",
@@ -28,7 +31,7 @@
     "tsx": "^3.12.10"
   },
   "volta": {
-    "node": "18.16.0",
-    "pnpm": "8.7.5"
+    "node": "20.12.1",
+    "pnpm": "8.15.6"
   }
 }

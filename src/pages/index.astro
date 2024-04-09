@@ -1,6 +1,6 @@
 ---
-import BaseHead from "../components/common/BaseHead.astro";
-import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../consts';
+import BaseHead from "@components/common/BaseHead.astro";
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../lib/consts';
 
 let title = SITE_TITLE;
 let description = SITE_DESCRIPTION;
@@ -23,7 +23,7 @@ let permalink = SITE_URL;
             <div class="lg:w-2/3 mx-4 m-auto lg:m-auto">
                 <div>
                     <h1
-                        class="py-2 text-5xl font-extrabold tracking-tighter bg-clip-text bg-gradient-to-r from-myorange to-mypink text-transparent"
+                        class="py-2 text-5xl font-extrabold tracking-tighter text-myorange"
                     >
                         Daniel Rodriguez
                     </h1>
@@ -40,32 +40,32 @@ let permalink = SITE_URL;
 
                 <div class="my-8 lg:text-right">
                     <ul class="text-2xl tracking-tight nav-links">
-                        <li class="lg:inline">
+                        <li class="lg:inline py-2">
                             <a href="/about" class="hover:text-myorange no-underline font-bold border-b-0 md:px-6 py-4 md:py-0"
                                 >About</a
                             >
                         </li>
-                        <li class="lg:inline">
+                        <li class="lg:inline py-2">
                             <a href="/now" class="hover:text-myorange no-underline font-bold border-b-0 md:px-6 py-4 md:py-0"
                                 >Now</a
                             >
                         </li>
-                        <li class="lg:inline">
+                        <li class="lg:inline py-2">
                             <a href="/blog" class="hover:text-myorange font-bold border-b-0 md:px-6 py-4 md:py-0"
                                 >Blog</a
                             >
                         </li>
-                        <li class="lg:inline">
+                        <li class="lg:inline py-2">
                             <a href="/projects" class="hover:text-myorange font-bold border-b-0 md:px-6 py-4 md:py-0"
                                 >Projects</a
                             >
                         </li>
-                        <li class="lg:inline">
+                        <li class="lg:inline py-2">
                         <a href="https://wiki.danielfrg.com" class="hover:text-myorange font-bold border-b-0 md:px-6 py-4 md:py-0"
                         >Wiki</a
                         >
                         </li>
-                        <li class="lg:inline">
+                        <li class="lg:inline py-2">
                             <a
                                 href="https://github.com/danielfrg"
                                 class="hover:text-myorange font-bold border-b-0 md:px-6 py-4 md:py-0">Code</a

@@ -7,6 +7,7 @@ dependencies = [
     "fire>=0.5.0",
     "mkdocs_jupyter>=0.24.2",
     "mkdocs-jupyter==0.24.3",
+    "pyyaml>=6.0.1",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
@@ -21,3 +22,6 @@ dev_dependencies = []
 
 [tool.hatch.metadata]
 allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["convert.py"]

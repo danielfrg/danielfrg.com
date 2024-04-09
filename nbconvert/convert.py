@@ -7,7 +7,7 @@ THIS_DIR = os.path.dirname(os.path.realpath(__file__))
 
 GENERATED_MD = """---
 {metadata}
-notebook_html_path: ../../../src/content/_gen_blog_notebooks/{fpath}
+notebook_html_path: ../../src/content/_gen_blog_notebooks/{fpath}
 ---
 
 """

@@ -1,6 +1,6 @@
 ---
-import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../consts';
-import Page from "../layouts/Page.astro";
+import Prose from "@layouts/Prose.astro";
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../lib/consts';
 
 let title = `Now - ${SITE_TITLE}`;
 let description = SITE_DESCRIPTION;
@@ -8,20 +8,20 @@ let permalink = SITE_URL;
 
 ---
 
-<Page title={title} description={description} permalink={permalink}>
-        <h1>Now</h1>
-        <p class="">
-            Right now, I am currently:
-            <ul>
-            <li>
-            Working at <a href="https://www.nvidia.com/">NVIDIA</a> as a Senior Product Manager for Python and CUDA
-            </li>
-            <li>
-            Occasionally building apps at <a href="https://inmatura.com">Inmatura</a>
-            </li>
-            </ul>
-        </p>
-        <p>
-        Updated April 1st, 2024
-        </p>
-</Page>
+<Prose title={title} description={description} permalink={permalink}>
+    <h2 class="text-center mb-10 text-4xl md:text-6xl font-bold mt-0" >Now</h2>
+    <p class="text-xl">
+        Right now, I am currently:
+        <ul class="text-xl">
+        <li>
+        Working at <a href="https://www.nvidia.com/">NVIDIA</a> as a Senior Product Manager for Python and CUDA
+        </li>
+        <li>
+        Occasionally building apps at <a href="https://inmatura.com">Inmatura</a>
+        </li>
+        </ul>
+    </p>
+    <p>
+    Updated April 15, 2024
+    </p>
+</Prose>

@@ -3,7 +3,7 @@ export interface Props {
     title: string;
     desc: string;
     img: string;
-    links: object[];
+    links: any;
 }
 
 const { title, desc, img, links } = Astro.props;
@@ -35,7 +35,7 @@ const { title, desc, img, links } = Astro.props;
                 class="flex flex-col md:flex-row gap-4 w-full h-full justify-center items-center invisible group-hover:visible"
             >
                 {
-                    links.map((link, index) => (
+                    links.map((link: any) => (
                         <a
                             href={link.href}
                             class="bg-white rounded-full px-5 py-3 font-bold"

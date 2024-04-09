@@ -1,24 +1,62 @@
 ---
+import Prose from "@layouts/Prose.astro";
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@lib/consts";
 import { getCollection } from 'astro:content';
-import TwoColumnList from "../../components/grid/TwoColumnList.astro";
-import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../../consts';
-import Page from '../../layouts/Page.astro';
 
 let title = SITE_TITLE;
 let description = SITE_DESCRIPTION;
 let permalink = SITE_URL;
 
-let allPosts = await getCollection('blog', ({ data }) => {
+let posts = await getCollection('blog', ({ data }) => {
   return data.draft !== true;
 });
 
-allPosts = allPosts .sort(
+posts = posts.sort(
 	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
 );
+
+const monthNames = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+];
+
+function fmtDate(publishDate: string | Date) {
+    const date = new Date(publishDate);
+    const month = monthNames[date.getMonth()];
+    const dateStr: string = `${month} ${date.getDate()}, ${date.getFullYear()}`;
+    return dateStr;
+}
+
 ---
 
-<Page title={title} description={description} permalink={permalink}>
-    <div class="pt-12 pb-20 px-3">
-        <TwoColumnList title="Articles" posts={allPosts} />
-    </div>
-</Page>
+<Prose title={title} description={description} permalink={permalink}>
+  <h2 class="text-center mb-10 text-4xl md:text-6xl font-bold mt-0">
+    Articles
+</h2>
+<div class="flex flex-col gap-8">
+    {
+        posts.map((post) => {
+            return (
+                <div class="flex flex-col md:grid md:grid-cols-7 gap-0 items-start md:items-center">
+
+                    <span class="font-mono text-orange text-sm w-28 flex md:w-[150px] md:col-span-2 ">{fmtDate(post.data.publishDate)}</span>
+
+                    <a href={`/blog/${post.data.publishDate.getFullYear()}/${post.data.publishDate.getMonth() + 1}/${post.slug}`} class="text-xl md:col-span-5">
+                        {post.data.title}
+                    </a>
+                </div>
+            );
+        })
+    }
+</div>
+</Prose>
