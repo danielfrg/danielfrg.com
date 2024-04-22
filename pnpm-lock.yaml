@@ -76,8 +76,8 @@ packages:
       "@jridgewell/trace-mapping": 0.3.25
     dev: false
 
-  ? /@astrojs/check@0.5.10(prettier-plugin-astro@0.0.12)(prettier@3.0.3)(typescript@5.4.4)
-  : resolution:
+  /@astrojs/check@0.5.10(prettier-plugin-astro@0.0.12)(prettier@3.0.3)(typescript@5.4.4):
+    resolution:
       {
         integrity: sha512-vliHXM9cu/viGeKiksUM4mXfO816ohWtawTl2ADPgTsd4nUMjFiyAl7xFZhF34yy4hq4qf7jvK1F2PlR3b5I5w==,
       }
@@ -110,8 +110,8 @@ packages:
       }
     dev: false
 
-  ? /@astrojs/language-server@2.8.4(prettier-plugin-astro@0.0.12)(prettier@3.0.3)(typescript@5.4.4)
-  : resolution:
+  /@astrojs/language-server@2.8.4(prettier-plugin-astro@0.0.12)(prettier@3.0.3)(typescript@5.4.4):
+    resolution:
       {
         integrity: sha512-sJH5vGTBkhgA8+hdhzX78UUp4cFz4Mt7xkEkevD188OS5bDMkaue6hK+dtXWM47mnrXFveXA2u38K7S+5+IRjA==,
       }
@@ -247,8 +247,8 @@ packages:
       zod: 3.22.4
     dev: false
 
-  ? /@astrojs/svelte@4.0.2(astro@4.5.16)(svelte@4.2.12)(typescript@5.4.4)(vite@4.5.3)
-  : resolution:
+  /@astrojs/svelte@4.0.2(astro@4.5.16)(svelte@4.2.12)(typescript@5.4.4)(vite@4.5.3):
+    resolution:
       {
         integrity: sha512-XB9Sexq+iW5aUpctDk6zuKHbWIAuPlAnZKbfgaS9VOaOUtx1t12crP9YoKEVcTifXYgoRuWWfeEAm2I8pYlLIQ==,
       }
@@ -1797,8 +1797,8 @@ packages:
       }
     dev: false
 
-  ? /@sveltejs/vite-plugin-svelte-inspector@1.0.4(@sveltejs/vite-plugin-svelte@2.4.6)(svelte@4.2.12)(vite@4.5.3)
-  : resolution:
+  /@sveltejs/vite-plugin-svelte-inspector@1.0.4(@sveltejs/vite-plugin-svelte@2.4.6)(svelte@4.2.12)(vite@4.5.3):
+    resolution:
       {
         integrity: sha512-zjiuZ3yydBtwpF3bj0kQNV0YXe+iKE545QGZVTaylW3eAzFr+pJ/cwK8lZEaRp4JtaJXhD5DyWAV4AxLh6DgaQ==,
       }
@@ -7379,8 +7379,8 @@ packages:
       vscode-uri: 3.0.8
     dev: false
 
-  ? /volar-service-typescript-twoslash-queries@0.0.34(@volar/language-service@2.1.6)
-  : resolution:
+  /volar-service-typescript-twoslash-queries@0.0.34(@volar/language-service@2.1.6):
+    resolution:
       {
         integrity: sha512-XAY2YtWKUp6ht89gxt3L5Dr46LU45d/VlBkj1KXUwNlinpoWiGN4Nm3B6DRF3VoBThAnQgm4c7WD0S+5yTzh+w==,
       }

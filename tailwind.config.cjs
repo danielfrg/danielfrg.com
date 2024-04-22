@@ -10,7 +10,7 @@ module.exports = {
         mono: ["JetBrains Mono", ...defaultTheme.fontFamily.mono],
       },
       colors: {
-        mywhite: "rgb(229, 231, 235)",
+        mywhite: "#CECDC3",
         accent: "#FFA86A",
         myorange: "#fb5607",
         mypink: "#ff006e",

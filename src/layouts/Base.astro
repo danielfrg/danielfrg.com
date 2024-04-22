@@ -1,10 +1,7 @@
 ---
 import BaseHead from "@components/common/BaseHead.astro";
-import SiteFooter from "@components/common/SiteFooter.astro";
-import SiteHeader from "@components/common/SiteHeader.astro";
 
 const { title, description, permalink } = Astro.props;
-
 ---
 
 <html lang="en">
@@ -18,11 +15,7 @@ const { title, description, permalink } = Astro.props;
 
     <body>
         <div class="flex flex-col w-full min-h-screen">
-            <SiteHeader />
-
             <slot />
-
-            <SiteFooter />
         </div>
     </body>
 </html>
