@@ -1,22 +1,16 @@
 ---
 import Base from "@layouts/Base.astro";
-import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../lib/consts';
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "../lib/consts";
 
 let title = SITE_TITLE;
 let description = SITE_DESCRIPTION;
 let permalink = SITE_URL;
 ---
 
-<Base
-    title={title}
-    description={description}
-    permalink={permalink}
->
-    <div class="mx-auto max-w-screen-sm my-8">
-        <h2 class="text-center my-10 text-5xl font-extrabold">
-            404 - Page not found
-        </h2>
+<Base title={title} description={description} permalink={permalink}>
+  <div class="mx-auto max-w-screen-sm my-8">
+    <h2 class="text-center my-10 text-5xl font-extrabold">404 - Page not found</h2>
 
-        <img class="mx-auto" src="https://placekitten.com/500/500" alt="A cute cat" />
-    </div>
+    <img class="mx-auto" src="https://placekitten.com/500/500" alt="A cute cat" />
+  </div>
 </Base>

@@ -1,42 +1,43 @@
 ---
 import Prose from "@layouts/Prose.astro";
-import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../lib/consts';
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "../lib/consts";
 
 let title = SITE_TITLE;
 let description = SITE_DESCRIPTION;
 let permalink = SITE_URL;
-
 ---
 
 <Prose title={title} description={description} permalink={permalink}>
-
-    <div class="flex flex-row gap-8 md:p-8">
-        <div class="flex-col my-auto">
-            <p class="text-4xl font-bold tracking-tighter">
-                Software Engineer building data science tools
-            </p>
-        </div>
-        <img
-            class="w-1/2 object-cover transform rotate-3 rounded-md"
-            src="/images/profile.jpeg"
-            alt="profile"
-            width="512"
-            height="512"
-        />
+  <div class="flex flex-row gap-8 md:p-8">
+    <div class="flex-col my-auto">
+      <p class="text-4xl font-bold tracking-tighter">
+        Software Engineer building data science tools
+      </p>
     </div>
-    <div class="text-xl leading-relaxed">
-        <p class="my-4">
-            With over 11 years of experience across data science, machine learning, engineering, product management, and sales, I bring a unique perspective to solving technical challenges and delivering successful products.
-        </p>
-        <p class="my-4">
-            My experience as a full-stack data software engineer, combined with my diverse background, allows me to approach problems from different angles and drive successful outcomes.
-        </p>
-        <p class="mt-4">
-            Learn more about my <a href="/projects">projects</a>, <a href="https://github.com/danielfrg">open-source contributions</a>, technical insights on <a href="/blog">
-                my blog</a
-            >, and professional background on  <a href="https://linkedin.com/in/danielfrg">LinkedIn</a
-                >.
-        </p>
-    </div>
-
+    <img
+      class="w-1/2 object-cover transform rotate-3 rounded-md"
+      src="/images/profile.jpeg"
+      alt="profile"
+      width="512"
+      height="512"
+    />
+  </div>
+  <div class="text-xl leading-relaxed">
+    <p class="my-4">
+      With over 11 years of experience across data science, machine learning, engineering, product
+      management, and sales, I bring a unique perspective to solving technical challenges and
+      delivering successful products.
+    </p>
+    <p class="my-4">
+      My experience as a full-stack data software engineer, combined with my diverse background,
+      allows me to approach problems from different angles and drive successful outcomes.
+    </p>
+    <p class="mt-4">
+      Learn more about my <a href="/projects">projects</a>, <a href="https://github.com/danielfrg"
+        >open-source contributions</a
+      >, technical insights on <a href="/blog"> my blog</a>, and professional background on <a
+        href="https://linkedin.com/in/danielfrg">LinkedIn</a
+      >.
+    </p>
+  </div>
 </Prose>

@@ -1,80 +1,78 @@
 ---
 import BaseHead from "@components/common/BaseHead.astro";
-import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../lib/consts';
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "../lib/consts";
 import Root from "@layouts/Root.astro";
 
 let title = SITE_TITLE;
 let description = SITE_DESCRIPTION;
 let permalink = SITE_URL;
-
 ---
 
 <Root>
-        <div class="flex h-screen">
-            <div class="lg:w-2/3 mx-4 m-auto lg:m-auto">
-                <div>
-                    <h1
-                        class="py-2 text-5xl font-extrabold tracking-tighter text-myorange"
-                    >
-                        Daniel Rodriguez
-                    </h1>
-                    <div
-                        class="text-blueLink text-lg font-light leading-loose mt-2"
-                    >
-                        <strong class="font-bold ">
-                            I build data science tools.
-                        </strong>
-                        I'm currently working as a Product Manager for Python at NVIDIA
-                    </div>
-                </div>
-
-                <div class="my-8 lg:text-right">
-                    <ul class="text-2xl tracking-tight nav-links">
-                        <li class="lg:inline py-2">
-                            <a href="/about" class="hover:text-myorange no-underline font-bold border-b-0 md:px-6 py-4 md:py-0"
-                                >About</a
-                            >
-                        </li>
-                        <li class="lg:inline py-2">
-                            <a href="/now" class="hover:text-myorange no-underline font-bold border-b-0 md:px-6 py-4 md:py-0"
-                                >Now</a
-                            >
-                        </li>
-                        <li class="lg:inline py-2">
-                            <a href="/blog" class="hover:text-myorange font-bold border-b-0 md:px-6 py-4 md:py-0"
-                                >Blog</a
-                            >
-                        </li>
-                        <li class="lg:inline py-2">
-                            <a href="/projects" class="hover:text-myorange font-bold border-b-0 md:px-6 py-4 md:py-0"
-                                >Projects</a
-                            >
-                        </li>
-                        <li class="lg:inline py-2">
-                        <a href="https://wiki.danielfrg.com" class="hover:text-myorange font-bold border-b-0 md:px-6 py-4 md:py-0"
-                        >Wiki</a
-                        >
-                        </li>
-                        <li class="lg:inline py-2">
-                            <a
-                                href="https://github.com/danielfrg"
-                                class="hover:text-myorange font-bold border-b-0 md:px-6 py-4 md:py-0">Code</a
-                            >
-                        </li>
-                    </ul>
-                </div>
-                <div class="my-8 lg:text-right">
-                    <ul class="text-2xl tracking-tight nav-links">
-                        <li class="lg:inline">
-                            <a
-                                href="https://lapalabradeldia.com"
-                                class="md:px-6 py-4 font-bold border-b-0 !text-lapalabragreen hover:underline"
-                                target="_blank"
-                                >La Palabra del día</a
-                            >
-                        </li>
-                    </ul>
-                </div>
-            </div>
+  <div class="flex h-screen">
+    <div class="lg:w-2/3 mx-4 m-auto lg:m-auto">
+      <div>
+        <h1 class="py-2 text-5xl font-extrabold tracking-tighter text-myorange">
+          Daniel Rodriguez
+        </h1>
+        <div class="text-blueLink text-lg font-light leading-loose mt-2">
+          <strong class="font-bold"> I build data science tools. </strong>
+          I'm currently working as a Product Manager for Python at NVIDIA
         </div>
+      </div>
+
+      <div class="my-8 lg:text-right">
+        <ul class="text-2xl tracking-tight nav-links">
+          <li class="lg:inline py-2">
+            <a
+              href="/about"
+              class="hover:text-myorange no-underline font-bold border-b-0 md:px-6 py-4 md:py-0"
+              >About</a
+            >
+          </li>
+          <li class="lg:inline py-2">
+            <a
+              href="/now"
+              class="hover:text-myorange no-underline font-bold border-b-0 md:px-6 py-4 md:py-0"
+              >Now</a
+            >
+          </li>
+          <li class="lg:inline py-2">
+            <a href="/blog" class="hover:text-myorange font-bold border-b-0 md:px-6 py-4 md:py-0"
+              >Blog</a
+            >
+          </li>
+          <li class="lg:inline py-2">
+            <a
+              href="/projects"
+              class="hover:text-myorange font-bold border-b-0 md:px-6 py-4 md:py-0">Projects</a
+            >
+          </li>
+          <li class="lg:inline py-2">
+            <a
+              href="https://wiki.danielfrg.com"
+              class="hover:text-myorange font-bold border-b-0 md:px-6 py-4 md:py-0">Wiki</a
+            >
+          </li>
+          <li class="lg:inline py-2">
+            <a
+              href="https://github.com/danielfrg"
+              class="hover:text-myorange font-bold border-b-0 md:px-6 py-4 md:py-0">Code</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="my-8 lg:text-right">
+        <ul class="text-2xl tracking-tight nav-links">
+          <li class="lg:inline">
+            <a
+              href="https://lapalabradeldia.com"
+              class="md:px-6 py-4 font-bold border-b-0 !text-lapalabragreen hover:underline"
+              target="_blank">La Palabra del día</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </Root>

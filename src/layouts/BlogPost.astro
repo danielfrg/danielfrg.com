@@ -3,21 +3,17 @@ import BlogPostProse from "@components/BlogPostProse.astro";
 import fs from "node:fs/promises";
 import Prose from "./Prose.astro";
 
-const { title, description, pubDate, author, permalink, tags,  notebook_html_path } = Astro.props;
+const { title, description, pubDate, author, permalink, tags, notebook_html_path } = Astro.props;
 
 let html = "";
 if (notebook_html_path) {
-    const url = new URL(notebook_html_path, import.meta.url);
-    html = await fs.readFile(url, "utf-8");
+  const url = new URL(notebook_html_path, import.meta.url);
+  html = await fs.readFile(url, "utf-8");
 }
 ---
 
 <Prose {title} {description} {permalink}>
-    <BlogPostProse {title} {author} {pubDate} {tags}>
-        {notebook_html_path? (
-            <div class="notebook-content" set:html={html} />
-        ):(
-            <slot />
-        )}
-    </BlogPostProse>
+  <BlogPostProse {title} {author} {pubDate} {tags}>
+    {notebook_html_path ? <div class="notebook-content" set:html={html} /> : <slot />}
+  </BlogPostProse>
 </Prose>

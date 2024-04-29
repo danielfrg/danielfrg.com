@@ -1,27 +1,27 @@
 ---
 export interface Props {
-    title: string;
-    pubDate: string;
-    author?: string;
-    summary?: string;
-    tags?: string[];
+  title: string;
+  pubDate: string;
+  author?: string;
+  summary?: string;
+  tags?: string[];
 }
 
 const { title, pubDate, summary, tags } = Astro.props;
 
 const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
 
 const date = new Date(pubDate);
@@ -30,23 +30,23 @@ const dateStr: string = `${month} ${date.getDate()}th, ${date.getFullYear()}`;
 ---
 
 <article class="prose-xl">
-    <header class="mb-10 md:mt-0 md:mb-10">
-        <p class="m-0 p-0 text-center text-sm font-mono uppercase">
-            <time datetime={pubDate}>{dateStr}</time>
-        </p>
-        <h1 class="text-mywhite text-center mb-1 text-5xl md:text-6xl font-bold">
-            {title}
-        </h1>
-        <p class="m-0 text-center text-4xl">
-            {summary}
-        </p>
-    </header>
+  <header class="mb-10 md:mt-0 md:mb-10">
+    <p class="m-0 p-0 text-center text-sm font-mono uppercase">
+      <time datetime={pubDate}>{dateStr}</time>
+    </p>
+    <h1 class="text-mywhite text-center mb-1 text-5xl md:text-6xl font-bold">
+      {title}
+    </h1>
+    <p class="m-0 text-center text-4xl">
+      {summary}
+    </p>
+  </header>
 
-    <main>
-        <slot />
-    </main>
+  <main>
+    <slot />
+  </main>
 
-    <footer class="mt-20 mb-10 text-center text-sm font-mono">
-        <p>Tags: {tags ? tags.join(", "): ""}</p>
-    </footer>
+  <footer class="mt-20 mb-10 text-center text-sm font-mono">
+    <p>Tags: {tags ? tags.join(", ") : ""}</p>
+  </footer>
 </article>

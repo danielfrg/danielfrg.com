@@ -2,15 +2,10 @@
 import Base from "./Base.astro";
 
 const { title, description, permalink } = Astro.props;
-
 ---
 
-<Base
-    title={title}
-    description={description}
-    permalink={permalink}
->
-    <div class="max-w-screen-md px-3 grow prose mx-auto prose-invert">
-        <slot />
-    </div>
+<Base title={title} description={description} permalink={permalink}>
+  <div class="max-w-screen-md px-3 grow prose mx-auto prose-invert">
+    <slot />
+  </div>
 </Base>

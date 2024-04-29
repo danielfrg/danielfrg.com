@@ -1,50 +1,43 @@
 ---
 export interface Props {
-    title: string;
-    desc: string;
-    img: string;
-    links: any;
+  title: string;
+  desc: string;
+  img: string;
+  links: any;
 }
 
 const { title, desc, img, links } = Astro.props;
 ---
 
 <div class="h-[150px] md:h-[250px] bg-white rounded-2xl relative">
-    <div
-        class="w-full h-full rounded-2xl absolute bg-cover"
-        style={`background-image: url('${img}'); background-position: 50% 50%;`}
-    >
-    </div>
-    <div
-        class="flex flex-col absolute w-full h-full rounded-2xl justify-end px-4 py-2 text-white text-center"
-        style="background-image: linear-gradient(to bottom, transparent, transparent 70%, rgba(0,0,0,0.4) 70%, rgba(0,0,0,0.6) 100%)"
-    >
-        <span class="font-semibold invisible md:visible">{desc}</span>
+  <div
+    class="w-full h-full rounded-2xl absolute bg-cover"
+    style={`background-image: url('${img}'); background-position: 50% 50%;`}
+  >
+  </div>
+  <div
+    class="flex flex-col absolute w-full h-full rounded-2xl justify-end px-4 py-2 text-white text-center"
+    style="background-image: linear-gradient(to bottom, transparent, transparent 70%, rgba(0,0,0,0.4) 70%, rgba(0,0,0,0.6) 100%)"
+  >
+    <span class="font-semibold invisible md:visible">{desc}</span>
 
-        <h3 class="text-2xl md:text-3xl font-extrabold uppercase">
-            {title}
-        </h3>
+    <h3 class="text-2xl md:text-3xl font-extrabold uppercase">
+      {title}
+    </h3>
+  </div>
+  <div class="group w-full h-full text-white transition-all ease-out duration-150">
+    <div class="absolute w-full h-full rounded-2xl bg-transparent hover:bg-black/60">
+      <div
+        class="flex flex-col md:flex-row gap-4 w-full h-full justify-center items-center invisible group-hover:visible"
+      >
+        {
+          links.map((link: any) => (
+            <a href={link.href} class="bg-white rounded-full px-5 py-3 font-bold">
+              {link.text}
+            </a>
+          ))
+        }
+      </div>
     </div>
-    <div
-        class="group w-full h-full text-white transition-all ease-out duration-150"
-    >
-        <div
-            class="absolute w-full h-full rounded-2xl bg-transparent hover:bg-black/60"
-        >
-            <div
-                class="flex flex-col md:flex-row gap-4 w-full h-full justify-center items-center invisible group-hover:visible"
-            >
-                {
-                    links.map((link: any) => (
-                        <a
-                            href={link.href}
-                            class="bg-white rounded-full px-5 py-3 font-bold"
-                        >
-                            {link.text}
-                        </a>
-                    ))
-                }
-            </div>
-        </div>
-    </div>
+  </div>
 </div>
