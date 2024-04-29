@@ -113,17 +113,14 @@ const openSourceList = [
     permalink={permalink}
 >
     <!-- OSS -->
-    <div class="pt-16 px-3">
+    <div class="pt-16 px-3" >
         <PreviewGrid title="Open Source" items={openSource} />
 
-        <ul class="max-w-screen-md mx-auto mt-6 px-3">
+        <ul class="max-w-screen-md mx-auto mt-6 px-3 prose prose-invert">
             {
                 openSourceList.map((item) => (
                     <li class="m-0 text-xl">
-                        <a href={item.link} class="underline text-lightblue hover:text-mywhite decoration-linkline font-mono text-lg">
-                            {item.title}
-                        </a>
-                        - {item.desc}
+                        <a href={item.link} class="underline font-mono text-lg">{item.title}</a> - {item.desc}
                     </li>
                 ))
             }
@@ -134,6 +131,4 @@ const openSourceList = [
     <div class="pt-16 px-3">
         <PreviewGrid title="Applications" items={apps} />
     </div>
-
-
 </Base>

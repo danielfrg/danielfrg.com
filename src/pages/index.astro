@@ -1,7 +1,7 @@
 ---
 import BaseHead from "@components/common/BaseHead.astro";
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '../lib/consts';
-import Base from "@layouts/Base.astro";
+import Root from "@layouts/Root.astro";
 
 let title = SITE_TITLE;
 let description = SITE_DESCRIPTION;
@@ -9,7 +9,7 @@ let permalink = SITE_URL;
 
 ---
 
-<Base>
+<Root>
         <div class="flex h-screen">
             <div class="lg:w-2/3 mx-4 m-auto lg:m-auto">
                 <div>
@@ -24,8 +24,7 @@ let permalink = SITE_URL;
                         <strong class="font-bold ">
                             I build data science tools.
                         </strong>
-                        I'm currently working as a Developer Relations Engineer at
-                        Google.
+                        I'm currently working as a Product Manager for Python at NVIDIA
                     </div>
                 </div>
 
@@ -69,7 +68,7 @@ let permalink = SITE_URL;
                         <li class="lg:inline">
                             <a
                                 href="https://lapalabradeldia.com"
-                                class="md:px-6 py-4 font-bold border-b-0 !text-mygreen hover:underline"
+                                class="md:px-6 py-4 font-bold border-b-0 !text-lapalabragreen hover:underline"
                                 target="_blank"
                                 >La Palabra del día</a
                             >
@@ -78,4 +77,4 @@ let permalink = SITE_URL;
                 </div>
             </div>
         </div>
-</base>
+</Root>

@@ -11,17 +11,14 @@ module.exports = {
       },
       colors: {
         mywhite: "#CECDC3",
-        accent: "#FFA86A",
-        myorange: "#fb5607",
-        mypink: "#ff006e",
-        myblue: "#3a86ff",
-        mygreen: "#43a047",
+        myorange: "#ff4f18",
         dark: "#1D1D1D",
-        black: "#272727",
+        black: "#141517",
         lightgrey: "#ececec",
         yellow: "#ffb200",
         lightblue: "rgb(115, 130, 171)",
         linkline: "rgb(50, 59, 83)",
+        lapalabragreen: "#44a047",
       },
       typography: {
         DEFAULT: {
