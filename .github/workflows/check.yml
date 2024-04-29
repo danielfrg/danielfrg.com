@@ -35,3 +35,6 @@ jobs:
 
       - name: prettier check
         run: pnpm exec prettier -c .
+
+      - name: astro check
+        run: pnpm exec astro -c .

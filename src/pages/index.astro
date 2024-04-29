@@ -1,6 +1,5 @@
 ---
-import BaseHead from "@components/common/BaseHead.astro";
-import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "../lib/consts";
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@lib/consts";
 import Root from "@layouts/Root.astro";
 
 let title = SITE_TITLE;
@@ -8,7 +7,7 @@ let description = SITE_DESCRIPTION;
 let permalink = SITE_URL;
 ---
 
-<Root>
+<Root title={title} description={description} permalink={permalink}>
   <div class="flex h-screen">
     <div class="lg:w-2/3 mx-4 m-auto lg:m-auto">
       <div>

@@ -57,8 +57,8 @@ const { title, description, permalink, highlight } = Astro.props;
 <!-- <meta property="twitter:image" content="https://astro.build/social.jpg?v=1" /> -->
 
 <!-- Analytics: Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3673QMK9C4"></script>
-<script>
+<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-3673QMK9C4"></script>
+<script is:inline>
   window.dataLayer = window.dataLayer || [];
   function gtag() {
     dataLayer.push(arguments);
