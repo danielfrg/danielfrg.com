@@ -8,7 +8,14 @@ let permalink = SITE_URL;
 ---
 
 <Root title={title} description={description} permalink={permalink}>
-  <div class="flex h-screen">
+  <div class="relative flex h-screen w-screen overflow-hidden">
+    <img
+      id="background"
+      src="/images/galaxy.webp"
+      alt="background"
+      class="appear duration-300 saturate-0 opacity-25 absolute inset-0 -z-10 h-full w-full object-cover"
+    />
+
     <div class="lg:w-2/3 mx-4 m-auto lg:m-auto">
       <div>
         <h1 class="py-2 text-5xl font-extrabold tracking-tighter text-myorange">

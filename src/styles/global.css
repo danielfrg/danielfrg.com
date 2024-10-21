@@ -97,3 +97,16 @@ body {
     z-index: 10;
   }
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.25;
+  }
+}
+
+.appear {
+  animation: fadeIn 1.5s ease-in-out;
+}
