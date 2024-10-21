@@ -1,2 +1,3 @@
 *.html
 *.tpl
+pnpm-lock.yaml
