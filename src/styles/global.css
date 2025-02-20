@@ -1,11 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-@layer base {
-  html {
-    font-family: system-ui, sans-serif;
-  }
+@config '../../tailwind.config.cjs';
+
+
+@theme {
+  --font-sans: "Inter", "sans-serif"; 
 }
 
 .prose {

@@ -9,7 +9,7 @@ export interface Props {
 const { title, items } = Astro.props;
 ---
 
-<div class="max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg mx-auto py-2">
+<div class="max-w-(--breakpoint-sm) md:max-w-(--breakpoint-md) lg:max-w-(--breakpoint-lg) mx-auto py-2">
   <h2 class="text-center mb-10 text-5xl md:text-5xl font-bold italic">
     {title}
   </h2>
