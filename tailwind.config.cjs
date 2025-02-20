@@ -10,9 +10,9 @@ module.exports = {
         mono: ["JetBrains Mono", ...defaultTheme.fontFamily.mono],
       },
       colors: {
-        mywhite: "#CECDC3",
+        dark: "#18181B",
+        text: "#d4d4d8",
         myorange: "#ff4f18",
-        dark: "#1D1D1D",
         black: "#141517",
         lightgrey: "#ececec",
         yellow: "#ffb200",
@@ -23,7 +23,7 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
-            // color: "rgb(191, 198, 217)",
+            color: "#d4d4d8",
             // fontSize: rem(18),
             // a: {
             //   color: "rgb(115, 130, 171)",

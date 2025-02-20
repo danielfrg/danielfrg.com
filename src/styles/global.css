@@ -8,21 +8,7 @@
   }
 }
 
-body {
-  background-color: #222129;
-  color: #cecdc3;
-}
-
 .prose {
-  a {
-    color: #ffa86a;
-    &:hover {
-      color: #fff;
-    }
-    /* border-bottom: 1px solid #ffa86a; */
-    text-decoration: underline;
-    text-decoration-color: #ffa86a;
-  }
 
   pre {
     border-radius: 0;
