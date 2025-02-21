@@ -7,7 +7,7 @@ THIS_DIR = os.path.dirname(os.path.realpath(__file__))
 
 GENERATED_MD = """---
 {metadata}
-notebook_html_path: ../../src/content/_gen_blog_notebooks/{fpath}
+notebook_html_path: ../../../../../src/content/_gen_blog_notebooks/{fpath}
 ---
 
 """
@@ -65,7 +65,9 @@ def convert(nb_path, fpath):
     #     return
     # metadata_str = yaml.dump(metadata, default_flow_style=False)
 
-    html_base = nbconvert2.nb2html(nb_path, theme="dark", highlight_extra_classes="not-prose")
+    html_base = nbconvert2.nb2html(
+        nb_path, theme="dark", highlight_extra_classes="not-prose"
+    )
 
     # Since we make a Markdown file based on the HTML we need to:
     # - remove empty lines
