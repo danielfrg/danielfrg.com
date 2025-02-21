@@ -31,31 +31,53 @@ const monthNames = [
 function fmtDate(pubDate: string | Date) {
   const date = new Date(pubDate);
   const month = monthNames[date.getMonth()];
-  const dateStr: string = `${month} ${date.getDate()}, ${date.getFullYear()}`;
+  const dateStr = `${month} ${date.getDate()}, ${date.getFullYear()}`;
   return dateStr;
 }
+
+// Group posts by year
+const postsByYear = posts.reduce((acc, post) => {
+  const year = post.data.pubDate.getFullYear();
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(post);
+  return acc;
+}, {});
 ---
 
 <Prose title={title} description={description} permalink={permalink}>
-  <h2 class="text-center mb-10 text-4xl md:text-6xl font-bold mt-0">Articles</h2>
-  <div class="flex flex-col gap-8">
-    {
-      posts.map((post) => {
-        return (
-          <div class="flex flex-col md:grid md:grid-cols-7 gap-0 items-start md:items-center">
-            <span class="font-mono text-orange text-sm w-28 flex md:w-[150px] md:col-span-2 ">
-              {fmtDate(post.data.pubDate)}
-            </span>
+  <h1 class="mb-10 mt-0">Articles</h1>
 
-            <a
-              href={`/blog/${post.data.pubDate.getFullYear()}/${post.data.pubDate.getMonth() + 1}/${post.slug}`}
-              class="text-xl md:col-span-5"
-            >
-              {post.data.title}
-            </a>
+  <div class="flex flex-col gap-2">
+    {Object.keys(postsByYear)
+      .sort((a, b) => Number(b) - Number(a))
+      .map((year) => (
+        <div class="space-y-4">
+          <div class="flex items-center text-sm font-medium text-gray-400 tracking-widest mb-0 mt-8">
+            <div class="border-gray-700 border-b w-5 mr-2"></div>
+            {year}
+            <div class="border-gray-700 border-b w-full ml-2"></div>
           </div>
-        );
-      })
-    }
+
+          {postsByYear[year].map((post) => (
+            <div class="mt-4 flex items-baseline" key={post.slug}>
+              <div class="w-full relative gap-2 justify-between z-50 items-baseline">
+                <h3 class="mt-0 mb-0 text-base">
+                  <a 
+                    class="text-white"
+                    href={`/blog/${post.data.pubDate.getFullYear()}/${post.data.pubDate.getMonth() + 1}/${post.slug}`}
+                  >
+                    {post.data.title}
+                  </a>
+                </h3>
+                <div class="text-sm text-gray-500">
+                  {fmtDate(post.data.pubDate)}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      ))}
   </div>
 </Prose>

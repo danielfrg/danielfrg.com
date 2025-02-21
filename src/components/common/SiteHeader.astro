@@ -1,15 +1,12 @@
 ---
-import { SITE_TITLE } from "../../lib/consts";
-
 export interface Props {
   title?: string;
   nav?: object[];
   dark?: boolean;
 }
 
-const title = SITE_TITLE;
-
 const nav = [
+  { text: "Home", href: "/" },
   { text: "About", href: "/about" },
   { text: "Now", href: "/now" },
   { text: "Blog", href: "/blog" },
@@ -20,23 +17,14 @@ const nav = [
 ---
 
 <header
-  class="w-full max-w-(--breakpoint-lg) flex flex-col md:flex-row gap-4 md:gap-0 mx-auto p-4 justify-between"
+  class="w-full flex flex-col md:flex-row mx-auto px-4 py-10 justify-between"
 >
-  <div class="flex md:text-left">
-    <a
-      href="/"
-      class="text-3xl font-extrabold tracking-tighter bg-clip-text bg-linear-to-r text-myorange"
-    >
-      {title}
-    </a>
-  </div>
-
-  <div class="flex flex-row grow justify-center md:justify-end">
+  <div class="flex flex-row grow justify-center">
     {
       nav?.map((item) => (
         <a
           href={item.href}
-          class="hover:text-myorange font-bold border-b-0 text-lg px-2 md:pl-0 md:pr-4 py-2 text-center"
+          class="hover:text-myorange font-bold border-b-0 text-lg px-2 md:px-3 py-2 text-center"
         >
           {item.text}
         </a>

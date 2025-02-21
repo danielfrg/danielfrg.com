@@ -12,8 +12,8 @@ module.exports = {
       colors: {
         dark: "#18181B",
         text: "#d4d4d8",
+        myblue: "#60a5fa",
         myorange: "#ff4f18",
-        black: "#141517",
         lightgrey: "#ececec",
         yellow: "#ffb200",
         lightblue: "rgb(115, 130, 171)",
@@ -24,16 +24,18 @@ module.exports = {
         DEFAULT: {
           css: {
             color: "#d4d4d8",
-            // fontSize: rem(18),
-            // a: {
-            //   color: "rgb(115, 130, 171)",
-            //   textDecoration: "underline",
-            //   fontWeight: "normal",
-            //   textDecorationColor: "rgb(50, 59, 83)",
-            //   "&:hover": {
-            //     color: "#FFFFFF",
-            //   },
-            // },
+            fontSize: "1em",
+            a: {
+              color: "#60a5fa",
+              textDecoration: "none",
+              fontWeight: "normal",
+              "&:hover": {
+                textDecoration: "underline",
+              },
+            },
+            "h1, h2, h3, h4, h5, h6": {
+              fontWeight: "normal", // or '400' - this removes the bold styling
+            },
             // img: {
             //   marginLeft: "auto",
             //   marginRight: "auto",

@@ -11,7 +11,7 @@
 
   pre {
     border-radius: 0;
-    background: transparent !important;
+    /* background: transparent !important; */
     border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
     border-top: 1px solid hsla(0, 0%, 100%, 0.1);
     font-size: 0.95rem !important;
@@ -28,7 +28,7 @@
 
   code {
     font-feature-settings: normal;
-    background: rgba(255, 168, 106, 0.2);
+    background: #333333;
     color: #ffa86a;
     color: var(--accent);
     margin: 0 2px;

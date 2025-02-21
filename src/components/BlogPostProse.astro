@@ -29,14 +29,14 @@ const month = monthNames[date.getMonth()];
 const dateStr: string = `${month} ${date.getDate()}th, ${date.getFullYear()}`;
 ---
 
-<article class="prose-invert color-text">
+<article class="color">
   <header class="mb-10 md:mt-0 md:mb-10">
-    <p class="m-0 p-0 text-center text-sm font-mono uppercase">
-      <time datetime={pubDate}>{dateStr}</time>
-    </p>
-    <h1 class="text-mywhite text-center mb-1 text-5xl md:text-6xl font-bold">
+    <h1 class="mb-1 text-[28px] font-semibold">
       {title}
     </h1>
+    <p class="m-0 p-0 text-xs uppercase">
+      <time datetime={pubDate}>{dateStr}</time>
+    </p>
     <p class="m-0 text-center text-4xl">
       {summary}
     </p>

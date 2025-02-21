@@ -9,11 +9,11 @@ export interface Props {
 const { title, items } = Astro.props;
 ---
 
-<div class="max-w-(--breakpoint-sm) md:max-w-(--breakpoint-md) lg:max-w-(--breakpoint-lg) mx-auto py-2">
-  <h2 class="text-center mb-10 text-5xl md:text-5xl font-bold italic">
+<div class="prose prose-invert max-w-(--breakpoint-sm) md:max-w-(--breakpoint-md) lg:max-w-(--breakpoint-lg) mx-auto py-2">
+  <h2 class="text-[2em]">
     {title}
   </h2>
-  <div class="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-evenly">
+  <div class="grid gap-5 grid-cols-1 sm:grid-cols-2 justify-evenly">
     {
       items.map((item: any) => (
         <PreviewCard title={item.title} desc={item.desc} img={item.img} links={item.links} />
