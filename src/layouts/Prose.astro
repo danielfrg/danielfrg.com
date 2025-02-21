@@ -5,11 +5,9 @@ const { title, description, permalink } = Astro.props;
 ---
 
 <Base title={title} description={description} permalink={permalink}>
-
   <main class="w-full flex-1 px-8 pt-8">
-      <div class="px-3 grow prose mx-auto prose-invert">
-        <slot />
-      </div>
+    <div class="px-3 grow prose mx-auto prose-invert">
+      <slot />
+    </div>
   </main>
-
 </Base>

@@ -1,14 +1,12 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @config '../../tailwind.config.cjs';
 
-
 @theme {
-  --font-sans: "Inter", "sans-serif"; 
+  --font-sans: "Inter", "sans-serif";
 }
 
 .prose {
-
   pre {
     border-radius: 0;
     /* background: transparent !important; */

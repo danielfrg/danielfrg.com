@@ -8,7 +8,8 @@
     "check": "astro check",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "fmt": "prettier -w ."
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

@@ -50,34 +50,34 @@ const postsByYear = posts.reduce((acc, post) => {
   <h1 class="mb-10 mt-0">Articles</h1>
 
   <div class="flex flex-col gap-2">
-    {Object.keys(postsByYear)
-      .sort((a, b) => Number(b) - Number(a))
-      .map((year) => (
-        <div class="space-y-4">
-          <div class="flex items-center text-sm font-medium text-gray-400 tracking-widest mb-0 mt-8">
-            <div class="border-gray-700 border-b w-5 mr-2"></div>
-            {year}
-            <div class="border-gray-700 border-b w-full ml-2"></div>
-          </div>
+    {
+      Object.keys(postsByYear)
+        .sort((a, b) => Number(b) - Number(a))
+        .map((year) => (
+          <div class="space-y-4">
+            <div class="flex items-center text-sm font-medium text-gray-400 tracking-widest mb-0 mt-8">
+              <div class="border-gray-700 border-b w-5 mr-2" />
+              {year}
+              <div class="border-gray-700 border-b w-full ml-2" />
+            </div>
 
-          {postsByYear[year].map((post) => (
-            <div class="mt-4 flex items-baseline" key={post.slug}>
-              <div class="w-full relative gap-2 justify-between z-50 items-baseline">
-                <h3 class="mt-0 mb-0 text-base">
-                  <a 
-                    class="text-white"
-                    href={`/blog/${post.data.pubDate.getFullYear()}/${post.data.pubDate.getMonth() + 1}/${post.slug}`}
-                  >
-                    {post.data.title}
-                  </a>
-                </h3>
-                <div class="text-sm text-gray-500">
-                  {fmtDate(post.data.pubDate)}
+            {postsByYear[year].map((post) => (
+              <div class="mt-4 flex items-baseline" key={post.slug}>
+                <div class="w-full relative gap-2 justify-between z-50 items-baseline">
+                  <h3 class="mt-0 mb-0 text-base">
+                    <a
+                      class="text-white"
+                      href={`/blog/${post.data.pubDate.getFullYear()}/${post.data.pubDate.getMonth() + 1}/${post.slug}`}
+                    >
+                      {post.data.title}
+                    </a>
+                  </h3>
+                  <div class="text-sm text-gray-500">{fmtDate(post.data.pubDate)}</div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      ))}
+            ))}
+          </div>
+        ))
+    }
   </div>
 </Prose>

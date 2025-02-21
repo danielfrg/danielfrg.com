@@ -9,7 +9,9 @@ export interface Props {
 const { title, items } = Astro.props;
 ---
 
-<div class="prose prose-invert max-w-(--breakpoint-sm) md:max-w-(--breakpoint-md) lg:max-w-(--breakpoint-lg) mx-auto py-2">
+<div
+  class="prose prose-invert max-w-(--breakpoint-sm) md:max-w-(--breakpoint-md) lg:max-w-(--breakpoint-lg) mx-auto py-2"
+>
   <h2 class="text-[2em]">
     {title}
   </h2>
