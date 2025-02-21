@@ -19,22 +19,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: "pnpm"
+          node-version: 22
+          cache: "npm"
+          cache-dependency-path: "**/package-lock.json"
+
+      - name: Install JS dependencies
+        run: |
+          npm ci
 
       - name: Install dependencies
-        run: pnpm install
+        run: npm install
 
       - name: prettier check
-        run: pnpm exec prettier -c .
+        run: npx prettier -c .
 
       - name: astro check
-        run: pnpm exec astro -c .
+        run: npx astro -c .
