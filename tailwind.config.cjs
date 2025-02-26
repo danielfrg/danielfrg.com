@@ -36,18 +36,6 @@ module.exports = {
             "h1, h2, h3, h4, h5, h6": {
               fontWeight: "normal", // or '400' - this removes the bold styling
             },
-            // img: {
-            //   marginLeft: "auto",
-            //   marginRight: "auto",
-            // },
-            // pre: {
-            //   fontSize: rem(16),
-            //   borderRadius: "0",
-            // },
-            // blockquote: {
-            //   fontStyle: "italic",
-            //   color: "#6b7280",
-            // },
           },
         },
       },

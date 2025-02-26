@@ -9,18 +9,19 @@ const nav = [
   { text: "Home", href: "/" },
   { text: "About", href: "/about" },
   { text: "Now", href: "/now" },
-  { text: "Blog", href: "/blog" },
+  { text: "Content", href: "/content" },
   { text: "Projects", href: "/projects" },
   { text: "Code", href: "https://github.com/danielfrg" },
   { text: "Wiki", href: "https://wiki.danielfrg.com" },
 ];
 ---
 
-<header class="w-full flex flex-col md:flex-row mx-auto px-4 py-10 justify-between">
-  <div class="flex flex-row grow justify-center">
+<header class="w-full flex flex-col md:flex-row mx-auto px-4 py-10 justify-center">
+  <div class="flex flex-wrap justify-center md:flex-row gap-2 md:gap-3">
     {
       nav?.map((item) => (
-        <a
+        <a 
+          key={item.href} 
           href={item.href}
           class="hover:text-myorange font-bold border-b-0 text-lg px-2 md:px-3 py-2 text-center"
         >

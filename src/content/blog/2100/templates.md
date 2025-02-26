@@ -1,6 +1,5 @@
 ---
 title: Plain markdown test
-layout: ../../../layouts/BlogPost.astro
 slug: markdown-templates
 pubDate: 2100-01-01
 tags: ["Test"]
