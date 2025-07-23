@@ -58,7 +58,7 @@ jobs:
             ### <span aria-hidden="true">✅</span> Preview deployment
             |  Name | Link |
             |---------------------------------|------------------------|
-            | Deploy Preview Url | [${{ steps.cf-deploy-pr.outputs.deployment-url }}](${{ steps.cf-deploy-pr.outputs.pages-deployment-alias-url }}) |
+            | Deploy Preview Url | [${{ steps.cf-deploy-pr.outputs.deployment-url }}](${{ steps.cf-deploy-pr.outputs.deployment-url }}) |
             | Deploy Prod Url | [${{ steps.cf-deploy-main.outputs.deployment-url }}](${{ steps.cf-deploy-main.outputs.deployment-url }}) |
             | Latest deploy log | ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} |
             | Latest commit | ${{ github.sha }} |
