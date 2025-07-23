@@ -8,7 +8,7 @@ on:
       CLOUDFLARE_TOKEN:
         required: true
 jobs:
-  deploy-cf:
+  prod:
     permissions:
       contents: read
       id-token: write
@@ -19,8 +19,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
-      - uses: oven-sh/setup-bun@v2
 
       - name: Restore built website
         uses: actions/cache@v4
