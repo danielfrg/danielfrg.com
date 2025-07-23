@@ -60,5 +60,6 @@ jobs:
             |  Name | Link |
             |---------------------------------|------------------------|
             | Deploy Preview Url | [${{ steps.cloudflare-deploy.outputs.deployment-url }}](${{ steps.cloudflare-deploy.outputs.deployment-url }}) |
+            | Deploy Preview Url | [${{ steps.cloudflare-deploy.outputs.pages-deployment-alias-url }}](${{ steps.cloudflare-deploy.outputs.pages-deployment-alias-url }}) |
             | Latest deploy log | ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} |
             | Latest commit | ${{ github.sha }} |
