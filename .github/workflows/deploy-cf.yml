@@ -31,7 +31,7 @@ jobs:
           fail-on-cache-miss: true
 
       - name: Publish to Cloudflare Pages (main)
-        id: cloudflare-deploy-main
+        id: cf-deploy-main
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: cloudflare/wrangler-action@v3
         with:
@@ -40,7 +40,7 @@ jobs:
           wranglerVersion: "4.25.1"
 
       - name: Publish to Cloudflare Pages (PR)
-        id: cloudflare-deploy-pr
+        id: cf-deploy-pr
         if: github.event_name == 'pull_request'
         uses: cloudflare/wrangler-action@v3
         with:
@@ -57,7 +57,7 @@ jobs:
             ### <span aria-hidden="true">✅</span> Preview deployment
             |  Name | Link |
             |---------------------------------|------------------------|
-            | Deploy Prod Url | [${{ steps.cloudflare-deploy-main.outputs.deployment-url }}](${{ steps.cloudflare-deploy.outputs.deployment-url }}) |
-            | Deploy Preview Url | [${{ steps.cloudflare-deploy-pu.outputs.pages-deployment-alias-url }}](${{ steps.cloudflare-deploy.outputs.pages-deployment-alias-url }}) |
+            | Deploy Prod Url | [${{ steps.cf-deploy-main.outputs.deployment-url }}](${{ steps.cloudflare-deploy.outputs.deployment-url }}) |
+            | Deploy Preview Url | [${{ steps.cf-deploy-pr.outputs.pages-deployment-alias-url }}](${{ steps.cloudflare-deploy.outputs.pages-deployment-alias-url }}) |
             | Latest deploy log | ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} |
             | Latest commit | ${{ github.sha }} |
