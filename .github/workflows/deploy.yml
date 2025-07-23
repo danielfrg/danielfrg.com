@@ -45,12 +45,12 @@ jobs:
             ${{ github.run_id }}
             ${{ github.run_attempt }}
 
-  cf-pages:
+  deploy-cf:
     uses: ./.github/workflows/deploy-cf.yml
     needs: [build]
     secrets: inherit
 
   post-deploy:
     uses: ./.github/workflows/deploy-post.yml
-    needs: [cf-pages]
+    needs: [deploy-cf]
     secrets: inherit
