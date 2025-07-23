@@ -33,21 +33,23 @@ jobs:
       - name: Publish to Cloudflare Pages (main)
         id: cloudflare-deploy-main
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: cloudflare/wrangler-action@v4
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           directory: dist
+          wranglerVersion: "4.25.1"
 
       - name: Publish to Cloudflare Pages (PR)
         id: cloudflare-deploy-pr
         if: github.event_name == 'pull_request'
-        uses: cloudflare/wrangler-action@v4
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: versions upload --preview-alias staging
           directory: dist
+          wranglerVersion: "4.25.1"
 
       - name: Comment deploy url
         uses: mshick/add-pr-comment@v2
