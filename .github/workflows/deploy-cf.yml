@@ -8,7 +8,8 @@ on:
       CLOUDFLARE_TOKEN:
         required: true
 jobs:
-  : permissions:
+  deploy-cf:
+    permissions:
       contents: read
       id-token: write
       pull-requests: write
