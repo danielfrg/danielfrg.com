@@ -1,0 +1,63 @@
+name: deploy-cf-pages
+
+on:
+  workflow_call:
+    secrets:
+      CLOUDFLARE_ACCOUNT_ID:
+        required: true
+      CLOUDFLARE_TOKEN:
+        required: true
+jobs:
+  prod:
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
+      checks: write
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore built website
+        uses: actions/cache@v4
+        with:
+          path: dist
+          key: >
+            website
+            ${{ github.run_id }}
+            ${{ github.run_attempt }}
+          fail-on-cache-miss: true
+
+      - name: Publish to Cloudflare Pages (main)
+        id: cloudflare-deploy-main
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          directory: dist
+
+      - name: Publish to Cloudflare Pages (PR)
+        id: cloudflare-deploy-pr
+        if: github.event_name == 'pull_request'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: versions upload --preview-alias staging
+          directory: dist
+
+      - name: Comment deploy url
+        uses: mshick/add-pr-comment@v2
+        with:
+          message-id: cloudflare-deploy
+          message: |
+            ### <span aria-hidden="true">✅</span> Preview deployment
+            |  Name | Link |
+            |---------------------------------|------------------------|
+            | Deploy Preview Url | [${{ steps.cloudflare-deploy.outputs.url }}](${{ steps.cloudflare-deploy.outputs.url }}) |
+            | Latest deploy log | ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} |
+            | Latest commit | ${{ github.sha }} |
+            | Environment | ${{ steps.cloudflare-pages-deploy.outputs.environment }} |

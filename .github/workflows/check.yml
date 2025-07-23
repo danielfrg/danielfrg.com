@@ -23,7 +23,7 @@ jobs:
 
       - name: Install JS dependencies
         run: |
-          bun ci
+          bun install
 
       - name: Install dependencies
         run: bun install
