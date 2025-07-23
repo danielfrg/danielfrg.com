@@ -59,7 +59,6 @@ jobs:
             ### <span aria-hidden="true">✅</span> Preview deployment
             |  Name | Link |
             |---------------------------------|------------------------|
-            | Deploy Preview Url | [${{ steps.cloudflare-deploy.outputs.url }}](${{ steps.cloudflare-deploy.outputs.url }}) |
+            | Deploy Preview Url | [${{ steps.cloudflare-deploy.outputs.deployment-url }}](${{ steps.cloudflare-deploy.outputs.deployment-url }}) |
             | Latest deploy log | ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} |
             | Latest commit | ${{ github.sha }} |
-            | Environment | ${{ steps.cloudflare-pages-deploy.outputs.environment }} |
