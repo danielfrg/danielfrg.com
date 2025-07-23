@@ -1,0 +1,6 @@
+name = "danielfrg-com"
+compatibility_date = "2025-05-26"
+preview_urls = true
+
+[assets]
+directory = "./dist/"

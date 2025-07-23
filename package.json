@@ -30,7 +30,8 @@
     "prettier-plugin-tailwindcss": "^0.6.8",
     "tsx": "^3.12.10",
     "typescript": "^5.4.4",
-    "typescript-language-server": "^4.3.3"
+    "typescript-language-server": "^4.3.3",
+    "wrangler": "^4.25.1"
   },
   "volta": {
     "node": "22.14.0",
