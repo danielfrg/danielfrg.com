@@ -7,8 +7,8 @@ Source for [danielfrg.com](danielfrg.com).
 ## JS
 
 ```shell
-pnpm install
-pnpm dev
+bun install
+bun dev
 ```
 
 ## Notebooks

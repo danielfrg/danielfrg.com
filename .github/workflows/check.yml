@@ -19,22 +19,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: "npm"
-          cache-dependency-path: "**/package-lock.json"
+      - uses: oven-sh/setup-bun@v2
 
       - name: Install JS dependencies
         run: |
-          npm ci
+          bun ci
 
       - name: Install dependencies
-        run: npm install
+        run: bun install
 
       - name: prettier check
-        run: npx prettier -c .
+        run: bunx prettier -c .
 
       - name: astro check
-        run: npx astro -c .
+        run: bunx astro -c .

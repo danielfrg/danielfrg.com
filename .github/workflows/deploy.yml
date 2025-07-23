@@ -23,20 +23,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: "npm"
-          cache-dependency-path: "**/package-lock.json"
+      - uses: oven-sh/setup-bun@v2
 
       - name: Install JS dependencies
         run: |
-          npm install
+          bun install
 
       - name: Build website
         run: |
-          npm run build
+          bun run build
         env:
           ASTRO_TELEMETRY_DISABLED: 1
 
@@ -51,7 +46,7 @@ jobs:
             ${{ github.run_attempt }}
 
   cf-pages:
-    uses: ./.github/workflows/deploy-cf-pages.yml
+    uses: ./.github/workflows/deploy-cf.yml
     needs: [build]
     secrets: inherit
 
