@@ -81,6 +81,17 @@
   }
 }
 
+.breakout {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+}
+
+html {
+  overflow-x: hidden;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

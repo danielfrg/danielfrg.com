@@ -1,5 +1,6 @@
 ---
 import Prose from "@layouts/Prose.astro";
+import SocialLinks from "@components/SocialLinks.astro";
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "../lib/consts";
 
 let title = `About - ${SITE_TITLE}`;
@@ -11,7 +12,7 @@ let permalink = SITE_URL;
   <div class="flex flex-row gap-8 md:p-8">
     <div class="flex-col my-auto">
       <p class="text-4xl font-bold tracking-tighter">
-        Software Engineer building data science tools
+         Engineer focused on building data tools for developers.
       </p>
     </div>
     <img
@@ -23,21 +24,26 @@ let permalink = SITE_URL;
     />
   </div>
   <div class="text-xl leading-relaxed">
-    <p class="my-4">
-      With over 11 years of experience across data science, machine learning, engineering, product
-      management, and sales, I bring a unique perspective to solving technical challenges and
-      delivering successful products.
+    <p class="">
+      I work as a Product Manager for CUDA Python at NVIDIA.
     </p>
-    <p class="my-4">
-      My experience as a full-stack data software engineer, combined with my diverse background,
-      allows me to approach problems from different angles and drive successful outcomes.
-    </p>
-    <p class="mt-4">
-      Learn more about my <a href="/projects">projects</a>, <a href="https://github.com/danielfrg"
-        >open-source contributions</a
-      >, technical insights on <a href="/blog"> my blog</a>, and professional background on <a
-        href="https://linkedin.com/in/danielfrg">LinkedIn</a
-      >.
-    </p>
+    <p class="">
+    I created
+            <a
+              href="https://lapalabradeldia.com"
+              class="font-bold text-lapalabragreen! hover:underline"
+              target="_blank">La Palabra del día</a
+            >
+            and I build many other apps at <a href="https://inmatura.com">Inmatura</a>.
+  </p>
+  <p class="">
+  I have worked in the data science / machine learning / data engineering / AI space
+  for over 13 years as an engineer, devops, product manager, sales.
+  </p>
+  <p class="">
+   I have <a href="/content">written and recoded some content</a> and <a href="/projects">built many projects</a>.
+  </p>
   </div>
+
+  <SocialLinks />
 </Prose>
