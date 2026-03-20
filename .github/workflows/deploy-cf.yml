@@ -20,6 +20,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: voidzero-dev/setup-vp@v1
+        with:
+          run-install: false
+
+      - name: Install dependencies
+        run: vp install
+
       - name: Restore built website
         uses: actions/cache@v4
         with:
@@ -30,25 +37,21 @@ jobs:
             ${{ github.run_attempt }}
           fail-on-cache-miss: true
 
-      - name: Publish to Cloudflare Pages (main)
+      - name: Publish to Cloudflare (main)
         id: cf-deploy-main
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy
-          wranglerVersion: "4.25.1"
+        run: vp exec wrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
-      - name: Publish to Cloudflare Pages (PR)
+      - name: Publish to Cloudflare (PR)
         id: cf-deploy-pr
         if: github.event_name == 'pull_request'
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: versions upload --preview-alias staging
-          wranglerVersion: "4.25.1"
+        run: vp exec wrangler versions upload --preview-alias staging
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
       - name: Comment deploy url
         uses: mshick/add-pr-comment@v2
