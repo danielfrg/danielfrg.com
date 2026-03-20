@@ -20,8 +20,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: oven-sh/setup-bun@v2
-
       - name: Restore built website
         uses: actions/cache@v4
         with:

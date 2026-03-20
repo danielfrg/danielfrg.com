@@ -23,15 +23,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: oven-sh/setup-bun@v2
+      - uses: voidzero-dev/setup-vp@v1
+        with:
+          cache: true
 
       - name: Install JS dependencies
-        run: |
-          bun install
+        run: vp install
 
       - name: Build website
-        run: |
-          bun run build
+        run: vp run build
         env:
           ASTRO_TELEMETRY_DISABLED: 1
 

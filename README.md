@@ -6,9 +6,11 @@ Source for [danielfrg.com](danielfrg.com).
 
 ## JS
 
+Uses [Vite+](https://viteplus.dev/) (`vp`) for runtime and package management with pnpm.
+
 ```shell
-bun install
-bun dev
+vp install
+vp run dev
 ```
 
 ## Notebooks

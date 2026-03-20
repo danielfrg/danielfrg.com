@@ -9,9 +9,6 @@ concurrency:
   group: check-${{ github.head_ref }}
   cancel-in-progress: true
 
-env:
-  VOLTA_FEATURE_PNPM: 1
-
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -19,17 +16,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: oven-sh/setup-bun@v2
-
-      - name: Install JS dependencies
-        run: |
-          bun install
+      - uses: voidzero-dev/setup-vp@v1
+        with:
+          cache: true
 
       - name: Install dependencies
-        run: bun install
+        run: vp install
 
-      - name: prettier check
-        run: bunx prettier -c .
+      - name: Format check
+        run: vp fmt --check
 
-      - name: astro check
-        run: bunx astro -c .
+      - name: Lint
+        run: vp lint --config oxlint.config.json
+
+      - name: Astro check
+        run: vp exec astro check

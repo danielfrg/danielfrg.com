@@ -30,7 +30,7 @@ I like my app; I have been using it for 2 weeks and I plan to continue using it 
 
 I call this experiment a success. I have an app for myself that I can customize to whatever I need. At one point I will add a TUI and add minor stuff I wanted in Things. It's fine for me.
 
-This is clearly what's going to happen to software engineering. 
+This is clearly what's going to happen to software engineering.
 The issue I see is that quality was already terrible, just look at MacOS and Windows.
 
 Things by Culture Code is a polished app. It is so well designed; every animation is tested and intentional. This was rare before, but in the age of AI agents, this is going extinct.

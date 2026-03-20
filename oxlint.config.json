@@ -1,0 +1,6 @@
+{
+  "ignorePatterns": ["dist/**", "src/content/_gen_blog_notebooks/**"],
+  "rules": {
+    "triple-slash-reference": "off"
+  }
+}

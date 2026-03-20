@@ -9,7 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "fmt": "prettier -w ."
+    "fmt": "vp fmt --write",
+    "lint": "vp lint --config oxlint.config.json"
   },
   "dependencies": {
     "@astrojs/check": "0.9.6",
@@ -24,17 +25,17 @@
   },
   "devDependencies": {
     "@astrojs/language-server": "2.16.3",
-    "@ianvs/prettier-plugin-sort-imports": "^4.3.1",
-    "prettier": "^3.2.5",
-    "prettier-plugin-astro": "^0.13.0",
-    "prettier-plugin-tailwindcss": "^0.6.8",
     "tsx": "^3.12.10",
     "typescript": "^5.4.4",
     "typescript-language-server": "^4.3.3",
     "wrangler": "^4.25.1"
   },
-  "volta": {
-    "node": "22.14.0",
-    "npm": "11.1.0"
+  "packageManager": "pnpm@10.28.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp",
+      "workerd"
+    ]
   }
 }
