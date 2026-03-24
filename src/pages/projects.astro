@@ -10,6 +10,34 @@ let description = SITE_DESCRIPTION;
 let permalink = SITE_URL;
 
 
+const aiCoded = [
+  {
+    title: "things",
+    desc: "Things3 clone with API, CLI and agents!",
+    img: "/images/things.png",
+    links: [
+      {
+        text: "View on GitHub",
+        href: "https://github.com/danielfrg/things",
+      },
+      { text: "Read blogpost", href: "/blog/2026/1/things-vibe-coded" },
+    ],
+  },
+  {
+    title: "solid-ui",
+    desc: "Port of base-ui to solid-js",
+    img: "/images/solid-ui.png",
+    links: [
+      {
+        text: "View on GitHub",
+        href: "https://github.com/danielfrg/solid-ui",
+      },
+      { text: "Read blogpost", href: "/blog/2026/3/base-ui-vibe-coded" },
+    ],
+    tag: "Archived",
+  },
+]
+
 const openSource = [
   {
     title: "mkdocs-jupyter",
@@ -124,13 +152,19 @@ const apps = [
 
 <Prose title={title} description={description} permalink={permalink}>
   <p>
-    I built many projects in the before days. This are some of them.
+    I built many projects in the before days and now in the after-AI era. These are some of them.
   </p>
   <p>
     New stuff I am working on is on <a href="https://github.com/danielfrg">Github</a>.
   </p>
   <h2>
-    My own open source projects (pre AI!)
+    Some AI coded projects
+  </h2>
+  <div class="breakout">
+    <PreviewGrid items={aiCoded} />
+  </div>
+  <h2>
+    Some open source projects (pre AI!)
   </h2>
   <div class="breakout">
     <PreviewGrid items={openSource} />
