@@ -39,7 +39,7 @@ jobs:
 
       - name: Publish to Cloudflare (main)
         id: cf-deploy-main
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
         run: vp exec wrangler deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
@@ -54,6 +54,7 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
       - name: Comment deploy url
+        if: github.event_name == 'pull_request'
         uses: mshick/add-pr-comment@v2
         with:
           message-id: cloudflare-deploy
