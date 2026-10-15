@@ -1,4 +1,4 @@
-name: deploy
+name: Deploy
 
 on:
   push:
@@ -46,11 +46,11 @@ jobs:
             ${{ github.run_attempt }}
 
   deploy-cf:
-    uses: ./.github/workflows/deploy-cf.yml
+    uses: ./.github/workflows/deploy-cloudflare.yml
     needs: [build]
     secrets: inherit
 
   post-deploy:
-    uses: ./.github/workflows/deploy-post.yml
+    uses: ./.github/workflows/purge-cloudflare-cache.yml
     needs: [deploy-cf]
     secrets: inherit
