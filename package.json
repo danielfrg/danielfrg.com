@@ -33,6 +33,10 @@
     "typescript-language-server": "^4.3.3",
     "wrangler": "^4.25.1"
   },
+  "engines": {
+    "node": ">=26.0.0 <27",
+    "pnpm": "10.28.0"
+  },
   "packageManager": "pnpm@10.28.0",
   "pnpm": {
     "onlyBuiltDependencies": [

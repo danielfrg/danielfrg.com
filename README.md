@@ -6,7 +6,7 @@ Source for [danielfrg.com](danielfrg.com).
 
 ## JS
 
-Uses Node.js 24 (see `.node-version`) and pnpm 10.28.0 (see `packageManager` in
+Uses Node.js >=26.0.0 <27 (see `.node-version`) and pnpm 10.28.0 (see `packageManager` in
 `package.json`). Install those versions before running:
 
 ```shell
