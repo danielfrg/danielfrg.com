@@ -2,7 +2,7 @@
 
 Converts the notebooks using `nbconvert` to `html`.
 
-Reads notebooks from `src/content/blog_notebooks` and outputs it to:
+Reads notebooks from `src/content/_blog_notebooks` and outputs them to:
 `src/content/_gen_blog_notebooks/`
 
 After that just create a new MD file that points to the generated HTML file

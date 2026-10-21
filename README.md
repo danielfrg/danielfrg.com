@@ -2,7 +2,7 @@
 
 [![build](https://github.com/danielfrg/danielfrg.com/actions/workflows/deploy.yml/badge.svg)](https://github.com/danielfrg/danielfrg.com/actions/workflows/deploy.yml)
 
-Source for [danielfrg.com](danielfrg.com).
+Source for [danielfrg.com](https://danielfrg.com).
 
 ## JS
 
@@ -19,20 +19,22 @@ or `pnpm fmt` to format files. Build the site with `pnpm build`.
 
 ## Notebooks
 
-We use `mkdocs-jupyter` to convert the notebooks to markdown.
+Blog notebooks live in `src/content/_blog_notebooks/<year>/<month>/` and are
+converted to HTML with
+[mkdocs-jupyter](https://github.com/danielfrg/mkdocs-jupyter) into
+`src/content/_gen_blog_notebooks/`. The generated HTML files are committed.
 
-We save the notebooks into `src/pages/blog/notebooks`
-and we also commit the converted ones under `src/pages/blog`
+Set up the Python environment (rye-managed) and convert:
 
-Create Python environment:
-
-```shell
-mamba env create
-conda activate danielfrg.com
+```zsh
+cd nbconvert
+rye sync
 ```
 
-Convert notebooks to markdown:
-
-```shell
-python nbconvert/convert.py
+```zsh
+just notebooks
 ```
+
+Each notebook post is a Markdown file under `src/content/blog/<year>/<month>/`
+that points at the generated HTML with the `notebook_html_path` frontmatter
+key. See an existing notebook post for the format.
