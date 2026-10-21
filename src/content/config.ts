@@ -19,6 +19,7 @@ const videos = defineCollection({
     // Transform string to Date object
     pubDate: z.coerce.date(),
     link: z.string(),
+    draft: z.boolean().optional(),
     lang: z.string().optional(),
   }),
 });

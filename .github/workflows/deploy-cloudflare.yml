@@ -20,12 +20,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: voidzero-dev/setup-vp@v1
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
         with:
-          run-install: false
+          node-version-file: .node-version
+          cache: pnpm
 
       - name: Install dependencies
-        run: vp install
+        run: pnpm install --frozen-lockfile
 
       - name: Restore built website
         uses: actions/cache@v4
@@ -40,7 +43,7 @@ jobs:
       - name: Publish to Cloudflare (main)
         id: cf-deploy-main
         if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
-        run: vp exec wrangler deploy
+        run: pnpm exec wrangler deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -48,7 +51,7 @@ jobs:
       - name: Publish to Cloudflare (PR)
         id: cf-deploy-pr
         if: github.event_name == 'pull_request'
-        run: vp exec wrangler versions upload --preview-alias staging
+        run: pnpm exec wrangler versions upload --preview-alias staging
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

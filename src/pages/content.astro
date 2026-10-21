@@ -7,29 +7,19 @@ let title = SITE_TITLE;
 let description = SITE_DESCRIPTION;
 let permalink = SITE_URL;
 
-let posts = await getCollection("blog", ({ data }) => {
-  return data.draft !== true;
-});
-
-let videos = await getCollection("videos", ({ data }) => {
-  return data.draft !== true;
-});
-
-// Combine collections with a type property
-posts = posts.map((post) => ({
+const posts = (await getCollection("blog", ({ data }) => data.draft !== true)).map((post) => ({
   ...post,
-  contentType: "blog",
+  contentType: "blog" as const,
 }));
 
-videos = videos.map((video) => ({
+const videos = (await getCollection("videos", ({ data }) => data.draft !== true)).map((video) => ({
   ...video,
-  contentType: "video",
+  contentType: "video" as const,
 }));
 
-let allContent = [...posts, ...videos];
-// let allContent = [...videos];
-
-allContent = allContent.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const allContent = [...posts, ...videos].sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
 
 const monthNames = [
   "Jan",
@@ -54,7 +44,7 @@ function fmtDate(pubDate: string | Date) {
 }
 
 // Group posts by year
-const groupedByYear = allContent.reduce((acc, post) => {
+const groupedByYear = allContent.reduce<Record<string, typeof allContent>>((acc, post) => {
   const year = post.data.pubDate.getFullYear();
   if (!acc[year]) {
     acc[year] = [];
@@ -80,7 +70,7 @@ const groupedByYear = allContent.reduce((acc, post) => {
             </div>
 
             {groupedByYear[year].map((post) => (
-              <div class="mt-4 flex items-baseline" key={post.slug}>
+              <div class="mt-4 flex items-baseline">
                 {post.contentType == "video" ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +89,7 @@ const groupedByYear = allContent.reduce((acc, post) => {
                 <div class="w-full relative gap-2 justify-between z-50 items-baseline">
                   <p class="mt-0 mb-0 text-base">
                     <div class="flex items-start justify-between">
-                      {post.data.link ? (
+                      {post.contentType === "video" ? (
                         <a
                           class="text-white"
                           href={post.data.link}
@@ -116,7 +106,7 @@ const groupedByYear = allContent.reduce((acc, post) => {
                           {post.data.title}
                         </a>
                       )}
-                      {post.data.lang === "es" && (
+                      {post.contentType === "video" && post.data.lang === "es" && (
                         <div class="mt-1 text-xs px-2 py-1 border dark:text-gray-400 dark:bg-neutral-800 dark:border-neutral-700 rounded -mt-1">
                           Spanish
                         </div>

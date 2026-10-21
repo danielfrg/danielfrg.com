@@ -16,18 +16,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: voidzero-dev/setup-vp@v1
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
         with:
-          cache: true
+          node-version-file: .node-version
+          cache: pnpm
 
       - name: Install dependencies
-        run: vp install
+        run: pnpm install --frozen-lockfile
 
       - name: Format check
-        run: vp fmt --check
+        run: pnpm fmt:check
 
       - name: Lint
-        run: vp lint --config oxlint.config.json
+        run: pnpm lint
 
       - name: Astro check
-        run: vp exec astro check
+        run: pnpm check

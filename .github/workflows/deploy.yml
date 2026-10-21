@@ -23,15 +23,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: voidzero-dev/setup-vp@v1
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
         with:
-          cache: true
+          node-version-file: .node-version
+          cache: pnpm
 
       - name: Install JS dependencies
-        run: vp install
+        run: pnpm install --frozen-lockfile
 
       - name: Build website
-        run: vp run build
+        run: pnpm build
         env:
           ASTRO_TELEMETRY_DISABLED: 1
 

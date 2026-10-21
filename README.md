@@ -6,12 +6,16 @@ Source for [danielfrg.com](danielfrg.com).
 
 ## JS
 
-Uses [Vite+](https://viteplus.dev/) (`vp`) for runtime and package management with pnpm.
+Uses Node.js 24 (see `.node-version`) and pnpm 10.28.0 (see `packageManager` in
+`package.json`). Install those versions before running:
 
 ```shell
-vp install
-vp run dev
+pnpm install --frozen-lockfile
+pnpm dev
 ```
+
+Run `pnpm fmt:check`, `pnpm lint`, and `pnpm check` for the CI checks,
+or `pnpm fmt` to format files. Build the site with `pnpm build`.
 
 ## Notebooks
 
