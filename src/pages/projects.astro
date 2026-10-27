@@ -10,6 +10,53 @@ let description = SITE_DESCRIPTION;
 let permalink = SITE_URL;
 
 
+const personalApps = [
+  {
+    title: "ciview",
+    desc: "GitHub and Forgejo Actions viewer",
+    img: "/images/ciview.png",
+    links: [
+      {
+        text: "View on GitHub",
+        href: "https://github.com/danielfrg/ciview",
+      },
+    ],
+  },
+  {
+    title: "golinks",
+    desc: "Short, memorable go/ links",
+    img: "/images/golinks.png",
+    links: [
+      {
+        text: "View on GitHub",
+        href: "https://github.com/danielfrg/golinks",
+      },
+    ],
+  },
+  {
+    title: "homelab-launcher",
+    desc: "Launchpad for my Kubernetes apps",
+    img: "/images/homelab-launcher.png",
+    links: [
+      {
+        text: "View on GitHub",
+        href: "https://github.com/danielfrg/homelab-launcher",
+      },
+    ],
+  },
+  {
+    title: "dinero",
+    desc: "Personal finance ledger with CLI, API and MCP",
+    img: "/images/dinero.png",
+    links: [
+      {
+        text: "View on GitHub",
+        href: "https://github.com/danielfrg/dinero",
+      },
+    ],
+  },
+];
+
 const aiCoded = [
   {
     title: "things",
@@ -22,6 +69,7 @@ const aiCoded = [
       },
       { text: "Read blogpost", href: "/blog/2026/1/things-vibe-coded" },
     ],
+    tag: "Archived",
   },
   {
     title: "solid-ui",
@@ -152,19 +200,25 @@ const apps = [
 
 <Prose title={title} description={description} permalink={permalink}>
   <p>
-    I built many projects in the before days and now in the after-AI era. These are some of them.
-  </p>
-  <p>
-    New stuff I am working on is on <a href="https://github.com/danielfrg">Github</a>.
+    Some Pre and Post AI apps i have built.
   </p>
   <h2>
-    Some AI coded projects
+    Personal apps
+  </h2>
+  <p>
+    AI coded apps I have built for myself and deploy in my homelab.
+  </p>
+  <div class="breakout">
+    <PreviewGrid items={personalApps} />
+  </div>
+  <h2>
+    Other AI coded projects
   </h2>
   <div class="breakout">
     <PreviewGrid items={aiCoded} />
   </div>
   <h2>
-    Some open source projects (pre AI!)
+    Open source projects (pre AI!)
   </h2>
   <div class="breakout">
     <PreviewGrid items={openSource} />
@@ -173,7 +227,7 @@ const apps = [
   <LinkGrid items={openSourceList} />
 
   <h2>
-    Some old apps I built (pre AI!)
+    Old apps I built (pre AI!)
   </h2>
   <div class="breakout">
     <PreviewGrid items={apps} />
