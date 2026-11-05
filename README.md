@@ -24,11 +24,11 @@ converted to HTML with
 [mkdocs-jupyter](https://github.com/danielfrg/mkdocs-jupyter) into
 `src/content/_gen_blog_notebooks/`. The generated HTML files are committed.
 
-Set up the Python environment (rye-managed) and convert:
+Set up the Python environment (uv-managed) and convert:
 
 ```zsh
 cd nbconvert
-rye sync
+uv sync
 ```
 
 ```zsh

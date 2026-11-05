@@ -12,7 +12,7 @@ are user facing.
 - Astro 5 with MDX, RSS, and sitemap; linting and formatting with oxlint/oxfmt.
 - Content collections live in /src/content (`blog`, `videos`, `config.ts`).
 - Cloudflare serves the built `dist/` as static assets (`wrangler.toml`).
-- /nbconvert is a rye-managed Python helper that converts blog notebooks to
+- /nbconvert is a uv-managed Python helper that converts blog notebooks to
   HTML with mkdocs-jupyter.
 
 ## Content Invariants

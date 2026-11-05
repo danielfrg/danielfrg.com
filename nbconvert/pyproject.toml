@@ -1,22 +1,14 @@
 [project]
-name = "nbconvert.danielfrg.com"
+name = "nbconvert-danielfrg-com"
 version = "1.0.0"
-description = "Add your description here"
+description = "Converts the blog notebooks to HTML with mkdocs-jupyter"
 authors = [{ name = "Daniel Rodriguez", email = "daniel@danielfrg.com" }]
-dependencies = ["fire>=0.5.0", "mkdocs_jupyter>=0.24.2", "mkdocs-jupyter==0.24.3", "pyyaml>=6.0.1"]
 readme = "README.md"
-requires-python = ">= 3.8"
+requires-python = ">=3.13"
+dependencies = ["fire>=0.5.0", "mkdocs-jupyter==0.24.3", "pyyaml>=6.0.1"]
 
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+[dependency-groups]
+dev = ["ruff>=0.17.3", "ty>=0.0.97"]
 
-[tool.rye]
-managed = true
-dev_dependencies = []
-
-[tool.hatch.metadata]
-allow-direct-references = true
-
-[tool.hatch.build.targets.wheel]
-packages = ["convert.py"]
+[tool.uv]
+package = false
