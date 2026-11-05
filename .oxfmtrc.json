@@ -1,8 +1,14 @@
 {
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
   "semi": true,
   "singleQuote": false,
   "tabWidth": 2,
   "printWidth": 100,
   "trailingComma": "all",
-  "ignorePatterns": ["src/content/_gen_blog_notebooks/**", "*.html", "*.tpl"]
+  "astro": true,
+  "ignorePatterns": [
+    "src/content/_gen_blog_notebooks/**",
+    "*.html",
+    "*.tpl"
+  ]
 }
