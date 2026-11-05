@@ -6,9 +6,5 @@
   "printWidth": 100,
   "trailingComma": "all",
   "astro": true,
-  "ignorePatterns": [
-    "src/content/_gen_blog_notebooks/**",
-    "*.html",
-    "*.tpl"
-  ]
+  "ignorePatterns": ["src/content/_gen_blog_notebooks/**", "*.html", "*.tpl"]
 }

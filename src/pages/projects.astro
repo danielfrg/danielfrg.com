@@ -9,7 +9,6 @@ let title = SITE_TITLE;
 let description = SITE_DESCRIPTION;
 let permalink = SITE_URL;
 
-
 const personalApps = [
   {
     title: "ciview",
@@ -84,7 +83,7 @@ const aiCoded = [
     ],
     tag: "Archived",
   },
-]
+];
 
 const openSource = [
   {
@@ -199,36 +198,24 @@ const apps = [
 ---
 
 <Prose title={title} description={description} permalink={permalink}>
-  <p>
-    Some Pre and Post AI apps i have built.
-  </p>
-  <h2>
-    Personal apps
-  </h2>
-  <p>
-    AI coded apps I have built for myself and deploy in my homelab.
-  </p>
+  <p>Some Pre and Post AI apps i have built.</p>
+  <h2>Personal apps</h2>
+  <p>AI coded apps I have built for myself and deploy in my homelab.</p>
   <div class="breakout">
     <PreviewGrid items={personalApps} />
   </div>
-  <h2>
-    Other AI coded projects
-  </h2>
+  <h2>Other AI coded projects</h2>
   <div class="breakout">
     <PreviewGrid items={aiCoded} />
   </div>
-  <h2>
-    Open source projects (pre AI!)
-  </h2>
+  <h2>Open source projects (pre AI!)</h2>
   <div class="breakout">
     <PreviewGrid items={openSource} />
   </div>
 
   <LinkGrid items={openSourceList} />
 
-  <h2>
-    Old apps I built (pre AI!)
-  </h2>
+  <h2>Old apps I built (pre AI!)</h2>
   <div class="breakout">
     <PreviewGrid items={apps} />
   </div>
