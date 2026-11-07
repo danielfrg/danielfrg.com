@@ -15,14 +15,14 @@ jobs:
       pull-requests: write
       checks: write
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .node-version
           cache: pnpm
@@ -31,7 +31,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Restore built website
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: dist
           key: >
@@ -58,7 +58,7 @@ jobs:
 
       - name: Comment deploy url
         if: github.event_name == 'pull_request'
-        uses: mshick/add-pr-comment@v2
+        uses: mshick/add-pr-comment@v3
         with:
           message-id: cloudflare-deploy
           message: |
