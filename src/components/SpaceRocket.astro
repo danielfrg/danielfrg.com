@@ -15,8 +15,10 @@
 
 <script>
   // A small Falcon-style rocket on a pad at the bottom left. Launch runs a
-  // countdown, lifts off, separates the upper stage and flies the booster back
-  // for a landing burn and touchdown on the pad.
+  // countdown and lifts off on a parabolic arc toward the upper right. The upper
+  // stage flies away; the booster flips, burns and lands on the platform at the
+  // bottom right. The button then becomes Reset, which puts a new rocket on the
+  // launch pad. Every launch picks a slightly different arc and landing spot.
 
   type State = "idle" | "countdown" | "ascent" | "return" | "landed" | "fade";
 
@@ -31,6 +33,8 @@
     r1: number;
     alpha: number;
   };
+
+  type Stage2 = { x: number; h: number; vx: number; vu: number };
 
   const canvas = document.getElementById("space-rocket-canvas") as HTMLCanvasElement | null;
   const button = document.getElementById("space-rocket-button") as HTMLButtonElement | null;
@@ -48,34 +52,62 @@
     let width = 0;
     let height = 0;
     let scale = 1;
-    let padX = 44;
+    let padX = 44; // launch pad centre
     let groundY = 0;
+    let platW = 170; // landing platform width
+    let platCX = 0; // landing platform centre
+    let landOffset = 0; // landing spot relative to the platform centre
 
     let state: State = "idle";
     let tState = 0;
-    let h = 0; // height of the booster base above the pad, px
-    let v = 0; // vertical speed, px/s, up is positive
+
+    // booster, x is the centre of its base, h is the height of the base above the ground
+    let rx = 44;
+    let rh = 0;
+    let ang = 0; // radians clockwise from vertical
     let legs = 1; // 0 folded .. 1 deployed
     let throttle = 0;
-    let burning = false;
     let attached = true; // upper stage still on the booster
-    let stage2: { h: number; v: number } | null = null;
+    let stage2: Stage2 | null = null;
     let particles: Particle[] = [];
-    let alpha = 1; // used by the reduced motion fade
+    let alpha = 1;
     let shake = 0;
-    let tilt = 0;
+
+    // the current flight
+    let fl = { x0: 0, lx: 0, vx: 0, vy0: 0, hb: 0, tp: 1.7 };
+    let tF = 0; // time since liftoff
+    let tau = 0; // position along the parabola, in seconds
+    let vu = 0; // vertical speed, up is positive
+    let sepAng = 0;
+    let sepVu = 1;
+    let burning = false;
+    let hb0 = 1;
+    let dx0 = 0;
+    let fadeDest: "pad" | "platform" = "pad";
+    let fadeMoved = false;
+
     let lastLabel = "";
     let raf = 0;
     let last = 0;
 
     const rand = (min: number, max: number) => min + Math.random() * (max - min);
     const clamp = (x: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, x));
+    const smooth = (x: number) => {
+      const k = clamp(x, 0, 1);
+      return k * k * (3 - 2 * k);
+    };
 
-    function setLabel(text: string, announce = false) {
+    function setLabel(text: string, aria?: string, announce = false) {
       if (text === lastLabel) return;
       lastLabel = text;
       button!.textContent = text;
+      if (aria) button!.setAttribute("aria-label", aria);
+      else button!.removeAttribute("aria-label");
       if (announce) status!.textContent = text;
+    }
+
+    function landingX() {
+      return platCX + landOffset;
     }
 
     function resize() {
@@ -88,7 +120,11 @@
       scale = width < 640 ? 0.8 : 1;
       padX = 44;
       groundY = height - 22;
-      if (state === "idle") draw();
+      platW = 170 * scale;
+      platCX = width - platW / 2 - 20;
+      if (state === "idle") rx = padX;
+      if (state === "landed") rx = landingX();
+      if (state === "idle" || state === "landed") draw();
     }
 
     // ---- drawing ---------------------------------------------------------
@@ -176,26 +212,25 @@
       ctx!.fill();
     }
 
-    function drawStage2(base: number) {
-      ctx!.save();
-      ctx!.translate(padX, base);
-      ctx!.scale(scale, scale);
-      drawUpper(0);
-      ctx!.fillStyle = "#2b2e35";
-      ctx!.fillRect(-4, -3, 8, 3);
-      drawFlame(0.45);
-      ctx!.restore();
+    function drawPlatform(cx: number, w: number, light: boolean) {
+      ctx!.fillStyle = "#23262c";
+      ctx!.fillRect(cx - w / 2, groundY, w, 5);
+      ctx!.fillStyle = "rgba(255,255,255,0.08)";
+      ctx!.fillRect(cx - w / 2, groundY, w, 1);
+      if (light) {
+        // a few edge markers so the landing area reads as a target
+        ctx!.fillStyle = "rgba(255,255,255,0.22)";
+        for (const f of [-0.42, -0.14, 0.14, 0.42]) {
+          ctx!.fillRect(cx + f * w - 4, groundY + 2, 8, 1.4);
+        }
+      }
     }
 
     function draw() {
       ctx!.clearRect(0, 0, width, height);
 
-      // pad
-      const padW = 78 * scale;
-      ctx!.fillStyle = "#23262c";
-      ctx!.fillRect(padX - padW / 2, groundY, padW, 5);
-      ctx!.fillStyle = "rgba(255,255,255,0.08)";
-      ctx!.fillRect(padX - padW / 2, groundY, padW, 1);
+      drawPlatform(padX, 78 * scale, false);
+      drawPlatform(platCX, platW, true);
 
       // smoke
       for (const p of particles) {
@@ -207,12 +242,22 @@
         ctx!.fill();
       }
 
-      if (stage2) drawStage2(groundY - stage2.h);
+      if (stage2) {
+        ctx!.save();
+        ctx!.translate(stage2.x, groundY - stage2.h);
+        ctx!.rotate(Math.atan2(stage2.vx, stage2.vu));
+        ctx!.scale(scale, scale);
+        drawUpper(0);
+        ctx!.fillStyle = "#2b2e35";
+        ctx!.fillRect(-4, -3, 8, 3);
+        drawFlame(0.45);
+        ctx!.restore();
+      }
 
       ctx!.save();
       ctx!.globalAlpha = alpha;
-      ctx!.translate(padX + shake, groundY - h);
-      ctx!.rotate(tilt);
+      ctx!.translate(rx + shake, groundY - rh);
+      ctx!.rotate(ang);
       ctx!.scale(scale, scale);
       drawLegs(legs);
       drawBooster(attached);
@@ -223,10 +268,13 @@
     // ---- simulation -------------------------------------------------------
 
     function emitSmoke(dt: number) {
-      const near = h < 130 * scale;
+      const near = rh < 130 * scale;
       const n = Math.round(dt * 110 * throttle);
-      const x = padX + shake;
-      const y = groundY - h + 4 * scale;
+      // exhaust leaves opposite to where the nose points
+      const ex = -Math.sin(ang);
+      const ey = Math.cos(ang);
+      const x = rx + shake + ex * 4 * scale;
+      const y = groundY - rh + ey * 4 * scale;
       for (let i = 0; i < n && particles.length < 420; i++) {
         if (near) {
           const dir = Math.random() < 0.5 ? -1 : 1;
@@ -242,11 +290,12 @@
             alpha: 0.4,
           });
         } else {
+          const push = rand(20, 70);
           particles.push({
             x: x + rand(-3, 3),
-            y: y + rand(0, 8),
-            vx: rand(-16, 16),
-            vy: rand(10, 50),
+            y: y + rand(0, 4),
+            vx: ex * push + rand(-14, 14),
+            vy: ey * push + rand(-14, 14),
             age: 0,
             ttl: rand(0.8, 1.3),
             r0: 2.5,
@@ -257,11 +306,11 @@
       }
     }
 
-    function dustBurst() {
+    function dustBurst(x: number) {
       for (let i = 0; i < 16; i++) {
         const dir = i % 2 === 0 ? -1 : 1;
         particles.push({
-          x: padX + rand(-10, 10),
+          x: x + rand(-10, 10),
           y: groundY - rand(0, 3),
           vx: dir * rand(30, 120),
           vy: rand(-12, 2),
@@ -284,110 +333,179 @@
       particles = particles.filter((p) => p.age < p.ttl);
     }
 
+    // Pick this launch's arc. The booster follows a parabola from the launch pad
+    // that comes down above the landing spot, then makes a vertical landing burn.
+    function planFlight() {
+      const room = groundY - 40 - 100 * scale; // room above the ground for the apex
+      const apex = room * rand(0.62, 0.98);
+      const hb = Math.min(clamp(0.24 * height, 90, 230), apex * 0.45);
+      landOffset = rand(-0.32, 0.32) * platW;
+      const lx = landingX();
+      const vy0 = Math.sqrt(2 * G * apex);
+      const flightTime = (2 * vy0) / G;
+      const tBurn = Math.sqrt((2 * (apex - hb)) / G); // time from apex to burn start
+      // horizontal speed such that the burn (where sideways speed also dies off)
+      // ends exactly on the landing spot
+      const vx = (lx - padX) / (flightTime / 2 + tBurn + hb / (2 * G * tBurn));
+      fl = { x0: padX, lx, vx, vy0, hb, tp: rand(1.5, 1.9) };
+    }
+
+    function pathAt(t: number) {
+      rx = fl.x0 + fl.vx * t;
+      rh = fl.vy0 * t - 0.5 * G * t * t;
+      vu = fl.vy0 - G * t;
+    }
+
+    function touchdown() {
+      rh = 0;
+      rx = fl.lx;
+      ang = 0;
+      vu = 0;
+      throttle = 0;
+      burning = false;
+      state = "landed";
+      tState = 0;
+      dustBurst(rx);
+      legs = 1;
+      button!.disabled = false;
+      setLabel("Reset", "Reset rocket");
+      status!.textContent = "Landed";
+    }
+
+    function startFade(dest: "pad" | "platform") {
+      state = "fade";
+      fadeDest = dest;
+      fadeMoved = false;
+      tState = 0;
+      button!.disabled = true;
+      if (!raf) {
+        last = performance.now() / 1000;
+        raf = requestAnimationFrame(frame);
+      }
+    }
+
     function step(dt: number) {
       tState += dt;
       shake = 0;
-      tilt = 0;
 
       switch (state) {
         case "countdown": {
           const remaining = 3 - tState;
-          setLabel(`T-${Math.max(1, Math.ceil(remaining))}`, true);
+          setLabel(`T-${Math.max(1, Math.ceil(remaining))}`, undefined, true);
           throttle = remaining < 1 ? (1 - remaining) * 0.5 : 0;
           if (remaining < 1.5) shake = (Math.random() - 0.5) * (1.5 - remaining) * 1.4;
           if (remaining <= 0) {
             state = "ascent";
             tState = 0;
-            v = 0;
-            setLabel("Liftoff", true);
+            tF = 0;
+            tau = 0;
+            setLabel("Liftoff", undefined, true);
           }
           break;
         }
         case "ascent": {
-          v += (120 + 520 * tState) * dt;
-          h += v * dt;
+          tF += dt;
+          // speed ramps up from rest, then matches the free parabola at separation
+          tau = tF < fl.tp ? (tF * tF) / (2 * fl.tp) : fl.tp / 2 + (tF - fl.tp);
+          pathAt(tau);
           throttle = 1;
-          legs = 1 - clamp((tState - 0.25) / 0.6, 0, 1);
-          // separate once the booster's coast would peak at about 72% of the screen
-          if (h + (v * v) / (2 * G) >= 0.72 * height) {
-            stage2 = { h: h + STACK * scale, v };
+          legs = 1 - clamp((tF - 0.25) / 0.6, 0, 1);
+          ang = Math.atan2(fl.vx, vu) * smooth(tF / 1.0);
+          if (tF >= fl.tp) {
+            sepAng = ang;
+            sepVu = Math.max(vu, 1);
+            stage2 = {
+              x: rx + Math.sin(ang) * STACK * scale,
+              h: rh + Math.cos(ang) * STACK * scale,
+              vx: fl.vx,
+              vu,
+            };
             attached = false;
             throttle = 0;
+            burning = false;
             state = "return";
             tState = 0;
-            burning = false;
-            setLabel("Stage sep", true);
+            setLabel("Stage sep", undefined, true);
           }
           break;
         }
         case "return": {
-          if (burning) {
-            const dist = Math.max(h, 0.5);
-            const need = Math.min((v * v) / (2 * dist), BRAKE * 1.3);
-            v += need * dt;
-            if (v > -45) v = -45;
-            throttle = clamp(need / BRAKE, 0.35, 1);
-          } else {
-            v -= G * dt;
+          if (!burning) {
+            tau += dt;
+            pathAt(tau);
             throttle = 0;
-            if (v < 0 && (v * v) / (2 * Math.max(h, 0.5)) >= BRAKE * 0.92) {
+            // tilt over after separation, then sit engines-first along the descent
+            const target = vu >= 0 ? sepAng * clamp(vu / sepVu, 0, 1) : -Math.atan2(fl.vx, -vu);
+            ang += (target - ang) * Math.min(1, dt * 3.5);
+            if (vu < 0 && rh < fl.hb * 1.7) legs = Math.min(1, legs + dt / 0.45);
+            if (vu < 0 && rh <= fl.hb) {
               burning = true;
-              setLabel("Landing burn", true);
+              hb0 = Math.max(rh, 1);
+              dx0 = fl.lx - rx;
+              setLabel("Landing burn", undefined, true);
             }
-          }
-          h += v * dt;
-          if (v < 0 && h < 340) legs = Math.min(1, legs + dt / 0.45);
-          if (v < 0) tilt = 0.07 * Math.sin(tState * 2.2) * clamp(h / (0.5 * height), 0, 1);
-          if (h <= 0) {
-            h = 0;
-            v = 0;
-            throttle = 0;
-            burning = false;
-            state = "landed";
-            tState = 0;
-            dustBurst();
-            setLabel("Landed", true);
+          } else {
+            const need = Math.min((vu * vu) / (2 * Math.max(rh, 0.5)), BRAKE * 1.3);
+            vu += need * dt;
+            if (vu > -45) vu = -45;
+            throttle = clamp(need / BRAKE, 0.35, 1);
+            rh += vu * dt;
+            // sideways speed dies off smoothly as the booster comes down
+            const f = clamp(rh / hb0, 0, 1);
+            const nx = fl.lx - dx0 * f * f;
+            const vxNow = (nx - rx) / dt;
+            rx = nx;
+            const target = -Math.atan2(vxNow, -vu);
+            ang += (target - ang) * Math.min(1, dt * 8);
+            legs = Math.min(1, legs + dt / 0.45);
+            if (rh <= 0) touchdown();
           }
           break;
         }
-        case "landed":
-          throttle = 0;
-          if (tState >= 1.4) finish();
-          break;
         case "fade": {
-          // reduced motion: no flight, just fade out and back in
-          if (tState < 0.4) alpha = 1 - tState / 0.4;
-          else if (tState < 1.4) alpha = 0;
-          else if (tState < 2) alpha = (tState - 1.4) / 0.6;
-          else finish();
+          // reduced motion launch, and Reset: fade out, move, fade back in
+          if (tState < 0.4) {
+            alpha = 1 - tState / 0.4;
+          } else if (tState < 0.9) {
+            if (!fadeMoved) {
+              fadeMoved = true;
+              particles = [];
+              stage2 = null;
+              attached = fadeDest === "pad";
+              legs = 1;
+              ang = 0;
+              rh = 0;
+              rx = fadeDest === "pad" ? padX : landingX();
+            }
+            alpha = (tState - 0.4) / 0.5;
+          } else {
+            alpha = 1;
+            if (fadeDest === "pad") {
+              state = "idle";
+              setLabel("Launch", "Launch rocket");
+              status!.textContent = "";
+            } else {
+              state = "landed";
+              setLabel("Reset", "Reset rocket");
+              status!.textContent = "Landed";
+            }
+            button!.disabled = false;
+          }
           break;
         }
       }
 
       if (stage2) {
-        stage2.v += 400 * dt;
-        stage2.h += stage2.v * dt;
-        if (stage2.h > height + 260) stage2 = null;
+        const speed = Math.hypot(stage2.vx, stage2.vu) || 1;
+        stage2.vx += (stage2.vx / speed) * 380 * dt;
+        stage2.vu += (stage2.vu / speed) * 380 * dt;
+        stage2.x += stage2.vx * dt;
+        stage2.h += stage2.vu * dt;
+        if (stage2.x > width + 200 || stage2.h > height + 200) stage2 = null;
       }
 
       if (throttle > 0 && state !== "fade") emitSmoke(dt);
       stepParticles(dt);
-    }
-
-    function finish() {
-      state = "idle";
-      h = 0;
-      v = 0;
-      legs = 1;
-      throttle = 0;
-      attached = true;
-      stage2 = null;
-      alpha = 1;
-      shake = 0;
-      tilt = 0;
-      setLabel("Launch");
-      button!.disabled = false;
-      status!.textContent = "";
     }
 
     function frame(now: number) {
@@ -398,10 +516,9 @@
       if (dt <= 0) return;
       step(dt);
       draw();
-      if (state === "idle" && particles.length === 0) {
+      if ((state === "idle" || state === "landed") && particles.length === 0) {
         cancelAnimationFrame(raf);
         raf = 0;
-        draw();
       }
     }
 
@@ -410,18 +527,24 @@
       button!.disabled = true;
       tState = 0;
       particles = [];
+      planFlight();
       if (reduceMotion.matches) {
-        state = "fade";
-        setLabel("Launched", true);
-      } else {
-        state = "countdown";
-        setLabel("T-3", true);
+        setLabel("Launched", undefined, true);
+        startFade("platform");
+        return;
       }
+      attached = true;
+      stage2 = null;
+      state = "countdown";
+      setLabel("T-3", undefined, true);
       last = performance.now() / 1000;
       if (!raf) raf = requestAnimationFrame(frame);
     }
 
-    button.addEventListener("click", launch);
+    button.addEventListener("click", () => {
+      if (state === "idle") launch();
+      else if (state === "landed") startFade("pad");
+    });
     window.addEventListener("resize", resize);
     resize();
   }
