@@ -1,0 +1,276 @@
+<div id="space-orbits" class="fixed inset-0 -z-10 pointer-events-none" aria-hidden="true">
+  <canvas id="space-orbits-canvas" class="absolute inset-0 h-full w-full"></canvas>
+</div>
+<p
+  id="iss-caption"
+  class="fixed bottom-3 left-4 z-0 pointer-events-none text-xs tracking-wide text-zinc-500 opacity-0 transition-opacity duration-1000"
+></p>
+
+<script>
+  // Orbital traffic over the starfield: satellites, the ISS, a Starlink-style
+  // train and an occasional comet. The ISS pass is a stylised crossing, but the
+  // caption shows the station's real position, fetched when the pass starts.
+
+  type Kind = "satellite" | "iss" | "train" | "comet";
+
+  type Traveler = {
+    kind: Kind;
+    t: number; // seconds elapsed
+    duration: number;
+    x0: number;
+    y0: number;
+    cx: number;
+    cy: number;
+    x1: number;
+    y1: number;
+    phase: number;
+    count: number; // dots (train) or 1
+  };
+
+  type IssData = {
+    latitude: number;
+    longitude: number;
+    altitude: number;
+    velocity: number;
+  };
+
+  const canvas = document.getElementById("space-orbits-canvas") as HTMLCanvasElement | null;
+  const caption = document.getElementById("iss-caption");
+  const ctx = canvas?.getContext("2d");
+
+  if (canvas && caption && ctx) {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const ISS_URL = "https://api.wheretheiss.at/v1/satellites/25544";
+
+    let width = 0;
+    let height = 0;
+    let travelers: Traveler[] = [];
+    let raf = 0;
+    let running = false;
+    let last = 0;
+    let clock = 0; // our own clock so hidden tabs do not pile up spawns
+    const next: Record<Kind, number> = { satellite: 0, iss: 0, train: 0, comet: 0 };
+    let issData: IssData | null = null;
+
+    const rand = (min: number, max: number) => min + Math.random() * (max - min);
+
+    function build() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas!.width = Math.round(width * dpr);
+      canvas!.height = Math.round(height * dpr);
+      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function spawn(kind: Kind) {
+      const ltr = Math.random() < 0.5;
+      const margin = 80;
+      const y0 = rand(0.12, 0.7) * height;
+      const y1 = y0 + rand(-0.2, 0.2) * height;
+      const lift = rand(0.05, 0.18) * height;
+      const duration = {
+        satellite: rand(40, 70),
+        iss: rand(32, 42),
+        train: rand(50, 65),
+        comet: rand(20, 28),
+      }[kind];
+      const x0 = ltr ? -margin : width + margin;
+      const x1 = ltr ? width + margin : -margin;
+      travelers.push({
+        kind,
+        t: 0,
+        duration,
+        x0,
+        y0,
+        cx: (x0 + x1) / 2,
+        cy: Math.min(y0, y1) - lift,
+        x1,
+        y1,
+        phase: rand(0, Math.PI * 2),
+        count: kind === "train" ? 7 : 1,
+      });
+    }
+
+    function pointAt(tr: Traveler, u: number) {
+      const v = 1 - u;
+      return {
+        x: v * v * tr.x0 + 2 * v * u * tr.cx + u * u * tr.x1,
+        y: v * v * tr.y0 + 2 * v * u * tr.cy + u * u * tr.y1,
+      };
+    }
+
+    function fmtCoord(value: number, pos: string, neg: string) {
+      return `${Math.abs(value).toFixed(1)}°${value >= 0 ? pos : neg}`;
+    }
+
+    function showIssCaption() {
+      if (!issData) {
+        caption!.textContent = "ISS";
+      } else {
+        const { latitude, longitude, altitude, velocity } = issData;
+        caption!.textContent =
+          `ISS · ${fmtCoord(latitude, "N", "S")} ${fmtCoord(longitude, "E", "W")} · ` +
+          `${Math.round(altitude)} km up · ${Math.round(velocity).toLocaleString("en-US")} km/h`;
+      }
+      caption!.style.opacity = "1";
+    }
+
+    async function startIssPass() {
+      issData = null;
+      try {
+        const res = await fetch(ISS_URL, { cache: "no-store" });
+        if (res.ok) issData = (await res.json()) as IssData;
+      } catch {
+        // offline or blocked: the pass still happens, just unlabeled with data
+      }
+      spawn("iss");
+      showIssCaption();
+    }
+
+    // Soft glow dot, with an optional trailing streak behind it.
+    function drawBody(
+      x: number,
+      y: number,
+      radius: number,
+      alpha: number,
+      rgb: string,
+      trail?: { dx: number; dy: number; length: number },
+    ) {
+      if (trail) {
+        const tx = x - trail.dx * trail.length;
+        const ty = y - trail.dy * trail.length;
+        const grad = ctx!.createLinearGradient(x, y, tx, ty);
+        grad.addColorStop(0, `rgba(${rgb},${alpha * 0.6})`);
+        grad.addColorStop(1, `rgba(${rgb},0)`);
+        ctx!.strokeStyle = grad;
+        ctx!.lineWidth = Math.max(radius * 0.9, 1);
+        ctx!.lineCap = "round";
+        ctx!.beginPath();
+        ctx!.moveTo(x, y);
+        ctx!.lineTo(tx, ty);
+        ctx!.stroke();
+      }
+      ctx!.fillStyle = `rgba(${rgb},${alpha * 0.18})`;
+      ctx!.beginPath();
+      ctx!.arc(x, y, radius * 3.2, 0, Math.PI * 2);
+      ctx!.fill();
+      ctx!.fillStyle = `rgba(${rgb},${alpha})`;
+      ctx!.beginPath();
+      ctx!.arc(x, y, radius, 0, Math.PI * 2);
+      ctx!.fill();
+    }
+
+    function drawTraveler(tr: Traveler) {
+      const u = tr.t / tr.duration;
+      // fade in and out at the edges so nothing pops
+      const edge = Math.min(1, u / 0.06, (1 - u) / 0.06);
+      const p = pointAt(tr, u);
+      const q = pointAt(tr, Math.min(u + 0.01, 1));
+      const len = Math.hypot(q.x - p.x, q.y - p.y) || 1;
+      const dx = (q.x - p.x) / len;
+      const dy = (q.y - p.y) / len;
+
+      switch (tr.kind) {
+        case "satellite": {
+          // steady dim light with a brief sun glint now and then
+          const glint = Math.pow(Math.max(0, Math.sin(tr.t * 1.1 + tr.phase)), 14);
+          drawBody(p.x, p.y, 1.2, edge * (0.5 + 0.5 * glint), "235,240,255");
+          break;
+        }
+        case "iss":
+          drawBody(p.x, p.y, 2, edge * 0.95, "255,250,235", { dx, dy, length: 36 });
+          break;
+        case "train": {
+          const spacing = 0.014;
+          for (let i = 0; i < tr.count; i++) {
+            const ui = u - i * spacing;
+            if (ui < 0 || ui > 1) continue;
+            const pi = pointAt(tr, ui);
+            const fade = Math.min(1, ui / 0.06, (1 - ui) / 0.06);
+            drawBody(pi.x, pi.y, 1.1, fade * 0.65, "225,235,255");
+          }
+          break;
+        }
+        case "comet":
+          drawBody(p.x, p.y, 2.4, edge * 0.95, "200,240,255", { dx, dy, length: 170 });
+          break;
+      }
+    }
+
+    function frame(now: number) {
+      if (!running) return;
+      raf = requestAnimationFrame(frame);
+
+      const t = now / 1000;
+      const dt = Math.min(t - last, 0.1);
+      if (dt < 1 / 40) return; // cap around 40fps
+      last = t;
+      clock += dt;
+
+      if (clock >= next.satellite && travelers.filter((x) => x.kind === "satellite").length < 3) {
+        spawn("satellite");
+        next.satellite = clock + rand(10, 22);
+      }
+      if (clock >= next.train) {
+        spawn("train");
+        next.train = clock + rand(90, 150);
+      }
+      if (clock >= next.comet) {
+        spawn("comet");
+        next.comet = clock + rand(150, 240);
+      }
+      if (clock >= next.iss) {
+        void startIssPass();
+        next.iss = clock + rand(75, 110);
+      }
+
+      ctx!.clearRect(0, 0, width, height);
+      for (const tr of travelers) {
+        tr.t += dt;
+        drawTraveler(tr);
+      }
+      const finishedIss = travelers.some((x) => x.kind === "iss" && x.t >= x.duration);
+      travelers = travelers.filter((x) => x.t < x.duration);
+      if (finishedIss) caption!.style.opacity = "0";
+    }
+
+    function start() {
+      if (running || reduceMotion.matches) return;
+      running = true;
+      last = performance.now() / 1000;
+      raf = requestAnimationFrame(frame);
+    }
+
+    function stop() {
+      running = false;
+      cancelAnimationFrame(raf);
+    }
+
+    function applyMotionPreference() {
+      if (reduceMotion.matches) {
+        stop();
+        travelers = [];
+        ctx!.clearRect(0, 0, width, height);
+        caption!.style.opacity = "0";
+      } else {
+        start();
+      }
+    }
+
+    window.addEventListener("resize", build);
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) stop();
+      else applyMotionPreference();
+    });
+    reduceMotion.addEventListener("change", applyMotionPreference);
+
+    build();
+    // first sightings come quickly so the effect is discoverable
+    next.satellite = 2;
+    next.iss = 6;
+    next.train = 30;
+    next.comet = 50;
+    applyMotionPreference();
+  }
+</script>

@@ -2,6 +2,7 @@
 import Prose from "@layouts/Prose.astro";
 import SocialLinks from "@components/SocialLinks.astro";
 import SpaceBackground from "@components/SpaceBackground.astro";
+import SpaceOrbits from "@components/SpaceOrbits.astro";
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "@lib/consts";
 
 let title = SITE_TITLE;
@@ -11,6 +12,7 @@ let permalink = SITE_URL;
 
 <Prose title={title} description={description} permalink={permalink}>
   <SpaceBackground src="/images/galaxy.webp" />
+  <SpaceOrbits />
 
   <div class="breakout px-8">
     <div class="flex flex-col md:flex-row gap-8 px-8 max-w-4xl mx-auto items-center">
