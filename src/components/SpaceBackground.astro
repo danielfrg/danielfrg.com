@@ -1,0 +1,256 @@
+---
+interface Props {
+  src: string;
+}
+
+const { src } = Astro.props;
+---
+
+<div id="space-bg" class="fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
+  <img
+    id="background"
+    src={src}
+    alt=""
+    class="appear space-drift saturate-0 opacity-25 absolute inset-0 h-full w-full object-cover"
+  />
+  <canvas id="space-stars" class="absolute inset-0 h-full w-full"></canvas>
+</div>
+
+<style>
+  .space-drift {
+    animation:
+      fadeIn 1.5s ease-in-out,
+      drift 70s ease-in-out infinite alternate;
+    transform-origin: 50% 50%;
+  }
+
+  @keyframes drift {
+    from {
+      transform: scale(1.02) translate3d(-1%, -0.5%, 0);
+    }
+    to {
+      transform: scale(1.08) translate3d(1%, 0.5%, 0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .space-drift {
+      animation: fadeIn 1.5s ease-in-out;
+    }
+  }
+</style>
+
+<script>
+  type Star = {
+    x: number; // 0..1 of the canvas
+    y: number;
+    r: number; // radius in css px
+    layer: number; // 0 (far) .. 2 (near)
+    base: number; // base alpha
+    speed: number; // twinkle speed (rad/s)
+    phase: number;
+    color: string; // rgb triplet
+  };
+
+  type Meteor = {
+    x: number;
+    y: number;
+    vx: number;
+    vy: number;
+    life: number; // seconds elapsed
+    ttl: number;
+    len: number;
+  };
+
+  const canvas = document.getElementById("space-stars") as HTMLCanvasElement | null;
+  const ctx = canvas?.getContext("2d");
+
+  if (canvas && ctx) {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const tints = ["220,230,255", "200,215,255", "255,244,225", "255,255,255"];
+    const parallax = [4, 10, 20]; // max offset in px per layer
+
+    let stars: Star[] = [];
+    let meteors: Meteor[] = [];
+    let width = 0;
+    let height = 0;
+    let target = { x: 0, y: 0 }; // -1..1
+    let current = { x: 0, y: 0 };
+    let raf = 0;
+    let last = 0;
+    let nextMeteor = 0;
+    let running = false;
+
+    const rand = (min: number, max: number) => min + Math.random() * (max - min);
+
+    function build() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas!.width = Math.round(width * dpr);
+      canvas!.height = Math.round(height * dpr);
+      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const small = width < 768;
+      const count = small ? 70 : 150;
+      stars = Array.from({ length: count }, () => {
+        const layer = Math.random() < 0.6 ? 0 : Math.random() < 0.7 ? 1 : 2;
+        return {
+          x: Math.random(),
+          y: Math.random(),
+          r: [0.6, 0.9, 1.4][layer] * rand(0.8, 1.2),
+          layer,
+          base: [0.35, 0.55, 0.8][layer] * rand(0.7, 1),
+          speed: rand(0.4, 1.6),
+          phase: rand(0, Math.PI * 2),
+          color: tints[Math.floor(Math.random() * tints.length)],
+        };
+      });
+    }
+
+    function drawStars(t: number, animate: boolean) {
+      for (const s of stars) {
+        const twinkle = animate ? 0.65 + 0.35 * Math.sin(t * s.speed + s.phase) : 1;
+        const alpha = s.base * twinkle;
+        const px = s.x * width + current.x * parallax[s.layer];
+        const py = s.y * height + current.y * parallax[s.layer];
+
+        ctx!.fillStyle = `rgba(${s.color},${alpha})`;
+        ctx!.beginPath();
+        ctx!.arc(px, py, s.r, 0, Math.PI * 2);
+        ctx!.fill();
+
+        if (s.layer === 2) {
+          ctx!.fillStyle = `rgba(${s.color},${alpha * 0.15})`;
+          ctx!.beginPath();
+          ctx!.arc(px, py, s.r * 3, 0, Math.PI * 2);
+          ctx!.fill();
+        }
+      }
+    }
+
+    function spawnMeteor() {
+      const angle = rand(Math.PI * 0.1, Math.PI * 0.3); // shallow downward slope
+      const dir = Math.random() < 0.5 ? 1 : -1;
+      const speed = rand(500, 800);
+      meteors.push({
+        x: dir === 1 ? rand(0, width * 0.6) : rand(width * 0.4, width),
+        y: rand(0, height * 0.4),
+        vx: Math.cos(angle) * speed * dir,
+        vy: Math.sin(angle) * speed,
+        life: 0,
+        ttl: rand(0.7, 1.2),
+        len: rand(80, 140),
+      });
+    }
+
+    function drawMeteors(dt: number) {
+      meteors = meteors.filter((m) => m.life < m.ttl);
+      for (const m of meteors) {
+        m.life += dt;
+        m.x += m.vx * dt;
+        m.y += m.vy * dt;
+
+        const k = m.life / m.ttl;
+        const fade = Math.sin(Math.min(k, 1) * Math.PI); // in and out
+        const speed = Math.hypot(m.vx, m.vy);
+        const tx = m.x - (m.vx / speed) * m.len;
+        const ty = m.y - (m.vy / speed) * m.len;
+
+        const grad = ctx!.createLinearGradient(m.x, m.y, tx, ty);
+        grad.addColorStop(0, `rgba(255,255,255,${0.9 * fade})`);
+        grad.addColorStop(1, "rgba(255,255,255,0)");
+        ctx!.strokeStyle = grad;
+        ctx!.lineWidth = 1.5;
+        ctx!.lineCap = "round";
+        ctx!.beginPath();
+        ctx!.moveTo(m.x, m.y);
+        ctx!.lineTo(tx, ty);
+        ctx!.stroke();
+      }
+    }
+
+    function frame(now: number) {
+      if (!running) return;
+      raf = requestAnimationFrame(frame);
+
+      const t = now / 1000;
+      const dt = Math.min(t - last, 0.1);
+      if (dt < 1 / 40) return; // cap around 40fps
+      last = t;
+
+      // ease parallax toward the pointer
+      current.x += (target.x - current.x) * Math.min(dt * 3, 1);
+      current.y += (target.y - current.y) * Math.min(dt * 3, 1);
+
+      if (t >= nextMeteor) {
+        spawnMeteor();
+        nextMeteor = t + rand(10, 20);
+      }
+
+      ctx!.clearRect(0, 0, width, height);
+      drawStars(t, true);
+      drawMeteors(dt);
+    }
+
+    function start() {
+      if (running || reduceMotion.matches) return;
+      running = true;
+      last = performance.now() / 1000;
+      nextMeteor = last + rand(4, 8);
+      raf = requestAnimationFrame(frame);
+    }
+
+    function stop() {
+      running = false;
+      cancelAnimationFrame(raf);
+    }
+
+    function renderStatic() {
+      ctx!.clearRect(0, 0, width, height);
+      drawStars(0, false);
+    }
+
+    function applyMotionPreference() {
+      if (reduceMotion.matches) {
+        stop();
+        meteors = [];
+        current = { x: 0, y: 0 };
+        renderStatic();
+      } else {
+        start();
+      }
+    }
+
+    window.addEventListener("pointermove", (e) => {
+      target.x = (e.clientX / window.innerWidth - 0.5) * 2;
+      target.y = (e.clientY / window.innerHeight - 0.5) * 2;
+    });
+
+    // Touch devices have no hover, so use scroll for a little parallax instead.
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (window.matchMedia("(hover: none)").matches) {
+          target.y = Math.max(-1, Math.min(1, window.scrollY / 600));
+        }
+      },
+      { passive: true },
+    );
+
+    window.addEventListener("resize", () => {
+      build();
+      if (reduceMotion.matches) renderStatic();
+    });
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) stop();
+      else applyMotionPreference();
+    });
+
+    reduceMotion.addEventListener("change", applyMotionPreference);
+
+    build();
+    applyMotionPreference();
+  }
+</script>
