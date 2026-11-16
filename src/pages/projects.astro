@@ -9,82 +9,6 @@ let title = SITE_TITLE;
 let description = SITE_DESCRIPTION;
 let permalink = SITE_URL;
 
-const personalApps = [
-  {
-    title: "ciview",
-    desc: "GitHub and Forgejo Actions viewer",
-    img: "/images/ciview.png",
-    links: [
-      {
-        text: "View on GitHub",
-        href: "https://github.com/danielfrg/ciview",
-      },
-    ],
-  },
-  {
-    title: "golinks",
-    desc: "Short, memorable go/ links",
-    img: "/images/golinks.png",
-    links: [
-      {
-        text: "View on GitHub",
-        href: "https://github.com/danielfrg/golinks",
-      },
-    ],
-  },
-  {
-    title: "homelab-launcher",
-    desc: "Launchpad for my Kubernetes apps",
-    img: "/images/homelab-launcher.png",
-    links: [
-      {
-        text: "View on GitHub",
-        href: "https://github.com/danielfrg/homelab-launcher",
-      },
-    ],
-  },
-  {
-    title: "dinero",
-    desc: "Personal finance ledger with CLI, API and MCP",
-    img: "/images/dinero.png",
-    links: [
-      {
-        text: "View on GitHub",
-        href: "https://github.com/danielfrg/dinero",
-      },
-    ],
-  },
-];
-
-const aiCoded = [
-  {
-    title: "things",
-    desc: "Things3 clone with API, CLI and agents!",
-    img: "/images/things.png",
-    links: [
-      {
-        text: "View on GitHub",
-        href: "https://github.com/danielfrg/things",
-      },
-      { text: "Read blogpost", href: "/blog/2026/1/things-vibe-coded" },
-    ],
-    tag: "Archived",
-  },
-  {
-    title: "solid-ui",
-    desc: "Port of base-ui to solid-js",
-    img: "/images/solid-ui.png",
-    links: [
-      {
-        text: "View on GitHub",
-        href: "https://github.com/danielfrg/solid-ui",
-      },
-      { text: "Read blogpost", href: "/blog/2026/3/base-ui-vibe-coded" },
-    ],
-    tag: "Archived",
-  },
-];
-
 const openSource = [
   {
     title: "mkdocs-jupyter",
@@ -198,24 +122,14 @@ const apps = [
 ---
 
 <Prose title={title} description={description} permalink={permalink}>
-  <p>Some Pre and Post AI apps i have built.</p>
-  <h2>Personal apps</h2>
-  <p>AI coded apps I have built for myself and deploy in my homelab.</p>
-  <div class="breakout">
-    <PreviewGrid items={personalApps} />
-  </div>
-  <h2>Other AI coded projects</h2>
-  <div class="breakout">
-    <PreviewGrid items={aiCoded} />
-  </div>
-  <h2>Open source projects (pre AI!)</h2>
+  <h2>Open source projects</h2>
   <div class="breakout">
     <PreviewGrid items={openSource} />
   </div>
 
   <LinkGrid items={openSourceList} />
 
-  <h2>Old apps I built (pre AI!)</h2>
+  <h2>Old apps I built</h2>
   <div class="breakout">
     <PreviewGrid items={apps} />
   </div>

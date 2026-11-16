@@ -1,0 +1,90 @@
+---
+import Prose from "@layouts/Prose.astro";
+import PreviewGrid from "@components/grid/PreviewGrid.astro";
+
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from "../lib/consts";
+
+let title = SITE_TITLE;
+let description = SITE_DESCRIPTION;
+let permalink = SITE_URL;
+
+const personalApps = [
+  {
+    title: "ciview",
+    desc: "GitHub and Forgejo Actions viewer",
+    img: "/images/ciview.png",
+    links: [
+      {
+        text: "View on GitHub",
+        href: "https://github.com/danielfrg/ciview",
+      },
+    ],
+  },
+  {
+    title: "golinks",
+    desc: "Short, memorable go/ links",
+    img: "/images/golinks.png",
+    links: [
+      {
+        text: "View on GitHub",
+        href: "https://github.com/danielfrg/golinks",
+      },
+    ],
+  },
+  {
+    title: "homelab-console",
+    desc: "Launchpad for my Kubernetes apps",
+    img: "/images/homelab-console.png",
+    links: [
+      {
+        text: "View on GitHub",
+        href: "https://github.com/danielfrg/homelab-console",
+      },
+    ],
+  },
+  {
+    title: "dinero",
+    desc: "Personal finance ledger with CLI, API and MCP",
+    img: "/images/dinero.png",
+    links: [
+      {
+        text: "View on GitHub",
+        href: "https://github.com/danielfrg/dinero",
+      },
+    ],
+  },
+  {
+    title: "bookmarks",
+    desc: "Bookmark manager with full-page archives, search and MCP",
+    img: "/images/bookmarks.png",
+    links: [
+      {
+        text: "View on GitHub",
+        href: "https://github.com/danielfrg/bookmarks",
+      },
+    ],
+  },
+  {
+    title: "notebook",
+    desc: "Markdown notes app for Obsidian-style vaults",
+    img: "/images/notebook.png",
+    links: [
+      {
+        text: "View on GitHub",
+        href: "https://github.com/danielfrg/notebook",
+      },
+    ],
+  },
+];
+---
+
+<Prose title={title} description={description} permalink={permalink}>
+  <p>AI coded apps I have built for myself and deploy in my homelab.</p>
+  <p>
+    <strong>Personal project:</strong> these are completely vibe coded for my own personal use case.
+    I won't be accepting feature requests, but you're welcome to fork them and make them your own.
+  </p>
+  <div class="breakout">
+    <PreviewGrid items={personalApps} />
+  </div>
+</Prose>
