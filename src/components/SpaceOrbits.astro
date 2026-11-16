@@ -1,15 +1,9 @@
 <div id="space-orbits" class="fixed inset-0 -z-10 pointer-events-none" aria-hidden="true">
   <canvas id="space-orbits-canvas" class="absolute inset-0 h-full w-full"></canvas>
 </div>
-<p
-  id="iss-caption"
-  class="fixed bottom-3 left-4 z-0 pointer-events-none text-xs tracking-wide text-zinc-500 opacity-0 transition-opacity duration-1000"
-></p>
-
 <script>
-  // Orbital traffic over the starfield: satellites, the ISS, a Starlink-style
-  // train and an occasional comet. The ISS pass is a stylised crossing, but the
-  // caption shows the station's real position, fetched when the pass starts.
+  // Orbital traffic over the starfield: satellites, an ISS-style pass, a
+  // Starlink-style train and an occasional comet. All paths are stylised.
 
   type Kind = "satellite" | "iss" | "train" | "comet";
 
@@ -27,20 +21,11 @@
     count: number; // dots (train) or 1
   };
 
-  type IssData = {
-    latitude: number;
-    longitude: number;
-    altitude: number;
-    velocity: number;
-  };
-
   const canvas = document.getElementById("space-orbits-canvas") as HTMLCanvasElement | null;
-  const caption = document.getElementById("iss-caption");
   const ctx = canvas?.getContext("2d");
 
-  if (canvas && caption && ctx) {
+  if (canvas && ctx) {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const ISS_URL = "https://api.wheretheiss.at/v1/satellites/25544";
 
     let width = 0;
     let height = 0;
@@ -50,7 +35,6 @@
     let last = 0;
     let clock = 0; // our own clock so hidden tabs do not pile up spawns
     const next: Record<Kind, number> = { satellite: 0, iss: 0, train: 0, comet: 0 };
-    let issData: IssData | null = null;
 
     const rand = (min: number, max: number) => min + Math.random() * (max - min);
 
@@ -98,34 +82,6 @@
         x: v * v * tr.x0 + 2 * v * u * tr.cx + u * u * tr.x1,
         y: v * v * tr.y0 + 2 * v * u * tr.cy + u * u * tr.y1,
       };
-    }
-
-    function fmtCoord(value: number, pos: string, neg: string) {
-      return `${Math.abs(value).toFixed(1)}°${value >= 0 ? pos : neg}`;
-    }
-
-    function showIssCaption() {
-      if (!issData) {
-        caption!.textContent = "ISS";
-      } else {
-        const { latitude, longitude, altitude, velocity } = issData;
-        caption!.textContent =
-          `ISS · ${fmtCoord(latitude, "N", "S")} ${fmtCoord(longitude, "E", "W")} · ` +
-          `${Math.round(altitude)} km up · ${Math.round(velocity).toLocaleString("en-US")} km/h`;
-      }
-      caption!.style.opacity = "1";
-    }
-
-    async function startIssPass() {
-      issData = null;
-      try {
-        const res = await fetch(ISS_URL, { cache: "no-store" });
-        if (res.ok) issData = (await res.json()) as IssData;
-      } catch {
-        // offline or blocked: the pass still happens, just unlabeled with data
-      }
-      spawn("iss");
-      showIssCaption();
     }
 
     // Soft glow dot, with an optional trailing streak behind it.
@@ -221,7 +177,7 @@
         next.comet = clock + rand(150, 240);
       }
       if (clock >= next.iss) {
-        void startIssPass();
+        spawn("iss");
         next.iss = clock + rand(75, 110);
       }
 
@@ -230,9 +186,7 @@
         tr.t += dt;
         drawTraveler(tr);
       }
-      const finishedIss = travelers.some((x) => x.kind === "iss" && x.t >= x.duration);
       travelers = travelers.filter((x) => x.t < x.duration);
-      if (finishedIss) caption!.style.opacity = "0";
     }
 
     function start() {
@@ -252,7 +206,6 @@
         stop();
         travelers = [];
         ctx!.clearRect(0, 0, width, height);
-        caption!.style.opacity = "0";
       } else {
         start();
       }
