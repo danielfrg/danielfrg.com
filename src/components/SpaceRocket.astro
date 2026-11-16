@@ -44,8 +44,12 @@
   if (canvas && button && status && ctx) {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-    const G = 380; // gravity, px/s^2
-    const BRAKE = 900; // landing burn deceleration, px/s^2
+    const G = 240; // gravity, px/s^2 (lower is slower and floatier)
+    const BRAKE = 620; // landing burn deceleration, px/s^2
+    const KP = 7; // attitude controller gains and torque limit (rad/s^2)
+    const KD = 4.6;
+    const TORQUE = 2.0;
+    const HOLD = 1.1; // seconds the booster holds its attitude after separation
     const BODY = 70; // booster height in rocket units
     const STACK = 76; // booster + interstage
 
@@ -79,12 +83,15 @@
     let tau = 0; // position along the parabola, in seconds
     let vu = 0; // vertical speed, up is positive
     let sepAng = 0;
-    let sepVu = 1;
     let burning = false;
     let hb0 = 1;
     let dx0 = 0;
     let fadeDest: "pad" | "platform" = "pad";
     let fadeMoved = false;
+    let omega = 0; // angular speed, rad/s clockwise
+    let gimbal = 0; // engine tilt used to keep the booster balanced
+    let tSep = 0; // time since stage separation
+    let rcsAcc = 0;
 
     let lastLabel = "";
     let raf = 0;
@@ -261,6 +268,7 @@
       ctx!.scale(scale, scale);
       drawLegs(legs);
       drawBooster(attached);
+      ctx!.rotate(gimbal);
       drawFlame(throttle);
       ctx!.restore();
     }
@@ -347,7 +355,7 @@
       // horizontal speed such that the burn (where sideways speed also dies off)
       // ends exactly on the landing spot
       const vx = (lx - padX) / (flightTime / 2 + tBurn + hb / (2 * G * tBurn));
-      fl = { x0: padX, lx, vx, vy0, hb, tp: rand(1.5, 1.9) };
+      fl = { x0: padX, lx, vx, vy0, hb, tp: rand(2.0, 2.5) };
     }
 
     function pathAt(t: number) {
@@ -360,6 +368,8 @@
       rh = 0;
       rx = fl.lx;
       ang = 0;
+      omega = 0;
+      gimbal = 0;
       vu = 0;
       throttle = 0;
       burning = false;
@@ -381,6 +391,52 @@
       if (!raf) {
         last = performance.now() / 1000;
         raf = requestAnimationFrame(frame);
+      }
+    }
+
+    // Puffs of cold gas from the side of the nose. Gas leaving to the left turns
+    // the booster clockwise and the other way around.
+    function emitRcs(cmd: number, dt: number) {
+      if (Math.abs(cmd) < 0.25) return;
+      rcsAcc += dt * 50 * Math.abs(cmd);
+      const dir = cmd > 0 ? -1 : 1; // side the gas leaves toward
+      const px = Math.cos(ang); // unit vector pointing out of the right side
+      const py = Math.sin(ang);
+      const nx = Math.sin(ang); // unit vector along the nose
+      const ny = -Math.cos(ang);
+      const ox = rx + nx * (STACK - 4) * scale + px * dir * 8 * scale;
+      const oy = groundY - rh + ny * (STACK - 4) * scale + py * dir * 8 * scale;
+      while (rcsAcc >= 1 && particles.length < 420) {
+        rcsAcc -= 1;
+        const out = rand(80, 130);
+        particles.push({
+          x: ox,
+          y: oy,
+          vx: px * dir * out + rand(-12, 12),
+          vy: py * dir * out + rand(-12, 12),
+          age: 0,
+          ttl: rand(0.3, 0.5),
+          r0: 1.4,
+          r1: 4.5 * scale,
+          alpha: 0.75,
+        });
+      }
+    }
+
+    // Keep the booster pointed at `target` with a limited-torque controller.
+    // Before the landing burn it fires cold gas thrusters; during the burn it
+    // tilts the engine instead. `noise` is a small disturbance it has to fight.
+    function attitude(dt: number, target: number, noise: number, engine: boolean) {
+      const want = clamp(KP * (target - ang) - KD * omega, -TORQUE, TORQUE);
+      const disturbance = noise * (Math.sin(tState * 2.1 + 1.3) + 0.6 * Math.sin(tState * 5.3));
+      omega += (want + disturbance) * dt;
+      ang += omega * dt;
+      const cmd = want / TORQUE;
+      if (engine) {
+        gimbal = -cmd * 0.45;
+      } else {
+        gimbal = 0;
+        emitRcs(cmd, dt);
       }
     }
 
@@ -413,7 +469,6 @@
           ang = Math.atan2(fl.vx, vu) * smooth(tF / 1.0);
           if (tF >= fl.tp) {
             sepAng = ang;
-            sepVu = Math.max(vu, 1);
             stage2 = {
               x: rx + Math.sin(ang) * STACK * scale,
               h: rh + Math.cos(ang) * STACK * scale,
@@ -423,6 +478,8 @@
             attached = false;
             throttle = 0;
             burning = false;
+            omega = 0;
+            tSep = 0;
             state = "return";
             tState = 0;
             setLabel("Stage sep", undefined, true);
@@ -432,12 +489,15 @@
         case "return": {
           if (!burning) {
             tau += dt;
+            tSep += dt;
             pathAt(tau);
             throttle = 0;
-            // tilt over after separation, then sit engines-first along the descent
-            const target = vu >= 0 ? sepAng * clamp(vu / sepVu, 0, 1) : -Math.atan2(fl.vx, -vu);
-            ang += (target - ang) * Math.min(1, dt * 3.5);
-            if (vu < 0 && rh < fl.hb * 1.7) legs = Math.min(1, legs + dt / 0.45);
+            // Hold the attitude after separation (the nose keeps pointing where it
+            // was while the path bends over), then flip to engines-first with
+            // cold gas thrusters at the nose. Nothing leans early.
+            const target = tSep < HOLD ? sepAng : -Math.atan2(fl.vx, 250 + Math.max(-vu, 0));
+            attitude(dt, target, 0.18, false);
+            if (vu < 0 && rh < fl.hb * 1.9) legs = Math.min(1, legs + dt / 0.7);
             if (vu < 0 && rh <= fl.hb) {
               burning = true;
               hb0 = Math.max(rh, 1);
@@ -447,7 +507,7 @@
           } else {
             const need = Math.min((vu * vu) / (2 * Math.max(rh, 0.5)), BRAKE * 1.3);
             vu += need * dt;
-            if (vu > -45) vu = -45;
+            if (vu > -30) vu = -30;
             throttle = clamp(need / BRAKE, 0.35, 1);
             rh += vu * dt;
             // sideways speed dies off smoothly as the booster comes down
@@ -455,9 +515,10 @@
             const nx = fl.lx - dx0 * f * f;
             const vxNow = (nx - rx) / dt;
             rx = nx;
-            const target = -Math.atan2(vxNow, -vu);
-            ang += (target - ang) * Math.min(1, dt * 8);
-            legs = Math.min(1, legs + dt / 0.45);
+            // the engine gimbals to keep the booster balanced on its way down;
+            // the wobble fades out just before touchdown
+            attitude(dt, -Math.atan2(vxNow, -vu), 0.5 * clamp(rh / 60, 0, 1), true);
+            legs = Math.min(1, legs + dt / 0.7);
             if (rh <= 0) touchdown();
           }
           break;
@@ -474,6 +535,8 @@
               attached = fadeDest === "pad";
               legs = 1;
               ang = 0;
+              omega = 0;
+              gimbal = 0;
               rh = 0;
               rx = fadeDest === "pad" ? padX : landingX();
             }
@@ -497,8 +560,8 @@
 
       if (stage2) {
         const speed = Math.hypot(stage2.vx, stage2.vu) || 1;
-        stage2.vx += (stage2.vx / speed) * 380 * dt;
-        stage2.vu += (stage2.vu / speed) * 380 * dt;
+        stage2.vx += (stage2.vx / speed) * 260 * dt;
+        stage2.vu += (stage2.vu / speed) * 260 * dt;
         stage2.x += stage2.vx * dt;
         stage2.h += stage2.vu * dt;
         if (stage2.x > width + 200 || stage2.h > height + 200) stage2 = null;
@@ -535,6 +598,9 @@
       }
       attached = true;
       stage2 = null;
+      ang = 0;
+      omega = 0;
+      gimbal = 0;
       state = "countdown";
       setLabel("T-3", undefined, true);
       last = performance.now() / 1000;
